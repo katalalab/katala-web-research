@@ -30,7 +30,10 @@ rm -f /tmp/katala-web-research-source-match.txt
 feed_smoke_dir="$(mktemp -d)"
 trap 'rm -rf "$feed_smoke_dir"' EXIT
 feed_smoke_archive="$feed_smoke_dir/archive.sqlite"
-PYTHONPATH=src python3 -m katala_web_research.cli feeds add "file://$ROOT/tests/fixtures/sample.rss.xml" --archive "$feed_smoke_archive" >/tmp/katala-web-research-feed-add.txt
+# $ROOT is an MSYS path under Git Bash, which is not a resolvable file:// URL on
+# Windows; as_uri() spells the repo-relative fixture natively on every platform.
+feed_smoke_url="$(python3 -c 'import pathlib; print(pathlib.Path("tests/fixtures/sample.rss.xml").resolve().as_uri())')"
+PYTHONPATH=src python3 -m katala_web_research.cli feeds add "$feed_smoke_url" --archive "$feed_smoke_archive" >/tmp/katala-web-research-feed-add.txt
 grep -q "source_count: 1" /tmp/katala-web-research-feed-add.txt
 PYTHONPATH=src python3 -m katala_web_research.cli feeds refresh --archive "$feed_smoke_archive" >/tmp/katala-web-research-feed-refresh.txt
 grep -q "indexed_items: 2" /tmp/katala-web-research-feed-refresh.txt

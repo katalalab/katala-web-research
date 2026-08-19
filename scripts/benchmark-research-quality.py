@@ -70,7 +70,8 @@ def main() -> int:
 
 def run_token_budget() -> list[dict]:
     completed = subprocess.run(
-        [str(ROOT / "scripts" / "benchmark-token-budget.py"), "--json"],
+        # Windows cannot exec a shebang script directly, so name the interpreter.
+        [sys.executable, str(ROOT / "scripts" / "benchmark-token-budget.py"), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,

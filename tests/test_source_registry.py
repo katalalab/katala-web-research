@@ -4,6 +4,7 @@ import json
 import os
 import tempfile
 import unittest
+from pathlib import Path
 
 from katala_web_research.cli import main
 from katala_web_research.source_quality import classify_url
@@ -105,11 +106,13 @@ class SourceRegistryTests(unittest.TestCase):
                 }
             ]
         }
-        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".json") as handle:
-            json.dump(overlay, handle)
-            handle.flush()
+        with tempfile.TemporaryDirectory() as tmp:
+            # Windows denies a second open on a live NamedTemporaryFile handle,
+            # so the overlay is closed before source_registry() reads it.
+            overlay_path = Path(tmp) / "overlay.json"
+            overlay_path.write_text(json.dumps(overlay), encoding="utf-8")
             previous = os.environ.get("KWR_SOURCE_REGISTRY_OVERLAY")
-            os.environ["KWR_SOURCE_REGISTRY_OVERLAY"] = handle.name
+            os.environ["KWR_SOURCE_REGISTRY_OVERLAY"] = str(overlay_path)
             try:
                 source_registry.cache_clear()
                 registry = source_registry()
