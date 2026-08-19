@@ -118,6 +118,19 @@ Check provider availability:
 kwr doctor
 ```
 
+Show recorded meta-search engine health (failure rate, useful-result rate, p95 latency):
+
+```sh
+kwr engines --archive ~/.kwr/research.sqlite
+```
+
+Expand the citation graph around a paper, and read a URL through the archive cache:
+
+```sh
+kwr openalex expand https://doi.org/10.1038/s41592-019-0686-2 --direction referenced --limit 10
+kwr read https://example.com/doc --archive ~/.kwr/research.sqlite --cache
+```
+
 Run deterministic research-quality evaluation:
 
 ```sh

@@ -13,13 +13,20 @@ from .archive import DEFAULT_ARCHIVE, Archive
 from .archive_highlights import apply_archive_highlights
 from .brief import build_brief
 from .corpus import scan_repos
+from .engine_health import weak_engines
 from .evaluation import build_eval_report, run_eval
 from .feeds import fetch_and_parse_feed
 from .investigation import build_investigation_report, sort_web_candidates
 from .issues import build_project_radar, fetch_github_project_items, load_project_items_json
 from .models import FeedSource, PageSnapshot, SearchResult, utc_now_iso
 from .planner import SearchPlanStep, build_search_plan
-from .providers import provider_status, search, searxng_preflight
+from .providers import (
+    engine_health,
+    openalex_expand,
+    provider_status,
+    search,
+    searxng_preflight,
+)
 from .query_builder import build_search_query, categorize_url
 from .reader import read_url
 from .report import build_report
@@ -30,6 +37,7 @@ PROVIDER_CHOICES = ["brave", "ddg", "feed", "github", "github_code", "jina", "me
 
 
 def main(argv: list[str] | None = None) -> int:
+    _force_utf8_output()
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
@@ -37,6 +45,16 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, RuntimeError, ValueError, sqlite3.Error) as exc:
         print(f"kwr: error: {exc}", file=sys.stderr)
         return 1
+
+
+def _force_utf8_output() -> None:
+    """Windows pipes default to cp932 here, and one (c) in a snippet aborts the command
+    mid-output with UnicodeEncodeError. Tests redirect these streams to objects that have
+    no reconfigure()."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(encoding="utf-8", errors="replace")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -62,8 +80,22 @@ def build_parser() -> argparse.ArgumentParser:
     p_read = sub.add_parser("read", help="read a URL into text")
     p_read.add_argument("url")
     p_read.add_argument("--reader", default="auto", choices=["auto", "jina", "direct"])
+    p_read.add_argument("--archive", default=str(DEFAULT_ARCHIVE))
+    p_read.add_argument("--cache", action="store_true", help="serve from the archive and store misses")
+    p_read.add_argument("--refresh", action="store_true", help="with --cache, refetch and overwrite")
     p_read.add_argument("--json", action="store_true")
     p_read.set_defaults(func=cmd_read)
+
+    p_openalex = sub.add_parser("openalex", help="scholarly workflows on the OpenAlex API")
+    openalex_sub = p_openalex.add_subparsers(required=True)
+    p_openalex_expand = openalex_sub.add_parser("expand", help="follow a work's citation edges")
+    p_openalex_expand.add_argument("seed", help="OpenAlex id, DOI, or work URL")
+    p_openalex_expand.add_argument(
+        "--direction", default="both", choices=["referenced", "citing", "both"]
+    )
+    p_openalex_expand.add_argument("--limit", "-n", type=int, default=10)
+    p_openalex_expand.add_argument("--json", action="store_true")
+    p_openalex_expand.set_defaults(func=cmd_openalex_expand)
 
     p_collect = sub.add_parser("collect", help="search, read top pages, and archive evidence")
     p_collect.add_argument("query")
@@ -213,6 +245,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_doctor.add_argument("--check-searxng", action="store_true", help="probe configured SearXNG JSON API")
     p_doctor.set_defaults(func=cmd_doctor)
 
+    p_engines = sub.add_parser("engines", help="recorded meta-search engine health")
+    p_engines.add_argument("--archive", default=str(DEFAULT_ARCHIVE))
+    p_engines.add_argument("--window", type=int, default=50, help="runs kept per engine")
+    p_engines.add_argument("--json", action="store_true")
+    p_engines.set_defaults(func=cmd_engines)
+
     p_eval = sub.add_parser("eval", help="run deterministic research-quality benchmark cases")
     p_eval.add_argument("--min-score", type=int, default=80)
     p_eval.add_argument("--max-subqueries", type=int, default=4)
@@ -297,11 +335,44 @@ def _candidate_limit(limit: int, multiplier: float) -> int:
 
 
 def cmd_read(args: argparse.Namespace) -> int:
-    page = read_url(args.url, reader=args.reader)
+    if not args.cache:
+        page = read_url(args.url, reader=args.reader)
+        if args.json:
+            print_json(page.to_dict())
+        else:
+            print(page.content)
+        return 0
+
+    archive = Archive(args.archive)
+    try:
+        page = None if args.refresh else archive.page_by_url(args.url)
+        cached = page is not None
+        if page is None:
+            page = read_url(args.url, reader=args.reader)
+            archive.upsert_page(page)
+    finally:
+        archive.close()
     if args.json:
-        print_json(page.to_dict())
+        print_json(page.to_dict() | {"cached": cached})
     else:
+        print(f"cache: {'hit' if cached else 'miss'}", file=sys.stderr)
         print(page.content)
+    return 0
+
+
+def cmd_openalex_expand(args: argparse.Namespace) -> int:
+    expanded = openalex_expand(args.seed, direction=args.direction, limit=args.limit)
+    if args.json:
+        print_json(
+            {
+                direction: [result.to_dict() for result in results]
+                for direction, results in expanded.items()
+            }
+        )
+        return 0
+    for direction, results in expanded.items():
+        print(f"{direction}: {len(results)}")
+        print_results(results)
     return 0
 
 
@@ -783,6 +854,28 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     with sqlite3.connect(":memory:") as conn:
         conn.execute("CREATE VIRTUAL TABLE probe USING fts5(value)")
     print("sqlite_fts5: ok")
+    return 0
+
+
+def cmd_engines(args: argparse.Namespace) -> int:
+    with archive_env(args.archive):
+        stats = engine_health(per_provider=args.window)
+    weak = set(weak_engines(stats))
+    if args.json:
+        print_json(
+            [stat.to_dict() | {"routed_around": stat.provider in weak} for stat in stats]
+        )
+        return 0
+    if not stats:
+        print("no engine runs recorded yet")
+        return 0
+    for stat in stats:
+        flag = " ROUTED-AROUND" if stat.provider in weak else ""
+        print(
+            f"{stat.provider}: health={stat.health_score} runs={stat.runs} "
+            f"failures={stat.failures} useful_rate={stat.useful_rate} "
+            f"p95_latency_ms={stat.p95_latency_ms}{flag}"
+        )
     return 0
 
 

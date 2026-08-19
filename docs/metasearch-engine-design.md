@@ -74,6 +74,17 @@ Engines that lack credentials or URLs fail closed and do not block the whole sea
 
 Before final Katala scoring, `meta` applies health-aware Reciprocal Rank Fusion so a URL seen by multiple healthy engines gets a consensus boost without trusting incompatible engine score scales. Each result carries `meta_engine_runs` metadata with provider status, latency, result count, bounded health score, and error kind for failed engines.
 
+## Engine Health Ledger
+
+Per-search health only describes the search that just happened, so it cannot tell a bad afternoon from a dead engine. When the caller names an archive (`--archive`, exported as `KWR_ARCHIVE`; every CLI command that owns an archive does this), `meta` appends each engine run to the `engine_runs` table and reads the accumulated record back on the next search:
+
+- failure rate, useful-result rate, and nearest-rank p95 latency per engine, over a rolling window of the last 50 runs
+- `kwr engines [--archive PATH] [--window N] [--json]` prints the ledger and marks the engines currently routed around
+- an engine is demoted only after at least 5 recorded runs, and only for a failure rate above 0.5, a p95 above 5s, or a useful-result rate below 0.2
+- if every engine in the profile is weak, none is dropped: a fleet-wide outage has to read as "everything is failing", not as "no results"
+
+Without an archive the ledger is off entirely, so importing the library never creates a database in the working directory.
+
 ## Next Engine Improvements
 
 - Optional Firecrawl-inspired enrichment pass: fetch top search candidates with the configured reader, merge page text into thin snippets, keep read failures in metadata, and re-rank. Implemented as `kwr search --enrich-top N --reader auto|jina|direct`.

@@ -125,6 +125,16 @@ class Archive:
             );
             CREATE VIRTUAL TABLE IF NOT EXISTS project_items_fts
               USING fts5(repository, title, labels_text, priority, status, url UNINDEXED, kind UNINDEXED, content='project_items', content_rowid='id');
+            CREATE TABLE IF NOT EXISTS engine_runs (
+              id INTEGER PRIMARY KEY,
+              provider TEXT NOT NULL,
+              status TEXT NOT NULL,
+              latency_ms INTEGER NOT NULL,
+              result_count INTEGER NOT NULL,
+              error_kind TEXT NOT NULL DEFAULT '',
+              recorded_at TEXT NOT NULL
+            );
+            CREATE INDEX IF NOT EXISTS engine_runs_provider ON engine_runs(provider, id DESC);
             CREATE TRIGGER IF NOT EXISTS pages_ai AFTER INSERT ON pages BEGIN
               INSERT INTO pages_fts(rowid, title, content, url)
               VALUES (new.id, new.title, new.content, new.url);
@@ -569,6 +579,54 @@ class Archive:
             )
             for row in rows
         ]
+
+    def record_engine_runs(self, runs: list[dict], *, keep_per_provider: int = 500) -> int:
+        recorded_at = utc_now_iso()
+        rows = [
+            (
+                run["provider"],
+                run["status"],
+                int(run["latency_ms"]),
+                int(run["result_count"]),
+                run.get("error_kind", ""),
+                recorded_at,
+            )
+            for run in runs
+        ]
+        if not rows:
+            return 0
+        self.conn.executemany(
+            "INSERT INTO engine_runs(provider, status, latency_ms, result_count, error_kind, recorded_at)"
+            " VALUES (?, ?, ?, ?, ?, ?)",
+            rows,
+        )
+        # A health ledger that only grows turns into a slow leak nobody reads. Keep a
+        # rolling window per engine; older rows cannot change a routing decision anyway.
+        self.conn.execute(
+            """
+            DELETE FROM engine_runs WHERE id IN (
+              SELECT id FROM (
+                SELECT id, ROW_NUMBER() OVER (PARTITION BY provider ORDER BY id DESC) AS position
+                FROM engine_runs
+              ) WHERE position > ?
+            )
+            """,
+            (keep_per_provider,),
+        )
+        self.conn.commit()
+        return len(rows)
+
+    def engine_runs(self, *, per_provider: int = 50) -> list[dict]:
+        rows = self.conn.execute(
+            """
+            SELECT provider, status, latency_ms, result_count, error_kind, recorded_at FROM (
+              SELECT *, ROW_NUMBER() OVER (PARTITION BY provider ORDER BY id DESC) AS position
+              FROM engine_runs
+            ) WHERE position <= ?
+            """,
+            (per_provider,),
+        ).fetchall()
+        return [dict(row) for row in rows]
 
     def query_project_items(self, terms: str, *, limit: int = 10) -> list[ProjectHit]:
         rows = self.conn.execute(

@@ -3,10 +3,23 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from urllib.error import HTTPError, URLError
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
 DEFAULT_USER_AGENT = "katala-web-research/0.1 (+local research tool)"
 DEFAULT_TIMEOUT_SECONDS = 20.0
+
+# Query parameters that carry a credential. OpenAlex only accepts its key as `api_key=`,
+# so the secret cannot be moved into a header -- it has to be stripped on the way out.
+SECRET_QUERY_KEYS = {
+    "access_token",
+    "api_key",
+    "apikey",
+    "auth",
+    "key",
+    "subscription_token",
+    "token",
+}
 
 
 @dataclass(slots=True)
@@ -32,6 +45,21 @@ class FetchError(RuntimeError):
     pass
 
 
+def redact_url(url: str) -> str:
+    """Strip credentials from a URL before it reaches an error message or a log line."""
+    parsed = urlsplit(url)
+    query = urlencode(
+        [
+            (key, "REDACTED" if key.lower() in SECRET_QUERY_KEYS else value)
+            for key, value in parse_qsl(parsed.query, keep_blank_values=True)
+        ]
+    )
+    netloc = parsed.netloc
+    if "@" in netloc:
+        netloc = "REDACTED@" + netloc.rsplit("@", 1)[1]
+    return urlunsplit((parsed.scheme, netloc, parsed.path, query, parsed.fragment))
+
+
 def fetch_url(url: str, *, headers: dict[str, str] | None = None, timeout: float | None = None) -> HttpResponse:
     merged = {"User-Agent": DEFAULT_USER_AGENT}
     if headers:
@@ -48,9 +76,9 @@ def fetch_url(url: str, *, headers: dict[str, str] | None = None, timeout: float
             )
     except HTTPError as exc:
         body = exc.read()
-        raise FetchError(f"HTTP {exc.code} for {url}: {body[:200]!r}") from exc
+        raise FetchError(f"HTTP {exc.code} for {redact_url(url)}: {body[:200]!r}") from exc
     except URLError as exc:
-        raise FetchError(f"fetch failed for {url}: {exc.reason}") from exc
+        raise FetchError(f"fetch failed for {redact_url(url)}: {exc.reason}") from exc
 
 
 def _resolve_timeout(timeout: float | None) -> float:

@@ -24,9 +24,10 @@ dependencies = []
 # Optional provider integrations — all are pure-stdlib HTTP (urllib.request).
 # No extra packages are needed; configure providers via environment variables:
 #   KWR_SEARXNG_URL        — self-hosted SearXNG instance
-#   KWR_BRAVE_API_KEY      — Brave Search API key
+#   BRAVE_SEARCH_API_KEY   — Brave Search API key
 #   OPENALEX_API_KEY       — OpenAlex API key (op:// 1Password ref supported)
-#   KWR_JINA_API_KEY       — Jina AI reader API key
+#   JINA_API_KEY           — Jina AI reader API key
+#   GITHUB_TOKEN           — GitHub REST code search
 [project.optional-dependencies]
 openalex = []
 brave = []

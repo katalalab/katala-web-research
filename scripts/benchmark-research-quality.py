@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from katala_web_research.evaluation import default_eval_cases, run_eval  # noqa: E402
-from katala_web_research.providers import search  # noqa: E402
+from katala_web_research.providers import openalex_expand, search  # noqa: E402
 
 EVAL_CASES = default_eval_cases()
 THEMES = [case.query for case in EVAL_CASES]
@@ -33,6 +33,7 @@ def main() -> int:
     eval_runs = [run_eval(min_score=80) for _ in range(args.iterations)]
     token_runs = run_token_budget()
     live_runs = run_live_openalex(args.limit) if args.live_openalex else []
+    expand_runs = run_live_openalex_expand(args.limit) if args.live_openalex else []
     meta_runs = run_live_meta(args.limit) if args.live_meta else []
     payload = {
         "iterations": args.iterations,
@@ -46,6 +47,7 @@ def main() -> int:
         "themes": THEMES,
         "token_budget": token_runs,
         "live_openalex": live_runs,
+        "live_openalex_expand": expand_runs,
         "live_meta": meta_runs,
     }
     report = build_report(payload)
@@ -105,6 +107,33 @@ def run_live_openalex(limit: int) -> list[dict]:
         except Exception as exc:
             rows.append({"theme": theme, "ok": False, "error": str(exc)})
     return rows
+
+
+def run_live_openalex_expand(limit: int) -> list[dict]:
+    """Expand the citation graph around whatever the first live OpenAlex query returned.
+
+    Seeding from the live result instead of a pinned work id keeps the entry from rotting
+    the day that id is merged or withdrawn.
+    """
+    try:
+        seeds = live_search_with_retry(LIVE_THEMES[0], provider="openalex", limit=1)
+    except Exception as exc:
+        return [{"seed": LIVE_THEMES[0], "ok": False, "error": str(exc)}]
+    if not seeds:
+        return [{"seed": LIVE_THEMES[0], "ok": False, "error": "no seed work returned"}]
+    seed = seeds[0].metadata.get("openalex_id") or seeds[0].url
+    try:
+        expanded = openalex_expand(seed, limit=limit)
+    except Exception as exc:
+        return [{"seed": seed, "ok": False, "error": str(exc)}]
+    return [
+        {
+            "seed": seed,
+            "ok": True,
+            "referenced_count": len(expanded.get("referenced", [])),
+            "citing_count": len(expanded.get("citing", [])),
+        }
+    ]
 
 
 def run_live_meta(limit: int) -> list[dict]:
@@ -189,6 +218,17 @@ def build_report(payload: dict) -> str:
                 )
             else:
                 lines.append(f"- fail `{row['theme']}` error={row['error']}")
+    else:
+        lines.append("Not run in this benchmark pass.")
+    lines.extend(["", "## Live OpenAlex Citation Expansion", ""])
+    if payload["live_openalex_expand"]:
+        for row in payload["live_openalex_expand"]:
+            if row["ok"]:
+                lines.append(
+                    f"- ok `{row['seed']}` referenced={row['referenced_count']} citing={row['citing_count']}"
+                )
+            else:
+                lines.append(f"- fail `{row['seed']}` error={row['error']}")
     else:
         lines.append("Not run in this benchmark pass.")
     lines.extend(["", "## Live Meta", ""])

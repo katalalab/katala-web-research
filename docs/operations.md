@@ -70,6 +70,27 @@ Disable query decomposition when you need a single exact query:
 KWR_EXPAND_QUERIES=0 scripts/kwr-research-cycle.sh "exact release title"
 ```
 
+## Optional Provider Boundary And Rollback Controls
+
+Every optional provider is off until an environment variable turns it on, and every one of them is plain `urllib.request` — `dependencies = []` in `pyproject.toml`, so turning a provider off removes the whole code path from a run without a reinstall.
+
+| Provider | Turn on with | Roll back by | Effect when off |
+| --- | --- | --- | --- |
+| `github_code` | `GITHUB_TOKEN` | unset it | provider raises `FetchError`; `meta` drops it from the fan-out |
+| `jina` | `JINA_API_KEY` | unset it | same; the reader still works without a key |
+| `brave` | `BRAVE_SEARCH_API_KEY` | unset it | same |
+| `searxng` | `KWR_SEARXNG_URL` | unset it | same |
+| `openalex` | none (key optional) | unset `OPENALEX_API_KEY` | falls back to the unauthenticated pool |
+| engine health ledger | any `--archive` | omit `--archive`, or delete the `engine_runs` rows | no ledger is written and no engine is routed around |
+
+Secret handling:
+
+- `OPENALEX_API_KEY` accepts an `op://` reference and is resolved through `op read` at call time; nothing is written to disk. The other keys are read straight from the environment, so run them under `op run --env-file=.env`.
+- OpenAlex only accepts its key as an `api_key=` query parameter, so the credential is unavoidably in the request URL. `redact_url()` strips it (and any basic-auth userinfo) from every error message before it can reach a log or a report.
+- `.env` is gitignored and `scripts/verify.sh` refuses a tracked `.env`, a raw `sk-`/`ghp_`/`AKIA`/private-key pattern inside it, and any tracked runtime artifact.
+
+License boundary: SearXNG is AGPL and is only ever reached over HTTP at `KWR_SEARXNG_URL`. No SearXNG source is vendored into this MIT tree, and `tests/test_provider_boundaries.py` fails if an `import searx` ever appears under `src/`.
+
 ## Token Budget Benchmark
 
 Run the deterministic local benchmark:

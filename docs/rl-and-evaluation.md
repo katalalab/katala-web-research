@@ -97,6 +97,22 @@ The deterministic suite now covers these domain categories:
 
 This is intentionally small and deterministic. It is a regression gate, not a full relevance benchmark.
 
+## Relevance Labels And Retrieval Metrics
+
+Every case also carries graded relevance labels (`EvalCase.relevance`, url to grade 0-3) over the same candidates, so BEIR-style metrics can be read off the existing fixtures instead of a second corpus:
+
+- `recall@5` - labelled relevant documents that survive ranking
+- `mrr@5` - reciprocal rank of the first relevant document
+- `ndcg@10` - graded, position-weighted quality, exponential gain
+- `baseline_ndcg@10` - the same nDCG over the order the providers returned
+
+`kwr eval` fails when `ndcg@10` is not strictly above `baseline_ndcg@10`. The gate is the gap rather than a tuned threshold: a fixed number drifts into either a rubber stamp or a chore, while the gap goes red the moment ranking stops improving on provider order.
+
+Benchmark boundary:
+
+- **In CI (always run):** the labelled fixture subset above. No network, no downloads, deterministic.
+- **Skipped (external, opt-in):** real BEIR/MTEB corpora such as NFCorpus or SciFact. They need multi-hundred-MB downloads and an embedding model, which contradicts the no-mandatory-service rule that the provider boundary is built on. Run them out of band when a retrieval model is actually being adopted, and record the numbers in a dated note under `docs/`; do not wire them into `make verify`.
+
 ## Next Learning Step
 
 The next practical learning feature is a simple learning-to-rank dataset:

@@ -32,3 +32,36 @@ Verification:
 
 Next candidates:
 - Consider exposing OpenAlex `open_access.is_oa` or `best_oa_location.license` filters if downstream workflows need license-aware candidate pools.
+
+## 2026-08-20: `content_url` is not a select field, and citation expansion
+
+date: 2026-08-20
+source: `https://api.openalex.org/works?per_page=1&select=content_url` (official API error listing the valid select fields)
+local version: `katala-web-research` 0.1.0, `src/katala_web_research/providers.py`
+
+Finding: the `select` list sent by the OpenAlex provider contained `content_url`. That field does
+not exist; the API rejects the entire request with `HTTP 400 Invalid query parameters error`, so
+every live OpenAlex search failed while the offline fixtures stayed green — the fixture supplied a
+`content_url` key the API never returns. The real field is `content_urls`, an object of per-format
+URLs (`pdf`, `grobid_xml`).
+
+Decision:
+- `select` now requests `content_urls`; result metadata keeps the single `content_url` key, sourced
+  from `content_urls.pdf`. The fixture in `tests/test_providers.py` was corrected to the real shape.
+- Added citation expansion: `kwr openalex expand <id|doi|url> [--direction referenced|citing|both]
+  [--limit N]`. `referenced_works` is followed through `filter=openalex_id:W1|W2|...`, citing works
+  through `filter=cites:<id>`. The per-direction count is clamped to `OPENALEX_EXPAND_MAX` (50) so
+  one command cannot turn into a graph crawl.
+- The API key can only travel as an `api_key=` query parameter, so `http.redact_url()` strips it from
+  every error message before it can reach a log.
+
+Verification (2026-08-20, rtx4090):
+- `kwr search "query decomposition retrieval" --provider openalex --limit 2` returns results; before
+  the fix it returned `HTTP 400 ... content_url is not a valid select field`.
+- `kwr openalex expand https://doi.org/10.1038/s41592-019-0686-2 --limit 2` returns both directions.
+- `tests/test_openalex_expand.py` covers bounds, direction isolation, seed forms, fail-closed
+  behaviour on an unresolvable work, and that the key never reaches an error string.
+
+Risk / rollback: the change is confined to the `select` list, one metadata mapping, and new
+functions. Reverting the two `content_urls` edits restores the previous (broken) live behaviour.
+Next refresh: re-check the valid select-field list when OpenAlex next changes the works schema.

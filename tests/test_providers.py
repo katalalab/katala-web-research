@@ -419,7 +419,10 @@ class ProviderTests(unittest.TestCase):
                         "type": "article",
                         "cited_by_count": 42,
                         "open_access": {"is_oa": True, "oa_status": "gold"},
-                        "content_url": "https://content.openalex.org/works/W1.pdf",
+                        "content_urls": {
+                            "pdf": "https://content.openalex.org/works/W1.pdf",
+                            "grobid_xml": "https://content.openalex.org/works/W1.grobid-xml",
+                        },
                         "primary_location": {
                             "landing_page_url": "https://aclanthology.org/2025.acl-srw.32/",
                             "pdf_url": "https://aclanthology.org/2025.acl-srw.32.pdf",

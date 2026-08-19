@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
+from math import log2
 
 from .models import SearchResult
 from .planner import build_search_plan
@@ -11,6 +12,11 @@ from .source_quality import classify_url
 # Fixtures anchor publish dates to the current year so freshness scoring stays
 # identical every year instead of decaying as hardcoded years age out.
 CURRENT_YEAR = datetime.now(timezone.utc).year
+
+# BEIR grades relevance rather than treating it as a boolean, so a mirror of an official
+# page and the official page itself are not scored the same. Anything at or above this is
+# counted as a hit by Recall@K and MRR@K; nDCG uses the full grade.
+RELEVANT_GRADE = 1
 
 
 @dataclass(slots=True, frozen=True)
@@ -23,6 +29,9 @@ class EvalCase:
     preferred_url_terms: tuple[str, ...]
     discouraged_url_terms: tuple[str, ...] = ()
     min_top_quality: int = 75
+    # url -> graded relevance (0 irrelevant, 3 the primary answer). Kept as a tuple so the
+    # case stays frozen. Empty means the case is excluded from the retrieval metrics.
+    relevance: tuple[tuple[str, int], ...] = ()
 
 
 @dataclass(slots=True)
@@ -35,6 +44,7 @@ class EvalCaseResult:
     plan_intents: list[str]
     top_urls: list[str]
     metrics: dict[str, int | bool]
+    retrieval: dict[str, float] = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -47,6 +57,7 @@ class EvalSummary:
     min_score: int
     cases: list[EvalCaseResult]
     category_scores: dict[str, int]
+    retrieval: dict[str, float] = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return {
@@ -54,6 +65,7 @@ class EvalSummary:
             "passed": self.passed,
             "min_score": self.min_score,
             "category_scores": self.category_scores,
+            "retrieval": self.retrieval,
             "cases": [case.to_dict() for case in self.cases],
         }
 
@@ -87,6 +99,14 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "primary"),
             preferred_url_terms=("learn.microsoft.com", "github.com/MicrosoftDocs"),
             discouraged_url_terms=("algolia.com/blog",),
+            relevance=(
+                ("https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-overview", 3),
+                (
+                    "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/search/agentic-retrieval-overview.md",
+                    2,
+                ),
+                ("https://www.algolia.com/blog/ai/agentic-retrieval", 0),
+            ),
         ),
         EvalCase(
             name="citations_prefers_vendor_docs",
@@ -109,6 +129,10 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official"),
             preferred_url_terms=("docs.anthropic.com",),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://docs.anthropic.com/en/docs/build-with-claude/citations", 3),
+                ("https://example.com/claude-citations-guide", 0),
+            ),
         ),
         EvalCase(
             name="papers_surface_primary_research",
@@ -139,6 +163,11 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "primary", "critique"),
             preferred_url_terms=("arxiv.org", "aclanthology.org"),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://arxiv.org/abs/2510.18633", 3),
+                ("https://aclanthology.org/2025.acl-srw.32/", 2),
+                ("https://example.com/advanced-rag-patterns", 0),
+            ),
         ),
         EvalCase(
             name="fusion_consensus_beats_single_engine_outlier",
@@ -162,6 +191,10 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "primary"),
             preferred_url_terms=("docs.github.com",),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://docs.github.com/en/search-github", 3),
+                ("https://example.com/rank-fusion", 0),
+            ),
         ),
         EvalCase(
             name="feed_monitoring_prefers_official_release_notes",
@@ -185,6 +218,10 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "primary"),
             preferred_url_terms=("docs.python.org",),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://docs.python.org/3/whatsnew/3.14.html", 3),
+                ("https://example.com/python-release-rumors", 0),
+            ),
             min_top_quality=70,
         ),
         EvalCase(
@@ -216,6 +253,11 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "primary", "critique"),
             preferred_url_terms=("github.com/nodejs", "nvd.nist.gov"),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://github.com/nodejs/node/security/advisories/GHSA-node-openssl", 3),
+                ("https://nvd.nist.gov/vuln/detail/CVE-2026-0001", 2),
+                ("https://example.com/node-openssl-analysis", 0),
+            ),
             min_top_quality=75,
         ),
         EvalCase(
@@ -239,6 +281,10 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "critique"),
             preferred_url_terms=("ftc.gov",),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides", 3),
+                ("https://example.com/influencer-disclosure-tips", 0),
+            ),
             min_top_quality=75,
         ),
         EvalCase(
@@ -269,6 +315,11 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "primary"),
             preferred_url_terms=("github.com/searxng", "docs.searxng.org"),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://github.com/searxng/searxng/tree/master/searx/engines", 3),
+                ("https://docs.searxng.org/dev/engines/index.html", 2),
+                ("https://example.com/metasearch-adapter", 0),
+            ),
         ),
         EvalCase(
             name="product_release_prefers_official_changelog",
@@ -300,6 +351,11 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "primary"),
             preferred_url_terms=("developers.openai.com", "github.com/openai"),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://github.com/openai/openai-agents-python/releases", 3),
+                ("https://developers.openai.com/tracks/building-agents", 2),
+                ("https://example.com/agents-sdk-release-recap", 0),
+            ),
         ),
         EvalCase(
             name="news_bias_prefers_bias_comparison_source",
@@ -329,9 +385,39 @@ def default_eval_cases() -> list[EvalCase]:
             expected_plan_intents=("baseline", "official", "critique"),
             preferred_url_terms=("ground.news", "allsides.com"),
             discouraged_url_terms=("example.com",),
+            relevance=(
+                ("https://ground.news/", 3),
+                ("https://www.allsides.com/media-bias/media-bias-ratings", 2),
+                ("https://example.com/political-bias-news", 0),
+            ),
             min_top_quality=75,
         ),
     ]
+
+
+def recall_at_k(ranked_urls: list[str], labels: dict[str, int], k: int) -> float:
+    relevant = {url for url, grade in labels.items() if grade >= RELEVANT_GRADE}
+    if not relevant:
+        return 0.0
+    return sum(1 for url in ranked_urls[:k] if url in relevant) / len(relevant)
+
+
+def mrr_at_k(ranked_urls: list[str], labels: dict[str, int], k: int) -> float:
+    for position, url in enumerate(ranked_urls[:k], start=1):
+        if labels.get(url, 0) >= RELEVANT_GRADE:
+            return 1.0 / position
+    return 0.0
+
+
+def ndcg_at_k(ranked_urls: list[str], labels: dict[str, int], k: int) -> float:
+    ideal = _dcg(sorted(labels.values(), reverse=True)[:k])
+    if not ideal:
+        return 0.0
+    return _dcg([labels.get(url, 0) for url in ranked_urls[:k]]) / ideal
+
+
+def _dcg(grades: list[int]) -> float:
+    return sum((2**grade - 1) / log2(position + 1) for position, grade in enumerate(grades, start=1))
 
 
 def run_eval(*, min_score: int = 80, max_subqueries: int = 4) -> EvalSummary:
@@ -341,17 +427,31 @@ def run_eval(*, min_score: int = 80, max_subqueries: int = 4) -> EvalSummary:
     ]
     score = round(sum(result.score for result in results) / max(len(results), 1))
     category_scores = _category_scores(results)
+    retrieval = _retrieval_summary(results)
+    # The gate is the gap, not a tuned constant: ranking has to beat the order the
+    # providers already handed us, or it is doing nothing worth its latency.
+    ranking_beats_providers = (
+        not retrieval or retrieval["ndcg@10"] > retrieval["baseline_ndcg@10"]
+    )
     return EvalSummary(
         score=score,
-        passed=score >= min_score and all(case.passed for case in results),
+        passed=(
+            score >= min_score
+            and all(case.passed for case in results)
+            and ranking_beats_providers
+        ),
         min_score=min_score,
         cases=results,
         category_scores=category_scores,
+        retrieval=retrieval,
     )
 
 
 def evaluate_case(case: EvalCase, *, max_subqueries: int = 4, min_score: int = 80) -> EvalCaseResult:
     plan = build_search_plan(case.query, max_subqueries=max_subqueries)
+    # rank_results mutates the candidates it is given, so the provider baseline has to be
+    # read off before it runs.
+    baseline_urls = [result.url for result in sorted(case.candidates, key=lambda r: r.rank)]
     ranked = rank_results(case.query, list(case.candidates))
     top_urls = [result.url for result in ranked[:3]]
     top_quality = classify_url(top_urls[0])[1] if top_urls else 0
@@ -382,7 +482,35 @@ def evaluate_case(case: EvalCase, *, max_subqueries: int = 4, min_score: int = 8
             "quality_ok": quality_ok,
             "discouraged_above_preferred": discouraged_above_preferred,
         },
+        retrieval=_retrieval_metrics(
+            [result.url for result in ranked], baseline_urls, dict(case.relevance)
+        ),
     )
+
+
+def _retrieval_metrics(
+    ranked_urls: list[str], baseline_urls: list[str], labels: dict[str, int]
+) -> dict[str, float]:
+    if not labels:
+        return {}
+    return {
+        "recall@5": round(recall_at_k(ranked_urls, labels, 5), 4),
+        "mrr@5": round(mrr_at_k(ranked_urls, labels, 5), 4),
+        "ndcg@10": round(ndcg_at_k(ranked_urls, labels, 10), 4),
+        "baseline_ndcg@10": round(ndcg_at_k(baseline_urls, labels, 10), 4),
+    }
+
+
+def _retrieval_summary(results: list[EvalCaseResult]) -> dict[str, float]:
+    labeled = [result for result in results if result.retrieval]
+    if not labeled:
+        return {}
+    summary = {
+        key: round(sum(result.retrieval[key] for result in labeled) / len(labeled), 4)
+        for key in ("recall@5", "mrr@5", "ndcg@10", "baseline_ndcg@10")
+    }
+    summary["labeled_cases"] = len(labeled)
+    return summary
 
 
 def build_eval_report(summary: EvalSummary) -> str:
@@ -399,6 +527,10 @@ def build_eval_report(summary: EvalSummary) -> str:
     ]
     for category, score in sorted(summary.category_scores.items()):
         lines.append(f"- {category}: {score}")
+    if summary.retrieval:
+        lines.extend(["", "## Retrieval Metrics", ""])
+        for key in ("labeled_cases", "recall@5", "mrr@5", "ndcg@10", "baseline_ndcg@10"):
+            lines.append(f"- {key}: {summary.retrieval[key]}")
     lines.extend(
         [
             "",

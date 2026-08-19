@@ -9,11 +9,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass, replace
 from html.parser import HTMLParser
 from typing import Any, Protocol
-from urllib.parse import urlencode
+from urllib.parse import quote, urlencode
 
 from .archive import DEFAULT_ARCHIVE, Archive
+from .engine_health import EngineHealthStat, summarize_engine_runs, weak_engines
 from .fusion import fuse_and_rank
-from .http import FetchError, fetch_url
+from .http import FetchError, fetch_url, redact_url
 from .models import SearchResult
 from .rank import rank_results
 from .text import collapse_space, normalize_url
@@ -357,12 +358,109 @@ class OpenAlexSearch:
         return rank_results(query, results)
 
 
+OPENALEX_EXPAND_MAX = 50
+
+
+def openalex_expand(
+    seed: str, *, direction: str = "both", limit: int = 10
+) -> dict[str, list[SearchResult]]:
+    """Follow an OpenAlex work's citation edges.
+
+    `limit` is per direction and is clamped to OPENALEX_EXPAND_MAX: an expansion that is
+    allowed to grow with the graph turns one command into a crawl.
+    """
+    if direction not in {"referenced", "citing", "both"}:
+        raise ValueError("direction must be one of: referenced, citing, both")
+    bounded = max(0, min(limit, OPENALEX_EXPAND_MAX))
+    if bounded == 0:
+        return {}
+    work = _openalex_work(_openalex_work_id(seed))
+    expanded: dict[str, list[SearchResult]] = {}
+    if direction in {"referenced", "both"}:
+        referenced = [
+            _openalex_work_id(value) for value in work.get("referenced_works", [])[:bounded]
+        ]
+        expanded["referenced"] = _openalex_works_by_id(referenced)
+    if direction in {"citing", "both"}:
+        expanded["citing"] = _openalex_filtered_works(
+            f"cites:{_openalex_work_id(work.get('id', ''))}", limit=bounded
+        )
+    return expanded
+
+
+def _openalex_work_id(value: str) -> str:
+    """Reduce a DOI URL, an openalex.org URL, or a bare id to the id OpenAlex indexes on."""
+    trimmed = (value or "").strip()
+    if not trimmed:
+        raise ValueError("an OpenAlex work id, DOI, or URL is required")
+    if trimmed.startswith(("https://openalex.org/", "https://api.openalex.org/works/")):
+        return trimmed.rsplit("/", 1)[-1]
+    if trimmed.startswith(("https://doi.org/", "http://doi.org/")):
+        return trimmed
+    if trimmed.startswith("10."):
+        return f"https://doi.org/{trimmed}"
+    return trimmed
+
+
+def _openalex_work(work_id: str) -> dict:
+    params: dict[str, str | int] = {}
+    _add_openalex_credentials(params)
+    url = f"https://api.openalex.org/works/{quote(work_id, safe='')}"
+    if params:
+        url += "?" + urlencode(params)
+    response = fetch_url(url, headers={"Accept": "application/json"})
+    payload = _parse_json(response.text, url)
+    if not isinstance(payload, dict) or not payload.get("id"):
+        raise FetchError(f"no OpenAlex work for {work_id}")
+    return payload
+
+
+def _openalex_works_by_id(work_ids: list[str]) -> list[SearchResult]:
+    if not work_ids:
+        return []
+    return _openalex_filtered_works("openalex_id:" + "|".join(work_ids), limit=len(work_ids))
+
+
+def _openalex_filtered_works(filter_value: str, *, limit: int) -> list[SearchResult]:
+    params: dict[str, str | int] = {
+        "filter": filter_value,
+        "per_page": min(limit, OPENALEX_EXPAND_MAX),
+        "select": OPENALEX_SELECT,
+    }
+    _add_openalex_credentials(params)
+    url = "https://api.openalex.org/works?" + urlencode(params)
+    response = fetch_url(url, headers={"Accept": "application/json"})
+    payload = _parse_json(response.text, url)
+    return [
+        SearchResult(
+            title=item.get("display_name") or item.get("title") or item.get("id") or "",
+            url=_openalex_url(item),
+            snippet=_openalex_snippet(item),
+            source="openalex",
+            published_at=item.get("publication_date") or _year_as_date(item.get("publication_year")),
+            rank=idx,
+            metadata=_openalex_metadata(item),
+        )
+        for idx, item in enumerate(payload.get("results", [])[:limit], start=1)
+    ]
+
+
+def _add_openalex_credentials(params: dict[str, str | int]) -> None:
+    token = _secret_env("OPENALEX_API_KEY").strip()
+    if token:
+        params["api_key"] = token
+    mailto = os.environ.get("OPENALEX_MAILTO", "").strip()
+    if mailto:
+        params["mailto"] = mailto
+
+
 class MetaSearch:
     name = "meta"
 
     def search(self, query: str, *, limit: int = 10) -> list[SearchResult]:
         profile = _meta_profile()
         provider_names = [name for name in _meta_provider_names(profile) if name in PROVIDERS]
+        provider_names = _route_around_weak_engines(provider_names)
         if not provider_names:
             return []
         result_lists: list[list[SearchResult]] = []
@@ -394,6 +492,7 @@ class MetaSearch:
                 runs.append(run)
                 if results:
                     result_lists.append(results)
+        _record_engine_runs(runs)
         ranked = fuse_and_rank(
             query,
             result_lists,
@@ -480,6 +579,50 @@ def _run_meta_provider(
             error_kind=exc.__class__.__name__,
         )
         return [], run
+
+
+def _health_ledger_path() -> str:
+    # Only the caller that named an archive gets health tracking. A search should not start
+    # writing a database into whatever directory it happens to be invoked from, and the CLI
+    # already exports KWR_ARCHIVE for every command that owns an archive.
+    return os.environ.get("KWR_ARCHIVE", "")
+
+
+def _route_around_weak_engines(provider_names: list[str]) -> list[str]:
+    path = _health_ledger_path()
+    if not path or not provider_names:
+        return provider_names
+    archive = Archive(path)
+    try:
+        weak = set(weak_engines(summarize_engine_runs(archive.engine_runs())))
+    finally:
+        archive.close()
+    kept = [name for name in provider_names if name not in weak]
+    # Never route around every engine: a fleet-wide outage would then read as "no results"
+    # instead of "everything is failing", which is the harder bug to notice.
+    return kept or provider_names
+
+
+def _record_engine_runs(runs: list[_MetaEngineRun]) -> None:
+    path = _health_ledger_path()
+    if not path:
+        return
+    archive = Archive(path)
+    try:
+        archive.record_engine_runs([run.to_dict() for run in runs])
+    finally:
+        archive.close()
+
+
+def engine_health(*, per_provider: int = 50) -> list[EngineHealthStat]:
+    path = _health_ledger_path()
+    if not path:
+        return []
+    archive = Archive(path)
+    try:
+        return summarize_engine_runs(archive.engine_runs(per_provider=per_provider))
+    finally:
+        archive.close()
 
 
 def _annotate_engine_result(result: SearchResult, run: _MetaEngineRun) -> SearchResult:
@@ -737,7 +880,7 @@ def _parse_json(text: str, url: str) -> Any:
     try:
         return json.loads(text)
     except json.JSONDecodeError as exc:
-        raise FetchError(f"non-JSON response from {url}: {exc}") from exc
+        raise FetchError(f"non-JSON response from {redact_url(url)}: {exc}") from exc
 
 
 def _github_snippet(item: dict) -> str:
@@ -955,37 +1098,38 @@ def _secret_env(name: str) -> str:
     return completed.stdout.strip()
 
 
+OPENALEX_SELECT = ",".join(
+    [
+        "id",
+        "doi",
+        "title",
+        "display_name",
+        "publication_year",
+        "publication_date",
+        "type",
+        "cited_by_count",
+        "is_retracted",
+        "open_access",
+        "primary_location",
+        "best_oa_location",
+        # `content_url` (singular) is not a select field and OpenAlex rejects the whole
+        # request with HTTP 400, so every live openalex search failed while the fixtures
+        # kept passing. The API returns an object of per-format URLs under `content_urls`.
+        "content_urls",
+        "abstract_inverted_index",
+    ]
+)
+
+
 def _openalex_params(query: str, *, limit: int, cursor: str = "*") -> dict[str, str | int]:
     params: dict[str, str | int] = {
         "search": query,
         "per_page": min(limit, 100),
         "cursor": cursor,
         "sort": "relevance_score:desc",
-        "select": ",".join(
-            [
-                "id",
-                "doi",
-                "title",
-                "display_name",
-                "publication_year",
-                "publication_date",
-                "type",
-                "cited_by_count",
-                "is_retracted",
-                "open_access",
-                "primary_location",
-                "best_oa_location",
-                "content_url",
-                "abstract_inverted_index",
-            ]
-        ),
+        "select": OPENALEX_SELECT,
     }
-    token = _secret_env("OPENALEX_API_KEY").strip()
-    if token:
-        params["api_key"] = token
-    mailto = os.environ.get("OPENALEX_MAILTO", "").strip()
-    if mailto:
-        params["mailto"] = mailto
+    _add_openalex_credentials(params)
     filters = [
         value
         for value in (
@@ -1077,12 +1221,14 @@ def _openalex_metadata(item: dict) -> dict[str, Any]:
         "work_type": "type",
         "publication_year": "publication_year",
         "cited_by_count": "cited_by_count",
-        "content_url": "content_url",
     }
     for out_key, item_key in mappings.items():
         value = item.get(item_key)
         if value is not None and value != "":
             metadata[out_key] = value
+    content_urls = item.get("content_urls")
+    if isinstance(content_urls, dict) and content_urls.get("pdf"):
+        metadata["content_url"] = content_urls["pdf"]
     _add_openalex_location_metadata(metadata, "primary", item.get("primary_location"))
     _add_openalex_location_metadata(metadata, "best_oa", item.get("best_oa_location"))
     open_access = item.get("open_access") or {}

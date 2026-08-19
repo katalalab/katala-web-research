@@ -62,6 +62,14 @@ if [ -f "$ROOT/.env" ]; then
   fi
 fi
 
+echo "== gitleaks =="
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks dir "$ROOT" --no-banner --redact
+else
+  # A silent skip here is worse than no check: it reads as a clean scan in the log.
+  echo "SKIP: gitleaks not installed (install it or run the scan on a node that has it)"
+fi
+
 echo "== tracked artifact guard =="
 if git rev-parse --show-toplevel >/dev/null 2>&1; then
   tracked_sensitive="$(git ls-files -- . | grep -E '(^|/)(raw|downloads|sessions|logs?)/|\.env($|\.)|\.jsonl$|\.sqlite(-shm|-wal)?$|\.log$|__pycache__|\.pyc|\.DS_Store' | grep -vE '(^|/)\.env\.example$' || true)"
