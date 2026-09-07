@@ -344,14 +344,17 @@ def cmd_read(args: argparse.Namespace) -> int:
         return 0
 
     archive = Archive(args.archive)
+    page: PageSnapshot | None = None
     try:
-        page = None if args.refresh else archive.page_by_url(args.url)
+        if not args.refresh:
+            page = archive.page_by_url(args.url)
         cached = page is not None
         if page is None:
             page = read_url(args.url, reader=args.reader)
             archive.upsert_page(page)
     finally:
         archive.close()
+    assert page is not None
     if args.json:
         print_json(page.to_dict() | {"cached": cached})
     else:
