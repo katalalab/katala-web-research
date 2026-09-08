@@ -335,6 +335,7 @@ def _candidate_limit(limit: int, multiplier: float) -> int:
 
 
 def cmd_read(args: argparse.Namespace) -> int:
+    page: PageSnapshot | None
     if not args.cache:
         page = read_url(args.url, reader=args.reader)
         if args.json:
