@@ -1,20 +1,10 @@
 # katala-web-research
 
-`katala-web-research` is a local-first CLI for research and investigation workflows:
+katala-web-researchは、技術調査や情報収集をローカル環境で行い、出典情報の整理を支援するための開発者向けCLIツールです。検索エンジン経由で情報を取得し、Webページの内容を整形してローカルのデータベースに保存します。保存したデータは全文検索で再参照でき、手元のリポジトリ群と併せて調査ログを整理できます。
 
-- search across no-key and optional provider backends
-- read URLs into clean text or Markdown-like snapshots
-- collect top results into a SQLite archive with FTS5 search
-- produce a small evidence report that is easy to commit, review, or hand off
+調査したWebページの内容を手元に蓄積して後から検索したい場面や、Webの文書と手元のコードベースを横断して確認し出典付きのまとめ資料を作成したい場面に適しています。
 
-It borrows the useful shape from local-first research and crawler patterns:
-
-- `Agent-Reach`: small channel/provider contracts and Jina Reader as a clean web reader
-- `x-tweet-fetcher`: no-key search fallback thinking and browser-free first pass
-- `supacrawl`: local SQLite archive plus fast search
-- `agent-research`: source evidence and verification discipline
-
-`~/Documents/GitHub` is supported through `kwr repos scan`; start with bounded scans before indexing the full corpus.
+本ツールは情報の収集や出典の整理を支援するものであり、取得した情報自体の正しさや最新性を保証するものではありません。調査結果の内容については利用者側での別途確認が必要です。
 
 ## Install For Local Development
 
