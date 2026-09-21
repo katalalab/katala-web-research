@@ -336,11 +336,11 @@ def _candidate_limit(limit: int, multiplier: float) -> int:
 
 def cmd_read(args: argparse.Namespace) -> int:
     if not args.cache:
-        page = read_url(args.url, reader=args.reader)
+        uncached_page = read_url(args.url, reader=args.reader)
         if args.json:
-            print_json(page.to_dict())
+            print_json(uncached_page.to_dict())
         else:
-            print(page.content)
+            print(uncached_page.content)
         return 0
 
     archive = Archive(args.archive)
