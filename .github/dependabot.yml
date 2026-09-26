@@ -5,6 +5,9 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    # 公開されたばかりの版は乗っ取り・誤公開の直後であることが多い。7日待ってから上げる。
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     groups:
       github-actions:
@@ -13,6 +16,9 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    # 公開されたばかりの版は乗っ取り・誤公開の直後であることが多い。7日待ってから上げる。
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     groups:
       pip:
