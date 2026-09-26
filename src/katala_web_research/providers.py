@@ -16,24 +16,51 @@ from .fusion import fuse_and_rank
 from .http import FetchError, fetch_url, redact_url
 from .models import SearchResult
 from .provider_parsing import (
-    _DuckDuckGoHTMLParser as _DuckDuckGoHTMLParser,
-    _github_snippet as _github_snippet,
-    _github_metadata as _github_metadata,
-    _github_rest_item as _github_rest_item,
-    _github_license_name as _github_license_name,
-    _github_license_url as _github_license_url,
-    _github_code_fragment as _github_code_fragment,
-    _github_code_title as _github_code_title,
-    _github_code_snippet as _github_code_snippet,
-    _openalex_url as _openalex_url,
-    _openalex_metadata as _openalex_metadata,
-    _add_openalex_location_metadata as _add_openalex_location_metadata,
-    _openalex_snippet as _openalex_snippet,
     _abstract_from_inverted_index as _abstract_from_inverted_index,
+)
+from .provider_parsing import (
+    _add_openalex_location_metadata as _add_openalex_location_metadata,
+)
+from .provider_parsing import (
+    _DuckDuckGoHTMLParser as _DuckDuckGoHTMLParser,
+)
+from .provider_parsing import (
+    _github_code_fragment as _github_code_fragment,
+)
+from .provider_parsing import (
+    _github_code_snippet as _github_code_snippet,
+)
+from .provider_parsing import (
+    _github_code_title as _github_code_title,
+)
+from .provider_parsing import (
+    _github_license_name as _github_license_name,
+)
+from .provider_parsing import (
+    _github_license_url as _github_license_url,
+)
+from .provider_parsing import (
+    _github_metadata as _github_metadata,
+)
+from .provider_parsing import (
+    _github_rest_item as _github_rest_item,
+)
+from .provider_parsing import (
+    _github_snippet as _github_snippet,
+)
+from .provider_parsing import (
+    _openalex_metadata as _openalex_metadata,
+)
+from .provider_parsing import (
+    _openalex_snippet as _openalex_snippet,
+)
+from .provider_parsing import (
+    _openalex_url as _openalex_url,
+)
+from .provider_parsing import (
     _year_as_date as _year_as_date,
 )
 from .rank import rank_results
-from .text import collapse_space, normalize_url
 
 # Keep CLI subprocesses above the 20s HTTP fetch timeout so a slow-but-live
 # network call is not cut off, while still bounding a hung gh/op process.
