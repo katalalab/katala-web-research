@@ -19,6 +19,7 @@ CARGO_BUILD_JOBS=1 scripts/verify-rust.sh
 CARGO_BUILD_JOBS=1 scripts/verify-http.sh
 scripts/verify-providers.sh
 scripts/verify-json-providers.sh
+scripts/verify-provider-edges.sh
 CARGO_BUILD_JOBS=1 scripts/rust.sh build --release --locked --offline
 ./target/release/kwr-rs plan 'agent evidence' --json
 ```
@@ -47,6 +48,7 @@ python scripts/migration/http_differential.py
 python scripts/migration/check_matrix.py
 python scripts/migration/provider_differential.py
 python scripts/migration/json_provider_differential.py
+python scripts/migration/json_provider_edge_differential.py
 ```
 
 Supply a C compiler (Visual Studio Build Tools on Windows; platform SDK/cc on macOS/Linux) for SQLite. No Windows/Linux execution or certificate/proxy/signal validation is claimed. No installer or global CLI replacement is included. The current CI workflows are unchanged to avoid adding runners or costs; Rust gates are local until the review decides how to integrate them into the existing CI budget.

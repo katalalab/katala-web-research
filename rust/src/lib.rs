@@ -4,6 +4,7 @@ pub mod http;
 pub mod migration;
 pub mod planner;
 pub mod providers;
+pub mod python_digits;
 pub mod registry;
 pub mod search;
 pub mod text;

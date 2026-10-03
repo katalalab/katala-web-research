@@ -111,10 +111,10 @@ pub fn rank(
         let fresh = result
             .published_at
             .as_deref()
-            .filter(|s| s.len() >= 4)
-            .and_then(|s| s.get(..4))
-            .filter(|s| s.bytes().all(|b| b.is_ascii_digit()))
-            .and_then(|s| s.parse::<i32>().ok())
+            .map(|s| s.chars().take(4).collect::<String>())
+            .filter(|s| s.chars().count() == 4)
+            .and_then(|s| crate::python_digits::decimal_int(&s))
+            .map(|n| n as i32)
             .map_or(0.0, |y| {
                 if year - y == 0 {
                     0.3

@@ -1,16 +1,17 @@
 {
   "complete_migration": false,
   "dependency": {
-    "head": "77a97a7990d8b00dd74d7cffbb7444662a28dec9",
-    "merge_commit": "2b8720c8cef6431490ded8b645acc62e297f05de",
+    "head": "23369e8c1b3119a27d028825f870b88322285310",
+    "merge_commit": "fc8db85fb0d0505899f410ba9d0b4455eb2b9df3",
     "merged": true,
-    "pr": 21,
-    "review_scope": "source/fixtures/5 Python delimiter models/CI; no reviewer native rerun"
+    "pr": 22,
+    "review_scope": "parent predicate/source/fixtures/CI checks; TLS/native executions by author, no reviewer native/TLS rerun"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
     "finite representable timeout and signed-i64 numeric boundary",
-    "HTTP safety policy in http-contract.md; separate policy assertions"
+    "HTTP safety policy in http-contract.md; separate policy assertions",
+    "Named JSON typed_fields/typed_collections/strict_json_constants/strict_unicode/depth_limit policies in json-provider-edges.json; acceptance remains pending"
   ],
   "normalization_allowed": [
     "synthetic temporary archive paths",
@@ -497,7 +498,9 @@
       "id": "provider:jina",
       "local_evidence": [
         "rust/tests/json_providers.rs (19 jina Python request/result/error goldens)",
-        "scripts/migration/json_provider_differential.py (22 jina localhost CLI comparisons; full synthetic DB dump preserved)"
+        "scripts/migration/json_provider_differential.py (22 jina localhost CLI comparisons; full synthetic DB dump preserved)",
+        "json-provider-edges.json (83 jina additional library cases)",
+        "json_provider_edge_differential.py (84 jina additional paired CLI comparisons; some named safety differences)"
       ],
       "required_cases": [
         "exact request URL/headers/order",
@@ -507,7 +510,7 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "native-normal-fields; malformed/config/transport edges and live pending",
+      "status": "native-normal plus typed/Unicode/config edge fixtures; named safety differences and final/live/platform gates pending",
       "surface": "jina"
     },
     {
@@ -515,7 +518,9 @@
       "id": "provider:searxng",
       "local_evidence": [
         "rust/tests/json_providers.rs (31 searxng Python request/result/error goldens)",
-        "scripts/migration/json_provider_differential.py (27 searxng localhost CLI comparisons; full synthetic DB dump preserved)"
+        "scripts/migration/json_provider_differential.py (27 searxng localhost CLI comparisons; full synthetic DB dump preserved)",
+        "json-provider-edges.json (90 searxng additional library cases)",
+        "json_provider_edge_differential.py (92 searxng additional paired CLI comparisons; some named safety differences)"
       ],
       "required_cases": [
         "exact request URL/headers/order",
@@ -525,7 +530,7 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "native-normal-fields; malformed/config/transport edges and live pending",
+      "status": "native-normal plus typed/Unicode/config edge fixtures; named safety differences and final/live/platform gates pending",
       "surface": "searxng"
     },
     {
@@ -533,7 +538,9 @@
       "id": "provider:brave",
       "local_evidence": [
         "rust/tests/json_providers.rs (33 brave Python request/result/error goldens)",
-        "scripts/migration/json_provider_differential.py (27 brave localhost CLI comparisons; full synthetic DB dump preserved)"
+        "scripts/migration/json_provider_differential.py (27 brave localhost CLI comparisons; full synthetic DB dump preserved)",
+        "json-provider-edges.json (86 brave additional library cases)",
+        "json_provider_edge_differential.py (87 brave additional paired CLI comparisons; some named safety differences)"
       ],
       "required_cases": [
         "exact request URL/headers/order",
@@ -543,7 +550,7 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "native-normal-fields; malformed/config/transport edges and live pending",
+      "status": "native-normal plus typed/Unicode/config edge fixtures; named safety differences and final/live/platform gates pending",
       "surface": "brave"
     },
     {

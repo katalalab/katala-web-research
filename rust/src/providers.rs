@@ -57,6 +57,22 @@ pub trait Transport {
 pub struct NativeTransport {
     pub settings: Settings,
 }
+#[derive(Default)]
+pub struct EnvTransport {
+    native: Option<NativeTransport>,
+}
+impl Transport for EnvTransport {
+    fn get(&mut self, request: &Request) -> ProviderResult<HttpResponse> {
+        if self.native.is_none() {
+            let settings = Settings::from_env().map_err(|e| ProviderError {
+                kind: e.kind,
+                message: e.to_string(),
+            })?;
+            self.native = Some(NativeTransport { settings });
+        }
+        self.native.as_mut().unwrap().get(request)
+    }
+}
 impl Transport for NativeTransport {
     fn get(&mut self, request: &Request) -> ProviderResult<HttpResponse> {
         let headers = request

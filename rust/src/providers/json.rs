@@ -103,8 +103,10 @@ fn date_range(value: &str) -> bool {
         chars.len() == 10
             && chars[4] == '-'
             && chars[7] == '-'
-            && chars.iter().any(|c| c.is_ascii_digit())
-            && chars.iter().all(|c| *c == '-' || c.is_ascii_digit())
+            && chars.iter().any(|c| crate::python_digits::is_digit(*c))
+            && chars
+                .iter()
+                .all(|c| *c == '-' || crate::python_digits::is_digit(*c))
     })
 }
 fn brave_freshness(raw: &str) -> ProviderResult<String> {
@@ -153,14 +155,29 @@ impl JsonSearch {
                             format!("{name} must be one of: day, week, month, year"),
                         ));
                     }
-                    if key == "safesearch"
-                        && (value.chars().any(|c| !c.is_ascii_digit())
-                            || value.parse::<u32>().map_or(true, |n| n > 2))
-                    {
-                        return Err(failure(
-                            "FetchError",
-                            format!("{name} must be an integer from 0 to 2"),
-                        ));
+                    if key == "safesearch" {
+                        if !value.chars().all(crate::python_digits::is_digit) {
+                            return Err(failure(
+                                "FetchError",
+                                format!("{name} must be an integer from 0 to 2"),
+                            ));
+                        }
+                        let mut level = 0u32;
+                        for c in value.chars() {
+                            let digit = crate::python_digits::decimal(c).ok_or_else(|| {
+                                failure(
+                                    "ValueError",
+                                    "safesearch digits cannot be converted to an integer",
+                                )
+                            })?;
+                            level = (level * 10 + digit).min(3);
+                        }
+                        if level > 2 {
+                            return Err(failure(
+                                "FetchError",
+                                format!("{name} must be an integer from 0 to 2"),
+                            ));
+                        }
                     }
                     params.push((key, value.into()));
                 }
@@ -265,12 +282,23 @@ fn published(item: &Map<String, Value>, names: &[&str]) -> ProviderResult<Option
             if value.is_null() || (index + 1 < names.len() && !truthy(value)) {
                 continue;
             }
-            return value.as_str().map(|s| Some(s.into())).ok_or_else(|| {
+            let text = value.as_str().ok_or_else(|| {
                 failure(
                     "TypeError",
                     "provider publication field must be text or null",
                 )
-            });
+            })?;
+            let prefix = text.chars().take(4).collect::<String>();
+            if prefix.chars().count() == 4
+                && prefix.chars().all(crate::python_digits::is_digit)
+                && crate::python_digits::decimal_int(&prefix).is_none()
+            {
+                return Err(failure(
+                    "ValueError",
+                    "publication digits cannot be converted to a year",
+                ));
+            }
+            return Ok(Some(text.into()));
         }
     }
     Ok(None)

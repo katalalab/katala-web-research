@@ -382,9 +382,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             } else {
                 use chrono::Datelike;
                 use kwr::providers::SearchProvider;
-                let mut transport = kwr::providers::NativeTransport {
-                    settings: kwr::http::Settings::from_env()?,
-                };
+                let mut transport = kwr::providers::EnvTransport::default();
                 let context = kwr::providers::Context {
                     registry: &registry,
                     year: chrono::Local::now().year(),

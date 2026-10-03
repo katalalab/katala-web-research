@@ -7,10 +7,8 @@ use kwr::{
     registry::Registry,
 };
 use serde_json::{Value, json};
-#[test]
-fn per_provider_request_encoding_pagination_failure_and_rank_oracles() {
-    let fixture: Value =
-        serde_json::from_str(include_str!("fixtures/json-provider-golden.json")).unwrap();
+fn check_fixture(raw: &str) {
+    let fixture: Value = serde_json::from_str(raw).unwrap();
     let registry = Registry::load(None).unwrap();
     for case in fixture["cases"].as_array().unwrap() {
         let provider = Kind::named(case["provider"].as_str().unwrap()).unwrap();
@@ -71,12 +69,21 @@ fn per_provider_request_encoding_pagination_failure_and_rank_oracles() {
                 json!({"error_kind":e.kind})
             }
         };
-        assert_eq!(
-            actual, case["expected"],
-            "{} {}",
-            case["provider"], case["name"]
-        );
+        let expected = case.get("native_expected").unwrap_or(&case["expected"]);
+        if case.get("native_expected").is_some() {
+            assert!(fixture["policies"][case["intentional_policy"].as_str().unwrap()].is_string());
+        }
+        assert_eq!(actual, *expected, "{} {}", case["provider"], case["name"]);
         assert_eq!(transport.calls, case["steps"].as_array().unwrap().len());
         transport.finish().unwrap();
     }
+}
+
+#[test]
+fn per_provider_request_encoding_pagination_failure_and_rank_oracles() {
+    check_fixture(include_str!("fixtures/json-provider-golden.json"));
+}
+#[test]
+fn malformed_types_unicode_and_named_safety_differences() {
+    check_fixture(include_str!("fixtures/json-provider-edges.json"));
 }
