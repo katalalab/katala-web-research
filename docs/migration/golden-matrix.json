@@ -3,9 +3,9 @@
   "dependency": {
     "base": "fc8db85fb0d0505899f410ba9d0b4455eb2b9df3",
     "head": "c728562b513295ba1774c50b70e8a5bf680ecde9",
-    "merged": false,
+    "merged": true,
     "pr": 23,
-    "review_scope": "P2-repaired exact head pending independent review; existing Python CI is not Rust OS evidence"
+    "review_scope": "Independent P2 repair/source/fixture/CI review confirmed; authorized normal merge as main 6fce86e35c96fca9e56b6be463f4555ff16da632; reviewer did not rerun native/TLS gates"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
@@ -649,5 +649,12 @@
       "status": "pending",
       "surface": "live"
     }
-  ]
+  ],
+  "integrated_checkpoint": {
+    "pr": 24,
+    "head": "2f67545198cdad96c2ea85dd7632f67492ff16d6",
+    "main": "5a2ee672297e31ba78c340b824c791e75e200b80",
+    "review": "Independent Rust/Cargo feature-diff equality, eight-table seed execution/integrity and static SQL/CI confirmation; native/TLS tests by author only",
+    "tree_equivalence": "PR23 merged tree equals c728562; retargeted PR24 merged tree equals 2f67545"
+  }
 }
