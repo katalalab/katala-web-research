@@ -101,7 +101,7 @@ history/pruning, selected/unselected eight-table archives, FTS/integrity and exp
 schema/path refusals are exercised. All native tests and warnings-denied clippy pass;
 218 inherited offline CLI comparisons pass at this source. This aggregate allocates
 167 observed leaf cases plus one root --version case; 50 other assertions are not
-inflated into per-command coverage. Native MCP remains 0/7. These are author-only
+inflated into per-command coverage. Native MCP remains 0/9. These are author-only
 actual aarch64 macOS observations, not native Linux/Windows or live service evidence.
 
 Two real executions have different clocks/completion order. The reference child runs

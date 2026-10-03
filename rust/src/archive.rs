@@ -122,6 +122,12 @@ impl Archive {
     pub fn cached_page(&self, url: &str) -> Result<Option<Value>> {
         Ok(query_json(&self.conn,"SELECT url,title,content,source,fetched_at,status_code,content_type FROM pages WHERE url=?", &[json!(url)])?.into_iter().next())
     }
+    pub fn upsert_page(&self, page: &crate::reader::PageSnapshot) -> Result<()> {
+        let tx = self.conn.unchecked_transaction()?;
+        tx.execute("INSERT INTO pages(url,title,content,source,fetched_at,status_code,content_type) VALUES (?,?,?,?,?,?,?) ON CONFLICT(url) DO UPDATE SET title=excluded.title,content=excluded.content,source=excluded.source,fetched_at=excluded.fetched_at,status_code=excluded.status_code,content_type=excluded.content_type", params![page.url,page.title,page.content,page.source,page.fetched_at,page.status_code,page.content_type])?;
+        tx.commit()?;
+        Ok(())
+    }
     pub fn add_feed(&self, url: &str, title: &str) -> Result<i64> {
         self.conn.execute("INSERT INTO feed_sources(url,title,kind,added_at) VALUES (?,?,'',?) ON CONFLICT(url) DO UPDATE SET title=CASE WHEN excluded.title!='' THEN excluded.title ELSE feed_sources.title END", params![url,title,now()])?;
         Ok(self

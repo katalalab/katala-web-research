@@ -175,14 +175,14 @@
         "header/meta charset and extraction",
         "hit/miss/refresh and cache write failure"
       ],
-      "status": "partial",
+      "status": "partial: native direct read/cache hit/miss/refresh; auto/Jina fallback and final edges/OS/live pending",
       "surface": "read",
       "pending_reasons": [
-        "network auto/Jina/direct readers and refresh/cache-miss extraction/storage are unimplemented",
-        "only cache-hit source fixtures exist; full timeout/fallback/metadata/capture-error behavior is open"
+        "Native Jina and FetchError-only auto fallback remain unimplemented",
+        "Malformed HTML/URL/codec, cache write/busy/commit/signal/broken pipe/actual OS/live final assertions remain open"
       ],
       "missing_assertions": [
-        "Implement direct/Jina/auto readers; auto falls back only on FetchError and preserves the two failure kinds",
+        "Implement Jina/auto fallback on FetchError only; direct is scoped implemented, remaining malformed URL/model/codec behavior must match accepted policies",
         "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"
       ],
       "next_tests": [
@@ -191,7 +191,7 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_read.py",
           "assertions": [
-            "Implement direct/Jina/auto readers; auto falls back only on FetchError and preserves the two failure kinds",
+            "Implement Jina/auto fallback on FetchError only; direct is scoped implemented, remaining malformed URL/model/codec behavior must match accepted policies",
             "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"
           ],
           "execution_evidence": false
@@ -204,6 +204,26 @@
           {
             "case_evidence_id": "existing-cli-measured-read",
             "scope": "Observed parity-hook scope only: 1 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "direct-reader-response",
+            "scope": "Exact Python raw response/request/error/clock expectations, normal HTML/plain/meta sniff/header codec/redirect/source fields. Auto/Jina and unknown model/codec/lifecycle cases still pending.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "direct-reader-cli-cache",
+            "scope": "36 paired normal loopback CLI cases plus six cache hit/error preservation cases; all eight populated tables/selected-unselected archives and pages FTS/integrity checked. Other FTS data are not independently dumped in this fixture.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "direct-reader-worker-sigint",
+            "scope": "One SIGINT scenario in two owned CLI executions while real loopback response held, no stdout/source data changes. Not SQLite commit/busy, SIGTERM or hard kill acceptance.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "direct-reader-fts-inverted-index",
+            "scope": "Two paired cache miss/refresh cases check new atomic MATCH and old-term removal, full pages external-content rank1 integrity; owned delete-entry negative control fails old SELECT-only helper and is rejected after repair. Other FTS tables remain final scope.",
             "status": "passed"
           }
         ]
@@ -223,6 +243,56 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; actual local target only",
           "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        },
+        {
+          "id": "direct-reader-response",
+          "status": "passed",
+          "count": 51,
+          "scope": "Exact Python raw response/request/error/clock expectations, normal HTML/plain/meta sniff/header codec/redirect/source fields. Auto/Jina and unknown model/codec/lifecycle cases still pending.",
+          "evidence": [
+            "rust/tests/fixtures/reader-golden.json",
+            "scripts/migration/generate_reader_goldens.py",
+            "rust/tests/reader.rs"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+        },
+        {
+          "id": "direct-reader-cli-cache",
+          "status": "passed",
+          "count": 42,
+          "scope": "36 paired normal loopback CLI cases plus six cache hit/error preservation cases; all eight populated tables/selected-unselected archives and pages FTS/integrity checked. Other FTS data are not independently dumped in this fixture.",
+          "evidence": [
+            "scripts/migration/reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+        },
+        {
+          "id": "direct-reader-worker-sigint",
+          "status": "passed",
+          "count": 1,
+          "scope": "One SIGINT scenario in two owned CLI executions while real loopback response held, no stdout/source data changes. Not SQLite commit/busy, SIGTERM or hard kill acceptance.",
+          "evidence": [
+            "scripts/migration/reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+        },
+        {
+          "id": "direct-reader-fts-inverted-index",
+          "status": "passed",
+          "count": 3,
+          "scope": "Two paired cache miss/refresh cases check new atomic MATCH and old-term removal, full pages external-content rank1 integrity; owned delete-entry negative control fails old SELECT-only helper and is rejected after repair. Other FTS tables remain final scope.",
+          "evidence": [
+            "scripts/migration/reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; fixed9451 immutable native binary; production unchanged",
+          "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
         }
       ]
     },
@@ -1249,17 +1319,17 @@
         "Unicode path/query/content and empty input",
         "positive/zero/negative/signed bounds",
         "failure without source or credential overwrite",
-        "seven tools/request errors/notifications",
+        "nine tools/request errors/notifications",
         "legacy Content-Length UTF-8 CRLF + NDJSON",
         "partial/invalid frames/clean stdout"
       ],
       "status": "pending",
       "surface": "mcp",
       "pending_reasons": [
-        "native seven-tool stdio implementation, NDJSON/Content-Length framing, notifications/errors/partial input/signal/stdout purity are unimplemented"
+        "native nine-tool stdio implementation, NDJSON/Content-Length framing, notifications/errors/partial input/signal/stdout purity are unimplemented"
       ],
       "missing_assertions": [
-        "Implement seven inventoried tool names/descriptions/input schemas and every mapped command JSON/error shape; native MCP currently absent",
+        "Implement nine inventoried tool names/descriptions/input schemas and every mapped command JSON/error shape; native MCP currently absent",
         "Compare initialize/list/call/notifications/unknown methods/tools and fragmented/malformed UTF8 Content-Length CRLF plus NDJSON; stdout contains protocol only"
       ],
       "next_tests": [
@@ -1268,7 +1338,7 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_mcp.py",
           "assertions": [
-            "Implement seven inventoried tool names/descriptions/input schemas and every mapped command JSON/error shape; native MCP currently absent",
+            "Implement nine inventoried tool names/descriptions/input schemas and every mapped command JSON/error shape; native MCP currently absent",
             "Compare initialize/list/call/notifications/unknown methods/tools and fragmented/malformed UTF8 Content-Length CRLF plus NDJSON; stdout contains protocol only"
           ],
           "execution_evidence": false
@@ -1928,10 +1998,30 @@
       ],
       "scope_acceptance": {
         "full_ready": false,
-        "status": "not_allocated",
-        "scopes": []
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "direct-reader-owned-lock-abort",
+            "scope": "Actual competing SQLite BEGIN IMMEDIATE writer lock refusal plus owned TEMP abort trigger, old page/pages FTS/integrity preserved. No commit-window/crash/interruption recovery claim.",
+            "status": "passed"
+          }
+        ]
       },
-      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "direct-reader-owned-lock-abort",
+          "status": "passed",
+          "count": 2,
+          "scope": "Actual competing SQLite BEGIN IMMEDIATE writer lock refusal plus owned TEMP abort trigger, old page/pages FTS/integrity preserved. No commit-window/crash/interruption recovery claim.",
+          "evidence": [
+            "rust/tests/reader.rs"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+        }
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -2083,9 +2173,11 @@
     }
   ],
   "integrated_checkpoint": {
-    "main": "186511a102d241dd207d9b616c00b94bfd16537e",
+    "main": "cb79a8a2a6af316cea9d547835a5277ac24dee9d",
     "openalex_head": "5dffce09d2a04c1281dc36c1149b44823d80902e",
-    "meta_source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+    "meta_source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77",
+    "meta_head": "8940c1ff1d6c27b1fea392f271b7b7ece64fb2e6",
+    "direct_reader_source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
   },
   "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures",
   "process_review_repair": {

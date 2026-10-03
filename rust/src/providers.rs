@@ -50,6 +50,12 @@ impl ProviderError {
     pub fn has_http_status(&self, status: u16) -> bool {
         self.kind == "FetchError" && self.message.starts_with(&format!("HTTP {status} "))
     }
+    pub(crate) fn invalid_value(message: &'static str) -> Self {
+        Self {
+            kind: "ValueError",
+            message: message.into(),
+        }
+    }
     fn unexpected() -> Self {
         Self {
             kind: "FixtureError",

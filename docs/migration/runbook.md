@@ -125,3 +125,15 @@ completion inputs; read meta-contract.md before interpreting the scope. No live 
 real archive or authentication store is part of these tests. All final acceptance
 rows stay pending; proposed test filenames are not executed evidence. Installed CLI
 replacement and production migration remain unauthorized.
+
+## Direct reader preview
+
+`scripts/verify-reader.sh` builds the locked native binary, executes 51 raw Python
+response fixtures and actual SQLite contention/abort assertions, then 42 paired
+loopback CLI/cache cases and two owned HTTP-wait SIGINT executions. Use only synthetic
+archives. A shared target needs CARGO_TARGET_DIR and KWR_RUST_BINARY pointing to its
+exact debug binary. The fixture accepts explicit test method names to repeat only an
+affected scope. Reader timestamps are checked for format then normalized; all other
+PageSnapshot/cache fields are exact. Existing HTTP body-free errors are a named policy
+difference. Auto/Jina network paths remain explicitly unsupported; do not infer fallback
+from direct success. Do not replace the installed Python CLI or switch user archives.

@@ -1,6 +1,6 @@
 # Complete native migration roadmap
 
-Reference Python source: `e66e449cc210bd80ecb25a00391091e72abd9c2b`; inventory: python-contract.json, 22 leaf commands, 41 SQLite objects, seven MCP tools. Native migration is incomplete. Preview integration never satisfies the final acceptance gate or authorizes installed CLI / real archive replacement.
+Reference Python source: `e66e449cc210bd80ecb25a00391091e72abd9c2b`; inventory: python-contract.json, 22 leaf commands, 41 SQLite objects, nine MCP tools. Native migration is incomplete. Preview integration never satisfies the final acceptance gate or authorizes installed CLI / real archive replacement.
 
 ## Branch and dependency ledger
 
@@ -26,7 +26,7 @@ Before #20 merged, a provider PR would have used codex/rust-http-feed-parity as 
 | 6 | Network read auto/Jina/direct, refresh/cache miss, enrichment, collect storage/reports | Provider/read transport; FetchError-only fallback, charset/header/meta text extraction, pages/run/results schemas, evidence/report parity and failed capture retention. |
 | 7 | Repository scan/incremental/context; issues ingest/report/live adapter | Synthetic filesystem / JSON / gh transcripts; traversal skips, encoding, Unicode paths, size/mtime/hash/context, FTS triggers and issue radar ordering. |
 | 8 | Brief/investigate and OpenAlex graph/cache | Planning/rank/read/storage; selected evidence/capture failures/provenance/checklist/Markdown exact fixtures; graph direction/paging/cache/dedup. |
-| 9 | Doctor, deterministic eval, seven-tool MCP server | All native commands; FTS probe/config posture, threshold/exit behavior, legacy Content-Length plus NDJSON, partial/invalid frames, notifications/error codes/stdout purity. |
+| 9 | Doctor, deterministic eval, nine-tool MCP server | All native commands; FTS probe/config posture, threshold/exit behavior, legacy Content-Length plus NDJSON, partial/invalid frames, notifications/error codes/stdout purity. |
 | 10 | Complete storage migration/release/platform gate | All commands; known schema versions/legacy variants, synthetic-copy crash interruption/restart/rollback, signals/broken pipe, locked reproducible Mac/Windows/Linux target runs, licenses/notices/package validation. Other hosts currently unauthorized and unverified. |
 | 11 | Optional research improvements | Separate commit/PR after full reference baseline comparison; parent supplies paper review; adopt only measured evaluation gains within existing cost/network limits. No inferred speed claim. |
 
@@ -53,10 +53,17 @@ Current slice 7d follows normally merged #26 repaired5dffce0/main186511a. Native
 CLI is enabled for the measured normal scope, including four-worker fanout, fusion and
 selected health ledger. Combined37 pairs/signal4 executions/output-schema5 pairs pass;
 controlled262 component inputs/33 transcripts and native policies remain applicable.
-Detailed CLI coverage records167 leaf pairs + one root version pair; native MCP0/7.
+Detailed CLI coverage records167 leaf pairs + one root version pair; native MCP0/9.
 Every one of35 final rows now lists specific missing assertions, proposed test IDs/files
 (execution_evidence=false), passed scopes and a closure condition. No final row closes
 from aggregate pass counts. Next native feature is direct/Jina/auto read with FetchError
 fallback and selected cache writes, then collect/enrichment/report dependencies.
 Ledger commit/panic, total-resource caps and actual OS/release/storage gates remain
 separate mandatory work. Paper-driven changes remain a separately evaluated commit.
+
+Direct-reader slice follows maincb79a8a (#27 normal8940c integration).51 response
+fixtures,36 normal CLI pairs,six scoped cache/error pairs and two owned HTTP-wait
+SIGINT executions pass. Real SQLite writer-lock and TEMP-abort preservation pass;
+commit/crash/OS gates stay open. Next dependency is Jina reader and FetchError-only
+auto fallback, then positive enrichment/collect/report and MCP adapters. Actual
+MCP inventory is9 tools/native0; old7-tool prose is corrected, not a schema change.

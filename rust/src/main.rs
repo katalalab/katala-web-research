@@ -630,22 +630,47 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             local,
             cache,
             refresh,
-            reader: _,
+            reader,
         } => {
-            if !cache || refresh {
-                return Err(
-                    "network reader not migrated yet; only existing --cache hits are supported"
-                        .into(),
-                );
-            }
-            let Some(mut page) = Archive::open(&local.archive)?.cached_page(&url)? else {
-                return Err("cache miss; network reader not migrated yet".into());
+            let archive = if cache {
+                Some(Archive::open(&local.archive)?)
+            } else {
+                None
+            };
+            let hit = if cache && !refresh {
+                archive.as_ref().unwrap().cached_page(&url)?
+            } else {
+                None
+            };
+            let cached = hit.is_some();
+            let mut page = if let Some(hit) = hit {
+                hit
+            } else {
+                if reader != "direct" {
+                    return Err(
+                        "auto/Jina reader not migrated yet; use direct preview or existing cache"
+                            .into(),
+                    );
+                }
+                let snapshot = kwr::reader::direct_with(
+                    &url,
+                    &mut kwr::providers::EnvTransport::default(),
+                    kwr::now,
+                )?;
+                if let Some(archive) = &archive {
+                    archive.upsert_page(&snapshot)?;
+                }
+                serde_json::to_value(snapshot)?
             };
             if local.json {
-                page["cached"] = json!(true);
+                if cache {
+                    page["cached"] = json!(cached);
+                }
                 emit(&page, out)?;
             } else {
-                eprintln!("cache: hit");
+                if cache {
+                    eprintln!("cache: {}", if cached { "hit" } else { "miss" });
+                }
                 writeln!(out, "{}", field(&page, "content"))?;
             }
         }
