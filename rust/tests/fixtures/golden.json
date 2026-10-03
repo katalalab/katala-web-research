@@ -1,0 +1,221 @@
+{
+  "baseline": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "cases": [
+    {
+      "args": [
+        "plan",
+        "日本語 query ©",
+        "--year",
+        "2026",
+        "--max-subqueries",
+        "8",
+        "--json"
+      ],
+      "exit": 0,
+      "json": [
+        {
+          "intent": "baseline",
+          "query": "日本語 query ©"
+        },
+        {
+          "intent": "official",
+          "query": "日本語 query © official docs documentation"
+        },
+        {
+          "intent": "primary",
+          "query": "日本語 query © GitHub arxiv paper benchmark"
+        },
+        {
+          "intent": "critique",
+          "query": "日本語 query © limitations evaluation source quality"
+        },
+        {
+          "intent": "freshness",
+          "query": "日本語 query © 2026 latest changelog release notes"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "args": [
+        "plan",
+        "",
+        "--json"
+      ],
+      "exit": 0,
+      "json": [],
+      "stderr": ""
+    },
+    {
+      "args": [
+        "plan",
+        "agent",
+        "--max-subqueries",
+        "0",
+        "--json"
+      ],
+      "exit": 0,
+      "json": [
+        {
+          "intent": "baseline",
+          "query": "agent"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "list",
+        "--domain",
+        "security",
+        "--limit",
+        "2",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "count": 2,
+        "domain": "security",
+        "query_type": null,
+        "sources": [
+          {
+            "avoid_for": [
+              "complete vulnerability inventory"
+            ],
+            "best_for": "Prioritize vulnerabilities known to be exploited in the wild.",
+            "bias_caveat": "US government operational perspective; pair with vendor advisories.",
+            "domain": "security",
+            "freshness": "high",
+            "hosts": [
+              "cisa.gov"
+            ],
+            "name": "CISA Known Exploited Vulnerabilities Catalog",
+            "query_types": [
+              "exploited_vulnerability",
+              "vulnerability_priority"
+            ],
+            "source_type": "exploited_vulnerability",
+            "trust_score": 96,
+            "update_cadence": "frequent",
+            "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "url_prefixes": [
+              "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+            ]
+          },
+          {
+            "avoid_for": [
+              "exploit-in-the-wild priority without KEV or vendor advisory"
+            ],
+            "best_for": "CVE metadata, CVSS, affected products, and vulnerability references.",
+            "bias_caveat": "CVE severity and enrichment can lag exploitation reality.",
+            "domain": "security",
+            "freshness": "high",
+            "hosts": [
+              "nvd.nist.gov"
+            ],
+            "name": "NVD",
+            "query_types": [
+              "vulnerability",
+              "cve",
+              "cvss"
+            ],
+            "source_type": "vulnerability_database",
+            "trust_score": 94,
+            "update_cadence": "frequent",
+            "url": "https://nvd.nist.gov/",
+            "url_prefixes": [
+              "https://nvd.nist.gov/"
+            ]
+          }
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "list",
+        "--domain",
+        "missing",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "count": 0,
+        "domain": "missing",
+        "query_type": null,
+        "sources": []
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": true,
+        "source": {
+          "avoid_for": [
+            "complete vulnerability inventory"
+          ],
+          "best_for": "Prioritize vulnerabilities known to be exploited in the wild.",
+          "bias_caveat": "US government operational perspective; pair with vendor advisories.",
+          "domain": "security",
+          "freshness": "high",
+          "hosts": [
+            "cisa.gov"
+          ],
+          "name": "CISA Known Exploited Vulnerabilities Catalog",
+          "query_types": [
+            "exploited_vulnerability",
+            "vulnerability_priority"
+          ],
+          "source_type": "exploited_vulnerability",
+          "trust_score": 96,
+          "update_cadence": "frequent",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "url_prefixes": [
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+          ]
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        "https://www.cisa.gov:443/known-exploited-vulnerabilities-catalog",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": false,
+        "source": null,
+        "url": "https://www.cisa.gov:443/known-exploited-vulnerabilities-catalog"
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalogue",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": false,
+        "source": null,
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalogue"
+      },
+      "stderr": ""
+    }
+  ]
+}
