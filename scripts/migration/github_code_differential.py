@@ -13,9 +13,26 @@ from unittest.mock import patch
 import http_differential as fixture
 import json_provider_differential as normal
 from katala_web_research.archive import Archive
-from katala_web_research.models import PageSnapshot
+from katala_web_research.models import (
+    FeedItem, FeedSource, PageSnapshot, ProjectItem, RepoDocument, SearchResult,
+)
 
 TRACE=[];PUBLIC_KEY=normal.PUBLIC_KEY
+PRESERVED_TABLES=(
+    'pages','runs','search_results','repo_documents','feed_sources','feed_items',
+    'project_items','engine_runs',
+)
+def seed_history(archive):
+    """Populate every user table before comparing a read-only search command."""
+    archive.upsert_page(PageSnapshot('https://github.com/fixture/repo/blob/main/item0.rs','Old title','alpha 日本語 evidence. More context.','cached','fixed'))
+    archive.store_run('old 日本語 query','fixture',[SearchResult('Old search','https://fixture.test/old','old evidence','fixture',rank=1,score=0.25)])
+    archive.upsert_repo_document(RepoDocument('/synthetic/repo','fixture','old.rs','Old repository','old 日本語 repository evidence','rust','fixed'))
+    archive.upsert_feed_source(FeedSource('https://fixture.test/feed','Old feed','rss','fixed'))
+    archive.upsert_feed_items([FeedItem('https://fixture.test/feed','https://fixture.test/feed/old','Old feed item','old 日本語 feed evidence',fetched_at='fixed')])
+    archive.upsert_project_items([ProjectItem('issue','fixture/repo',1,'Old issue','https://github.com/fixture/repo/issues/1','open','fixed',['synthetic'])])
+    archive.record_engine_runs([{'provider':'fixture','status':'ok','latency_ms':7,'result_count':1}])
+    counts={table:archive.conn.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0] for table in PRESERVED_TABLES}
+    if not all(counts.values()):raise AssertionError(('incomplete preservation fixture',counts))
 class CodeHandler(fixture.Handler):
     def do_GET(self):
         parsed=urlsplit(self.path);params=parse_qs(parsed.query);q=params.get('q',[''])[0];page=int(params.get('page',['1'])[0])
@@ -61,7 +78,7 @@ class CodeFixture(fixture.TlsAndProxy):
         with tempfile.TemporaryDirectory(prefix='kwr-github-code-') as tmp:
             for rust in [False,True]:
                 path=Path(tmp)/('native.sqlite' if rust else 'python.sqlite');a=Archive(path)
-                a.upsert_page(PageSnapshot('https://github.com/fixture/repo/blob/main/item0.rs','Old title','alpha 日本語 evidence. More context.','cached','fixed'));a.close();before=normal.snapshot(path)
+                seed_history(a);a.close();before=normal.snapshot(path)
                 env=dict(self.env,HTTPS_PROXY=self.proxy,SSL_CERT_FILE=str(self.ca_path),KWR_HTTP_TIMEOUT_SECONDS='1',GITHUB_TOKEN=PUBLIC_KEY);env.update(extra or {})
                 prefix=[str(fixture.BINARY)] if rust else [sys.executable,'-m','katala_web_research.cli'];start=len(TRACE)
                 result=subprocess.run(prefix+['search',query,'--provider','github_code',*options,'--archive',str(path)],env=env,capture_output=True,text=True,timeout=15)

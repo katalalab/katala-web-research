@@ -2,10 +2,10 @@
   "complete_migration": false,
   "dependency": {
     "base": "fc8db85fb0d0505899f410ba9d0b4455eb2b9df3",
-    "head": "93fbeb0d1909d33a163b17f915651af5e58660bb",
+    "head": "c728562b513295ba1774c50b70e8a5bf680ecde9",
     "merged": false,
     "pr": 23,
-    "review_scope": "pending independent exact-head review; existing Python CI is not Rust OS evidence"
+    "review_scope": "P2-repaired exact head pending independent review; existing Python CI is not Rust OS evidence"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
