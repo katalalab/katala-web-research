@@ -19,7 +19,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
 | read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Native direct/Jina/FetchError-only auto/cache preview; output cap policy, full URL/model/codec/lifecycle/OS/live parity pending |
 | search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native normal paths for all nine providers, including Unix gh/op and Meta fanout/fusion/ledger; enrichment calculation has offline-only evidence; positive CLI enrichment is fail-closed pending derived target/transmission policy; malformed/transport/lifecycle/OS/live final assertions pending |
-| collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
+| collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Native feed-only/read-top<=0 preview with run/result commit and new UTF-8 report; positive capture and other collect providers disabled. Pure Markdown scoped; publication no-clobber/0600 differs from Python. Full capture/event/lifecycle/OS parity pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |
 | doctor | provider configuration posture plus actual SQLite FTS5 probe; optional SearXNG preflight | Pending |

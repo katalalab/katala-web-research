@@ -535,3 +535,68 @@ Exact-source recoverable local artifacts (aarch64 macOS only):
 - kwr-rs-debug: SHA256 aa3d64077701975789e5ce515bcacadf422ccce3cd6ba0eb147e8b088b562aa4, 28746984 bytes.
 - kwr-rs-release: SHA256 25d1ae4b4db457eed65a65ba879d622990159e9246e1b50cd37d4bb41cdb140b, 8368176 bytes.
 - store_run_probe: SHA256 d6cf9d6d02504de938b8b48a8266d0b929ef264ee8b7023214157d7c861c6827, 4029424 bytes.
+
+## PR31 normal integration readback
+
+Parent independent review reports blocking none and authorizes normal merge after
+28-oracle/57-commit regeneration, durable rowid/closed-error rollback documentation
+and5 existing CI checks. Fresh head09f6d5018744620482c06e06f320544e6add70a9/
+base83f2cf83aab160f61aaabe321c4f6aca17ff9d7c,active24318413/no bypass actors,
+all5 SUCCESS/no unresolved threads/CLEAN/MERGEABLE/publicID1251159956 verified.
+Normal exact-head merge completed2026-10-03T18:19:53Z; main2717b2f5d960ecbd8d2e8c772161523c61f491b0
+read back tree-identical09f. No admin/bypass/self-approval/forcepush/branch deletion/
+installed CLI/real-data/security/network/auth/budget change. Worktrees remain owned.
+
+## Separate feed-only collect and pure report slice
+
+Owned codex/rust-collect-report-parity starts from integrated2717b2f. Contract saved
+before implementation. Collect preserves ddg/read3 defaults but refuses positive
+read-top and all non-feed providers before runtime work. Supported feed/read_top<=0
+uses original query/signed limit, selected archive, no oversampling/rerank wrapper,
+commits run/results once and closes archive before optional report. No derived URL
+fetch/permission bypass/reader/process/credential/page/event write is enabled.
+
+Pure report build matches96 unchanged-Python Markdown oracles with once clock,
+literal field order/blank fallbacks/page order/700 Unicode scalars/newline then
+Python whitespace strip/exact typed-f64 spelling, including nonfinite rendering
+only. Float repr is parsed into identical typed f64 inputs; this does not certify
+JSON-number ingestion/storage. Oracled131812bbc5881034c1b45ccd2544fd3386b4b96f2b25efbbec60b7f8f8e36d0
+regenerates byte-identically. Source d4c486eca806f23b12259120754a39f38903f533bfc91b70cd547adbe4bca71c.
+
+Author aarch64 Mac:48 strict feed CLI pairs +2 paired persistent SQL-trigger/report-
+directory failures, signed-i64 limit endpoints/query/C0/Unicode/original metadata/
+JSON/text/empty report/repeated durable receipts; report after archive close. All8
+populated rows/schema/version/4FTS rank1 integrity and positive MATCH/previous row
+prefixes/independently computed commit counts/unselected copy unchanged. Prior good
+and error pages preserved even when their URLs are search results; no sockets started.
+Only UTC seconds timestamps are normalized after actual invocation-bound checks.
+Initial negative-read test accidentally supplied --read-top twice; corrected the
+harness default and reran. No duplicate-clap-flag compatibility claim is made.
+
+80 pre-I/O refusals cover default positive capture across9providers/3readers/2limits,
+non-feed negative read_top and defaults, with invalid registry/provider/HTTP settings
+and empty executable PATH. Disabled diagnostic and zero runtime files are asserted.
+Focused help explains partial scope. Named report_noclobber replaces Python's unsafe
+existing-path overwrite: synced temporary UTF8 publication refuses existing output
+paths/symlinks, including archive collision. Three native preservation cases plus
+one paired Python-copy-overwrite/native-refusal case preserve committed run_id and
+all8 tables/4FTS. Failed report emits no success receipt and stderr includes run_id.
+Unix file mode0600 versus Python umask is also part of the named preview difference;
+final policy approval, directory fsync/power-loss/other OS guarantees remain pending.
+
+Pinned fmt/all-target clippy/all native tests/218 existing CLI pairs, required
+Python167/benchmarks/smoke/artifact/gitleaks pass; focused gate also passes. All35 final
+rows remain pending,45 scoped passed records/46 total (historical withdrawn positive
+enrichment record retained),native MCP0/9. No dependency/lock/toolchain/schema/license/
+workflow/runners/cache/security/budget/permission/auth/network changes. No real data/
+credential/private service/paid API/model/other host/speed or complete-migration claim.
+Derived target/transmission policy, positive capture/other collect providers/failure
+retention/events/other report/evidence/provenance/checklists, aggregate/model/resource/
+interrupt/crash/Windows-Linux/live/package/cutover gates remain separate work.
+
+Locked offline release jobs1 also passes. Exact-source recoverable local artifacts:
+- kwr-rs-debug: SHA256ad1153508f7b15dc31deb00134c812b1dbe4e35ae0c6cc76a7eed68ec76c18c4,28831720 bytes.
+- kwr-rs-release: SHA25692c8cdbaa909ba52afe3d24ffb4c19d5dbf8f9f8ed88204f6e3795254a9e4f3a,8401472 bytes.
+All snapshots remain local; no build binaries/raw records uploaded. Compact source/
+fixture/log records remain below2GiB; shared target about3.67GiB is accounted for
+separately with ample free space and recoverable prior checkpoints retained.

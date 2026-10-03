@@ -178,3 +178,32 @@ key/real archive is used. This primitive does not implement collect CLI/capture/
 event orchestration. See collect-storage-contract.md for immediate rollback difference
 and separate commit boundaries. Derived fetch remains disabled; the independent
 derived-target-policy-roadmap.md is a proposal without execution evidence.
+
+## Feed-only collect and pure report preview
+
+Keep the installed Python CLI and real archive unchanged. On a disposable synthetic
+archive only, native `kwr-rs collect evidence --provider feed --read-top 0 --archive
+synthetic.sqlite --report new-report.md --json` stores local feed results and emits
+run_id/archive/report/results/pages (empty pages). Default ddg/read-top3, any positive
+read-top and any other collect provider are explicitly refused before runtime work.
+Use a new report path: existing files, directories and symlinks are refused after the
+run commit; stderr gives the committed run_id and stdout contains no success receipt.
+Report failure retains the run/results and every old page. Named report_noclobber
+includes tested Unix0600 permissions; do not claim Python overwrite/umask parity.
+
+`sh scripts/verify-collect-report.sh` runs96 unchanged Python Markdown oracles through
+native typed models, then48 strict paired feed CLI cases,2 paired SQL/report failures,
+80 pre-I/O refusals,4 no-clobber preservation/difference cases and focused help.
+If sharing an existing build directory, set CARGO_TARGET_DIR and KWR_RUST_BINARY to
+its debug/kwr-rs explicitly; serialize Cargo with jobs1. Fixtures populate all8 user
+tables and check schema/version/4FTS rank1 integrity plus positive MATCH. Regenerate
+only with `PYTHONPATH=src python3 scripts/migration/generate_report_goldens.py` and
+verify SHA256d131812bbc5881034c1b45ccd2544fd3386b4b96f2b25efbbec60b7f8f8e36d0.
+No socket/server/provider/real key/archive is needed by this focused gate.
+
+Only generated/run timestamps are normalized after strict UTC-seconds and invocation
+bounds validation; query/result/metadata/rank/score/receipt fields remain exact.
+Pure report page fixtures do not enable captures. Native MCP remains0/9, all35 final
+rows pending. Other collect providers/capture failure evidence/events/derived URL
+policy, aggregate limits/model/actual interrupt/crash/Windows-Linux/live/final release
+acceptance remain. See collect-report-contract.md and golden-matrix.json.
