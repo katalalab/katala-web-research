@@ -12,7 +12,8 @@
     "finite representable timeout and signed-i64 numeric boundary",
     "HTTP safety policy in http-contract.md; separate policy assertions",
     "Named JSON typed_fields/typed_collections/strict_json_constants/strict_unicode/depth_limit policies in json-provider-edges.json; acceptance remains pending",
-    "reader_stdout_byte_limit: native CLI read renders at most8MiB UTF8 JSON/text/newline before cache write; Python unbounded. Seven cap assertions pass; final policy approval pending."
+    "reader_stdout_byte_limit: native CLI read renders at most8MiB UTF8 JSON/text/newline before cache write; Python unbounded. Seven cap assertions pass; final policy approval pending.",
+    "report_noclobber: collect reports publish synced temporary UTF8 files without replacing any existing destination/symlink; tested Unix mode0600 instead of Python umask. Report error follows durable run commit; four scoped assertions pass; final policy approval pending."
   ],
   "normalization_allowed": [
     "synthetic temporary archive paths",
@@ -506,15 +507,15 @@
         "run/results/page persistence",
         "partial capture failures and UTF-8 evidence report"
       ],
-      "status": "partial: native store_run primitive only; collect CLI/capture/report/event orchestration remains unimplemented",
+      "status": "partial: native feed-only collect with read_top<=0, run/result commit and optional new report; derived capture/other providers/event remain unimplemented",
       "surface": "collect",
       "pending_reasons": [
-        "Native store_run has scoped synthetic evidence; collect CLI, derived capture authorization, success/failure retention and report/event orchestration remain unimplemented",
-        "Whole-command outputs/lifecycle/resource/OS/live final scope is not closed"
+        "Feed-only/no-capture CLI and pure Markdown have scoped evidence; derived target/transmission authorization, other collect providers and successful/failed capture retention/event orchestration are absent",
+        "report_noclobber (including tested Unix0600 file mode) is an intentional unapproved-final-policy difference; aggregate/model/lifecycle/crash/OS/live gates remain"
       ],
       "missing_assertions": [
-        "Implement collect CLI with run-first/per-successful-page commit boundaries and exact outputs; derived capture must stay disabled until reviewed target/transmission policy; capture failure must not alter any existing page",
-        "Compare redacted failure evidence/UTF8 Markdown, report-write failure after durable commits and actual interrupt/restart on copied synthetic histories; retain approved Python differences"
+        "Feed-only/no-capture collect is scoped; implement other providers and run-first/per-successful-page commit boundaries only after reviewed derived target/transmission policy; capture failure must not alter any existing page",
+        "Compare redacted capture-failure evidence/events, aggregate output/path/model limits and actual interrupt/restart on copied synthetic histories; approve report_noclobber including Unix0600 policy before final acceptance"
       ],
       "next_tests": [
         {
@@ -522,8 +523,8 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_collect.py",
           "assertions": [
-            "Implement collect CLI with run-first/per-successful-page commit boundaries and exact outputs; derived capture must stay disabled until reviewed target/transmission policy; capture failure must not alter any existing page",
-            "Compare redacted failure evidence/UTF8 Markdown, report-write failure after durable commits and actual interrupt/restart on copied synthetic histories; retain approved Python differences"
+            "Feed-only/no-capture collect is scoped; implement other providers and run-first/per-successful-page commit boundaries only after reviewed derived target/transmission policy; capture failure must not alter any existing page",
+            "Compare redacted capture-failure evidence/events, aggregate output/path/model limits and actual interrupt/restart on copied synthetic histories; approve report_noclobber including Unix0600 policy before final acceptance"
           ],
           "execution_evidence": false
         }
@@ -540,6 +541,21 @@
           {
             "case_evidence_id": "collect-store-run-populated-copies",
             "scope": "28 paired success sequences plus2 paired SQL-abort sequences after Python close/native rollback, all8 populated rows/schema/version/4FTS rank1 and MATCH/unselected copy preservation; prior commits persist; no crash/full collect acceptance",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "collect-feed-no-capture-cli",
+            "scope": "48 strict paired feed-only CLI cases plus2 paired SQL-abort/report-directory-failure cases; signed-i64 limits/original queries/metadata/JSON/text/repeated durable receipts and closed-archive report boundary; all8 rows/schema/version/4FTS rank1/MATCH/unselected archive preservation; no captures or other providers",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "collect-pre-io-refusal",
+            "scope": "All9 provider names x3 reader modes x2 limits with default-positive read_top, non-feed with negative capture and defaults; invalid registry/config/empty helper PATH proves disabled error before any runtime file. Help separately describes feed-only/read0/no-clobber. No socket or actual interrupt acceptance",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "collect-report-noclobber-policy",
+            "scope": "3 native old-report/archive-collision/symlink preservation cases plus1 explicit paired old-report Python-overwrite/native-refusal difference; committed run id and all8 rows/4FTS preserved. report_noclobber includes Unix0600 file mode; policy approval pending",
             "status": "passed"
           }
         ]
@@ -573,6 +589,47 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; independent target execution not claimed",
           "source_tree_sha256": "af7994bab2e31fba30061a5811ba31945e81b3a41cb6bab68993183c3f56291d"
+        },
+        {
+          "id": "collect-feed-no-capture-cli",
+          "status": "passed",
+          "scope": "48 strict paired feed-only CLI cases plus2 paired SQL-abort/report-directory-failure cases; signed-i64 limits/original queries/metadata/JSON/text/repeated durable receipts and closed-archive report boundary; all8 rows/schema/version/4FTS rank1/MATCH/unselected archive preservation; no captures or other providers",
+          "count": 50,
+          "evidence": [
+            "scripts/migration/collect_report_differential.py",
+            "scripts/verify-collect-report.sh",
+            "docs/migration/collect-report-contract.md"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent/other-target execution not claimed",
+          "source_tree_sha256": "d4c486eca806f23b12259120754a39f38903f533bfc91b70cd547adbe4bca71c"
+        },
+        {
+          "id": "collect-pre-io-refusal",
+          "status": "passed",
+          "scope": "All9 provider names x3 reader modes x2 limits with default-positive read_top, non-feed with negative capture and defaults; invalid registry/config/empty helper PATH proves disabled error before any runtime file. Help separately describes feed-only/read0/no-clobber. No socket or actual interrupt acceptance",
+          "count": 80,
+          "evidence": [
+            "scripts/migration/collect_report_differential.py",
+            "rust/src/main.rs"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent/other-target execution not claimed",
+          "source_tree_sha256": "d4c486eca806f23b12259120754a39f38903f533bfc91b70cd547adbe4bca71c"
+        },
+        {
+          "id": "collect-report-noclobber-policy",
+          "status": "passed",
+          "scope": "3 native old-report/archive-collision/symlink preservation cases plus1 explicit paired old-report Python-overwrite/native-refusal difference; committed run id and all8 rows/4FTS preserved. report_noclobber includes Unix0600 file mode; policy approval pending",
+          "count": 4,
+          "evidence": [
+            "scripts/migration/collect_report_differential.py",
+            "rust/tests/report.rs",
+            "docs/migration/collect-report-contract.md"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent/other-target execution not claimed",
+          "source_tree_sha256": "d4c486eca806f23b12259120754a39f38903f533bfc91b70cd547adbe4bca71c"
         }
       ]
     },
@@ -2296,13 +2353,14 @@
         "exact UTF-8 Markdown/evidence/provenance/checklist models",
         "only declared temp paths/timestamps/latencies normalized"
       ],
-      "status": "pending",
+      "status": "partial: pure collect Markdown/new-report publication only; downstream evidence/provenance/checklist and lifecycle parity remain pending",
       "surface": "reports",
       "pending_reasons": [
-        "native report/evidence/capture failure/provenance/checklist/file-format behavior is not yet implemented"
+        "Pure collect Markdown has96 exact oracles; other report/evidence/capture-failure/provenance/checklist models remain unimplemented",
+        "Publication no-clobber/Unix0600 differs from Python replacement/umask; final policy, aggregate limits/encoding/path/interrupt/actual OS gates remain"
       ],
       "missing_assertions": [
-        "Implement each downstream native report, then compare UTF8 Markdown sections/order/citations/checklists/evidence models to Python",
+        "Pure collect Markdown is scoped; implement remaining downstream native reports, then compare UTF8 sections/order/citations/checklists/evidence models to Python and approve publication policy",
         "Normalize only declared owned paths/timestamps/measured clock inputs after exact algorithm replay; never titles/URLs/health/scores/ranks/provenance"
       ],
       "next_tests": [
@@ -2311,7 +2369,7 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_gate_reports.py",
           "assertions": [
-            "Implement each downstream native report, then compare UTF8 Markdown sections/order/citations/checklists/evidence models to Python",
+            "Pure collect Markdown is scoped; implement remaining downstream native reports, then compare UTF8 sections/order/citations/checklists/evidence models to Python and approve publication policy",
             "Normalize only declared owned paths/timestamps/measured clock inputs after exact algorithm replay; never titles/URLs/health/scores/ranks/provenance"
           ],
           "execution_evidence": false
@@ -2319,10 +2377,32 @@
       ],
       "scope_acceptance": {
         "full_ready": false,
-        "status": "not_allocated",
-        "scopes": []
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "pure-collect-report-reference",
+            "scope": "96 unchanged-Python pure Markdown oracles: literal fields/order/fallbacks, exact typed-f64 spelling (incl nonfinite rendering only), Unicode scalar700/newline/Python-strip boundary, page order and once clock; no automatic capture, evidence/checklist or JSON nonfinite acceptance",
+            "status": "passed"
+          }
+        ]
       },
-      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "pure-collect-report-reference",
+          "status": "passed",
+          "scope": "96 unchanged-Python pure Markdown oracles: literal fields/order/fallbacks, exact typed-f64 spelling (incl nonfinite rendering only), Unicode scalar700/newline/Python-strip boundary, page order and once clock; no automatic capture, evidence/checklist or JSON nonfinite acceptance",
+          "count": 96,
+          "evidence": [
+            "rust/tests/report.rs",
+            "rust/tests/fixtures/report-golden.json",
+            "scripts/migration/generate_report_goldens.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent/other-target execution not claimed",
+          "source_tree_sha256": "d4c486eca806f23b12259120754a39f38903f533bfc91b70cd547adbe4bca71c"
+        }
+      ]
     },
     {
       "final_acceptance": "pending",

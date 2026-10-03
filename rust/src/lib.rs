@@ -9,6 +9,7 @@ pub mod python_alpha;
 pub mod python_digits;
 pub mod reader;
 pub mod registry;
+pub mod report;
 pub mod search;
 pub mod text;
 pub mod urls;

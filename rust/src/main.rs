@@ -34,6 +34,32 @@ struct Query {
 }
 #[derive(Subcommand)]
 enum Command {
+    #[command(
+        about = "Collect local feed results without page capture; requires --provider feed --read-top 0"
+    )]
+    Collect {
+        query: String,
+        #[command(flatten)]
+        local: Local,
+        #[arg(long,default_value="ddg",value_parser=["brave","ddg","feed","github","github_code","jina","meta","openalex","searxng"], help = "Only feed is supported in this collect preview")]
+        provider: String,
+        #[arg(short = 'n', long, default_value_t = 10, allow_hyphen_values = true)]
+        limit: i64,
+        #[arg(
+            long,
+            default_value_t = 3,
+            allow_hyphen_values = true,
+            help = "Positive values disabled pending safe handling of URLs returned by search; use 0 to skip capture"
+        )]
+        read_top: i64,
+        #[arg(long,default_value="auto",value_parser=["auto","jina","direct"])]
+        reader: String,
+        #[arg(
+            long,
+            help = "Write a new UTF-8 report; existing destinations are refused"
+        )]
+        report: Option<String>,
+    },
     Search {
         query: String,
         #[command(flatten)]
@@ -276,6 +302,60 @@ fn fetch_feed_text(value: &str) -> Result<String> {
 }
 fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
     match cli.command {
+        Command::Collect {
+            query,
+            local,
+            provider,
+            limit,
+            read_top,
+            reader: _,
+            report,
+        } => {
+            if read_top > 0 {
+                return Err("derived-target capture is disabled pending target and transmission policy; use --read-top 0".into());
+            }
+            if provider != "feed" {
+                return Err("collect preview supports only --provider feed --read-top 0".into());
+            }
+            let registry = load_registry()?;
+            let results = kwr::search::feed(&query, &local.archive, limit, &registry)?;
+            let run_id = {
+                let archive = Archive::open(&local.archive)?;
+                archive.store_run(&query, &provider, &results)?
+            };
+            let report = report
+                .filter(|value| !value.is_empty())
+                .map(|value| kwr::report::lexical_path(&value));
+            if let Some(path) = report.as_ref() {
+                let text = kwr::report::build(
+                    &query,
+                    &provider,
+                    &results,
+                    &[],
+                    &local.archive.to_string_lossy(),
+                    kwr::now,
+                );
+                kwr::report::write_new(path, &text).map_err(|error| {
+                    format!("report failed after committed run_id={run_id}: {error}")
+                })?;
+            }
+            if local.json {
+                emit(
+                    &json!({"run_id":run_id,"archive":local.archive,"report":report,"results":results,"pages":[]}),
+                    out,
+                )?;
+            } else {
+                writeln!(
+                    out,
+                    "run_id: {run_id}\narchive: {}",
+                    local.archive.display()
+                )?;
+                if let Some(path) = report {
+                    writeln!(out, "report: {}", path.display())?;
+                }
+                writeln!(out, "results: {}\npages_read: 0", results.len())?;
+            }
+        }
         Command::Feeds {
             command: Feeds::Refresh { source, local },
         } => {
