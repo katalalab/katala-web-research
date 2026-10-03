@@ -6,7 +6,12 @@ use crate::{
 use rusqlite::{Connection, OpenFlags, backup::Backup};
 use serde::Serialize;
 use sha2::{Digest, Sha256};
-use std::{collections::BTreeMap, fs, path::Path, time::Duration};
+use std::{
+    collections::BTreeMap,
+    fs,
+    path::{Path, PathBuf},
+    time::Duration,
+};
 
 #[derive(Debug, Serialize)]
 pub struct Status {
@@ -199,6 +204,30 @@ pub struct Report {
     pub source_unchanged: bool,
     pub already_migrated: bool,
 }
+fn destination_namespace(destination: &Path, include_body: bool) -> Result<()> {
+    // exists() follows symlinks and misses dangling entries. SQLite's WAL,
+    // SHM, and hot journal are part of the destination namespace too.
+    for suffix in ["", "-wal", "-shm", "-journal"] {
+        if suffix.is_empty() && !include_body {
+            continue;
+        }
+        let mut name = destination.as_os_str().to_os_string();
+        name.push(suffix);
+        let path = PathBuf::from(name);
+        match fs::symlink_metadata(&path) {
+            Ok(_) => {
+                return Err(format!(
+                    "destination namespace is occupied: {}; preserving existing files",
+                    path.display()
+                )
+                .into());
+            }
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => {}
+            Err(e) => return Err(e.into()),
+        }
+    }
+    Ok(())
+}
 pub fn migrate(source: &Path, destination: &Path, dry_run: bool) -> Result<Report> {
     migrate_inner(source, destination, dry_run, || Ok(()))
 }
@@ -211,11 +240,7 @@ fn migrate_inner(
     if !source.is_file() {
         return Err("migration source must be an existing SQLite file".into());
     }
-    if destination.exists() {
-        return Err(
-            "destination exists; refusing to overwrite (rollback keeps the original source)".into(),
-        );
-    }
+    destination_namespace(destination, true)?;
     let parent = destination
         .parent()
         .filter(|p| !p.as_os_str().is_empty())
@@ -271,7 +296,11 @@ fn migrate_inner(
     copy.close().map_err(|(_, e)| e)?;
     if !dry_run {
         temp.as_file().sync_all()?;
+        destination_namespace(destination, true)?;
         temp.persist_noclobber(destination)?;
+        // A concurrent writer cannot be made to honor this API's namespace check.
+        // If one introduces a sidecar during publication, preserve all files and fail.
+        destination_namespace(destination, false)?;
         // On Unix sync the directory entry after publishing. Windows File::open(directory) is unsupported.
         #[cfg(unix)]
         fs::File::open(parent)?.sync_all()?;
@@ -309,5 +338,26 @@ mod tests {
         assert_eq!(bytes, fs::read(&source).unwrap());
         assert_eq!(fs::read_dir(dir.path()).unwrap().count(), 1);
         assert!(migrate(&source, &destination, false).is_ok());
+    }
+    #[test]
+    fn sidecar_created_after_initial_check_is_preserved_and_blocks_publication() {
+        for suffix in ["-wal", "-shm", "-journal"] {
+            let dir = tempfile::tempdir().unwrap();
+            let source = dir.path().join("source.sqlite");
+            let dest = dir.path().join("copy.sqlite");
+            let c = Connection::open(&source).unwrap();
+            c.execute_batch(SCHEMA).unwrap();
+            drop(c);
+            let original = fs::read(&source).unwrap();
+            let sidecar = dir.path().join(format!("copy.sqlite{suffix}"));
+            let failed = migrate_inner(&source, &dest, false, || {
+                fs::write(&sidecar, b"synthetic concurrent sidecar")?;
+                Ok(())
+            });
+            assert!(failed.is_err());
+            assert!(!dest.exists());
+            assert_eq!(fs::read(&sidecar).unwrap(), b"synthetic concurrent sidecar");
+            assert_eq!(fs::read(&source).unwrap(), original);
+        }
     }
 }

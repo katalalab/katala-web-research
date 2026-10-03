@@ -195,3 +195,106 @@ fn copied_archive_remains_compatible_with_python_schema_contract() {
         0
     );
 }
+
+#[test]
+fn stale_destination_wal_and_shm_are_rejected_without_replay_or_removal() {
+    let dir = tempfile::tempdir().unwrap();
+    let source = dir.path().join("source.sqlite");
+    let dest = dir.path().join("copy.sqlite");
+    seed(&source, false);
+    let c = Connection::open(&source).unwrap();
+    c.execute("UPDATE pages SET title='SOURCE'", []).unwrap();
+    drop(c);
+    seed(&dest, false);
+    let stale = Connection::open(&dest).unwrap();
+    stale
+        .execute_batch("PRAGMA journal_mode=WAL; PRAGMA wal_autocheckpoint=0")
+        .unwrap();
+    stale
+        .execute("UPDATE pages SET title='STALE WAL'", [])
+        .unwrap();
+    let wal = dir.path().join("copy.sqlite-wal");
+    let shm = dir.path().join("copy.sqlite-shm");
+    let wal_before = fs::read(&wal).unwrap();
+    let shm_before = fs::read(&shm).unwrap();
+    let source_before = fs::read(&source).unwrap();
+    fs::rename(&dest, dir.path().join("parked.sqlite")).unwrap();
+    for dry in [true, false] {
+        assert!(migrate(&source, &dest, dry).is_err());
+        assert!(!dest.exists());
+        assert_eq!(wal_before, fs::read(&wal).unwrap());
+        assert_eq!(shm_before, fs::read(&shm).unwrap());
+        assert_eq!(source_before, fs::read(&source).unwrap());
+    }
+    assert_eq!(
+        Connection::open(&source)
+            .unwrap()
+            .query_row("SELECT title FROM pages", [], |r| r.get::<_, String>(0))
+            .unwrap(),
+        "SOURCE"
+    );
+}
+#[test]
+fn destination_rollback_journal_is_rejected_and_preserved() {
+    let dir = tempfile::tempdir().unwrap();
+    let source = dir.path().join("source.sqlite");
+    let dest = dir.path().join("copy.sqlite");
+    seed(&source, false);
+    seed(&dest, false);
+    let c = Connection::open(&dest).unwrap();
+    c.execute_batch("PRAGMA journal_mode=DELETE; PRAGMA cache_size=1; BEGIN IMMEDIATE")
+        .unwrap();
+    c.execute(
+        "UPDATE pages SET content=?",
+        ["synthetic hot journal evidence ".repeat(5000)],
+    )
+    .unwrap();
+    let journal = dir.path().join("copy.sqlite-journal");
+    let before = fs::read(&journal).unwrap();
+    assert!(!before.is_empty());
+    fs::rename(&dest, dir.path().join("parked.sqlite")).unwrap();
+    assert!(migrate(&source, &dest, false).is_err());
+    assert!(!dest.exists());
+    assert_eq!(before, fs::read(&journal).unwrap());
+}
+#[cfg(unix)]
+#[test]
+fn dangling_destination_symlinks_are_rejected_for_body_and_each_sidecar() {
+    use std::os::unix::fs::symlink;
+    for suffix in ["", "-wal", "-shm", "-journal"] {
+        let dir = tempfile::tempdir().unwrap();
+        let source = dir.path().join("source.sqlite");
+        let dest = dir.path().join("copy.sqlite");
+        seed(&source, false);
+        let entry = dir.path().join(format!("copy.sqlite{suffix}"));
+        let missing = dir.path().join("missing");
+        symlink(&missing, &entry).unwrap();
+        let original = fs::read(&source).unwrap();
+        assert!(migrate(&source, &dest, false).is_err());
+        assert_eq!(fs::read_link(&entry).unwrap(), missing);
+        assert_eq!(fs::read(&source).unwrap(), original);
+    }
+}
+
+#[test]
+fn each_standalone_sidecar_is_refused_before_copy_and_preserved() {
+    for suffix in ["-wal", "-shm", "-journal"] {
+        let dir = tempfile::tempdir().unwrap();
+        let source = dir.path().join("source.sqlite");
+        let dest = dir.path().join("copy.sqlite");
+        seed(&source, false);
+        let sidecar = dir.path().join(format!("copy.sqlite{suffix}"));
+        fs::write(&sidecar, b"synthetic preexisting sidecar").unwrap();
+        let original = fs::read(&source).unwrap();
+        for dry in [true, false] {
+            assert!(migrate(&source, &dest, dry).is_err());
+            assert!(!dest.exists());
+            assert_eq!(
+                fs::read(&sidecar).unwrap(),
+                b"synthetic preexisting sidecar"
+            );
+            assert_eq!(fs::read(&source).unwrap(), original);
+            assert_eq!(fs::read_dir(dir.path()).unwrap().count(), 2);
+        }
+    }
+}

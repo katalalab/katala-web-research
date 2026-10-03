@@ -216,6 +216,97 @@
         "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalogue"
       },
       "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": true,
+        "source": {
+          "avoid_for": [
+            "complete vulnerability inventory"
+          ],
+          "best_for": "Prioritize vulnerabilities known to be exploited in the wild.",
+          "bias_caveat": "US government operational perspective; pair with vendor advisories.",
+          "domain": "security",
+          "freshness": "high",
+          "hosts": [
+            "cisa.gov"
+          ],
+          "name": "CISA Known Exploited Vulnerabilities Catalog",
+          "query_types": [
+            "exploited_vulnerability",
+            "vulnerability_priority"
+          ],
+          "source_type": "exploited_vulnerability",
+          "trust_score": 96,
+          "update_cadence": "frequent",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "url_prefixes": [
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+          ]
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc"
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog\n",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": true,
+        "source": {
+          "avoid_for": [
+            "complete vulnerability inventory"
+          ],
+          "best_for": "Prioritize vulnerabilities known to be exploited in the wild.",
+          "bias_caveat": "US government operational perspective; pair with vendor advisories.",
+          "domain": "security",
+          "freshness": "high",
+          "hosts": [
+            "cisa.gov"
+          ],
+          "name": "CISA Known Exploited Vulnerabilities Catalog",
+          "query_types": [
+            "exploited_vulnerability",
+            "vulnerability_priority"
+          ],
+          "source_type": "exploited_vulnerability",
+          "trust_score": 96,
+          "update_cadence": "frequent",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "url_prefixes": [
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+          ]
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog\n"
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc/details",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": false,
+        "source": null,
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc/details"
+      },
+      "stderr": ""
     }
   ]
 }

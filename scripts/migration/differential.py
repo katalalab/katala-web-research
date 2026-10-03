@@ -56,7 +56,7 @@ class Differential(unittest.TestCase):
     def test_registry(self):
         for args in [[], ['--domain','security'], ['--domain','news','--query-type','media_bias'], ['--domain','missing'], ['--limit','0'], ['--limit','-1'], ['--limit','1000'], ['--domain','']]:
             self.parity(['sources','list',*args,'--json'])
-        for url in ['https://www.cisa.gov/known-exploited-vulnerabilities-catalog', 'www.cisa.gov/known-exploited-vulnerabilities-catalog', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog/details', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalogue', 'https://evil.cisa.gov/', 'https://example.test/', 'invalid', 'https://www.cisa.gov:443/known-exploited-vulnerabilities-catalog', 'https://www.cisa.gov/a/../known-exploited-vulnerabilities-catalog']:
+        for url in ['https://www.cisa.gov/known-exploited-vulnerabilities-catalog', 'www.cisa.gov/known-exploited-vulnerabilities-catalog', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog/details', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalogue', 'https://evil.cisa.gov/', 'https://example.test/', 'invalid', 'https://www.cisa.gov:443/known-exploited-vulnerabilities-catalog', 'https://www.cisa.gov/a/../known-exploited-vulnerabilities-catalog', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog\n', '\n https://www.cisa.gov/known-exploited-vulnerabilities-catalog\t', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc/details']:
             self.parity(['sources','match',url,'--json'])
         self.parity(['sources','list','--domain','security'],False)
         self.parity(['sources','match','https://example.test'],False)
@@ -87,6 +87,14 @@ class Differential(unittest.TestCase):
         for window in [-1,0,1,5,50]:
             self.parity(['engines','--window',str(window),'--archive',str(self.db),'--json'])
         self.parity(['engines','--archive',str(self.db)],False)
+    def test_engine_decimal_rounding_regression(self):
+        a=Archive(self.db)
+        a.record_engine_runs([{'provider':'rounding','status':'ok','latency_ms':10,'result_count':1,'error_kind':''}]+[{'provider':'rounding','status':'ok','latency_ms':10,'result_count':0,'error_kind':''}]*7)
+        a.close()
+        self.parity(['engines','--archive',str(self.db),'--json'])
+        rows=json.loads(self.call(['engines','--archive',str(self.db),'--json'],True).stdout)
+        self.assertEqual(next(r['health_score'] for r in rows if r['provider']=='rounding'),0.6937)
+
     def test_feed_write(self):
         # Separate copies prevent one implementation's timestamp/write from contaminating the other's baseline.
         for title in ['', 'Updated title 日本語']:

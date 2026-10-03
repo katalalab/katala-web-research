@@ -136,7 +136,9 @@ impl Archive {
                 .or_default()
                 .push(row);
         }
-        let round = |x: f64| (x * 10000.0).round_ties_even() / 10000.0;
+        // Decimal formatting rounds the original IEEE value. Multiplying first
+        // can manufacture an exact tie and differs from Python round(x, 4).
+        let round = |x: f64| format!("{x:.4}").parse::<f64>().unwrap();
         let mut stats = Vec::new();
         for (provider, rows) in grouped {
             let n = rows.len();

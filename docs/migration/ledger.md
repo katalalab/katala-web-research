@@ -11,8 +11,8 @@ The complete reference inventory is in `python-contract.json` (22 leaf commands,
 Local evidence (2026-10-03, aarch64 macOS only):
 
 - Python reference: 167 unit tests pass. Existing ResourceWarning about an unclosed Python test database is present.
-- Rust: 9 migration tests plus one golden test containing 8 CLI cases pass.
-- CLI differential: 133 comparisons pass (plan, registry boundaries/overlay, query JSON/text, repo filters, Unicode paths/content, health windows, cache hit, feed upsert, parser/runtime exits, source-preserving migration and Python reopen).
+- Rust: 14 migration tests plus one golden test containing 11 CLI cases pass.
+- CLI differential: 138 comparisons pass (plan, registry boundaries/overlay, query JSON/text, repo filters, Unicode paths/content, health windows, cache hit, feed upsert, parser/runtime exits, source-preserving migration and Python reopen).
 - Formatting and clippy with warnings denied pass on pinned toolchain.
 - Existing `scripts/verify.sh` passes (167 unit tests, CLI/benchmark/artifact gates; configured gitleaks found no leaks). Pinned `--release --locked --offline` build passes; local native binary reports kwr 0.1.0.
 - Recording/build workspace size was below 2 GiB throughout the slice. No cross-host operations, real archive/credential reads, paid API/model calls, or live providers.
@@ -26,3 +26,13 @@ Pending gates: complete golden/differential provider/ranking/Markdown/evaluation
 ## Review/publication boundary
 
 Push/draft PR is authorized. Existing standard GitHub-hosted public-repo workflows and main ruleset were read: four required checks (lint, no-instance-data, Python 3.11/3.12 verification), PR required, forcepush/deletion forbidden, no bypass actors. Workflows/runner matrix remain unchanged. Parent provides independent review; no self-approval or merge before exact-head checks and review. Source archive, installed CLI, main, and repository visibility remain unchanged by this slice.
+
+## Independent review repair (slice 1)
+
+The review of `14d6ae68e5f9bb871b164e3aad44f12a939137d2` requested three corrections. That head's four required CI checks and SAST completed successfully, but merge remained blocked for review.
+
+- P1: destination SQLite namespace includes body, `-wal`, `-shm`, `-journal`, including dangling symlinks. Refuse occupied entries without deleting them, check again immediately before no-clobber publication, and fail preserving files if a sidecar appears during publication. Synthetic real WAL/SHM and rollback journal, individual sidecars, dangling links, and pre-publication injection are regression tests. Source/destination-sidecar bytes remain untouched on rejection.
+- P2: engine health now rounds the original binary value to decimal precision without first multiplying. Eight successful 10 ms runs with one useful result match Python's `0.6937`.
+- P2: registry matching strips ASCII tab/newlines and leading C0/space like urllib, and handles semicolon params on the final path segment while preserving explicit ports and dot segments. Differential and committed golden fixtures cover the reported CISA cases.
+
+Concurrent uncooperative writers cannot be excluded by a namespace check alone; choose an unused destination in a quiescent directory. A late-race error preserves all files and requires operator inspection, rather than deleting a possibly owned archive or sidecar. No real archive, CLI cutover, main merge, or next-slice feature is included in this repair.

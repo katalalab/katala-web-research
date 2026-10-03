@@ -42,6 +42,12 @@ fn host(value: &str) -> String {
 // Registry matching preserves the reference's netloc and path literally. URL
 // canonicalizers strip explicit default ports and resolve dot segments, changing trust matches.
 fn parse(value: &str) -> Option<(String, String)> {
+    // urllib.urlparse strips C0/space at the start and ASCII tab/newlines
+    // anywhere, then splits params only from the final path segment.
+    let cleaned = value
+        .trim_start_matches(|c: char| c as u32 <= 0x20)
+        .replace(['\r', '\n', '\t'], "");
+    let value = cleaned.as_str();
     let has_scheme = value.split_once(':').is_some_and(|(s, _)| {
         !s.is_empty()
             && s.chars().next().is_some_and(|c| c.is_ascii_alphabetic())
@@ -53,7 +59,7 @@ fn parse(value: &str) -> Option<(String, String)> {
     } else {
         format!("https://{value}")
     };
-    let (_, rest) = normalized.split_once("://")?;
+    let (scheme, rest) = normalized.split_once("://")?;
     let end = rest.find(['/', '?', '#']).unwrap_or(rest.len());
     let authority = &rest[..end];
     if authority.is_empty() {
@@ -65,6 +71,18 @@ fn parse(value: &str) -> Option<(String, String)> {
     } else {
         ""
     };
+    let mut path = path;
+    if [
+        "ftp", "hdl", "prospero", "http", "imap", "https", "shttp", "rtsp", "rtsps", "rtspu",
+        "sip", "sips", "mms", "sftp", "tel",
+    ]
+    .contains(&scheme.to_lowercase().as_str())
+    {
+        let last_slash = path.rfind('/').map_or(0, |i| i + 1);
+        if let Some(offset) = path[last_slash..].find(';') {
+            path = &path[..last_slash + offset];
+        }
+    }
     Some((host(authority), path.to_string()))
 }
 impl Registry {
