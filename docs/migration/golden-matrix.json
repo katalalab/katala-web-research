@@ -552,6 +552,19 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; independent target execution still pending",
           "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        },
+        {
+          "id": "process-completion-after-deadline",
+          "status": "passed",
+          "scope": "Owned successful child + drained streams, simulated post-poll descheduling across deadline; old success fails, repaired timeout passes. Helper is explicitly invoked in child, not an unexecuted acceptance gate.",
+          "evidence": [
+            "rust/src/process.rs",
+            "docs/migration/process-contract.md"
+          ],
+          "count": 1,
+          "target": "aarch64-apple-darwin",
+          "executor": "author",
+          "source_tree_sha256": "aed81db5edf48a09677f4100df395e7913acfd33e05fefc7e991371c531abfc2"
         }
       ]
     },
@@ -727,5 +740,11 @@
     "review": "Independent Rust/Cargo feature-diff equality, eight-table seed execution/integrity and static SQL/CI confirmation; native/TLS tests by author only",
     "tree_equivalence": "PR23 merged tree equals c728562; retargeted PR24 merged tree equals 2f67545"
   },
-  "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures"
+  "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures",
+  "process_review_repair": {
+    "original_head": "cb5c105826367d0a203ff7a4b2e8cfa4e70ea522",
+    "finding": "P3 completed streams accepted before elapsed deadline check",
+    "case_added": 1,
+    "scope": "move deadline check before success; private deterministic after-poll observer has no runtime input/flag; provider behavior and transcript fixtures unchanged"
+  }
 }

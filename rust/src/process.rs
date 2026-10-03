@@ -219,6 +219,12 @@ mod native_unix {
         ProviderError::synthetic(kind)
     }
     pub fn run(request: &ProcessRequest) -> ProviderResult<ProcessOutput> {
+        run_observed(request, |_| {})
+    }
+    fn run_observed(
+        request: &ProcessRequest,
+        mut after_poll: impl FnMut(bool),
+    ) -> ProviderResult<ProcessOutput> {
         let started = Instant::now();
         let _signals = SignalScope::enter()?;
         let mut child = OwnedChild(
@@ -286,6 +292,10 @@ mod native_unix {
             if status.is_none() {
                 status = child.0.try_wait().map_err(io_error)?;
             }
+            after_poll(reads == 2 && status.as_ref().is_some_and(|s| s.success()));
+            if started.elapsed() >= Duration::from_millis(request.timeout_ms) {
+                return Err(ProviderError::synthetic("TimeoutExpired"));
+            }
             if reads == 2
                 && let Some(status) = status
             {
@@ -297,10 +307,42 @@ mod native_unix {
                     stderr: stderr.unwrap_or_default(),
                 });
             }
-            if started.elapsed() >= Duration::from_millis(request.timeout_ms) {
-                return Err(ProviderError::synthetic("TimeoutExpired"));
-            }
             thread::sleep(Duration::from_millis(2));
+        }
+    }
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        #[test]
+        #[ignore = "owned child executable fixture; invoked explicitly by the boundary test"]
+        fn empty_child() {}
+        #[test]
+        fn completed_streams_after_deadline_are_not_success() {
+            let request = ProcessRequest {
+                program: std::env::current_exe()
+                    .unwrap()
+                    .to_string_lossy()
+                    .into_owned(),
+                args: vec![
+                    "--exact".into(),
+                    "process::native_unix::tests::empty_child".into(),
+                    "--ignored".into(),
+                ],
+                timeout_ms: 100,
+                output_limit: OUTPUT_LIMIT,
+            };
+            let mut observed_ready = false;
+            let outcome = run_observed(&request, |ready| {
+                if ready && !observed_ready {
+                    observed_ready = true;
+                    thread::sleep(Duration::from_millis(120));
+                }
+            });
+            assert!(
+                observed_ready,
+                "owned child did not reach the scheduled completion boundary"
+            );
+            assert_eq!(outcome.err().map(|e| e.kind), Some("TimeoutExpired"));
         }
     }
 }
