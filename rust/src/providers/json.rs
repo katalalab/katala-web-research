@@ -288,16 +288,6 @@ fn published(item: &Map<String, Value>, names: &[&str]) -> ProviderResult<Option
                     "provider publication field must be text or null",
                 )
             })?;
-            let prefix = text.chars().take(4).collect::<String>();
-            if prefix.chars().count() == 4
-                && prefix.chars().all(crate::python_digits::is_digit)
-                && crate::python_digits::decimal_int(&prefix).is_none()
-            {
-                return Err(failure(
-                    "ValueError",
-                    "publication digits cannot be converted to a year",
-                ));
-            }
             return Ok(Some(text.into()));
         }
     }
@@ -405,11 +395,26 @@ impl SearchProvider for JsonSearch {
                 break;
             }
         }
-        Ok(crate::search::rank(
+        crate::search::rank_with_validation(
             query,
             found,
             context.registry,
             context.year,
-        ))
+            |result| {
+                if let Some(text) = result.published_at.as_deref() {
+                    let prefix = text.chars().take(4).collect::<String>();
+                    if prefix.chars().count() == 4
+                        && prefix.chars().all(crate::python_digits::is_digit)
+                        && crate::python_digits::decimal_int(&prefix).is_none()
+                    {
+                        return Err(failure(
+                            "ValueError",
+                            "publication digits cannot be converted to a year",
+                        ));
+                    }
+                }
+                Ok(())
+            },
+        )
     }
 }

@@ -45,6 +45,20 @@ for digit in ['٢','０２','𝟚','²','١٢','０'*100+'２']:
 for year in ['٢٠٢٦','２０２６','²⁰²⁶']:
     edge('brave','unicode-freshness-'+year,env={'BRAVE_FRESHNESS':year+'-01-01to'+year+'-12-31'})
 edge('searxng','slash-only-endpoint',env={'KWR_SEARXNG_URL':'///'})
+# Year conversion is evaluated only after URL/dedup/retraction gates. These
+# are ordinary string inputs, not typed_fields safety-policy exceptions.
+for provider in ['searxng','brave','jina']:
+    date_field={'searxng':'publishedDate','brave':'age','jina':'publishedTime'}[provider]
+    snippet_field={'searxng':'content','brave':'description','jina':'description'}[provider]
+    good=item(provider,0)
+    bad=item(provider,1);bad[date_field]='²⁰²⁶-01-01'
+    for gate in ['duplicate','retracted','empty-url']:
+        discarded=dict(bad)
+        if gate=='duplicate':discarded['url']=good['url']
+        elif gate=='retracted':discarded[snippet_field]='retracted=true'
+        else:discarded['url']=''
+        edge(provider,'year-conversion-after-'+gate,bodies=[payload(provider,[good,discarded])])
+    edge(provider,'year-conversion-surviving-error',bodies=[payload(provider,[good,bad])])
 selected=cases[start:]
 assert all(c.get('intentional_policy') in POLICIES for c in selected if 'native_expected' in c)
 (ROOT/'rust/tests/fixtures/json-provider-edges.json').write_text(json.dumps({'baseline':'e66e449cc210bd80ecb25a00391091e72abd9c2b','oracle_python':'3.13 / Unicode 15.1','policies':POLICIES,'cases':selected},ensure_ascii=False,indent=2,sort_keys=True)+'\n')
