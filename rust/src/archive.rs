@@ -196,6 +196,29 @@ impl Archive {
         });
         Ok(stats)
     }
+    pub fn record_engine_runs(
+        &self,
+        runs: &[crate::providers::meta::EngineRun],
+        keep_per_provider: i64,
+    ) -> Result<usize> {
+        if runs.is_empty() {
+            return Ok(0);
+        }
+        let recorded_at = now();
+        let tx = self.conn.unchecked_transaction()?;
+        for run in runs {
+            tx.execute(
+                "INSERT INTO engine_runs(provider,status,latency_ms,result_count,error_kind,recorded_at) VALUES (?,?,?,?,?,?)",
+                params![run.provider,run.status,run.latency_ms,run.result_count as i64,run.error_kind,recorded_at],
+            )?;
+        }
+        tx.execute(
+            "DELETE FROM engine_runs WHERE id IN (SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY provider ORDER BY id DESC) AS position FROM engine_runs) WHERE position>?)",
+            [keep_per_provider],
+        )?;
+        tx.commit()?;
+        Ok(runs.len())
+    }
 }
 
 pub fn query_json(conn: &Connection, sql: &str, values: &[Value]) -> Result<Vec<Value>> {

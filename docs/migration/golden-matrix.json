@@ -823,10 +823,55 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "partial: native component orchestration/fusion/ledger; CLI not enabled",
       "surface": "meta",
       "pending_reasons": [
-        "native provider selection/profiles/four-worker fanout/fusion/health routing/partial failures/pruning/clock/completion-order parity is unimplemented"
+        "combined native provider/config/selected-archive CLI parity, all-empty/error/partial-error CLI exits/text/JSON and history preservation need loopback evidence",
+        "native graceful interruption/cancellation, worker panic behavior, ledger-failure/schema refusal policies and remaining float/model/representation edges need explicit contract acceptance",
+        "real-time runs may differ by measured latency/completion order; Windows/Linux execution and live provider behavior are unverified"
+      ],
+      "case_evidence": [
+        {
+          "id": "meta-components",
+          "status": "passed",
+          "scope": "60 profile/rewrite + 168 health boundaries + 32 fusion inputs (each six signed limits) + 2 annotation inputs; pure Python expectations",
+          "evidence": [
+            "scripts/migration/generate_meta_component_goldens.py",
+            "rust/tests/fixtures/meta-component-golden.json",
+            "rust/tests/meta.rs"
+          ],
+          "count": 262,
+          "target": "aarch64-apple-darwin",
+          "executor": "author only; independent target execution pending",
+          "source_tree_sha256": "7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad"
+        },
+        {
+          "id": "meta-completion-transcripts",
+          "status": "passed",
+          "scope": "strict fixed clock/provider completion order, routing/all-weak/duplicates/partial errors/record errors and exact calls; no native combined CLI claim",
+          "evidence": [
+            "scripts/migration/generate_meta_goldens.py",
+            "rust/tests/fixtures/meta-golden.json",
+            "rust/tests/meta.rs"
+          ],
+          "count": 33,
+          "target": "aarch64-apple-darwin",
+          "executor": "author only; independent target execution pending",
+          "source_tree_sha256": "7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad"
+        },
+        {
+          "id": "meta-native-policies",
+          "status": "passed",
+          "scope": "controlled channel completion, four-worker bound/all-jobs-drained, strict fixture refusals, synthetic seven-table/FTS preservation and atomic 500/provider prune/50-run routing/rollback; separate policy tests",
+          "evidence": [
+            "rust/src/providers/meta.rs",
+            "rust/tests/meta.rs"
+          ],
+          "count": 4,
+          "target": "aarch64-apple-darwin",
+          "executor": "author only; independent target execution pending",
+          "source_tree_sha256": "7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad"
+        }
       ]
     },
     {
