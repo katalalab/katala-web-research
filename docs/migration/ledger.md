@@ -307,3 +307,15 @@ and positive enrichment/native downstream remain pending. This is no final read 
 full migration claim. Actual SQLite busy-interrupt/commit-window/worker-panic/crash
 recovery must use real owned processes and databases, not mocked commit results. No
 new dependency/workflow/toolchain/lock/license/paid/live/key/data/CLI/OS changes.
+
+## PR28 independent P3 index proof
+
+Parent final source review found no production blocker but independently demonstrated
+that FTS delete-all can leave external-content SELECT and SQLite integrity unchanged,
+while MATCH changes. Minimal test-only repair adds rank1 FTS integrity plus MATCH
+snapshots; a removed-entry negative control fails old helper and is rejected after
+repair. Two paired successful cache miss/refresh cases assert new MATCH/old-term
+removal using immutable9451 native binary. No production/Cargo change, previous51/42
+expectation rewrite or feature-whole rerun. Independent exact-head CI/focus follow-up
+remains separate from merge permission. Trusted CLI and untrusted MCP target policies
+remain separate; full35 acceptance rows stay pending.

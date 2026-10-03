@@ -49,3 +49,19 @@ writer lock and owned TEMP-trigger transaction abort preserve old page/pages FTS
 integrity. The latter is fault injection; neither proves commit-window cancellation.
 Prior passed Meta/provider stages remain inherited at their exact source hashes.
 All35 final rows remain pending and native MCP remains0/9.
+
+## Independent P3 index-proof repair
+
+The old external-content SELECT/integrity_check alone did not prove inverted index
+entries. An owned negative control removes one existing index entry while page/FTS
+external-content SELECT still returns the same data. The old state helper fails to
+reject it; repaired helper runs FTS integrity-check with rank1 and MATCH result
+snapshots, and rejects this inconsistent index. Two focused paired cache miss/refresh
+cases assert new atomic MATCH count1 and old-term removal0 for the fetched URL.
+Production Rust/fixtures51/previous42 expectations are unchanged; only these focused
+new assertions are executed on the immutable9451 binary. Full other-index/commit
+crash/OS gates remain open. No all-feature rerun or direct-reader new feature here.
+
+Trusted network-opt-in CLI may read local/private URLs; a future untrusted MCP adapter
+needs a distinct initial/resolved-address/redirect/proxy target authorization policy.
+Do not infer untrusted permission from CLI acceptance. This is gate:network final work.

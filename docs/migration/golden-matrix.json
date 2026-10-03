@@ -220,6 +220,11 @@
             "case_evidence_id": "direct-reader-worker-sigint",
             "scope": "One SIGINT scenario in two owned CLI executions while real loopback response held, no stdout/source data changes. Not SQLite commit/busy, SIGTERM or hard kill acceptance.",
             "status": "passed"
+          },
+          {
+            "case_evidence_id": "direct-reader-fts-inverted-index",
+            "scope": "Two paired cache miss/refresh cases check new atomic MATCH and old-term removal, full pages external-content rank1 integrity; owned delete-entry negative control fails old SELECT-only helper and is rejected after repair. Other FTS tables remain final scope.",
+            "status": "passed"
           }
         ]
       },
@@ -275,6 +280,18 @@
           ],
           "target": "aarch64-apple-darwin",
           "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+        },
+        {
+          "id": "direct-reader-fts-inverted-index",
+          "status": "passed",
+          "count": 3,
+          "scope": "Two paired cache miss/refresh cases check new atomic MATCH and old-term removal, full pages external-content rank1 integrity; owned delete-entry negative control fails old SELECT-only helper and is rejected after repair. Other FTS tables remain final scope.",
+          "evidence": [
+            "scripts/migration/reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; fixed9451 immutable native binary; production unchanged",
           "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
         }
       ]

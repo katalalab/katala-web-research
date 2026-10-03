@@ -57,8 +57,10 @@ def state(path):
         assert conn.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
         schema=[tuple(r) for r in conn.execute('SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY type,name')]
         pages=untimed([dict(r) for r in conn.execute('SELECT * FROM pages ORDER BY id')])
+        conn.execute("INSERT INTO pages_fts(pages_fts,rank) VALUES('integrity-check',1)")
         fts=[tuple(r) for r in conn.execute('SELECT rowid,title,content FROM pages_fts ORDER BY rowid')]
-        return unrelated,schema,conn.execute('PRAGMA user_version').fetchone()[0],pages,fts
+        matches={term:[tuple(r) for r in conn.execute('SELECT rowid,title,content FROM pages_fts WHERE pages_fts MATCH ? ORDER BY rowid',(term,))] for term in ['old','atomic','evidence','本文','Café']}
+        return unrelated,schema,conn.execute('PRAGMA user_version').fetchone()[0],pages,fts,matches
 
 class ReaderFixture(fixture.Fixtures):
     comparisons=0;signal_executions=0
@@ -79,7 +81,12 @@ class ReaderFixture(fixture.Fixtures):
                 prefix=[str(fixture.BINARY)] if native else [sys.executable,'-m','katala_web_research.cli']
                 start=len(TRACE);result=subprocess.run(prefix+['read',url,*([] if '--reader' in options else ['--reader','direct']),'--archive',str(db),*options],env=env,cwd=root,capture_output=True,text=True,timeout=10)
                 self.assertEqual(result.returncode,1 if fail else 0,(native,route,options,result.stderr))
-                after=state(db);self.assertEqual(before[:3],after[:3]);self.assertEqual(other_before,preservation.snapshot(other));self.assertFalse((root/'.katala-web-research').exists())
+                after=state(db)
+                if not fail and route=='/html' and '--cache' in options and (not cached or '--refresh' in options):
+                    with sqlite3.connect(db) as conn:
+                        self.assertEqual(conn.execute("SELECT count(*) FROM pages_fts WHERE pages_fts MATCH 'atomic' AND rowid IN (SELECT id FROM pages WHERE url=?)",(url,)).fetchone()[0],1)
+                        self.assertEqual(conn.execute("SELECT count(*) FROM pages_fts WHERE pages_fts MATCH 'old' AND rowid IN (SELECT id FROM pages WHERE url=?)",(url,)).fetchone()[0],0)
+                self.assertEqual(before[:3],after[:3]);self.assertEqual(other_before,preservation.snapshot(other));self.assertFalse((root/'.katala-web-research').exists())
                 if fail or '--cache' not in options:self.assertEqual(before,after)
                 if fail:
                     self.assertEqual(result.stdout,'')
@@ -100,6 +107,19 @@ class ReaderFixture(fixture.Fixtures):
         for opts in [['--cache','--json'],['--cache'],['--cache','--reader','jina','--json']]:self.compare('/503',opts,cached=True)
         for opts in [['--json'],['--cache','--refresh','--json']]:self.compare('/503',opts,cached=True,fail=True)
         self.compare('/503',['--cache','--json'],cached=False,fail=True)
+    def test_cache_miss_refresh_inverted_index(self):
+        self.compare('/html',['--cache','--json'])
+        self.compare('/html',['--cache','--refresh','--json'],cached=True)
+    def test_state_rejects_corrupt_inverted_index(self):
+        with tempfile.TemporaryDirectory(prefix="kwr-reader-fts-") as tmp:
+            db=Path(tmp)/"owned.sqlite";url=self.origin+"/old";self.seed(db,url)
+            with sqlite3.connect(db) as conn:
+                row=conn.execute("SELECT id,title,content FROM pages WHERE url=?",(url,)).fetchone()
+                conn.execute("INSERT INTO pages_fts(pages_fts,rowid,title,content) VALUES('delete',?,?,?)",row)
+                # External-content SELECT still sees the original page, although
+                # this owned inverted index entry has been removed.
+                self.assertEqual(conn.execute("SELECT content FROM pages_fts WHERE rowid=?",(row[0],)).fetchone()[0],row[2])
+            with self.assertRaises(sqlite3.DatabaseError):state(db)
     def test_owned_worker_time_interrupt(self):
         for native in [False,True]:
             with tempfile.TemporaryDirectory(prefix='kwr-reader-signal-') as tmp:
@@ -115,7 +135,7 @@ class ReaderFixture(fixture.Fixtures):
 if __name__=='__main__':
     suite=unittest.defaultTestLoader.loadTestsFromTestCase(ReaderFixture)
     # Base HTTP tests are inherited helper implementation, not a rerun target.
-    available={'test_uncached_and_cache_miss_refresh','test_cache_hit_and_refresh_failure','test_owned_worker_time_interrupt'}
+    available={'test_uncached_and_cache_miss_refresh','test_cache_hit_and_refresh_failure','test_owned_worker_time_interrupt','test_state_rejects_corrupt_inverted_index','test_cache_miss_refresh_inverted_index'}
     wanted=set(sys.argv[1:]) or available;assert wanted <= available,'unknown fixture method'
     suite=unittest.TestSuite(test for test in suite if test._testMethodName in wanted)
     result=unittest.TextTestRunner(verbosity=2).run(suite)
