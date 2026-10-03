@@ -26,6 +26,11 @@ pub struct Archive {
 }
 impl Archive {
     pub fn open(path: &Path) -> Result<Self> {
+        let path = if path.as_os_str().is_empty() {
+            Path::new(".")
+        } else {
+            path
+        };
         let existed = path.exists();
         if let Some(parent) = path.parent()
             && !parent.as_os_str().is_empty()

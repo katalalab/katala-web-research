@@ -99,3 +99,29 @@ Version 0 is accepted only for the exact reference schema or the explicitly reco
 A dry-run validates a temporary copy and removes it without publishing the destination. Rerunning a version-1 source into a **new** destination performs the same data/schema-preserving checks; an existing destination body or SQLite `-wal`/`-shm`/`-journal` entry (including a dangling symlink) always fails without overwrite. The namespace is rechecked immediately before publication, and a detected sidecar appearing during publication causes failure while preserving all files. Use a quiescent destination directory; this API cannot force unrelated concurrent writers to cooperate. Normal abort/error rolls back and cleans the temporary file. A process kill or power loss before publication can leave an unnamed `.tmp*` copy/journal in the chosen directory; it is never adopted automatically or treated as migrated output. Retry with a new unused destination; inspect/remove only the known abandoned synthetic temporary files after confirming no process owns them. Hard-kill/power-loss recovery remains unverified.
 
 Rollback is to continue using the untouched source with Python; tests also reopen the migrated copy with Python and compare retrieval. No CLI/default path switch, automatic source delete, backup overwrite, or in-place rollback is provided. Changes written later to a copy must be reconciled separately before any future production cutover.
+
+## Meta preview evidence
+
+Build with the installed pinned toolchain and locked offline dependencies:
+
+```sh
+CARGO_BUILD_JOBS=1 scripts/rust.sh build --locked --offline --bin kwr-rs --example process_fixture --example meta_probe
+PYTHONPATH=src python3 scripts/migration/meta_differential.py
+PYTHONPATH=src python3 scripts/migration/measure_meta_metadata.py
+python3 scripts/migration/update_acceptance_plan.py
+python3 scripts/migration/check_matrix.py
+CARGO_BUILD_JOBS=1 scripts/rust.sh build --locked --offline --release --bin kwr-rs
+```
+
+`scripts/verify-meta.sh` builds and executes the combined loopback fixture. With an
+owned shared target, set CARGO_TARGET_DIR plus KWR_RUST_BINARY, KWR_PROCESS_FIXTURE
+and KWR_META_PROBE to its exact debug executable paths; run builds serially. The
+coverage scripts execute tests, not just inspect source: measure_cli_coverage.py runs
+218 offline baseline comparisons, records observed flags/outputs and reference MCP
+schemas only. No native MCP protocol/tools are implemented. Use the committed
+coverage artifact to review successful evidence without needlessly rerunning gates.
+Meta oracle replay does no I/O and checks full output at each child's measured timing/
+completion inputs; read meta-contract.md before interpreting the scope. No live API,
+real archive or authentication store is part of these tests. All final acceptance
+rows stay pending; proposed test filenames are not executed evidence. Installed CLI
+replacement and production migration remain unauthorized.

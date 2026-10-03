@@ -73,3 +73,17 @@ See process-contract.md for null stdin, shared output cap and scoped signal safe
 The separate branch starts at normally integrated main e91513bc (PR #25 repaired eda15e2); no prior repair is in this feature diff. Native OpenAlex search, normal request/result/cursor/config/op/error/abstract/metadata and CLI path plus pure identifier spelling helper are implemented. Exact contract and unverified scope: openalex-contract.md. Author evidence: 95 search transcripts, 13 identifier expectations and 34 paired localhost CLI comparisons, all eight synthetic user tables preserved on success/error. Auth/op key resolution is fake; no real vault, installed op or live API. Anonymous omission behavior matches source code and is not a statement that current live access is available. Rate/auth/late-page errors do not retry or emit partial results; API-key/op references never enter native error text.
 
 Unicode alphabetic facts use existing Python3.13/Unicode15.1 (660 ranges), without a dependency/runtime Python. All native/218 baseline CLI, clippy/fmt, Python167 required verifier and locked offline release pass. Meta, OpenAlex graph/cache and downstream/OS/release/lifecycle/live/final safety acceptance remain open. All 35 matrix rows now separate scoped passed proof, exact source hashes and concrete pending reasons from final acceptance.
+
+## Slice 7d: native Meta combined preview
+
+The feature follows integrated main186511a (#26 repaired5dffce0), with no previous
+OpenAlex repair in its effective feature diff. All nine native provider normal paths
+are available in preview. Meta implements profile rewrites, bounded four-worker
+execution, completion-order fusion/health annotations, weak routing and transaction
+ledger/pruning. See meta-contract.md for 37 combined pairs, four signal executions,
+five output-schema pairs and the measured-clock oracle invariants. Tests use only
+loopback, ephemeral process trust, synthetic populated archives and owned executables.
+No installed Python runtime is called by Rust. Signal raw-exit policy, commit/panic
+safety, representations, overall resource bounds, actual OS/live gates remain pending;
+all 35 final rows stay open. Native readers/enrichment and downstream commands/MCP
+are not completed by this provider preview.

@@ -48,3 +48,15 @@ Slice 7b now implements native GitHub repository Unix gh-to-REST fallback with o
 PR #25 repaired eda15e2 was normally authorized/merged as main e91513bc0516b328d6432ba73d293343b8b3af42, with tree equivalence and fresh exact head/base/protection/threads/CI readback. Slice 7c follows that main and implements native OpenAlex search (95 transcript/13 identifier/34 CLI cases) plus frozen language facts. It does not implement graph/cache. Meta remains the last component provider; downstream features and all final storage/report/platform/release gates remain. Every pending acceptance row now names reasons; scoped passed cases and final scope are separate.
 
 Local slice 7d starts on Draft #26 exact91da387. Native Meta component/fusion/worker/ledger code has controlled offline evidence; CLI remains gated. Meta contract lists combined-provider CLI/config/archive/error/signal/panic/history/model acceptance still required. Matrix has 13 scoped passing records and 35 pending final rows. This checkpoint is local and has no separate PR/release or integration authorization.
+
+Current slice 7d follows normally merged #26 repaired5dffce0/main186511a. Native Meta
+CLI is enabled for the measured normal scope, including four-worker fanout, fusion and
+selected health ledger. Combined37 pairs/signal4 executions/output-schema5 pairs pass;
+controlled262 component inputs/33 transcripts and native policies remain applicable.
+Detailed CLI coverage records167 leaf pairs + one root version pair; native MCP0/7.
+Every one of35 final rows now lists specific missing assertions, proposed test IDs/files
+(execution_evidence=false), passed scopes and a closure condition. No final row closes
+from aggregate pass counts. Next native feature is direct/Jina/auto read with FetchError
+fallback and selected cache writes, then collect/enrichment/report dependencies.
+Ledger commit/panic, total-resource caps and actual OS/release/storage gates remain
+separate mandatory work. Paper-driven changes remain a separately evaluated commit.

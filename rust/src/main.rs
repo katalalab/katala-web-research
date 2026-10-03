@@ -1,4 +1,4 @@
-use clap::{Args, Parser, Subcommand};
+use clap::{Args, Parser, Subcommand, builder::TypedValueParser};
 use kwr::{Result, archive::Archive, planner, registry::Registry};
 use serde_json::{Value, json};
 use std::{
@@ -18,7 +18,7 @@ struct Cli {
 }
 #[derive(Args)]
 struct Local {
-    #[arg(long, default_value = ".katala-web-research/archive.sqlite")]
+    #[arg(long, default_value = ".katala-web-research/archive.sqlite", value_parser = clap::builder::OsStringValueParser::new().map(PathBuf::from))]
     archive: PathBuf,
     #[arg(long)]
     json: bool,

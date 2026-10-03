@@ -97,6 +97,20 @@ fn main() {
                 std::thread::sleep(Duration::from_millis(5));
             }
         }
+        "meta-heartbeat" => {
+            let mut f = std::fs::OpenOptions::new()
+                .create(true)
+                .append(true)
+                .open(&args[1])
+                .unwrap();
+            let started = std::time::Instant::now();
+            // Even a failed cleanup assertion cannot leave an unbounded fixture.
+            while started.elapsed() < Duration::from_secs(8) {
+                f.write_all(b"x").unwrap();
+                f.flush().unwrap();
+                std::thread::sleep(Duration::from_millis(5));
+            }
+        }
         "descendant" => {
             let mut child = Command::new(std::env::current_exe().unwrap())
                 .args(["heartbeat", &args[1]])
@@ -114,6 +128,15 @@ fn main() {
                 "fullName,description,url,stargazersCount,updatedAt,isFork"
             );
             match args[2].as_str() {
+                "fixture-meta-signal" => {
+                    let heartbeat = std::env::var("KWR_FIXTURE_GH_HEARTBEAT").unwrap();
+                    let mut child = Command::new(std::env::current_exe().unwrap())
+                        .args(["meta-heartbeat", &heartbeat])
+                        .stdin(Stdio::null())
+                        .spawn()
+                        .unwrap();
+                    let _ = child.wait();
+                }
                 "fixture-gh-empty" => println!("[]"),
                 "fixture-gh-nonzero" => std::process::exit(7),
                 "fixture-gh-malformed" => println!("public-fixture-key malformed"),
