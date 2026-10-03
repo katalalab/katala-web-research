@@ -34,6 +34,29 @@ struct Query {
 }
 #[derive(Subcommand)]
 enum Command {
+    Search {
+        query: String,
+        #[command(flatten)]
+        local: Local,
+        #[arg(long,default_value="ddg",value_parser=["brave","ddg","feed","github","github_code","jina","meta","openalex","searxng"])]
+        provider: String,
+        #[arg(short = 'n', long, default_value_t = 10, allow_hyphen_values = true)]
+        limit: i64,
+        #[arg(long, default_value_t = 2.0, allow_hyphen_values = true)]
+        candidate_multiplier: f64,
+        #[arg(long,value_parser=["github","research","pdf"])]
+        category: Vec<String>,
+        #[arg(long)]
+        include_domain: Vec<String>,
+        #[arg(long)]
+        exclude_domain: Vec<String>,
+        #[arg(long, default_value_t = 0, allow_hyphen_values = true)]
+        enrich_top: i64,
+        #[arg(long, default_value_t = 0, allow_hyphen_values = true)]
+        highlight_top: i64,
+        #[arg(long,default_value="auto",value_parser=["auto","jina","direct"])]
+        reader: String,
+    },
     Plan {
         query: String,
         #[arg(long, default_value_t = 4, allow_hyphen_values = true)]
@@ -117,6 +140,12 @@ enum Repos {
 }
 #[derive(Subcommand)]
 enum Feeds {
+    Refresh {
+        #[arg(long)]
+        source: Option<String>,
+        #[command(flatten)]
+        local: Local,
+    },
     Add {
         url: String,
         #[arg(long, default_value = "")]
@@ -206,8 +235,183 @@ fn query(kind: &str, q: Query, repo: &str, path: &str, out: &mut impl Write) -> 
     }
     Ok(())
 }
+fn load_registry() -> Result<Registry> {
+    let overlay = std::env::var_os("KWR_SOURCE_REGISTRY_OVERLAY")
+        .filter(|s| !s.is_empty())
+        .map(PathBuf::from);
+    Registry::load(overlay.as_deref())
+}
+fn local_feed_path(value: &str) -> Result<PathBuf> {
+    let url = url::Url::parse(value)?;
+    if url.scheme() != "file" || url.host_str().is_some_and(|h| h != "localhost") {
+        return Err(
+            "network feeds not migrated yet; this slice accepts local file fixtures".into(),
+        );
+    }
+    url.to_file_path()
+        .map_err(|_| "invalid local file URL".into())
+}
+fn fetch_feed_local(value: &str) -> Result<String> {
+    Ok(String::from_utf8_lossy(&std::fs::read(local_feed_path(value)?)?).into_owned())
+}
 fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
     match cli.command {
+        Command::Feeds {
+            command: Feeds::Refresh { source, local },
+        } => {
+            let archive = Archive::open(&local.archive)?;
+            let source = source.filter(|s| !s.is_empty());
+            let sources = if let Some(url) = source.as_ref() {
+                local_feed_path(url)?;
+                let s = kwr::feeds::FeedSource::pending(url.clone());
+                archive.upsert_feed_source(&s)?;
+                vec![s]
+            } else {
+                archive.feed_sources()?
+            };
+            // Reject pending network surfaces before changing any source health.
+            for source in &sources {
+                local_feed_path(&source.url)?;
+            }
+            let mut refreshed = Vec::new();
+            for source in sources {
+                let fetched_at = kwr::now();
+                let parsed = fetch_feed_local(&source.url)
+                    .and_then(|text| kwr::feeds::parse(&text, &source.url, &fetched_at));
+                let row = match parsed {
+                    Ok(parsed) => {
+                        archive.upsert_feed_source(&parsed.source)?;
+                        let count = archive.upsert_feed_items(&parsed.items)?;
+                        let mut row = serde_json::to_value(parsed.source)?;
+                        row["indexed_items"] = json!(count);
+                        row
+                    }
+                    Err(e) => {
+                        let kind = if e.downcast_ref::<std::io::Error>().is_some() {
+                            "FetchError"
+                        } else {
+                            "ValueError"
+                        };
+                        let mut s = kwr::feeds::FeedSource::pending(source.url);
+                        s.title = source.title;
+                        s.kind = source.kind;
+                        s.last_fetched_at = fetched_at;
+                        s.status = "error".into();
+                        s.error_kind = kind.into();
+                        archive.upsert_feed_source(&s)?;
+                        let mut row = serde_json::to_value(s)?;
+                        row["indexed_items"] = json!(0);
+                        row
+                    }
+                };
+                refreshed.push(row);
+            }
+            let indexed: i64 = refreshed
+                .iter()
+                .filter_map(|r| r["indexed_items"].as_i64())
+                .sum();
+            if local.json {
+                emit(
+                    &json!({"archive":local.archive,"source_count":refreshed.len(),"indexed_items":indexed,"refreshed":refreshed}),
+                    out,
+                )?;
+            } else {
+                writeln!(
+                    out,
+                    "archive: {}\nsources: {}\nindexed_items: {indexed}",
+                    local.archive.display(),
+                    refreshed.len()
+                )?;
+                for r in refreshed {
+                    writeln!(
+                        out,
+                        "{}: {} items={}",
+                        field(&r, "url"),
+                        field(&r, "status"),
+                        r["indexed_items"]
+                    )?;
+                }
+            }
+        }
+        Command::Search {
+            query,
+            local,
+            provider,
+            limit,
+            candidate_multiplier,
+            category,
+            include_domain,
+            exclude_domain,
+            enrich_top,
+            highlight_top,
+            reader: _,
+        } => {
+            if provider != "feed" {
+                return Err(format!("provider {provider} not migrated yet").into());
+            }
+            if enrich_top > 0 {
+                return Err("network enrichment not migrated yet".into());
+            }
+            if !candidate_multiplier.is_finite() {
+                return Err("candidate multiplier must be finite".into());
+            }
+            let registry = load_registry()?;
+            let built =
+                kwr::search::build_query(&query, &category, &include_domain, &exclude_domain);
+            let candidates =
+                limit.max((limit.max(1) as f64 * candidate_multiplier.max(1.0) + 0.9999) as i64);
+            let mut results = kwr::search::slice(
+                kwr::search::feed(&built.query, &local.archive, candidates, &registry)?,
+                limit,
+            );
+            for r in &mut results {
+                if let Some(category) = kwr::search::category(&r.url, &built) {
+                    r.metadata.insert("query_category".into(), json!(category));
+                }
+            }
+            if highlight_top > 0 && !results.is_empty() {
+                let archive = Archive::open(&local.archive)?;
+                for r in results.iter_mut().take(highlight_top as usize) {
+                    let page = archive.cached_page(&r.url)?;
+                    let status = if let Some(page) = page {
+                        let snippet = kwr::search::highlight(&query, field(&page, "content"));
+                        if snippet.is_empty() {
+                            "empty"
+                        } else {
+                            r.snippet = snippet;
+                            r.metadata
+                                .insert("highlight_source".into(), page["source"].clone());
+                            r.metadata
+                                .insert("highlight_fetched_at".into(), page["fetched_at"].clone());
+                            "ok"
+                        }
+                    } else {
+                        "miss"
+                    };
+                    r.metadata.insert("highlight_status".into(), json!(status));
+                }
+                use chrono::Datelike;
+                results =
+                    kwr::search::rank(&query, results, &registry, chrono::Local::now().year());
+            }
+            let results = kwr::search::slice(results, limit);
+            if local.json {
+                emit(&serde_json::to_value(results)?, out)?;
+            } else {
+                for r in results {
+                    writeln!(out, "{}. {}\n   {}", r.rank, r.title, r.url)?;
+                    if !r.snippet.is_empty() {
+                        writeln!(out, "   {}", r.snippet)?;
+                    }
+                    writeln!(
+                        out,
+                        "   source={} score={}",
+                        r.source,
+                        serde_json::to_string(&r.score)?
+                    )?;
+                }
+            }
+        }
         Command::Plan {
             query,
             max_subqueries,

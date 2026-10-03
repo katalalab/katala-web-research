@@ -24,6 +24,11 @@ chrono = { version = "0.4.42", default-features = false, features = ["clock"] }
 sha2 = "0.10.9"
 tempfile = "3.23.0"
 
+roxmltree = "0.21.1"
+html-escape = "0.2.13"
+regex = "1.11.3"
+url = "2.5.7"
+
 [profile.release]
 lto = "thin"
 strip = "symbols"
@@ -35,3 +40,7 @@ path = "rust/tests/migration.rs"
 [[test]]
 name = "golden"
 path = "rust/tests/golden.rs"
+
+[[test]]
+name = "feeds"
+path = "rust/tests/feeds.rs"

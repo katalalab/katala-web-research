@@ -11,20 +11,21 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | sources list/match | bundled JSON, overlay KWR_SOURCE_REGISTRY_OVERLAY keyed by domain/type/name; exact normalized host; prefix path boundary; trust/name ordering | Native implemented; boundary/overlay differential tests |
 | query | pages FTS5, quoted whitespace tokens with quotes stripped, AND semantics, bm25/snippet, empty results | Native implemented; shared SQL schema and differential ranking |
 | repos query | FTS5 six columns, context weighting, inline repo:/path:, explicit filters win, escaped LIKE | Native query implemented; scanner remains pending |
-| feeds query | FTS5 summary snippets with source/published/fetched fields | Native query implemented; refresh parsers RSS/Atom/JSONFeed pending |
+| feeds query | FTS5 summary snippets with source/published/fetched fields | Native query implemented; RSS/Atom/JSONFeed normal-input parsing and local file refresh implemented; HTTP and parser edge parity pending |
 | feeds add | upsert source without resetting health or added_at, empty strings preserved in CLI payload | Native implemented; differential archive writes |
+| feeds refresh | source selection/order, RSS/Atom/JSONFeed, per-source error health, upsert without deleting absent old items | Local file vertical slice implemented; non-file sources explicitly rejected before health writes; HTTP pending |
 | issues query | FTS5 title snippets, labels JSON, computed item_key | Native implemented |
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
 | read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Network pending; cached hits implemented |
-| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Pending; no provider falsely advertised as migrated |
+| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Stored-feed provider native: lexical rank/diversity/query filters/cache highlights; eight network providers and positive enrichment pending |
 | collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |
 | doctor | provider configuration posture plus actual SQLite FTS5 probe; optional SearXNG preflight | Pending |
 | openalex expand | ID/DOI normalization; direction references/citing/both, bounded 50, cursor paging/cache reader | Pending |
 | eval | deterministic 80 threshold, source/plan/rank/domain metrics, Markdown report, failing exit 1 | Pending; baseline suite retained |
-| mcp | 2025-11-25, seven tools, initialize/list/call, JSON-RPC error codes, Content-Length UTF-8 byte framing CRLF | Pending; must test notifications, partial/invalid frames, stdout cleanliness |
+| mcp | 2025-11-25, seven tools, initialize/list/call, JSON-RPC error codes, Content-Length UTF-8 byte framing CRLF | Pending; preserve legacy Content-Length framing and add official NDJSON compatibility explicitly; test notifications, partial/invalid frames, stdout cleanliness |
 | migration | Python user_version=0; implicit repo columns/context FTS upgrade on open | Implemented copy-only migration; source read-only, version/fingerprint checks, atomic transaction, validation/rollback |
 
 ## Storage and security constraints
@@ -41,4 +42,4 @@ Pin an already-installed Rust toolchain and MSRV with Cargo.lock; use native Pat
 
 ## Completion conditions
 
-A complete migration requires every pending row implemented natively, no Python runtime invocation, command/JSON/exit/report/provider differential gates, matching schema/content/index/cache semantics, offline reference suite coverage and deterministic evaluation, bounded networking/security/fallback tests, copy migration version rejection/dry-run/idempotence/interruption/rollback, and actual Mac/Windows/Linux build/test evidence. Live providers are separately marked unverified until authorized checks. Do not replace installed CLI, switch real archives, remove Python reference, merge main, or claim full migration while any row remains pending. Research-driven features get a separate evaluated commit.
+A complete migration requires every pending row implemented natively, no Python runtime invocation, command/JSON/exit/report/provider differential gates, matching schema/content/index/cache semantics, offline reference suite coverage and deterministic evaluation, bounded networking/security/fallback tests, copy migration version rejection/dry-run/idempotence/interruption/rollback, and actual Mac/Windows/Linux build/test evidence. Live providers are separately marked unverified until authorized checks. Do not replace installed CLI, switch real archives, remove Python reference, or claim full migration while any row remains pending. A preview slice may enter main only after explicit integration authorization, independent review and exact-head required checks; that does not satisfy the complete-migration gate. Research-driven features get a separate evaluated commit.

@@ -1,0 +1,1767 @@
+{
+  "baseline": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "entities": [
+    {
+      "expected": "Á á Á á Ă ă ∾ ∿ ∾̳ Â â Â â ´ ´ А а Æ æ Æ æ ⁡ 𝔄 𝔞 À à À à ℵ ℵ Α α Ā ā ⨿ & & & & ⩓ ∧ ⩕ ⩜ ⩘ ⩚ ∠ ⦤ ∠ ∡ ⦨ ⦩ ⦪ ⦫ ⦬ ⦭ ⦮ ⦯ ∟ ⊾ ⦝ ∢ Å ⍼ Ą ą 𝔸 𝕒 ≈ ⩯ ⩰ ≊ ≋ ' ⁡ ≈ ≊ Å å Å å 𝒜 𝒶 ≔ * ≈ ≍ Ã ã Ã ã Ä ä Ä ä ∳ ⨑ ≌ ϶ ‵ ∽ ⋍ ∖ ⫧ ⊽ ⌆ ⌅ ⌅ ⎵ ⎶ ≌ Б б „ ∵ ∵ ∵ ⦰ ϶ ℬ ℬ Β β ℶ ≬ 𝔅 𝔟 ⋂ ◯ ⋃ ⨀ ⨁ ⨂ ⨆ ★ ▽ △ ⨄ ⋁ ⋀ ⤍ ⧫ ▪ ▴ ▾ ◂ ▸ ␣ ▒ ░ ▓ █ =⃥ ≡⃥ ⫭ ⌐ 𝔹 𝕓 ⊥ ⊥ ⋈ ⧉ ╗ ╖ ╕ ┐ ╔ ╓ ╒ ┌ ═ ─ ╦ ╤ ╥ ┬ ╩ ╧ ╨ ┴ ⊟ ⊞ ⊠ ╝ ╜ ╛ ┘ ╚ ╙ ╘ └ ║ │ ╬ ╫ ╪ ┼ ╣ ╢ ╡ ┤ ╠ ╟ ╞ ├ ‵ ˘ ˘ ¦ ¦ ℬ 𝒷 ⁏ ∽ ⋍ \\ ⧅ ⟈ • • ≎ ⪮ ≏ ≎ ≏ Ć ć ⋒ ∩ ⩄ ⩉ ⩋ ⩇ ⩀ ⅅ ∩︀ ⁁ ˇ ℭ ⩍ Č č Ç ç Ç ç Ĉ ĉ ∰ ⩌ ⩐ Ċ ċ ¸ ¸ ¸ ⦲ ¢ ¢ · · ℭ 𝔠 Ч ч ✓ ✓ Χ χ ○ ˆ ≗ ↺ ↻ ⊛ ⊚ ⊝ ⊙ ® Ⓢ ⊖ ⊕ ⊗ ⧃ ≗ ⨐ ⫯ ⧂ ∲ ” ’ ♣ ♣ ∷ : ⩴ ≔ ≔ , @ ∁ ∘ ∁ ℂ ≅ ⩭ ≡ ∯ ∮ ∮ ℂ 𝕔 ∐ ∐ © © © © ℗ ∳ ↵ ⨯ ✗ 𝒞 𝒸 ⫏ ⫑ ⫐ ⫒ ⋯ ⤸ ⤵ ⋞ ⋟ ↶ ⤽ ⋓ ∪ ⩈ ≍ ⩆ ⩊ ⊍ ⩅ ∪︀ ↷ ⤼ ⋞ ⋟ ⋎ ⋏ ¤ ¤ ↶ ↷ ⋎ ⋏ ∲ ∱ ⌭ ‡ † ℸ ↡ ⇓ ↓ ‐ ⫤ ⊣ ⤏ ˝ Ď ď Д д ⅅ ⅆ ‡ ⇊ ⤑ ⩷ ° ° ∇ Δ δ ⦱ ⥿ 𝔇 𝔡 ⥥ ⇃ ⇂ ´ ˙ ˝ ` ˜ ⋄ ⋄ ⋄ ♦ ♦ ¨ ⅆ ϝ ⋲ ÷ ÷ ÷ ⋇ ⋇ Ђ ђ ⌞ ⌍ $ 𝔻 𝕕 ¨ ˙ ⃜ ≐ ≑ ≐ ∸ ∔ ⊡ ⌆ ∯ ¨ ⇓ ⇐ ⇔ ⫤ ⟸ ⟺ ⟹ ⇒ ⊨ ⇑ ⇕ ∥ ↓ ⇓ ↓ ⤓ ⇵ ̑ ⇊ ⇃ ⇂ ⥐ ⥞ ↽ ⥖ ⥟ ⇁ ⥗ ⊤ ↧ ⤐ ⌟ ⌌ 𝒟 𝒹 Ѕ ѕ ⧶ Đ đ ⋱ ▿ ▾ ⇵ ⥯ ⦦ Џ џ ⟿ É é É é ⩮ Ě ě ≖ Ê ê Ê ê ≕ Э э ⩷ Ė ≑ ė ⅇ ≒ 𝔈 𝔢 ⪚ È è È è ⪖ ⪘ ⪙ ∈ ⏧ ℓ ⪕ ⪗ Ē ē ∅ ∅ ◻ ∅ ▫       Ŋ ŋ   Ę ę 𝔼 𝕖 ⋕ ⧣ ⩱ ε Ε ε ϵ ≖ ≕ ≂ ⪖ ⪕ ⩵ = ≂ ≟ ⇌ ≡ ⩸ ⧥ ⥱ ≓ ℰ ℯ ≐ ⩳ ≂ Η η Ð ð Ð ð Ë ë Ë ë € ! ∃ ∃ ℰ ⅇ ⅇ ≒ Ф ф ♀ ﬃ ﬀ ﬄ 𝔉 𝔣 ﬁ ◼ ▪ fj ♭ ﬂ ▱ ƒ 𝔽 𝕗 ∀ ∀ ⋔ ⫙ ℱ ⨍ ½ ½ ⅓ ¼ ¼ ⅕ ⅙ ⅛ ⅔ ⅖ ¾ ¾ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞ ⁄ ⌢ ℱ 𝒻 ǵ Γ γ Ϝ ϝ ⪆ Ğ ğ Ģ Ĝ ĝ Г г Ġ ġ ≧ ≥ ⪌ ⋛ ≥ ≧ ⩾ ⩾ ⪩ ⪀ ⪂ ⪄ ⋛︀ ⪔ 𝔊 𝔤 ⋙ ≫ ⋙ ℷ Ѓ ѓ ≷ ⪥ ⪒ ⪤ ⪊ ⪊ ≩ ⪈ ⪈ ≩ ⋧ 𝔾 𝕘 ` ≥ ⋛ ≧ ⪢ ≷ ⩾ ≳ 𝒢 ℊ ≳ ⪎ ⪐ > > > ≫ > ⪧ ⩺ ⋗ ⦕ ⩼ ⪆ ⥸ ⋗ ⋛ ⪌ ≷ ≳ ≩︀ ≩︀ ˇ   ½ ℋ Ъ ъ ⇔ ↔ ⥈ ↭ ^ ℏ Ĥ ĥ ♥ ♥ … ⊹ ℌ 𝔥 ℋ ⤥ ⤦ ⇿ ∻ ↩ ↪ ℍ 𝕙 ― ─ ℋ 𝒽 ℏ Ħ ħ ≎ ≏ ⁃ ‐ Í í Í í ⁣ Î î Î î И и İ Е е ¡ ¡ ⇔ ℑ 𝔦 Ì ì Ì ì ⅈ ⨌ ∭ ⧜ ℩ Ĳ ĳ ℑ Ī ī ℑ ⅈ ℐ ℑ ı ⊷ Ƶ ⇒ ∈ ℅ ∞ ⧝ ı ∬ ∫ ⊺ ℤ ∫ ⊺ ⋂ ⨗ ⨼ ⁣ ⁢ Ё ё Į į 𝕀 𝕚 Ι ι ⨼ ¿ ¿ ℐ 𝒾 ∈ ⋵ ⋹ ⋴ ⋳ ∈ ⁢ Ĩ ĩ І і Ï ï Ï ï Ĵ ĵ Й й 𝔍 𝔧 ȷ 𝕁 𝕛 𝒥 𝒿 Ј ј Є є Κ κ ϰ Ķ ķ К к 𝔎 𝔨 ĸ Х х Ќ ќ 𝕂 𝕜 𝒦 𝓀 ⇚ Ĺ ĺ ⦴ ℒ Λ λ ⟪ ⟨ ⦑ ⟨ ⪅ ℒ « « ↞ ⇐ ← ⇤ ⤟ ⤝ ↩ ↫ ⤹ ⥳ ↢ ⪫ ⤛ ⤙ ⪭ ⪭︀ ⤎ ⤌ ❲ { [ ⦋ ⦏ ⦍ Ľ ľ Ļ ļ ⌈ { Л л ⤶ “ „ ⥧ ⥋ ↲ ≦ ≤ ⟨ ← ⇐ ← ⇤ ⇆ ↢ ⌈ ⟦ ⥡ ⇃ ⥙ ⌊ ↽ ↼ ⇇ ↔ ⇔ ↔ ⇆ ⇋ ↭ ⥎ ⊣ ↤ ⥚ ⋋ ⊲ ⧏ ⊴ ⥑ ⥠ ↿ ⥘ ↼ ⥒ ⪋ ⋚ ≤ ≦ ⩽ ⩽ ⪨ ⩿ ⪁ ⪃ ⋚︀ ⪓ ⪅ ⋖ ⋚ ⪋ ⋚ ≦ ≶ ≶ ⪡ ≲ ⩽ ≲ ⥼ ⌊ 𝔏 𝔩 ≶ ⪑ ⥢ ↽ ↼ ⥪ ▄ Љ љ ⋘ ≪ ⇇ ⌞ ⇚ ⥫ ◺ Ŀ ŀ ⎰ ⎰ ⪉ ⪉ ≨ ⪇ ⪇ ≨ ⋦ ⟬ ⇽ ⟦ ⟵ ⟸ ⟵ ⟷ ⟺ ⟷ ⟼ ⟶ ⟹ ⟶ ↫ ↬ ⦅ 𝕃 𝕝 ⨭ ⨴ ∗ _ ↙ ↘ ◊ ◊ ⧫ ( ⦓ ⇆ ⌟ ⇋ ⥭ ‎ ⊿ ‹ ℒ 𝓁 ↰ ↰ ≲ ⪍ ⪏ [ ‘ ‚ Ł ł < < < ≪ < ⪦ ⩹ ⋖ ⋋ ⋉ ⥶ ⩻ ◃ ⊴ ◂ ⦖ ⥊ ⥦ ≨︀ ≨︀ ¯ ¯ ♂ ✠ ✠ ⤅ ↦ ↦ ↧ ↤ ↥ ▮ ⨩ М м — ∺ ∡   ℳ 𝔐 𝔪 ℧ µ µ ∣ * ⫰ · · − ⊟ ∸ ⨪ ∓ ⫛ … ∓ ⊧ 𝕄 𝕞 ∓ ℳ 𝓂 ∾ Μ μ ⊸ ⊸ ∇ Ń ń ∠⃒ ≉ ⩰̸ ≋̸ ŉ ≉ ♮ ♮ ℕ     ≎̸ ≏̸ ⩃ Ň ň Ņ ņ ≇ ⩭̸ ⩂ Н н – ≠ ⤤ ⇗ ↗ ↗ ≐̸ ​ ​ ​ ​ ≢ ⤨ ≂̸ ≫ ≪ \n ∄ ∄ 𝔑 𝔫 ≧̸ ≱ ≱ ≧̸ ⩾̸ ⩾̸ ⋙̸ ≵ ≫⃒ ≯ ≯ ≫̸ ⇎ ↮ ⫲ ∋ ⋼ ⋺ ∋ Њ њ ⇍ ↚ ‥ ≦̸ ≰ ⇍ ↚ ⇎ ↮ ≰ ≦̸ ⩽̸ ⩽̸ ≮ ⋘̸ ≴ ≪⃒ ≮ ⋪ ⋬ ≪̸ ∤ ⁠   ℕ 𝕟 ¬ ⫬ ¬ ≢ ≭ ∦ ∉ ≠ ≂̸ ∄ ≯ ≱ ≧̸ ≫̸ ≹ ⩾̸ ≵ ≎̸ ≏̸ ∉ ⋵̸ ⋹̸ ∉ ⋷ ⋶ ⋪ ⧏̸ ⋬ ≮ ≰ ≸ ≪̸ ⩽̸ ≴ ⪢̸ ⪡̸ ∌ ∌ ⋾ ⋽ ⊀ ⪯̸ ⋠ ∌ ⋫ ⧐̸ ⋭ ⊏̸ ⋢ ⊐̸ ⋣ ⊂⃒ ⊈ ⊁ ⪰̸ ⋡ ≿̸ ⊃⃒ ⊉ ≁ ≄ ≇ ≉ ∤ ∦ ∦ ⫽⃥ ∂̸ ⨔ ⊀ ⋠ ⪯̸ ⊀ ⪯̸ ⇏ ↛ ⤳̸ ↝̸ ⇏ ↛ ⋫ ⋭ ⊁ ⋡ ⪰̸ 𝒩 𝓃 ∤ ∦ ≁ ≄ ≄ ∤ ∦ ⋢ ⋣ ⊄ ⫅̸ ⊈ ⊂⃒ ⊈ ⫅̸ ⊁ ⪰̸ ⊅ ⫆̸ ⊉ ⊃⃒ ⊉ ⫆̸ ≹ Ñ ñ Ñ ñ ≸ ⋪ ⋬ ⋫ ⋭ Ν ν # №   ≍⃒ ⊯ ⊮ ⊭ ⊬ ≥⃒ >⃒ ⤄ ⧞ ⤂ ≤⃒ <⃒ ⊴⃒ ⤃ ⊵⃒ ∼⃒ ⤣ ⇖ ↖ ↖ ⤧ Ó ó Ó ó ⊛ ⊚ Ô ô Ô ô О о ⊝ Ő ő ⨸ ⊙ ⦼ Œ œ ⦿ 𝔒 𝔬 ˛ Ò ò Ò ò ⧁ ⦵ Ω ∮ ↺ ⦾ ⦻ ‾ ⧀ Ō ō Ω ω Ο ο ⦶ ⊖ 𝕆 𝕠 ⦷ “ ‘ ⦹ ⊕ ⩔ ∨ ↻ ⩝ ℴ ℴ ª ª º º ⊶ ⩖ ⩗ ⩛ Ⓢ 𝒪 ℴ Ø ø Ø ø ⊘ Õ õ Õ õ ⨷ ⊗ ⨶ Ö ö Ö ö ⌽ ‾ ⏞ ⎴ ⏜ ∥ ¶ ¶ ∥ ⫳ ⫽ ∂ ∂ П п % . ‰ ⊥ ‱ 𝔓 𝔭 Φ φ ϕ ℳ ☎ Π π ⋔ ϖ ℏ ℎ ℏ + ⨣ ⊞ ⨢ ∔ ⨥ ⩲ ± ± ± ⨦ ⨧ ± ℌ ⨕ ℙ 𝕡 £ £ ⪻ ≺ ⪷ ≼ ⪳ ⪯ ≺ ⪷ ≼ ≺ ⪯ ≼ ≾ ⪯ ⪹ ⪵ ⋨ ≾ ″ ′ ℙ ⪹ ⪵ ⋨ ∏ ∏ ⌮ ⌒ ⌓ ∝ ∷ ∝ ∝ ≾ ⊰ 𝒫 𝓅 Ψ ψ   𝔔 𝔮 ⨌ ℚ 𝕢 ⁗ 𝒬 𝓆 ℍ ⨖ ? ≟ \" \" \" \" ⇛ ∽̱ Ŕ ŕ √ ⦳ ⟫ ⟩ ⦒ ⦥ ⟩ » » ↠ ⇒ → ⥵ ⇥ ⤠ ⤳ ⤞ ↪ ↬ ⥅ ⥴ ⤖ ↣ ↝ ⤜ ⤚ ∶ ℚ ⤐ ⤏ ⤍ ❳ } ] ⦌ ⦎ ⦐ Ř ř Ŗ ŗ ⌉ } Р р ⤷ ⥩ ” ” ↳ ℜ ℜ ℛ ℜ ℝ ▭ ® ® ® ® ∋ ⇋ ⥯ ⥽ ⌋ ℜ 𝔯 ⥤ ⇁ ⇀ ⥬ Ρ ρ ϱ ⟩ → ⇒ → ⇥ ⇄ ↣ ⌉ ⟧ ⥝ ⇂ ⥕ ⌋ ⇁ ⇀ ⇄ ⇌ ⇉ ↝ ⊢ ↦ ⥛ ⋌ ⊳ ⧐ ⊵ ⥏ ⥜ ↾ ⥔ ⇀ ⥓ ˚ ≓ ⇄ ⇌ ‏ ⎱ ⎱ ⫮ ⟭ ⇾ ⟧ ⦆ ℝ 𝕣 ⨮ ⨵ ⥰ ) ⦔ ⨒ ⇉ ⇛ › ℛ 𝓇 ↱ ↱ ] ’ ’ ⋌ ⋊ ▹ ⊵ ▸ ⧎ ⧴ ⥨ ℞ Ś ś ‚ ⪼ ≻ ⪸ Š š ≽ ⪴ ⪰ Ş ş Ŝ ŝ ⪺ ⪶ ⋩ ⨓ ≿ С с ⋅ ⊡ ⩦ ⤥ ⇘ ↘ ↘ § § ; ⤩ ∖ ∖ ✶ 𝔖 𝔰 ⌢ ♯ Щ щ Ш ш ↓ ← ∣ ∥ → ↑ ­ ­ Σ σ ς ς ∼ ⩪ ≃ ≃ ⪞ ⪠ ⪝ ⪟ ≆ ⨤ ⥲ ← ∘ ∖ ⨳ ⧤ ∣ ⌣ ⪪ ⪬ ⪬︀ Ь ь / ⧄ ⌿ 𝕊 𝕤 ♠ ♠ ∥ ⊓ ⊓︀ ⊔ ⊔︀ √ ⊏ ⊑ ⊏ ⊑ ⊐ ⊒ ⊐ ⊒ □ □ □ ⊓ ⊏ ⊑ ⊐ ⊒ ⊔ ▪ ▪ → 𝒮 𝓈 ∖ ⌣ ⋆ ⋆ ☆ ★ ϵ ϕ ¯ ⋐ ⊂ ⪽ ⫅ ⊆ ⫃ ⫁ ⫋ ⊊ ⪿ ⥹ ⋐ ⊂ ⊆ ⫅ ⊆ ⊊ ⫋ ⫇ ⫕ ⫓ ≻ ⪸ ≽ ≻ ⪰ ≽ ≿ ⪰ ⪺ ⪶ ⋩ ≿ ∋ ∑ ∑ ♪ ¹ ¹ ² ² ³ ³ ⋑ ⊃ ⪾ ⫘ ⫆ ⊇ ⫄ ⊃ ⊇ ⟉ ⫗ ⥻ ⫂ ⫌ ⊋ ⫀ ⋑ ⊃ ⊇ ⫆ ⊋ ⫌ ⫈ ⫔ ⫖ ⤦ ⇙ ↙ ↙ ⤪ ß ß \t ⌖ Τ τ ⎴ Ť ť Ţ ţ Т т ⃛ ⌕ 𝔗 𝔱 ∴ ∴ ∴ Θ θ ϑ ϑ ≈ ∼        ≈ ∼ Þ þ Þ þ ∼ ˜ ≃ ≅ ≈ × × ⊠ ⨱ ⨰ ∭ ⤨ ⊤ ⌶ ⫱ 𝕋 𝕥 ⫚ ⤩ ‴ ™ ™ ▵ ▿ ◃ ⊴ ≜ ▹ ⊵ ◬ ≜ ⨺ ⃛ ⨹ ⧍ ⨻ ⏢ 𝒯 𝓉 Ц ц Ћ ћ Ŧ ŧ ≬ ↞ ↠ Ú ú Ú ú ↟ ⇑ ↑ ⥉ Ў ў Ŭ ŭ Û û Û û У у ⇅ Ű ű ⥮ ⥾ 𝔘 𝔲 Ù ù Ù ù ⥣ ↿ ↾ ▀ ⌜ ⌜ ⌏ ◸ Ū ū ¨ ¨ _ ⏟ ⎵ ⏝ ⋃ ⊎ Ų ų 𝕌 𝕦 ↑ ⇑ ↑ ⤒ ⇅ ↕ ⇕ ↕ ⥮ ↿ ↾ ⊎ ↖ ↗ ϒ υ ϒ Υ υ ⊥ ↥ ⇈ ⌝ ⌝ ⌎ Ů ů ◹ 𝒰 𝓊 ⋰ Ũ ũ ▵ ▴ ⇈ Ü ü Ü ü ⦧ ⦜ ϵ ϰ ∅ ϕ ϖ ∝ ⇕ ↕ ϱ ς ⊊︀ ⫋︀ ⊋︀ ⫌︀ ϑ ⊲ ⊳ ⫫ ⫨ ⫩ В в ⊫ ⊩ ⊨ ⊢ ⫦ ⋁ ∨ ⊻ ≚ ⋮ ‖ | ‖ | ∣ | ❘ ≀   𝔙 𝔳 ⊲ ⊂⃒ ⊃⃒ 𝕍 𝕧 ∝ ⊳ 𝒱 𝓋 ⫋︀ ⊊︀ ⫌︀ ⊋︀ ⊪ ⦚ Ŵ ŵ ⩟ ⋀ ∧ ≙ ℘ 𝔚 𝔴 𝕎 𝕨 ℘ ≀ ≀ 𝒲 𝓌 ⋂ ◯ ⋃ ▽ 𝔛 𝔵 ⟺ ⟷ Ξ ξ ⟸ ⟵ ⟼ ⋻ ⨀ 𝕏 𝕩 ⨁ ⨂ ⟹ ⟶ 𝒳 𝓍 ⨆ ⨄ △ ⋁ ⋀ Ý ý Ý ý Я я Ŷ ŷ Ы ы ¥ ¥ 𝔜 𝔶 Ї ї 𝕐 𝕪 𝒴 𝓎 Ю ю ÿ Ÿ ÿ Ź ź Ž ž З з Ż ż ℨ ​ Ζ ζ ℨ 𝔷 Ж ж ⇝ ℤ 𝕫 𝒵 𝓏 ‍ ‌",
+      "input": "&Aacute &aacute &Aacute; &aacute; &Abreve; &abreve; &ac; &acd; &acE; &Acirc &acirc &Acirc; &acirc; &acute &acute; &Acy; &acy; &AElig &aelig &AElig; &aelig; &af; &Afr; &afr; &Agrave &agrave &Agrave; &agrave; &alefsym; &aleph; &Alpha; &alpha; &Amacr; &amacr; &amalg; &AMP &amp &AMP; &amp; &And; &and; &andand; &andd; &andslope; &andv; &ang; &ange; &angle; &angmsd; &angmsdaa; &angmsdab; &angmsdac; &angmsdad; &angmsdae; &angmsdaf; &angmsdag; &angmsdah; &angrt; &angrtvb; &angrtvbd; &angsph; &angst; &angzarr; &Aogon; &aogon; &Aopf; &aopf; &ap; &apacir; &apE; &ape; &apid; &apos; &ApplyFunction; &approx; &approxeq; &Aring &aring &Aring; &aring; &Ascr; &ascr; &Assign; &ast; &asymp; &asympeq; &Atilde &atilde &Atilde; &atilde; &Auml &auml &Auml; &auml; &awconint; &awint; &backcong; &backepsilon; &backprime; &backsim; &backsimeq; &Backslash; &Barv; &barvee; &Barwed; &barwed; &barwedge; &bbrk; &bbrktbrk; &bcong; &Bcy; &bcy; &bdquo; &becaus; &Because; &because; &bemptyv; &bepsi; &bernou; &Bernoullis; &Beta; &beta; &beth; &between; &Bfr; &bfr; &bigcap; &bigcirc; &bigcup; &bigodot; &bigoplus; &bigotimes; &bigsqcup; &bigstar; &bigtriangledown; &bigtriangleup; &biguplus; &bigvee; &bigwedge; &bkarow; &blacklozenge; &blacksquare; &blacktriangle; &blacktriangledown; &blacktriangleleft; &blacktriangleright; &blank; &blk12; &blk14; &blk34; &block; &bne; &bnequiv; &bNot; &bnot; &Bopf; &bopf; &bot; &bottom; &bowtie; &boxbox; &boxDL; &boxDl; &boxdL; &boxdl; &boxDR; &boxDr; &boxdR; &boxdr; &boxH; &boxh; &boxHD; &boxHd; &boxhD; &boxhd; &boxHU; &boxHu; &boxhU; &boxhu; &boxminus; &boxplus; &boxtimes; &boxUL; &boxUl; &boxuL; &boxul; &boxUR; &boxUr; &boxuR; &boxur; &boxV; &boxv; &boxVH; &boxVh; &boxvH; &boxvh; &boxVL; &boxVl; &boxvL; &boxvl; &boxVR; &boxVr; &boxvR; &boxvr; &bprime; &Breve; &breve; &brvbar &brvbar; &Bscr; &bscr; &bsemi; &bsim; &bsime; &bsol; &bsolb; &bsolhsub; &bull; &bullet; &bump; &bumpE; &bumpe; &Bumpeq; &bumpeq; &Cacute; &cacute; &Cap; &cap; &capand; &capbrcup; &capcap; &capcup; &capdot; &CapitalDifferentialD; &caps; &caret; &caron; &Cayleys; &ccaps; &Ccaron; &ccaron; &Ccedil &ccedil &Ccedil; &ccedil; &Ccirc; &ccirc; &Cconint; &ccups; &ccupssm; &Cdot; &cdot; &cedil &cedil; &Cedilla; &cemptyv; &cent &cent; &CenterDot; &centerdot; &Cfr; &cfr; &CHcy; &chcy; &check; &checkmark; &Chi; &chi; &cir; &circ; &circeq; &circlearrowleft; &circlearrowright; &circledast; &circledcirc; &circleddash; &CircleDot; &circledR; &circledS; &CircleMinus; &CirclePlus; &CircleTimes; &cirE; &cire; &cirfnint; &cirmid; &cirscir; &ClockwiseContourIntegral; &CloseCurlyDoubleQuote; &CloseCurlyQuote; &clubs; &clubsuit; &Colon; &colon; &Colone; &colone; &coloneq; &comma; &commat; &comp; &compfn; &complement; &complexes; &cong; &congdot; &Congruent; &Conint; &conint; &ContourIntegral; &Copf; &copf; &coprod; &Coproduct; &COPY &copy &COPY; &copy; &copysr; &CounterClockwiseContourIntegral; &crarr; &Cross; &cross; &Cscr; &cscr; &csub; &csube; &csup; &csupe; &ctdot; &cudarrl; &cudarrr; &cuepr; &cuesc; &cularr; &cularrp; &Cup; &cup; &cupbrcap; &CupCap; &cupcap; &cupcup; &cupdot; &cupor; &cups; &curarr; &curarrm; &curlyeqprec; &curlyeqsucc; &curlyvee; &curlywedge; &curren &curren; &curvearrowleft; &curvearrowright; &cuvee; &cuwed; &cwconint; &cwint; &cylcty; &Dagger; &dagger; &daleth; &Darr; &dArr; &darr; &dash; &Dashv; &dashv; &dbkarow; &dblac; &Dcaron; &dcaron; &Dcy; &dcy; &DD; &dd; &ddagger; &ddarr; &DDotrahd; &ddotseq; &deg &deg; &Del; &Delta; &delta; &demptyv; &dfisht; &Dfr; &dfr; &dHar; &dharl; &dharr; &DiacriticalAcute; &DiacriticalDot; &DiacriticalDoubleAcute; &DiacriticalGrave; &DiacriticalTilde; &diam; &Diamond; &diamond; &diamondsuit; &diams; &die; &DifferentialD; &digamma; &disin; &div; &divide &divide; &divideontimes; &divonx; &DJcy; &djcy; &dlcorn; &dlcrop; &dollar; &Dopf; &dopf; &Dot; &dot; &DotDot; &doteq; &doteqdot; &DotEqual; &dotminus; &dotplus; &dotsquare; &doublebarwedge; &DoubleContourIntegral; &DoubleDot; &DoubleDownArrow; &DoubleLeftArrow; &DoubleLeftRightArrow; &DoubleLeftTee; &DoubleLongLeftArrow; &DoubleLongLeftRightArrow; &DoubleLongRightArrow; &DoubleRightArrow; &DoubleRightTee; &DoubleUpArrow; &DoubleUpDownArrow; &DoubleVerticalBar; &DownArrow; &Downarrow; &downarrow; &DownArrowBar; &DownArrowUpArrow; &DownBreve; &downdownarrows; &downharpoonleft; &downharpoonright; &DownLeftRightVector; &DownLeftTeeVector; &DownLeftVector; &DownLeftVectorBar; &DownRightTeeVector; &DownRightVector; &DownRightVectorBar; &DownTee; &DownTeeArrow; &drbkarow; &drcorn; &drcrop; &Dscr; &dscr; &DScy; &dscy; &dsol; &Dstrok; &dstrok; &dtdot; &dtri; &dtrif; &duarr; &duhar; &dwangle; &DZcy; &dzcy; &dzigrarr; &Eacute &eacute &Eacute; &eacute; &easter; &Ecaron; &ecaron; &ecir; &Ecirc &ecirc &Ecirc; &ecirc; &ecolon; &Ecy; &ecy; &eDDot; &Edot; &eDot; &edot; &ee; &efDot; &Efr; &efr; &eg; &Egrave &egrave &Egrave; &egrave; &egs; &egsdot; &el; &Element; &elinters; &ell; &els; &elsdot; &Emacr; &emacr; &empty; &emptyset; &EmptySmallSquare; &emptyv; &EmptyVerySmallSquare; &emsp13; &emsp14; &emsp; &ENG; &eng; &ensp; &Eogon; &eogon; &Eopf; &eopf; &epar; &eparsl; &eplus; &epsi; &Epsilon; &epsilon; &epsiv; &eqcirc; &eqcolon; &eqsim; &eqslantgtr; &eqslantless; &Equal; &equals; &EqualTilde; &equest; &Equilibrium; &equiv; &equivDD; &eqvparsl; &erarr; &erDot; &Escr; &escr; &esdot; &Esim; &esim; &Eta; &eta; &ETH &eth &ETH; &eth; &Euml &euml &Euml; &euml; &euro; &excl; &exist; &Exists; &expectation; &ExponentialE; &exponentiale; &fallingdotseq; &Fcy; &fcy; &female; &ffilig; &fflig; &ffllig; &Ffr; &ffr; &filig; &FilledSmallSquare; &FilledVerySmallSquare; &fjlig; &flat; &fllig; &fltns; &fnof; &Fopf; &fopf; &ForAll; &forall; &fork; &forkv; &Fouriertrf; &fpartint; &frac12 &frac12; &frac13; &frac14 &frac14; &frac15; &frac16; &frac18; &frac23; &frac25; &frac34 &frac34; &frac35; &frac38; &frac45; &frac56; &frac58; &frac78; &frasl; &frown; &Fscr; &fscr; &gacute; &Gamma; &gamma; &Gammad; &gammad; &gap; &Gbreve; &gbreve; &Gcedil; &Gcirc; &gcirc; &Gcy; &gcy; &Gdot; &gdot; &gE; &ge; &gEl; &gel; &geq; &geqq; &geqslant; &ges; &gescc; &gesdot; &gesdoto; &gesdotol; &gesl; &gesles; &Gfr; &gfr; &Gg; &gg; &ggg; &gimel; &GJcy; &gjcy; &gl; &gla; &glE; &glj; &gnap; &gnapprox; &gnE; &gne; &gneq; &gneqq; &gnsim; &Gopf; &gopf; &grave; &GreaterEqual; &GreaterEqualLess; &GreaterFullEqual; &GreaterGreater; &GreaterLess; &GreaterSlantEqual; &GreaterTilde; &Gscr; &gscr; &gsim; &gsime; &gsiml; &GT &gt &GT; &Gt; &gt; &gtcc; &gtcir; &gtdot; &gtlPar; &gtquest; &gtrapprox; &gtrarr; &gtrdot; &gtreqless; &gtreqqless; &gtrless; &gtrsim; &gvertneqq; &gvnE; &Hacek; &hairsp; &half; &hamilt; &HARDcy; &hardcy; &hArr; &harr; &harrcir; &harrw; &Hat; &hbar; &Hcirc; &hcirc; &hearts; &heartsuit; &hellip; &hercon; &Hfr; &hfr; &HilbertSpace; &hksearow; &hkswarow; &hoarr; &homtht; &hookleftarrow; &hookrightarrow; &Hopf; &hopf; &horbar; &HorizontalLine; &Hscr; &hscr; &hslash; &Hstrok; &hstrok; &HumpDownHump; &HumpEqual; &hybull; &hyphen; &Iacute &iacute &Iacute; &iacute; &ic; &Icirc &icirc &Icirc; &icirc; &Icy; &icy; &Idot; &IEcy; &iecy; &iexcl &iexcl; &iff; &Ifr; &ifr; &Igrave &igrave &Igrave; &igrave; &ii; &iiiint; &iiint; &iinfin; &iiota; &IJlig; &ijlig; &Im; &Imacr; &imacr; &image; &ImaginaryI; &imagline; &imagpart; &imath; &imof; &imped; &Implies; &in; &incare; &infin; &infintie; &inodot; &Int; &int; &intcal; &integers; &Integral; &intercal; &Intersection; &intlarhk; &intprod; &InvisibleComma; &InvisibleTimes; &IOcy; &iocy; &Iogon; &iogon; &Iopf; &iopf; &Iota; &iota; &iprod; &iquest &iquest; &Iscr; &iscr; &isin; &isindot; &isinE; &isins; &isinsv; &isinv; &it; &Itilde; &itilde; &Iukcy; &iukcy; &Iuml &iuml &Iuml; &iuml; &Jcirc; &jcirc; &Jcy; &jcy; &Jfr; &jfr; &jmath; &Jopf; &jopf; &Jscr; &jscr; &Jsercy; &jsercy; &Jukcy; &jukcy; &Kappa; &kappa; &kappav; &Kcedil; &kcedil; &Kcy; &kcy; &Kfr; &kfr; &kgreen; &KHcy; &khcy; &KJcy; &kjcy; &Kopf; &kopf; &Kscr; &kscr; &lAarr; &Lacute; &lacute; &laemptyv; &lagran; &Lambda; &lambda; &Lang; &lang; &langd; &langle; &lap; &Laplacetrf; &laquo &laquo; &Larr; &lArr; &larr; &larrb; &larrbfs; &larrfs; &larrhk; &larrlp; &larrpl; &larrsim; &larrtl; &lat; &lAtail; &latail; &late; &lates; &lBarr; &lbarr; &lbbrk; &lbrace; &lbrack; &lbrke; &lbrksld; &lbrkslu; &Lcaron; &lcaron; &Lcedil; &lcedil; &lceil; &lcub; &Lcy; &lcy; &ldca; &ldquo; &ldquor; &ldrdhar; &ldrushar; &ldsh; &lE; &le; &LeftAngleBracket; &LeftArrow; &Leftarrow; &leftarrow; &LeftArrowBar; &LeftArrowRightArrow; &leftarrowtail; &LeftCeiling; &LeftDoubleBracket; &LeftDownTeeVector; &LeftDownVector; &LeftDownVectorBar; &LeftFloor; &leftharpoondown; &leftharpoonup; &leftleftarrows; &LeftRightArrow; &Leftrightarrow; &leftrightarrow; &leftrightarrows; &leftrightharpoons; &leftrightsquigarrow; &LeftRightVector; &LeftTee; &LeftTeeArrow; &LeftTeeVector; &leftthreetimes; &LeftTriangle; &LeftTriangleBar; &LeftTriangleEqual; &LeftUpDownVector; &LeftUpTeeVector; &LeftUpVector; &LeftUpVectorBar; &LeftVector; &LeftVectorBar; &lEg; &leg; &leq; &leqq; &leqslant; &les; &lescc; &lesdot; &lesdoto; &lesdotor; &lesg; &lesges; &lessapprox; &lessdot; &lesseqgtr; &lesseqqgtr; &LessEqualGreater; &LessFullEqual; &LessGreater; &lessgtr; &LessLess; &lesssim; &LessSlantEqual; &LessTilde; &lfisht; &lfloor; &Lfr; &lfr; &lg; &lgE; &lHar; &lhard; &lharu; &lharul; &lhblk; &LJcy; &ljcy; &Ll; &ll; &llarr; &llcorner; &Lleftarrow; &llhard; &lltri; &Lmidot; &lmidot; &lmoust; &lmoustache; &lnap; &lnapprox; &lnE; &lne; &lneq; &lneqq; &lnsim; &loang; &loarr; &lobrk; &LongLeftArrow; &Longleftarrow; &longleftarrow; &LongLeftRightArrow; &Longleftrightarrow; &longleftrightarrow; &longmapsto; &LongRightArrow; &Longrightarrow; &longrightarrow; &looparrowleft; &looparrowright; &lopar; &Lopf; &lopf; &loplus; &lotimes; &lowast; &lowbar; &LowerLeftArrow; &LowerRightArrow; &loz; &lozenge; &lozf; &lpar; &lparlt; &lrarr; &lrcorner; &lrhar; &lrhard; &lrm; &lrtri; &lsaquo; &Lscr; &lscr; &Lsh; &lsh; &lsim; &lsime; &lsimg; &lsqb; &lsquo; &lsquor; &Lstrok; &lstrok; &LT &lt &LT; &Lt; &lt; &ltcc; &ltcir; &ltdot; &lthree; &ltimes; &ltlarr; &ltquest; &ltri; &ltrie; &ltrif; &ltrPar; &lurdshar; &luruhar; &lvertneqq; &lvnE; &macr &macr; &male; &malt; &maltese; &Map; &map; &mapsto; &mapstodown; &mapstoleft; &mapstoup; &marker; &mcomma; &Mcy; &mcy; &mdash; &mDDot; &measuredangle; &MediumSpace; &Mellintrf; &Mfr; &mfr; &mho; &micro &micro; &mid; &midast; &midcir; &middot &middot; &minus; &minusb; &minusd; &minusdu; &MinusPlus; &mlcp; &mldr; &mnplus; &models; &Mopf; &mopf; &mp; &Mscr; &mscr; &mstpos; &Mu; &mu; &multimap; &mumap; &nabla; &Nacute; &nacute; &nang; &nap; &napE; &napid; &napos; &napprox; &natur; &natural; &naturals; &nbsp &nbsp; &nbump; &nbumpe; &ncap; &Ncaron; &ncaron; &Ncedil; &ncedil; &ncong; &ncongdot; &ncup; &Ncy; &ncy; &ndash; &ne; &nearhk; &neArr; &nearr; &nearrow; &nedot; &NegativeMediumSpace; &NegativeThickSpace; &NegativeThinSpace; &NegativeVeryThinSpace; &nequiv; &nesear; &nesim; &NestedGreaterGreater; &NestedLessLess; &NewLine; &nexist; &nexists; &Nfr; &nfr; &ngE; &nge; &ngeq; &ngeqq; &ngeqslant; &nges; &nGg; &ngsim; &nGt; &ngt; &ngtr; &nGtv; &nhArr; &nharr; &nhpar; &ni; &nis; &nisd; &niv; &NJcy; &njcy; &nlArr; &nlarr; &nldr; &nlE; &nle; &nLeftarrow; &nleftarrow; &nLeftrightarrow; &nleftrightarrow; &nleq; &nleqq; &nleqslant; &nles; &nless; &nLl; &nlsim; &nLt; &nlt; &nltri; &nltrie; &nLtv; &nmid; &NoBreak; &NonBreakingSpace; &Nopf; &nopf; &not &Not; &not; &NotCongruent; &NotCupCap; &NotDoubleVerticalBar; &NotElement; &NotEqual; &NotEqualTilde; &NotExists; &NotGreater; &NotGreaterEqual; &NotGreaterFullEqual; &NotGreaterGreater; &NotGreaterLess; &NotGreaterSlantEqual; &NotGreaterTilde; &NotHumpDownHump; &NotHumpEqual; &notin; &notindot; &notinE; &notinva; &notinvb; &notinvc; &NotLeftTriangle; &NotLeftTriangleBar; &NotLeftTriangleEqual; &NotLess; &NotLessEqual; &NotLessGreater; &NotLessLess; &NotLessSlantEqual; &NotLessTilde; &NotNestedGreaterGreater; &NotNestedLessLess; &notni; &notniva; &notnivb; &notnivc; &NotPrecedes; &NotPrecedesEqual; &NotPrecedesSlantEqual; &NotReverseElement; &NotRightTriangle; &NotRightTriangleBar; &NotRightTriangleEqual; &NotSquareSubset; &NotSquareSubsetEqual; &NotSquareSuperset; &NotSquareSupersetEqual; &NotSubset; &NotSubsetEqual; &NotSucceeds; &NotSucceedsEqual; &NotSucceedsSlantEqual; &NotSucceedsTilde; &NotSuperset; &NotSupersetEqual; &NotTilde; &NotTildeEqual; &NotTildeFullEqual; &NotTildeTilde; &NotVerticalBar; &npar; &nparallel; &nparsl; &npart; &npolint; &npr; &nprcue; &npre; &nprec; &npreceq; &nrArr; &nrarr; &nrarrc; &nrarrw; &nRightarrow; &nrightarrow; &nrtri; &nrtrie; &nsc; &nsccue; &nsce; &Nscr; &nscr; &nshortmid; &nshortparallel; &nsim; &nsime; &nsimeq; &nsmid; &nspar; &nsqsube; &nsqsupe; &nsub; &nsubE; &nsube; &nsubset; &nsubseteq; &nsubseteqq; &nsucc; &nsucceq; &nsup; &nsupE; &nsupe; &nsupset; &nsupseteq; &nsupseteqq; &ntgl; &Ntilde &ntilde &Ntilde; &ntilde; &ntlg; &ntriangleleft; &ntrianglelefteq; &ntriangleright; &ntrianglerighteq; &Nu; &nu; &num; &numero; &numsp; &nvap; &nVDash; &nVdash; &nvDash; &nvdash; &nvge; &nvgt; &nvHarr; &nvinfin; &nvlArr; &nvle; &nvlt; &nvltrie; &nvrArr; &nvrtrie; &nvsim; &nwarhk; &nwArr; &nwarr; &nwarrow; &nwnear; &Oacute &oacute &Oacute; &oacute; &oast; &ocir; &Ocirc &ocirc &Ocirc; &ocirc; &Ocy; &ocy; &odash; &Odblac; &odblac; &odiv; &odot; &odsold; &OElig; &oelig; &ofcir; &Ofr; &ofr; &ogon; &Ograve &ograve &Ograve; &ograve; &ogt; &ohbar; &ohm; &oint; &olarr; &olcir; &olcross; &oline; &olt; &Omacr; &omacr; &Omega; &omega; &Omicron; &omicron; &omid; &ominus; &Oopf; &oopf; &opar; &OpenCurlyDoubleQuote; &OpenCurlyQuote; &operp; &oplus; &Or; &or; &orarr; &ord; &order; &orderof; &ordf &ordf; &ordm &ordm; &origof; &oror; &orslope; &orv; &oS; &Oscr; &oscr; &Oslash &oslash &Oslash; &oslash; &osol; &Otilde &otilde &Otilde; &otilde; &Otimes; &otimes; &otimesas; &Ouml &ouml &Ouml; &ouml; &ovbar; &OverBar; &OverBrace; &OverBracket; &OverParenthesis; &par; &para &para; &parallel; &parsim; &parsl; &part; &PartialD; &Pcy; &pcy; &percnt; &period; &permil; &perp; &pertenk; &Pfr; &pfr; &Phi; &phi; &phiv; &phmmat; &phone; &Pi; &pi; &pitchfork; &piv; &planck; &planckh; &plankv; &plus; &plusacir; &plusb; &pluscir; &plusdo; &plusdu; &pluse; &PlusMinus; &plusmn &plusmn; &plussim; &plustwo; &pm; &Poincareplane; &pointint; &Popf; &popf; &pound &pound; &Pr; &pr; &prap; &prcue; &prE; &pre; &prec; &precapprox; &preccurlyeq; &Precedes; &PrecedesEqual; &PrecedesSlantEqual; &PrecedesTilde; &preceq; &precnapprox; &precneqq; &precnsim; &precsim; &Prime; &prime; &primes; &prnap; &prnE; &prnsim; &prod; &Product; &profalar; &profline; &profsurf; &prop; &Proportion; &Proportional; &propto; &prsim; &prurel; &Pscr; &pscr; &Psi; &psi; &puncsp; &Qfr; &qfr; &qint; &Qopf; &qopf; &qprime; &Qscr; &qscr; &quaternions; &quatint; &quest; &questeq; &QUOT &quot &QUOT; &quot; &rAarr; &race; &Racute; &racute; &radic; &raemptyv; &Rang; &rang; &rangd; &range; &rangle; &raquo &raquo; &Rarr; &rArr; &rarr; &rarrap; &rarrb; &rarrbfs; &rarrc; &rarrfs; &rarrhk; &rarrlp; &rarrpl; &rarrsim; &Rarrtl; &rarrtl; &rarrw; &rAtail; &ratail; &ratio; &rationals; &RBarr; &rBarr; &rbarr; &rbbrk; &rbrace; &rbrack; &rbrke; &rbrksld; &rbrkslu; &Rcaron; &rcaron; &Rcedil; &rcedil; &rceil; &rcub; &Rcy; &rcy; &rdca; &rdldhar; &rdquo; &rdquor; &rdsh; &Re; &real; &realine; &realpart; &reals; &rect; &REG &reg &REG; &reg; &ReverseElement; &ReverseEquilibrium; &ReverseUpEquilibrium; &rfisht; &rfloor; &Rfr; &rfr; &rHar; &rhard; &rharu; &rharul; &Rho; &rho; &rhov; &RightAngleBracket; &RightArrow; &Rightarrow; &rightarrow; &RightArrowBar; &RightArrowLeftArrow; &rightarrowtail; &RightCeiling; &RightDoubleBracket; &RightDownTeeVector; &RightDownVector; &RightDownVectorBar; &RightFloor; &rightharpoondown; &rightharpoonup; &rightleftarrows; &rightleftharpoons; &rightrightarrows; &rightsquigarrow; &RightTee; &RightTeeArrow; &RightTeeVector; &rightthreetimes; &RightTriangle; &RightTriangleBar; &RightTriangleEqual; &RightUpDownVector; &RightUpTeeVector; &RightUpVector; &RightUpVectorBar; &RightVector; &RightVectorBar; &ring; &risingdotseq; &rlarr; &rlhar; &rlm; &rmoust; &rmoustache; &rnmid; &roang; &roarr; &robrk; &ropar; &Ropf; &ropf; &roplus; &rotimes; &RoundImplies; &rpar; &rpargt; &rppolint; &rrarr; &Rrightarrow; &rsaquo; &Rscr; &rscr; &Rsh; &rsh; &rsqb; &rsquo; &rsquor; &rthree; &rtimes; &rtri; &rtrie; &rtrif; &rtriltri; &RuleDelayed; &ruluhar; &rx; &Sacute; &sacute; &sbquo; &Sc; &sc; &scap; &Scaron; &scaron; &sccue; &scE; &sce; &Scedil; &scedil; &Scirc; &scirc; &scnap; &scnE; &scnsim; &scpolint; &scsim; &Scy; &scy; &sdot; &sdotb; &sdote; &searhk; &seArr; &searr; &searrow; &sect &sect; &semi; &seswar; &setminus; &setmn; &sext; &Sfr; &sfr; &sfrown; &sharp; &SHCHcy; &shchcy; &SHcy; &shcy; &ShortDownArrow; &ShortLeftArrow; &shortmid; &shortparallel; &ShortRightArrow; &ShortUpArrow; &shy &shy; &Sigma; &sigma; &sigmaf; &sigmav; &sim; &simdot; &sime; &simeq; &simg; &simgE; &siml; &simlE; &simne; &simplus; &simrarr; &slarr; &SmallCircle; &smallsetminus; &smashp; &smeparsl; &smid; &smile; &smt; &smte; &smtes; &SOFTcy; &softcy; &sol; &solb; &solbar; &Sopf; &sopf; &spades; &spadesuit; &spar; &sqcap; &sqcaps; &sqcup; &sqcups; &Sqrt; &sqsub; &sqsube; &sqsubset; &sqsubseteq; &sqsup; &sqsupe; &sqsupset; &sqsupseteq; &squ; &Square; &square; &SquareIntersection; &SquareSubset; &SquareSubsetEqual; &SquareSuperset; &SquareSupersetEqual; &SquareUnion; &squarf; &squf; &srarr; &Sscr; &sscr; &ssetmn; &ssmile; &sstarf; &Star; &star; &starf; &straightepsilon; &straightphi; &strns; &Sub; &sub; &subdot; &subE; &sube; &subedot; &submult; &subnE; &subne; &subplus; &subrarr; &Subset; &subset; &subseteq; &subseteqq; &SubsetEqual; &subsetneq; &subsetneqq; &subsim; &subsub; &subsup; &succ; &succapprox; &succcurlyeq; &Succeeds; &SucceedsEqual; &SucceedsSlantEqual; &SucceedsTilde; &succeq; &succnapprox; &succneqq; &succnsim; &succsim; &SuchThat; &Sum; &sum; &sung; &sup1 &sup1; &sup2 &sup2; &sup3 &sup3; &Sup; &sup; &supdot; &supdsub; &supE; &supe; &supedot; &Superset; &SupersetEqual; &suphsol; &suphsub; &suplarr; &supmult; &supnE; &supne; &supplus; &Supset; &supset; &supseteq; &supseteqq; &supsetneq; &supsetneqq; &supsim; &supsub; &supsup; &swarhk; &swArr; &swarr; &swarrow; &swnwar; &szlig &szlig; &Tab; &target; &Tau; &tau; &tbrk; &Tcaron; &tcaron; &Tcedil; &tcedil; &Tcy; &tcy; &tdot; &telrec; &Tfr; &tfr; &there4; &Therefore; &therefore; &Theta; &theta; &thetasym; &thetav; &thickapprox; &thicksim; &ThickSpace; &thinsp; &ThinSpace; &thkap; &thksim; &THORN &thorn &THORN; &thorn; &Tilde; &tilde; &TildeEqual; &TildeFullEqual; &TildeTilde; &times &times; &timesb; &timesbar; &timesd; &tint; &toea; &top; &topbot; &topcir; &Topf; &topf; &topfork; &tosa; &tprime; &TRADE; &trade; &triangle; &triangledown; &triangleleft; &trianglelefteq; &triangleq; &triangleright; &trianglerighteq; &tridot; &trie; &triminus; &TripleDot; &triplus; &trisb; &tritime; &trpezium; &Tscr; &tscr; &TScy; &tscy; &TSHcy; &tshcy; &Tstrok; &tstrok; &twixt; &twoheadleftarrow; &twoheadrightarrow; &Uacute &uacute &Uacute; &uacute; &Uarr; &uArr; &uarr; &Uarrocir; &Ubrcy; &ubrcy; &Ubreve; &ubreve; &Ucirc &ucirc &Ucirc; &ucirc; &Ucy; &ucy; &udarr; &Udblac; &udblac; &udhar; &ufisht; &Ufr; &ufr; &Ugrave &ugrave &Ugrave; &ugrave; &uHar; &uharl; &uharr; &uhblk; &ulcorn; &ulcorner; &ulcrop; &ultri; &Umacr; &umacr; &uml &uml; &UnderBar; &UnderBrace; &UnderBracket; &UnderParenthesis; &Union; &UnionPlus; &Uogon; &uogon; &Uopf; &uopf; &UpArrow; &Uparrow; &uparrow; &UpArrowBar; &UpArrowDownArrow; &UpDownArrow; &Updownarrow; &updownarrow; &UpEquilibrium; &upharpoonleft; &upharpoonright; &uplus; &UpperLeftArrow; &UpperRightArrow; &Upsi; &upsi; &upsih; &Upsilon; &upsilon; &UpTee; &UpTeeArrow; &upuparrows; &urcorn; &urcorner; &urcrop; &Uring; &uring; &urtri; &Uscr; &uscr; &utdot; &Utilde; &utilde; &utri; &utrif; &uuarr; &Uuml &uuml &Uuml; &uuml; &uwangle; &vangrt; &varepsilon; &varkappa; &varnothing; &varphi; &varpi; &varpropto; &vArr; &varr; &varrho; &varsigma; &varsubsetneq; &varsubsetneqq; &varsupsetneq; &varsupsetneqq; &vartheta; &vartriangleleft; &vartriangleright; &Vbar; &vBar; &vBarv; &Vcy; &vcy; &VDash; &Vdash; &vDash; &vdash; &Vdashl; &Vee; &vee; &veebar; &veeeq; &vellip; &Verbar; &verbar; &Vert; &vert; &VerticalBar; &VerticalLine; &VerticalSeparator; &VerticalTilde; &VeryThinSpace; &Vfr; &vfr; &vltri; &vnsub; &vnsup; &Vopf; &vopf; &vprop; &vrtri; &Vscr; &vscr; &vsubnE; &vsubne; &vsupnE; &vsupne; &Vvdash; &vzigzag; &Wcirc; &wcirc; &wedbar; &Wedge; &wedge; &wedgeq; &weierp; &Wfr; &wfr; &Wopf; &wopf; &wp; &wr; &wreath; &Wscr; &wscr; &xcap; &xcirc; &xcup; &xdtri; &Xfr; &xfr; &xhArr; &xharr; &Xi; &xi; &xlArr; &xlarr; &xmap; &xnis; &xodot; &Xopf; &xopf; &xoplus; &xotime; &xrArr; &xrarr; &Xscr; &xscr; &xsqcup; &xuplus; &xutri; &xvee; &xwedge; &Yacute &yacute &Yacute; &yacute; &YAcy; &yacy; &Ycirc; &ycirc; &Ycy; &ycy; &yen &yen; &Yfr; &yfr; &YIcy; &yicy; &Yopf; &yopf; &Yscr; &yscr; &YUcy; &yucy; &yuml &Yuml; &yuml; &Zacute; &zacute; &Zcaron; &zcaron; &Zcy; &zcy; &Zdot; &zdot; &zeetrf; &ZeroWidthSpace; &Zeta; &zeta; &Zfr; &zfr; &ZHcy; &zhcy; &zigrarr; &Zopf; &zopf; &Zscr; &zscr; &zwj; &zwnj;"
+    },
+    {
+      "expected": "�|||||||||\t|\n||\f|\r||||||||||||||||||| |!|\"|#|$|%|&|'|(|)|*|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|\\|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|{|||}|~||€||‚|ƒ|„|…|†|‡|ˆ|‰|Š|‹|Œ||Ž|||‘|’|“|”|•|–|—|˜|™|š|›|œ||ž|Ÿ",
+      "input": "&#0;|&#1;|&#2;|&#3;|&#4;|&#5;|&#6;|&#7;|&#8;|&#9;|&#10;|&#11;|&#12;|&#13;|&#14;|&#15;|&#16;|&#17;|&#18;|&#19;|&#20;|&#21;|&#22;|&#23;|&#24;|&#25;|&#26;|&#27;|&#28;|&#29;|&#30;|&#31;|&#32;|&#33;|&#34;|&#35;|&#36;|&#37;|&#38;|&#39;|&#40;|&#41;|&#42;|&#43;|&#44;|&#45;|&#46;|&#47;|&#48;|&#49;|&#50;|&#51;|&#52;|&#53;|&#54;|&#55;|&#56;|&#57;|&#58;|&#59;|&#60;|&#61;|&#62;|&#63;|&#64;|&#65;|&#66;|&#67;|&#68;|&#69;|&#70;|&#71;|&#72;|&#73;|&#74;|&#75;|&#76;|&#77;|&#78;|&#79;|&#80;|&#81;|&#82;|&#83;|&#84;|&#85;|&#86;|&#87;|&#88;|&#89;|&#90;|&#91;|&#92;|&#93;|&#94;|&#95;|&#96;|&#97;|&#98;|&#99;|&#100;|&#101;|&#102;|&#103;|&#104;|&#105;|&#106;|&#107;|&#108;|&#109;|&#110;|&#111;|&#112;|&#113;|&#114;|&#115;|&#116;|&#117;|&#118;|&#119;|&#120;|&#121;|&#122;|&#123;|&#124;|&#125;|&#126;|&#127;|&#128;|&#129;|&#130;|&#131;|&#132;|&#133;|&#134;|&#135;|&#136;|&#137;|&#138;|&#139;|&#140;|&#141;|&#142;|&#143;|&#144;|&#145;|&#146;|&#147;|&#148;|&#149;|&#150;|&#151;|&#152;|&#153;|&#154;|&#155;|&#156;|&#157;|&#158;|&#159;"
+    },
+    {
+      "expected": "�|�|||||||�|😀 � &bogus; &x <",
+      "input": "&#xd800;|&#xdfff;|&#xfffe;|&#xffff;|&#xfdd0;|&#xfdef;|&#x1fffe;|&#x10ffff;|&#x110000;|&#x1f600; &#99999999999999999999999; &bogus; &ampx &lt"
+    }
+  ],
+  "feeds": [
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": "2026-05-27T12:00:00+00:00",
+            "source_title": "Katala Updates",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "How RSSHub-style routes can improve local research.",
+            "title": "RSSHub adapter research",
+            "url": "https://example.com/rsshub-adapter"
+          },
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": null,
+            "source_title": "Katala Updates",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "SQLite FTS for monitored feeds.",
+            "title": "Feed archive design",
+            "url": "https://fixture.test/feed-archive"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "rss",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 2,
+          "status": "ok",
+          "title": "Katala Updates",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\">\n  <channel>\n    <title>Katala Updates</title>\n    <link>https://example.com/</link>\n    <description>Research updates</description>\n    <item>\n      <title>RSSHub adapter research</title>\n      <link>https://example.com/rsshub-adapter</link>\n      <description><![CDATA[How RSSHub-style routes can improve local research.]]></description>\n      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>\n    </item>\n    <item>\n      <title>Feed archive design</title>\n      <link>/feed-archive</link>\n      <description>SQLite FTS for monitored feeds.</description>\n    </item>\n  </channel>\n</rss>\n"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": "2026-05-27T13:30:00Z",
+            "source_title": "Katala Atom",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "Monitoring official feeds before broad web search.",
+            "title": "Atom source monitoring",
+            "url": "https://example.com/atom-monitoring"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "atom",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "Katala Atom",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <title>Katala Atom</title>\n  <entry>\n    <title>Atom source monitoring</title>\n    <link href=\"https://example.com/atom-monitoring\" />\n    <summary>Monitoring official feeds before broad web search.</summary>\n    <updated>2026-05-27T13:30:00Z</updated>\n  </entry>\n</feed>\n"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": "2026-05-27T14:00:00Z",
+            "source_title": "Katala JSON Feed",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "Feed provider fixture for local search.",
+            "title": "JSON feed provider",
+            "url": "https://example.com/json-feed-provider"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "Katala JSON Feed",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "{\n  \"version\": \"https://jsonfeed.org/version/1.1\",\n  \"title\": \"Katala JSON Feed\",\n  \"items\": [\n    {\n      \"id\": \"json-1\",\n      \"url\": \"https://example.com/json-feed-provider\",\n      \"title\": \"JSON feed provider\",\n      \"summary\": \"Feed provider fixture for local search.\",\n      \"date_published\": \"2026-05-27T14:00:00Z\"\n    }\n  ]\n}\n"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": "2026-05-27T12:00:00+09:00",
+            "source_title": "日本語 & ©",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "evidence & data two",
+            "title": "https://fixture.test/page",
+            "url": "https://fixture.test/page"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "rss",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "日本語 & ©",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "<rss><channel><title>日本語 &amp; ©</title><item><title>GUID ignored</title><guid isPermaLink=\"false\">post-1</guid></item><item><guid>https://fixture.test/page</guid><description><![CDATA[<p>evidence &amp; data</p><script>bad</script><p>two</p>]]></description><pubDate>Wed, 27 May 2026 12:00:00 +0900</pubDate></item></channel></rss>"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": null,
+            "source_title": "Atom",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "mixed 日本語 text",
+            "title": "https://fixture.test/id",
+            "url": "https://fixture.test/id"
+          },
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": null,
+            "source_title": "Atom",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "Hello",
+            "title": "https://fixture.test/chosen",
+            "url": "https://fixture.test/chosen"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "atom",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 2,
+          "status": "ok",
+          "title": "Atom",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title>Atom</title><entry><id>tag:fixture.test,2026:post-1</id></entry><entry><id>https://fixture.test/id</id><content type=\"xhtml\"><div xmlns=\"http://www.w3.org/1999/xhtml\">mixed <b>日本語</b> text</div></content></entry><entry><link rel=\"self\" href=\"/self\"/><link rel=\"alternate\" href=\"/chosen\"/><summary>Hello</summary></entry></feed>"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": "2025-12-01T12:00:00Z",
+            "source_title": "RDF",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "",
+            "title": "RDF item",
+            "url": "https://fixture.test/a"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "rss",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "RDF",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"><channel><title>RDF</title></channel><item><title>RDF item</title><link>../a</link><dc:date>2025-12-01T12:00:00Z</dc:date></item></rdf:RDF>"
+    },
+    {
+      "expected": {
+        "items": [],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "rss",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 0,
+          "status": "ok",
+          "title": "empty",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "﻿\n<?xml version=\"1.0\"?><rss><channel><title>empty</title></channel></rss>"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": "invalid-date",
+            "source_title": "JSON",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "hello evidence",
+            "title": "https://fixture.test/item",
+            "url": "https://fixture.test/item"
+          },
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": null,
+            "source_title": "JSON",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "é 日本語 x",
+            "title": "https://fixture.test/other",
+            "url": "https://fixture.test/other"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 2,
+          "status": "ok",
+          "title": "JSON",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "{\"title\": \"JSON\", \"items\": [{\"id\": \"ignore\"}, null, {\"external_url\": \"//fixture.test/item\", \"content_html\": \"<div>hello<br/>evidence</div>\", \"date_modified\": \"invalid-date\"}, {\"url\": \"../other\", \"content_text\": \"\\u00e9 \\u65e5\\u672c\\u8a9e\\u3000x\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "2026-10-03T00:00:00+00:00",
+            "published_at": null,
+            "source_title": "https://fixture.test/path/feed.xml",
+            "source_url": "https://fixture.test/path/feed.xml",
+            "summary": "",
+            "title": "https://fixture.test/a b",
+            "url": "https://fixture.test/a b"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "rss",
+          "last_fetched_at": "2026-10-03T00:00:00+00:00",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/path/feed.xml",
+          "url": "https://fixture.test/path/feed.xml"
+        }
+      },
+      "fetched_at": "2026-10-03T00:00:00+00:00",
+      "source_url": "https://fixture.test/path/feed.xml",
+      "text": "<rss><channel><item><link>https://duckduckgo.com/l/?uddg=https%3A%2F%2Ffixture.test%2Fa%2520b</link></item></channel></rss>"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/entry",
+            "url": "https://例え.test:443/a/entry"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"../entry\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/entry",
+            "url": "https://例え.test:443/a/b/entry"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"./entry\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/entry",
+            "url": "https://例え.test:443/entry"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"../../../../entry\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/a/b",
+            "url": "https://例え.test:443/a/b/a/b"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"a//b\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a//b",
+            "url": "https://例え.test:443/a//b"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"/a//b\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/feed.xml?new=1",
+            "url": "https://例え.test:443/a/b/feed.xml?new=1"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"?new=1\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/feed.xml?old=1#new",
+            "url": "https://例え.test:443/a/b/feed.xml?old=1#new"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"#new\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/;params",
+            "url": "https://例え.test:443/a/b/;params"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \";params\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/entry;params?q=1#x",
+            "url": "https://例え.test:443/a/b/entry;params?q=1#x"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"entry;params?q=1#x\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "http:entry",
+            "url": "http:entry"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"http:entry\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "mailto:a@b",
+            "url": "mailto:a@b"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"mailto:a@b\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://EXAMPLE.test:443/文書",
+            "url": "https://EXAMPLE.test:443/文書"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"//EXAMPLE.test:443/\\u6587\\u66f8\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://EXAMPLE.test:443/a/../文書",
+            "url": "https://EXAMPLE.test:443/a/../文書"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"https://EXAMPLE.test:443/a/../\\u6587\\u66f8\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/%E6%96%87%E6%9B%B8",
+            "url": "https://例え.test:443/a/b/%E6%96%87%E6%9B%B8"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"%E6%96%87%E6%9B%B8\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://例え.test:443/a/b/文書",
+            "url": "https://例え.test:443/a/b/文書"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"\\u6587\\u66f8\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://duckduckgo.com:443/l/?uddg=https%3A%2F%2Fexample.test",
+            "url": "https://duckduckgo.com:443/l/?uddg=https%3A%2F%2Fexample.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"https://duckduckgo.com:443/l/?uddg=https%3A%2F%2Fexample.test\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "URI fixture",
+            "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+            "summary": "",
+            "title": "https://DUCKDUCKGO.COM/l/?uddg=https%3A%2F%2Fexample.test",
+            "url": "https://DUCKDUCKGO.COM/l/?uddg=https%3A%2F%2Fexample.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "URI fixture",
+          "url": "https://例え.test:443/a/b/feed.xml?old=1#base"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://例え.test:443/a/b/feed.xml?old=1#base",
+      "text": "{\"title\": \"URI fixture\", \"items\": [{\"url\": \"https://DUCKDUCKGO.COM/l/?uddg=https%3A%2F%2Fexample.test\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "2026-05-27T12:00:00",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"Wed, 27 May 2026 12:00:00 -0000\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "2026-05-27T12:00:00+00:00",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"27 May 2026 12:00 GMT\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "2026-05-27T12:00:00+09:00",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"Wed, 27 May 26 12:00:00 +0900\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "2026-05-27T12:00:00-05:00",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"Wed, 27 May 2026 12:00:00 EST\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "2026-05-27T12:00:00Z",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"2026-05-27T12:00:00Z\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "bad date",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"bad date\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": "2026-05-27T12:00:00",
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "",
+            "title": "https://fixture.test",
+            "url": "https://fixture.test"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"Wed, 27 May 2026 12:00:00\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "Conditions: x < y > z, then continue.",
+            "title": "Comparison",
+            "url": "https://example.test/math"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://example.test/math\", \"title\": \"Comparison\", \"content_text\": \"Conditions: x < y > z, then continue.\"}]}"
+    }
+  ],
+  "highlights": [
+    {
+      "content": "atomic evidence in a sufficiently long first sentence.\n\n  Second evidence is here and it is important!  \tThird atomic evidence sentence is long. Fourth unrelated sentence.",
+      "expected": "atomic evidence in a sufficiently long first sentence. Second evidence is here and it is important! Third atomic evidence sentence is long.",
+      "query": "atomic evidence"
+    },
+    {
+      "content": "日本語の検索結果を長い本文から切り出して表示します。\n次の日本語文も二十文字以上になるように記録します。",
+      "expected": "日本語の検索結果を長い本文から切り出して表示します。 次の日本語文も二十文字以上になるように記録します。",
+      "query": "日本語"
+    },
+    {
+      "content": "empty query",
+      "expected": "",
+      "query": ""
+    },
+    {
+      "content": "evidence aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": "evidence aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "query": "evidence"
+    }
+  ],
+  "html": [
+    {
+      "content": "Hello\none bold © two\nlast",
+      "input": "<html><title>日本語 &amp; docs</title><body><h1>Hello</h1><p>one <b>bold</b> &copy; two</p><script>bad</script><style>bad</style><svg>bad</svg><p>last</p></body></html>",
+      "title": "日本語 & docs"
+    },
+    {
+      "content": "one\ntwo\nthree <tag>",
+      "input": "<p>one<br/>two</p><!--hidden--><p>three &lt;tag&gt;</p>",
+      "title": ""
+    },
+    {
+      "content": "plain text © é",
+      "input": "plain text © é",
+      "title": ""
+    },
+    {
+      "content": "malformed <",
+      "input": "<title>hello</title><div>malformed <",
+      "title": "hello"
+    },
+    {
+      "content": "© & \" >",
+      "input": "<p>&#169; &nbsp; &amp; &quot; &gt;</p>",
+      "title": ""
+    },
+    {
+      "content": "visible",
+      "input": "<script>var x=\"<style>\";</script><p>visible</p>",
+      "title": ""
+    },
+    {
+      "content": "A\nB",
+      "input": "<p>A<br/>B</p><title>A &amp; B</title>",
+      "title": "A & B"
+    },
+    {
+      "content": "© ¬it; & < € �",
+      "input": "<p>&copy; &notit; &amp &lt; &#x80; &#0;</p>",
+      "title": ""
+    },
+    {
+      "content": "Unicode 文書\nNext",
+      "input": "<p data-x=\"a>b\">Unicode 文書</p><!-- hidden --><p>Next</p>",
+      "title": ""
+    },
+    {
+      "content": "Conditions: x < y > z, then continue.",
+      "input": "Conditions: x < y > z, then continue.",
+      "title": ""
+    }
+  ],
+  "queries": [
+    {
+      "categories": [],
+      "excludes": [],
+      "expected": {
+        "domains": {},
+        "pdf": false,
+        "query": "  atomic evidence "
+      },
+      "includes": [],
+      "query": "  atomic evidence "
+    },
+    {
+      "categories": [
+        "github"
+      ],
+      "excludes": [],
+      "expected": {
+        "domains": {
+          "github.com": "github"
+        },
+        "pdf": false,
+        "query": "atomic evidence site:github.com"
+      },
+      "includes": [],
+      "query": "  atomic evidence "
+    },
+    {
+      "categories": [
+        "pdf",
+        "research"
+      ],
+      "excludes": [],
+      "expected": {
+        "domains": {
+          "acm.org": "research",
+          "arxiv.org": "research",
+          "biorxiv.org": "research",
+          "ieee.org": "research",
+          "medrxiv.org": "research",
+          "nature.com": "research",
+          "plos.org": "research",
+          "pubmed.ncbi.nlm.nih.gov": "research",
+          "science.org": "research",
+          "sciencedirect.com": "research",
+          "springer.com": "research",
+          "wiley.com": "research"
+        },
+        "pdf": true,
+        "query": "atomic evidence filetype:pdf (site:arxiv.org OR site:pubmed.ncbi.nlm.nih.gov OR site:nature.com OR site:science.org OR site:ieee.org OR site:acm.org OR site:springer.com OR site:wiley.com OR site:sciencedirect.com OR site:plos.org OR site:biorxiv.org OR site:medrxiv.org)"
+      },
+      "includes": [],
+      "query": "  atomic evidence "
+    },
+    {
+      "categories": [
+        "github",
+        "github"
+      ],
+      "excludes": [
+        "WWW.other.test/"
+      ],
+      "expected": {
+        "domains": {
+          "github.com": "github"
+        },
+        "pdf": false,
+        "query": "atomic evidence site:github.com site:github.com (site:example.test OR site:other.test) -site:other.test"
+      },
+      "includes": [
+        "https://WWW.example.test/x",
+        "example.test",
+        "other.test"
+      ],
+      "query": "  atomic evidence "
+    }
+  ],
+  "ranking": [
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 3.04,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 2.92,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 2.91,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 2.19,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 2.15,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        }
+      ],
+      "input": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 6,
+          "score": 0.0,
+          "snippet": "evidence retracted=true",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://bad.test/retracted"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 7,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://example.test/a?again=1"
+        }
+      ],
+      "query": "atomic evidence",
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 3.04,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 2.92,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 2.91,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 2.19,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 2.15,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        }
+      ],
+      "input": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 6,
+          "score": 0.0,
+          "snippet": "evidence retracted=true",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://bad.test/retracted"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 7,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://example.test/a?again=1"
+        }
+      ],
+      "query": "日本語",
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 1.84,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 1.72,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 1.71,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 0.99,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 0.95,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        }
+      ],
+      "input": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 6,
+          "score": 0.0,
+          "snippet": "evidence retracted=true",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://bad.test/retracted"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 7,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://example.test/a?again=1"
+        }
+      ],
+      "query": "missing",
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 1.84,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 1.72,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 1.71,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 1.252,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 0.95,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        }
+      ],
+      "input": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 word0",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://github.com/fixture/repo"
+        },
+        {
+          "metadata": {
+            "provider_rank": 4
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 4,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://arxiv.org/abs/fixture"
+        },
+        {
+          "metadata": {
+            "provider_rank": 5
+          },
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 5,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://other.test/other"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 6,
+          "score": 0.0,
+          "snippet": "evidence retracted=true",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://bad.test/retracted"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-09-01T00:00:00Z",
+          "rank": 7,
+          "score": 0.0,
+          "snippet": "evidence ",
+          "source": "feed",
+          "title": "atomic evidence 日本語 ",
+          "url": "https://example.test/a?again=1"
+        }
+      ],
+      "query": "word0 word1 word2 word3 word4 word5 word6 word7 word8 word9 word10 word11 word12 word13 word14 word15",
+      "year": 2026
+    }
+  ]
+}
