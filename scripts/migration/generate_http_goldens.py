@@ -16,12 +16,12 @@ for content_type in ['text/xml; Charset=latin1','text/xml; charset="utf-8"','tex
     body=b'\xef\xbb\xbf'+ '日本語'.encode()
     cases.append({'content_type':content_type,'bytes':list(body),'expected':HttpResponse('fixture',200,{'content-type':content_type},body).text})
 proxies=[]
-for values in [{},{'HTTP_PROXY':'upper','http_proxy':'lower'},{'HTTP_PROXY':'upper','http_proxy':''},{'HTTP_PROXY':'upper','REQUEST_METHOD':'GET'},{'HTTP_PROXY':'upper','http_proxy':'lower','REQUEST_METHOD':'GET'},{'HTTPS_PROXY':'secure','ALL_PROXY':'unused'},{'NO_PROXY':'upper','no_proxy':''},{'no_proxy':'.example.test,127.0.0.1:80,[::1],10.0.0.0/8'}]:
+for values in [{},{'HTTP_PROXY':'upper','http_proxy':'lower'},{'HTTP_PROXY':'upper','http_proxy':''},{'HTTP_PROXY':'upper','REQUEST_METHOD':'GET'},{'HTTP_PROXY':'upper','http_proxy':'lower','REQUEST_METHOD':'GET'},{'HTTPS_PROXY':'secure','ALL_PROXY':'unused'},{'NO_PROXY':'upper','no_proxy':''},{'no_proxy':'.example.test,127.0.0.1:80,[::1],192.0.2.0/24'}]:
     old=os.environ.copy()
     try:
         os.environ.clear();os.environ.update(values)
         result=getproxies_environment()
-        probes=[{'host':host,'port':port,'expected':proxy_bypass_environment(host+(':'+str(port) if port else ''),result)} for host,port in [('example.test',None),('sub.example.test',None),('evilexample.test',None),('127.0.0.1',80),('127.0.0.1',81),('[::1]',None),('10.1.2.3',None)]]
+        probes=[{'host':host,'port':port,'expected':proxy_bypass_environment(host+(':'+str(port) if port else ''),result)} for host,port in [('example.test',None),('sub.example.test',None),('evilexample.test',None),('127.0.0.1',80),('127.0.0.1',81),('[::1]',None),('192.0.2.3',None)]]
         proxies.append({'values':values,'http':result.get('http'),'https':result.get('https'),'no_proxy':result.get('no'),'bypass':probes})
     finally:os.environ.clear();os.environ.update(old)
 redactions=[]

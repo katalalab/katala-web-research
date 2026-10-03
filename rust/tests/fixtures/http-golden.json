@@ -1015,7 +1015,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1058,7 +1058,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1104,7 +1104,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1150,7 +1150,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1196,7 +1196,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1243,7 +1243,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1289,7 +1289,7 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
@@ -1335,15 +1335,15 @@
         },
         {
           "expected": false,
-          "host": "10.1.2.3",
+          "host": "192.0.2.3",
           "port": null
         }
       ],
       "http": null,
       "https": null,
-      "no_proxy": ".example.test,127.0.0.1:80,[::1],10.0.0.0/8",
+      "no_proxy": ".example.test,127.0.0.1:80,[::1],192.0.2.0/24",
       "values": {
-        "no_proxy": ".example.test,127.0.0.1:80,[::1],10.0.0.0/8"
+        "no_proxy": ".example.test,127.0.0.1:80,[::1],192.0.2.0/24"
       }
     }
   ],
