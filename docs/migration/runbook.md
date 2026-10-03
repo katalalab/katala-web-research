@@ -18,13 +18,16 @@ scripts/rust.sh fetch --locked
 CARGO_BUILD_JOBS=1 scripts/verify-rust.sh
 CARGO_BUILD_JOBS=1 scripts/verify-http.sh
 scripts/verify-providers.sh
+scripts/verify-json-providers.sh
 CARGO_BUILD_JOBS=1 scripts/rust.sh build --release --locked --offline
 ./target/release/kwr-rs plan 'agent evidence' --json
 ```
 
 Registry fetch is a one-time prerequisite; the gates use `--offline --locked`. The Rust gate performs formatting, clippy, native migration/golden tests, build, and CLI differential tests. The separate HTTP gate uses unauthenticated loopback servers/proxy and temporary synthetic TLS certificates, requiring an already installed OpenSSL CLI. It performs no provider request, install, or OS trust change. The Python reference requires Python >=3.11; run `scripts/verify.sh` as the existing repository gate.
 
-The provider gate checks the complete golden matrix and uses synthetic TLS/proxy mappings to test the unchanged DDG endpoint/request path against Python. Only the exact fixture DDG CONNECT target maps to a loopback server; other targets are rejected, with no external DNS/provider request. Its CA is process-local and temporary. No authentication/API/model cost or OS trust change. Run build gates sequentially with CARGO_BUILD_JOBS=1 and inspect all owned worktree/target sizes against the 2 GiB task cap; remove only idle recoverable self-generated cache when needed.
+The provider gate checks the complete golden matrix and uses synthetic TLS/proxy mappings to test the unchanged DDG endpoint/request path against Python. Only the exact fixture DDG CONNECT target maps to a loopback server; other targets are rejected, with no external DNS/provider request. Its CA is process-local and temporary. No authentication/API/model cost or OS trust change. Run build gates sequentially with CARGO_BUILD_JOBS=1 and record source/fixture/log sizes against min(10% starting free space, 2 GiB), and monitor owned build targets separately; remove only idle recoverable self-generated cache when needed.
+
+The JSON-provider gate additionally runs only loopback SearXNG and exact Brave/Jina TLS proxy mappings. Regenerate its oracle with `PYTHONPATH=src python3 scripts/migration/generate_json_provider_goldens.py`; expected values come from the unchanged Python reference. For owned worktree cache reuse, set absolute CARGO_TARGET_DIR, KWR_RUST_BINARY and KWR_HTTP_PROBE paths because differential cases can change their working directory. Do not run different worktree builds concurrently against one target.
 
 Windows PowerShell equivalent (design instructions; not executed on Windows):
 
@@ -43,6 +46,7 @@ cargo build --locked --offline --example http_probe
 python scripts/migration/http_differential.py
 python scripts/migration/check_matrix.py
 python scripts/migration/provider_differential.py
+python scripts/migration/json_provider_differential.py
 ```
 
 Supply a C compiler (Visual Studio Build Tools on Windows; platform SDK/cc on macOS/Linux) for SQLite. No Windows/Linux execution or certificate/proxy/signal validation is claimed. No installer or global CLI replacement is included. The current CI workflows are unchanged to avoid adding runners or costs; Rust gates are local until the review decides how to integrate them into the existing CI budget.
@@ -56,7 +60,8 @@ Dependencies are pinned transitively in Cargo.lock. `dependency-licenses.json` l
 - `feeds add`, `engines`
 - `feeds refresh` with `file://`, `http://`, `https://`, normal RSS/Atom/JSONFeed; HTTP bounds/security differences and pending transport edges are recorded in [http-contract.md](http-contract.md)
 - `search QUERY --provider feed` over the selected local archive, query filters/candidate oversampling and cached-page highlights
-- `search QUERY` / `--provider ddg` fetches ordinary DDG HTML, normalizes links/title/snippet, ranks and applies existing query/category/candidate/highlight/slicing behavior; this explicitly opts into HTTP. Seven other network providers and positive enrichment remain unsupported. Malformed HTML/tokenizer and unusual transport edges plus all live DDG behavior remain unverified.
+- `search QUERY` / `--provider ddg` fetches ordinary DDG HTML, normalizes links/title/snippet, ranks and applies existing query/category/candidate/highlight/slicing behavior; this explicitly opts into HTTP. Four other network providers and positive enrichment remain unsupported. Malformed HTML/tokenizer and unusual transport edges plus all live DDG behavior remain unverified.
+- `search --provider searxng`, `brave` or `jina` implements normal JSON requests, config, pagination, result/rank/CLI fields with existing environment-only settings. Live use explicitly opts into HTTP and existing service cost posture; migration verification uses synthetic values only. Full edges and doctor preflight remain pending, detailed in [provider-contract.md](provider-contract.md).
 - `read --cache` for an existing page only; uncached reads, refreshes, and cache misses fail clearly
 - new `migrate --source PATH --destination PATH [--dry-run]` emits a JSON validation report
 

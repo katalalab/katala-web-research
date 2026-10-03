@@ -1,11 +1,11 @@
 {
   "complete_migration": false,
   "dependency": {
-    "head": "5da9fc831b7fac6d08c796d97847bb7c735d57a5",
-    "merge_commit": "96519c13350dfc35dab7847d932565fb24f4403e",
+    "head": "77a97a7990d8b00dd74d7cffbb7444662a28dec9",
+    "merge_commit": "2b8720c8cef6431490ded8b645acc62e297f05de",
     "merged": true,
-    "pr": 20,
-    "review_scope": "source/fixtures/dependency/CI/evidence; no reviewer native rerun"
+    "pr": 21,
+    "review_scope": "source/fixtures/5 Python delimiter models/CI; no reviewer native rerun"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
@@ -43,7 +43,7 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: feed + normal DDG; seven providers and positive enrichment pending",
+      "status": "partial: feed + normal DDG/SearXNG/Brave/Jina; four providers, positive enrichment and edges pending",
       "surface": "search"
     },
     {
@@ -495,6 +495,10 @@
     {
       "final_acceptance": "pending",
       "id": "provider:jina",
+      "local_evidence": [
+        "rust/tests/json_providers.rs (19 jina Python request/result/error goldens)",
+        "scripts/migration/json_provider_differential.py (22 jina localhost CLI comparisons; full synthetic DB dump preserved)"
+      ],
       "required_cases": [
         "exact request URL/headers/order",
         "synthetic config/env success and preflight failure",
@@ -503,12 +507,16 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "native-normal-fields; malformed/config/transport edges and live pending",
       "surface": "jina"
     },
     {
       "final_acceptance": "pending",
       "id": "provider:searxng",
+      "local_evidence": [
+        "rust/tests/json_providers.rs (31 searxng Python request/result/error goldens)",
+        "scripts/migration/json_provider_differential.py (27 searxng localhost CLI comparisons; full synthetic DB dump preserved)"
+      ],
       "required_cases": [
         "exact request URL/headers/order",
         "synthetic config/env success and preflight failure",
@@ -517,12 +525,16 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "native-normal-fields; malformed/config/transport edges and live pending",
       "surface": "searxng"
     },
     {
       "final_acceptance": "pending",
       "id": "provider:brave",
+      "local_evidence": [
+        "rust/tests/json_providers.rs (33 brave Python request/result/error goldens)",
+        "scripts/migration/json_provider_differential.py (27 brave localhost CLI comparisons; full synthetic DB dump preserved)"
+      ],
       "required_cases": [
         "exact request URL/headers/order",
         "synthetic config/env success and preflight failure",
@@ -531,7 +543,7 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "native-normal-fields; malformed/config/transport edges and live pending",
       "surface": "brave"
     },
     {

@@ -1,4 +1,5 @@
 //! Provider boundary; strict offline adapters never fall through to network.
+pub mod json;
 use crate::{
     http::{HttpResponse, Settings},
     registry::Registry,

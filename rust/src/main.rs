@@ -363,7 +363,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             highlight_top,
             reader: _,
         } => {
-            if !["feed", "ddg"].contains(&provider.as_str()) {
+            if !["feed", "ddg", "searxng", "brave", "jina"].contains(&provider.as_str()) {
                 return Err(format!("provider {provider} not migrated yet").into());
             }
             if enrich_top > 0 {
@@ -385,15 +385,30 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 let mut transport = kwr::providers::NativeTransport {
                     settings: kwr::http::Settings::from_env()?,
                 };
-                kwr::providers::DuckDuckGo.search(
-                    &built.query,
-                    candidates,
-                    &mut transport,
-                    &kwr::providers::Context {
-                        registry: &registry,
-                        year: chrono::Local::now().year(),
-                    },
-                )?
+                let context = kwr::providers::Context {
+                    registry: &registry,
+                    year: chrono::Local::now().year(),
+                };
+                if provider == "ddg" {
+                    kwr::providers::DuckDuckGo.search(
+                        &built.query,
+                        candidates,
+                        &mut transport,
+                        &context,
+                    )?
+                } else {
+                    let kind = kwr::providers::json::Kind::named(&provider).unwrap();
+                    kwr::providers::json::JsonSearch {
+                        kind,
+                        config: kwr::providers::json::Config::from_env(kind)?,
+                    }
+                    .search(
+                        &built.query,
+                        candidates,
+                        &mut transport,
+                        &context,
+                    )?
+                }
             };
             let mut results = kwr::search::slice(results, limit);
             for r in &mut results {

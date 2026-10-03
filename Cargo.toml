@@ -58,3 +58,7 @@ path = "rust/tests/http.rs"
 [[test]]
 name = "providers"
 path = "rust/tests/providers.rs"
+
+[[test]]
+name = "json_providers"
+path = "rust/tests/json_providers.rs"
