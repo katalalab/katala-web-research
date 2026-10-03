@@ -49,7 +49,7 @@ impl Parts {
         }
         &self.path
     }
-    fn serialize(&self) -> String {
+    pub(crate) fn serialize(&self) -> String {
         let prefix = if self.scheme.is_empty() {
             String::new()
         } else {

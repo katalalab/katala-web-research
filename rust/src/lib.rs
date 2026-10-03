@@ -1,5 +1,6 @@
 pub mod archive;
 pub mod feeds;
+pub mod http;
 pub mod migration;
 pub mod planner;
 pub mod registry;

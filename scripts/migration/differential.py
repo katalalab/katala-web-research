@@ -205,12 +205,13 @@ class Differential(unittest.TestCase):
                     sources.append(clean([dict(r) for r in conn.execute('SELECT * FROM feed_sources ORDER BY url')]))
                     items.append(clean([dict(r) for r in conn.execute('SELECT * FROM feed_items ORDER BY source_url,url')]))
             self.assertEqual(*sources);self.assertEqual(*items);self.assertTrue(items[0])
-    def test_pending_feed_network_is_explicit_and_preserves_health(self):
+    def test_unsupported_feed_scheme_is_explicit_and_preserves_health(self):
         with sqlite3.connect(self.db) as conn:
+            conn.execute("UPDATE feed_sources SET url='ftp://example.test/feed'")
             before=conn.execute('SELECT * FROM feed_sources').fetchall()
         proc=self.call(['feeds','refresh','--archive',str(self.db),'--json'],True)
         self.assertEqual(proc.returncode,1)
-        self.assertIn('network feeds not migrated yet',proc.stderr)
+        self.assertIn('feed scheme ftp not migrated yet',proc.stderr)
         with sqlite3.connect(self.db) as conn:
             self.assertEqual(before,conn.execute('SELECT * FROM feed_sources').fetchall())
         for args in [['search','evidence'],['search','evidence','--provider','feed','--enrich-top','1']]:
