@@ -149,6 +149,19 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; focused independent review pending",
           "source_tree_sha256": "a11d49404f21cfce765172f0003a38faaa2dfe7c1dc942c9bf14b3ecfe50bddf"
+        },
+        {
+          "id": "enrichment-help-disabled-scope",
+          "status": "passed",
+          "scope": "One focused native search --help check: disabled positive enrichment wording, zero skip, exit0/stdout-only, invalid config does not initialize runtime data; not positive feature acceptance",
+          "count": 1,
+          "evidence": [
+            "scripts/migration/enrichment_help.py",
+            "scripts/verify-enrichment.sh"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; help-only follow-up",
+          "source_tree_sha256": "81c4a51236753019eebbb08d11d8f83568783eb6ed4e98fc4a74a1756b672dca"
         }
       ],
       "pending_reasons": [
@@ -208,6 +221,11 @@
           {
             "case_evidence_id": "derived-enrichment-refusal-policy",
             "scope": "55 native positive-top refusals before provider/reader/proxy/archive initialization, zero recorded requests, synthetic eight-table/schema/version/pages MATCH/rank1/unselected preservation; refusal is safety evidence, not positive feature acceptance",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "enrichment-help-disabled-scope",
+            "scope": "One focused native search --help check: disabled positive enrichment wording, zero skip, exit0/stdout-only, invalid config does not initialize runtime data; not positive feature acceptance",
             "status": "passed"
           }
         ]

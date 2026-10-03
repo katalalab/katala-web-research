@@ -145,3 +145,17 @@ before a second DNS resolution does not prevent rebinding. Explicit local read
 authorization must remain separate; actual synthetic resolver/redirect/fallback/
 secret-transmission tests must precede runtime enablement. Collect/investigate also
 consume derived results and cannot reuse the old generic fetch path by default.
+
+
+## Reviewed P2 repair and help follow-up
+
+Parent independent re-review confirms b346c33 resolves P2 as an offline calculation
+and fail-closed guard slice. Positive CLI enrichment remains unimplemented. The
+follow-up changes only the search argument help attribute and adds a native help
+assertion to verify-enrichment:positive values disabled,0 skips,exit0/stdout only
+and no runtime/archive creation even with invalid configuration. Guard/workflow/
+reader behavior remains byte-identical to reviewed b346. Help source content SHA256
+81c4a51236753019eebbb08d11d8f83568783eb6ed4e98fc4a74a1756b672dca. Prior57/55/6/8/
+218 evidence stays attributed to b346; no broad rerun is claimed for a help-only edit.
+Focused help, pinned fmt/all-target clippy/debug/release and mandatory repository
+verifier pass. Exact-head CI and normal integration are separate final readbacks.

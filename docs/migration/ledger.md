@@ -462,3 +462,23 @@ Neither positive-feature acceptance nor actual Linux/Windows/live evidence is cl
 Repaired local binaries (old7406 checkpoint retained):
 - debug: SHA256 89206eea6383b9530b626b31e9fcdb62dc3ae6ccdce506ed3602e180385248b3, 28748136 bytes.
 - release: SHA256 49c61ce2f65cdc0f2a9a959849d3f205bde516f7c13a4e29f93e5518401cc944, 8368112 bytes.
+
+
+## PR30 reviewed repair/help-only follow-up
+
+Independent parent re-review confirms b346c33 P2 resolution, offline-only scope and
+positive enrichment unimplemented labeling; exact-head five CI SUCCESS. Parent
+authorizes normal integration after adding disabled-positive --enrich-top help and
+focused assertion, then checking fixed head CI/diff. Follow-up production diff is
+only the search clap argument help attribute; guard/workflow/reader unchanged.
+Focused native search --help asserts disabled-positive/use0 text,exit0/stdout-only,
+no runtime data even with invalid settings. No new provider/network behavior.
+Source81c4a51236753019eebbb08d11d8f83568783eb6ed4e98fc4a74a1756b672dca; inherited
+b34657/55/6/8/218 evidence retained, not relabeled rerun. Matrix39 scoped passed
+records/40 total case records; all35 final rows pending. No permission/security/
+budget setting change; collect/derived target policy remains next separate work.
+
+Help-only affected fmt/all-target clippy/debug/release/focused help and mandatory
+Python167/benchmark/smoke/artifact/gitleaks gates pass. Exact-source local artifacts:
+- debug: SHA256 4e1a130216e9339b2711d344b442f5cce85ca81a1db3cacbd851076ef54eb8a6, 28748136 bytes.
+- release: SHA256 bbcab4e4716492835f3611e4ffbfa6c453571a911ad928d9e78c80d071d55b87, 8368112 bytes.
