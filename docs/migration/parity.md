@@ -2,7 +2,7 @@
 
 Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e72abd9c2b (2026-10-03). Dedicated clone; no existing checkout edited. Open PR collection was empty; five remote branches contained no Rust branch. App thread inventory showed no second active Rust migration. AGENTS.md and CONTRIBUTING.md apply; no repository .agents/skills found. Recording budget: min(10% starting free space, 2 GiB), currently 2 GiB; build targets are monitored separately and reused. No credentials, real archive, company repository, other host, paid provider, or live search used.
 
-`python-contract.json` is generated from all 22 leaf commands, argparse defaults and choices, dataclass fields, handler JSON literals/exit branches, every environment reference, all SQLite DDL (tables, indexes, FTS shadow tables, triggers), and all seven MCP tool schemas. Regenerate with `PYTHONPATH=src python3 scripts/migration/inventory.py`. It supplements this behavioral ledger; AST literals are not a complete execution trace.
+`python-contract.json` is generated from all 22 leaf commands, argparse defaults and choices, dataclass fields, handler JSON literals/exit branches, every environment reference, all SQLite DDL (tables, indexes, FTS shadow tables, triggers), and all nine MCP tool schemas. Regenerate with `PYTHONPATH=src python3 scripts/migration/inventory.py`. It supplements this behavioral ledger; AST literals are not a complete execution trace.
 
 | Surface | Python contract | Rust gate / current status |
 |---|---|---|
@@ -17,7 +17,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | issues query | FTS5 title snippets, labels JSON, computed item_key | Native implemented |
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
-| read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Network pending; cached hits implemented |
+| read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Native direct/cache hit/miss/refresh preview; auto/Jina fallback and full URL/codec/lifecycle/OS/live parity pending |
 | search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native normal paths for all nine providers, including Unix gh/op and Meta fanout/fusion/ledger; positive enrichment, malformed/transport/lifecycle/OS/live final assertions pending |
 | collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
@@ -25,7 +25,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | doctor | provider configuration posture plus actual SQLite FTS5 probe; optional SearXNG preflight | Pending |
 | openalex expand | ID/DOI normalization; direction references/citing/both, bounded 50, cursor paging/cache reader | Pending |
 | eval | deterministic 80 threshold, source/plan/rank/domain metrics, Markdown report, failing exit 1 | Pending; baseline suite retained |
-| mcp | 2025-11-25, seven tools, initialize/list/call, JSON-RPC error codes, Content-Length UTF-8 byte framing CRLF | Pending; preserve legacy Content-Length framing and add official NDJSON compatibility explicitly; test notifications, partial/invalid frames, stdout cleanliness |
+| mcp | 2025-11-25, nine tools, initialize/list/call, JSON-RPC error codes, Content-Length UTF-8 byte framing CRLF | Pending; preserve legacy Content-Length framing and add official NDJSON compatibility explicitly; test notifications, partial/invalid frames, stdout cleanliness |
 | migration | Python user_version=0; implicit repo columns/context FTS upgrade on open | Implemented copy-only migration; source read-only, version/fingerprint checks, atomic transaction, validation/rollback |
 
 ## Storage and security constraints

@@ -257,3 +257,53 @@ No dependencies/lock/toolchain/workflows/runners/protection changes, paid API/mo
 calls, real data/credential, OS/auth/network setup or other-host execution. No speed claim.
 Source/log recording remains far below the 2 GiB cap; shared build cache is measured
 separately. Existing public CI and exact draft head will be read back before review.
+
+## Authorized #27 integration and next reader dependency
+
+Independent parent preview review found no blocking issue on8940c1f; health168/fusion224
+Python oracles and same-SQL500/provider/50-window/rollback/FTS/integrity independently
+confirmed. Parent authorized normal merge. Fresh exact head8940c1f/base186511a, active
+ruleset24318413/no bypass actors, five SUCCESS checks, no threads/no next page and
+CLEAN/MERGEABLE checked. Normal merge at2026-10-03T15:13:13Z yielded
+maincb79a8a2a6af316cea9d547835a5277ac24dee9d, tree-identical readback. No bypass,
+branch deletion, installed CLI or archive switch. Owned separate read branch
+fast-forwarded to that main with its own dirty implementation preserved.
+
+Correction: actual reference MCP has **nine** tools; original README's seven-tool
+example and my earlier0/7 prose were inaccurate. Saved inventory/coverage already
+contain all9schemas and remain unchanged. Native tools are0/9. Current code requires
+reader for MCP read/investigate, search enrichment and collect, with eval/brief also
+unimplemented; direct reader/selected-cache is prioritized as a small native slice
+before completing all MCP tools. #27 source head remains fixed. Shared HTTP startup/
+cancel waits, commit interruption, worker panic/shared-archive contention and actual
+OS/final gates are still unverified; simulated commit cannot close these assertions.
+
+## Direct-reader local slice
+
+Native direct HTTP read and selected cache miss/refresh writes are implemented on
+a separate branch following integrated maincb79a8a. Exact production content SHA256:
+fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3.
+Author aarch64 Mac gates:51 Python response/request/error/clock expectations with
+byte-identical regeneration;36 paired normal localhost CLI cases and six paired
+cache hit/failure cases; two owned SIGINT executions during actual HTTP wait; actual
+competing SQLite writer lock and owned TEMP-trigger abort preserve old page/pages
+FTS/integrity. JSON/text/timestamp shape/source fields/cache flags, populated seven
+unrelated tables and selected/unselected archives/schema/version are checked. Other
+FTS data were not independently dumped by the CLI fixture and remain explicitly open.
+
+Affected inherited cache/engine method, golden suite and12 migration tests pass, all-target
+clippy and locked offline debug/release pass. Required verifier167 Python tests,
+benchmarks/smoke/artifact guards and gitleaks/no leaks pass. Prior Meta/provider/218-wide stages
+remain inherited at their hashes and are not relabeled as rerun. Initial new CLI
+fixture failures were independent seed timestamps, duplicate --reader in fixture
+argv, Python error-body and cache-hit expectation mistakes; corrected expectations
+use the Python contract, not values learned from native output. Successful36 normal
+cases/signals were preserved and only affected six cases rerun. Normal timestamps
+are the only output normalization; clock format is validated. Native HTTP diagnostics
+remain body-free, an inherited policy difference from Python raw error bodies.
+
+Matrix now has31 scoped records and35 pending final rows. Native MCP0/9; auto/Jina
+and positive enrichment/native downstream remain pending. This is no final read or
+full migration claim. Actual SQLite busy-interrupt/commit-window/worker-panic/crash
+recovery must use real owned processes and databases, not mocked commit results. No
+new dependency/workflow/toolchain/lock/license/paid/live/key/data/CLI/OS changes.
