@@ -11,7 +11,8 @@
     "clap help/diagnostic wording; error exit 2 preserved",
     "finite representable timeout and signed-i64 numeric boundary",
     "HTTP safety policy in http-contract.md; separate policy assertions",
-    "Named JSON typed_fields/typed_collections/strict_json_constants/strict_unicode/depth_limit policies in json-provider-edges.json; acceptance remains pending"
+    "Named JSON typed_fields/typed_collections/strict_json_constants/strict_unicode/depth_limit policies in json-provider-edges.json; acceptance remains pending",
+    "reader_stdout_byte_limit: native CLI read renders at most8MiB UTF8 JSON/text/newline before cache write; Python unbounded. Seven cap assertions pass; final policy approval pending."
   ],
   "normalization_allowed": [
     "synthetic temporary archive paths",
@@ -175,14 +176,14 @@
         "header/meta charset and extraction",
         "hit/miss/refresh and cache write failure"
       ],
-      "status": "partial: native direct read/cache hit/miss/refresh; auto/Jina fallback and final edges/OS/live pending",
+      "status": "partial: native direct/Jina/FetchError-only auto and cache paths; malformed/codec/byte-policy/lifecycle/OS/live final acceptance pending",
       "surface": "read",
       "pending_reasons": [
-        "Native Jina and FetchError-only auto fallback remain unimplemented",
-        "Malformed HTML/URL/codec, cache write/busy/commit/signal/broken pipe/actual OS/live final assertions remain open"
+        "Complete malformed URL/model/JSON-depth/codec and output-byte policy acceptance remains open",
+        "SQLite busy/commit/interrupt/panic/crash/broken-pipe/actual OS/live final gates remain unverified"
       ],
       "missing_assertions": [
-        "Implement Jina/auto fallback on FetchError only; direct is scoped implemented, remaining malformed URL/model/codec behavior must match accepted policies",
+        "Complete malformed URL/model/JSON-depth/codec cases and approve reader_stdout_byte_limit; direct/Jina/FetchError-only auto normal paths are scoped implemented",
         "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"
       ],
       "next_tests": [
@@ -191,7 +192,7 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_read.py",
           "assertions": [
-            "Implement Jina/auto fallback on FetchError only; direct is scoped implemented, remaining malformed URL/model/codec behavior must match accepted policies",
+            "Complete malformed URL/model/JSON-depth/codec cases and approve reader_stdout_byte_limit; direct/Jina/FetchError-only auto normal paths are scoped implemented",
             "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"
           ],
           "execution_evidence": false
@@ -224,6 +225,26 @@
           {
             "case_evidence_id": "direct-reader-fts-inverted-index",
             "scope": "Two paired cache miss/refresh cases check new atomic MATCH and old-term removal, full pages external-content rank1 integrity; owned delete-entry negative control fails old SELECT-only helper and is rejected after repair. Other FTS tables remain final scope.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "jina-auto-request-error-clock",
+            "scope": "Exact Python request/response/error/clock transcripts; opaque quote/Markdown/unicode/JSON payload predicate including huge integer/nonfinite/escaped/surrogate identity, FetchError-only fallback and non-fetch stops. Broader malformed/codec/lifecycle still pending.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "jina-auto-cli-cache-source",
+            "scope": "38 paired normal CLI/source/URL/redirect/query/fragment/cache cases and six failed-refresh/timeout/error-body pairs; old successful cache, seven unrelated tables/selected-unselected source/schema/pages MATCH/rank1 integrity preserved.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "jina-reader-caps",
+            "scope": "Seven separate named policy assertions: text/JSON/multibyte exact and one-over 8MiB stdout, plus HTTP body one-over; output rejection before cache write/stdout, prior cache retained. Python accepts oversize; pending policy approval, not parity.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "jina-reader-worker-sigint",
+            "scope": "One owned real TLS HTTP-wait SIGINT scenario in two CLI executions; -2/empty stdout/old cache unchanged. No commit-window/panic/crash/OS acceptance.",
             "status": "passed"
           }
         ]
@@ -293,6 +314,57 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; fixed9451 immutable native binary; production unchanged",
           "source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+        },
+        {
+          "id": "jina-auto-request-error-clock",
+          "status": "passed",
+          "count": 93,
+          "scope": "Exact Python request/response/error/clock transcripts; opaque quote/Markdown/unicode/JSON payload predicate including huge integer/nonfinite/escaped/surrogate identity, FetchError-only fallback and non-fetch stops. Broader malformed/codec/lifecycle still pending.",
+          "evidence": [
+            "scripts/migration/generate_jina_reader_goldens.py",
+            "rust/tests/fixtures/jina-reader-golden.json",
+            "rust/tests/reader.rs"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "4bf2ce644b69da67b65d58245f3fe92201c296b1aee023b5f0cf02bfbd95d488"
+        },
+        {
+          "id": "jina-auto-cli-cache-source",
+          "status": "passed",
+          "count": 44,
+          "scope": "38 paired normal CLI/source/URL/redirect/query/fragment/cache cases and six failed-refresh/timeout/error-body pairs; old successful cache, seven unrelated tables/selected-unselected source/schema/pages MATCH/rank1 integrity preserved.",
+          "evidence": [
+            "scripts/migration/jina_reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "4bf2ce644b69da67b65d58245f3fe92201c296b1aee023b5f0cf02bfbd95d488"
+        },
+        {
+          "id": "jina-reader-caps",
+          "status": "passed",
+          "count": 7,
+          "scope": "Seven separate named policy assertions: text/JSON/multibyte exact and one-over 8MiB stdout, plus HTTP body one-over; output rejection before cache write/stdout, prior cache retained. Python accepts oversize; pending policy approval, not parity.",
+          "evidence": [
+            "rust/tests/reader.rs",
+            "scripts/migration/jina_reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "4bf2ce644b69da67b65d58245f3fe92201c296b1aee023b5f0cf02bfbd95d488"
+        },
+        {
+          "id": "jina-reader-worker-sigint",
+          "status": "passed",
+          "count": 1,
+          "scope": "One owned real TLS HTTP-wait SIGINT scenario in two CLI executions; -2/empty stdout/old cache unchanged. No commit-window/panic/crash/OS acceptance.",
+          "evidence": [
+            "scripts/migration/jina_reader_differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual authorized Mac only",
+          "source_tree_sha256": "4bf2ce644b69da67b65d58245f3fe92201c296b1aee023b5f0cf02bfbd95d488"
         }
       ]
     },
@@ -2041,7 +2113,7 @@
       ],
       "missing_assertions": [
         "Assert resolver/client-startup/global timeout, interrupt/broken-pipe and remaining charset/proxy/env/credential redirect cases; HTTP2/3 stay disabled",
-        "Bound aggregate provider results/abstract allocations and observe peak memory/deadline; accepted per-response cap is not a total-search bound"
+        "Bound aggregate results/abstract allocations and peak memory/deadline; per-response/reader stdout caps are not total-search bounds. Before untrusted MCP URL exposure, enforce authorized initial/resolved-IP/redirect/proxy target policy against DNS rebinding/private/link-local/loopback/metadata/userinfo; trusted opt-in CLI is a separate contract"
       ],
       "next_tests": [
         {
@@ -2050,7 +2122,7 @@
           "planned_file": "scripts/migration/final_contract_gate_network.py",
           "assertions": [
             "Assert resolver/client-startup/global timeout, interrupt/broken-pipe and remaining charset/proxy/env/credential redirect cases; HTTP2/3 stay disabled",
-            "Bound aggregate provider results/abstract allocations and observe peak memory/deadline; accepted per-response cap is not a total-search bound"
+            "Bound aggregate results/abstract allocations and peak memory/deadline; per-response/reader stdout caps are not total-search bounds. Before untrusted MCP URL exposure, enforce authorized initial/resolved-IP/redirect/proxy target policy against DNS rebinding/private/link-local/loopback/metadata/userinfo; trusted opt-in CLI is a separate contract"
           ],
           "execution_evidence": false
         }
@@ -2177,7 +2249,9 @@
     "openalex_head": "5dffce09d2a04c1281dc36c1149b44823d80902e",
     "meta_source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77",
     "meta_head": "8940c1ff1d6c27b1fea392f271b7b7ece64fb2e6",
-    "direct_reader_source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3"
+    "direct_reader_source_tree_sha256": "fac5dbbb0201960148459c43b8fb5f71b7e83071a2a6b20313556b550657b5f3",
+    "jina_reader_dependency": "75e798023dac23689168201948ccc867fc9c3d26",
+    "jina_reader_source_tree_sha256": "4bf2ce644b69da67b65d58245f3fe92201c296b1aee023b5f0cf02bfbd95d488"
   },
   "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures",
   "process_review_repair": {

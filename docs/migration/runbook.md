@@ -137,3 +137,17 @@ affected scope. Reader timestamps are checked for format then normalized; all ot
 PageSnapshot/cache fields are exact. Existing HTTP body-free errors are a named policy
 difference. Auto/Jina network paths remain explicitly unsupported; do not infer fallback
 from direct success. Do not replace the installed Python CLI or switch user archives.
+
+## Jina/auto reader preview
+
+`scripts/verify-jina-reader.sh` builds/tests the locked native reader, then runs
+44 paired CLI cases,7 separate byte-policy assertions and2 owned TLS HTTP-wait SIGINT
+executions. r.jina.ai CONNECT maps exclusively to loopback, ephemeral child-local CA,
+no API key/auth vault/live call. For an owned shared target set CARGO_TARGET_DIR and
+KWR_RUST_BINARY to exact debug paths. Explicit fixture method arguments support focused
+retests. Regenerate expected values only with generate_jina_reader_goldens.py/Python.
+Native CLI output cap8MiB includes JSON/text/newline, rejected before cache/stdout
+publication; this deliberate policy difference remains unapproved final acceptance.
+MCP dependency coverage is checked with check_matrix.py; native tools/protocol remain
+0/9. Direct P3 helper proves pages inverted-index MATCH/rank1 integrity; complete other
+indexes/commit/crash/actual OS/live/package gates remain pending.

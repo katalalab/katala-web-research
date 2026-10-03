@@ -67,3 +67,11 @@ SIGINT executions pass. Real SQLite writer-lock and TEMP-abort preservation pass
 commit/crash/OS gates stay open. Next dependency is Jina reader and FetchError-only
 auto fallback, then positive enrichment/collect/report and MCP adapters. Actual
 MCP inventory is9 tools/native0; old7-tool prose is corrected, not a schema change.
+
+Jina/auto reader slice now follows repaired #28 head75e7980, with93 request/response
+transcripts,44 paired CLI cases,7 separate byte-policy assertions and2 actual HTTP-wait
+SIGINT executions. All9 MCP tool dependencies account for all35 rows,0 native tools.
+Output cap before cache write and trusted/untrusted target policy are explicit gates.
+Next native dependencies are positive search enrichment, collect evidence/report,
+then brief/investigate/eval and MCP adapters; graph/cache/repo/issues ingestion remain
+parallel final command requirements. No final row is closed by the reader preview.

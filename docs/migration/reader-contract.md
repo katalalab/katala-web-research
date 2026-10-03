@@ -65,3 +65,8 @@ crash/OS gates remain open. No all-feature rerun or direct-reader new feature he
 Trusted network-opt-in CLI may read local/private URLs; a future untrusted MCP adapter
 needs a distinct initial/resolved-address/redirect/proxy target authorization policy.
 Do not infer untrusted permission from CLI acceptance. This is gate:network final work.
+
+Current next-slice preview implements native Jina and FetchError-only auto on repaired
+75e7980 dependency. Historical direct-only refusals above describe that prior checkpoint.
+See jina-reader-contract.md for current source/44 pairs/separate output cap policy and
+complete remaining assertions. Native MCP remains0/9; full read remains pending.
