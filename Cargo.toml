@@ -62,3 +62,7 @@ path = "rust/tests/providers.rs"
 [[test]]
 name = "json_providers"
 path = "rust/tests/json_providers.rs"
+
+[[test]]
+name = "github_code"
+path = "rust/tests/github_code.rs"
