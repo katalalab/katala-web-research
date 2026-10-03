@@ -31,8 +31,17 @@ def seed_history(archive):
     archive.upsert_feed_items([FeedItem('https://fixture.test/feed','https://fixture.test/feed/old','Old feed item','old 日本語 feed evidence',fetched_at='fixed')])
     archive.upsert_project_items([ProjectItem('issue','fixture/repo',1,'Old issue','https://github.com/fixture/repo/issues/1','open','fixed',['synthetic'])])
     archive.record_engine_runs([{'provider':'fixture','status':'ok','latency_ms':7,'result_count':1}])
-    counts={table:archive.conn.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0] for table in PRESERVED_TABLES}
-    if not all(counts.values()):raise AssertionError(('incomplete preservation fixture',counts))
+    counts=dict(archive.conn.execute("""
+        SELECT 'pages', COUNT(*) FROM pages
+        UNION ALL SELECT 'runs', COUNT(*) FROM runs
+        UNION ALL SELECT 'search_results', COUNT(*) FROM search_results
+        UNION ALL SELECT 'repo_documents', COUNT(*) FROM repo_documents
+        UNION ALL SELECT 'feed_sources', COUNT(*) FROM feed_sources
+        UNION ALL SELECT 'feed_items', COUNT(*) FROM feed_items
+        UNION ALL SELECT 'project_items', COUNT(*) FROM project_items
+        UNION ALL SELECT 'engine_runs', COUNT(*) FROM engine_runs
+    """))
+    if set(counts)!=set(PRESERVED_TABLES) or not all(counts.values()):raise AssertionError(('incomplete preservation fixture',counts))
 class CodeHandler(fixture.Handler):
     def do_GET(self):
         parsed=urlsplit(self.path);params=parse_qs(parsed.query);q=params.get('q',[''])[0];page=int(params.get('page',['1'])[0])
