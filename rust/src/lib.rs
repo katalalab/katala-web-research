@@ -3,6 +3,7 @@ pub mod feeds;
 pub mod http;
 pub mod migration;
 pub mod planner;
+pub mod process;
 pub mod providers;
 pub mod python_digits;
 pub mod registry;

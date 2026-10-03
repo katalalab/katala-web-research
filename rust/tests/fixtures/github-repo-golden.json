@@ -1,0 +1,2939 @@
+{
+  "baseline": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "cases": [
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": -1,
+      "name": "rest-limit--1",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=-1"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1,
+              "stars": 0
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": -1,
+      "name": "gh-limit--1",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "-1",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 0,
+      "name": "rest-limit-0",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=0"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1,
+              "stars": 0
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 0,
+      "name": "gh-limit-0",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "0",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 1,
+      "name": "rest-limit-1",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=1"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1,
+              "stars": 0
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 1,
+      "name": "gh-limit-1",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "1",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 5,
+      "name": "rest-limit-5",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=5"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1,
+              "stars": 0
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 5,
+      "name": "gh-limit-5",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "5",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 31,
+      "name": "rest-limit-31",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=30"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1,
+              "stars": 0
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 31,
+      "name": "gh-limit-31",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "31",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 100,
+      "name": "rest-limit-100",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=30"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1,
+              "stars": 0
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 100,
+      "name": "gh-limit-100",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "100",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-nonzero",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 7,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-timeout",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "error_kind": "TimeoutExpired",
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-empty",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-empty-output",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": ""
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-no-urls",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"ignored\"}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "FileNotFoundError"
+      },
+      "limit": 10,
+      "name": "gh-missing-race",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "error_kind": "FileNotFoundError",
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "PermissionError"
+      },
+      "limit": 10,
+      "name": "gh-permission",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "error_kind": "PermissionError",
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "JSONDecodeError"
+      },
+      "limit": 10,
+      "name": "gh-malformed",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "public-fixture-key not JSON"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "TypeError"
+      },
+      "limit": 10,
+      "name": "gh-root-null",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "null"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-root-object-empty",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "{}"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "gh-root-object",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "{\"foo\": 1}"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "UnicodeDecodeError"
+      },
+      "limit": 10,
+      "name": "gh-bad-stdout",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": [
+            255
+          ]
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "UnicodeDecodeError"
+      },
+      "limit": 10,
+      "name": "gh-bad-stderr-nonzero",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 7,
+          "stderr": [
+            255
+          ],
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-token-0",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-token-18",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "Authorization": "Bearer public-fixture-key",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": "public-fixture-key"
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo1",
+              "provider_rank": 2,
+              "source_code_url": "https://github.com/fixture/repo1.git",
+              "stars": 1,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.98,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-token-20",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "Authorization": "Bearer  public-fixture-key ",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": " public-fixture-key "
+    },
+    {
+      "expected": {
+        "error_kind": "FetchError"
+      },
+      "limit": 10,
+      "name": "rest-status-401",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "status": 401
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "FetchError"
+      },
+      "limit": 10,
+      "name": "rest-status-403",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "status": 403
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "FetchError"
+      },
+      "limit": 10,
+      "name": "rest-status-422",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "status": 422
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "FetchError"
+      },
+      "limit": 10,
+      "name": "rest-status-503",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "status": 503
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": []
+      },
+      "limit": 10,
+      "name": "rest-missing",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": []
+      },
+      "limit": 10,
+      "name": "rest-empty",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": []}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "TypeError"
+      },
+      "limit": 10,
+      "name": "rest-null-items",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": null}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "rest-root-null",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "null"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "rest-root-list",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "[]"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "FetchError"
+      },
+      "limit": 10,
+      "name": "rest-malformed",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "public-fixture-key not JSON"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 2,
+              "stars": 1
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.98,
+            "snippet": "alpha 日本語 implementation | stars=1 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo1",
+            "url": "https://github.com/fixture/repo1"
+          },
+          {
+            "metadata": {
+              "provider_rank": 4,
+              "stars": 3
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.96,
+            "snippet": "alpha 日本語 implementation | stars=3 | updated=2026-01-02T03:04:05Z",
+            "source": "github",
+            "title": "fixture/repo3",
+            "url": "https://github.com/fixture/repo3"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "gh-rank-holes",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"missing\"}, {\"fullName\": \"fixture/repo1\", \"url\": \"https://github.com/fixture/repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 1, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo2\", \"url\": \"https://github.com/fixture/repo1?duplicate=1\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 2, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}, {\"fullName\": \"fixture/repo3\", \"url\": \"https://github.com/fixture/repo3\", \"description\": \"alpha 日本語 implementation\", \"stargazersCount\": 3, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": []
+      },
+      "limit": 10,
+      "name": "gh-retracted-no-rest",
+      "process_steps": [
+        {
+          "found": true,
+          "operation": "available",
+          "program": "gh"
+        },
+        {
+          "operation": "run",
+          "request": {
+            "args": [
+              "search",
+              "repos",
+              "alpha 日本語 + * ~",
+              "--limit",
+              "10",
+              "--json",
+              "fullName,description,url,stargazersCount,updatedAt,isFork"
+            ],
+            "output_limit": 8388608,
+            "program": "gh",
+            "timeout_ms": 30000
+          },
+          "return_code": 0,
+          "stderr": "",
+          "stdout": "[{\"fullName\": \"fixture/repo0\", \"url\": \"https://github.com/fixture/repo0\", \"description\": \"retracted=true\", \"stargazersCount\": 0, \"updatedAt\": \"2026-01-02T03:04:05Z\", \"isFork\": false}]"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          },
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo2",
+              "provider_rank": 4,
+              "source_code_url": "https://github.com/fixture/repo2.git",
+              "stars": 2,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 2,
+            "score": 2.96,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=2 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo2",
+            "url": "https://github.com/fixture/repo2"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-retraction-dedup",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0?duplicate=1\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"retracted=true\", \"stargazers_count\": 1, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo2\", \"html_url\": \"https://github.com/fixture/repo2\", \"name\": \"repo2\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 2, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo2.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git"
+            },
+            "published_at": null,
+            "rank": 1,
+            "score": 1.69,
+            "snippet": "language=Rust",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-nullable",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": null, \"stargazers_count\": null, \"updated_at\": null, \"fork\": false, \"owner\": null, \"language\": \"Rust\", \"topics\": null, \"license\": null, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "日",
+                "本",
+                "語"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=a,b,c,d,e,f | fork=true",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-topics-six-fork",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": true, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"日\", \"本\", \"語\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "NOASSERTION",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=NOASSERTION | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-license-noassertion",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"spdx_id\": \" NOASSERTION \", \"name\": \"\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "Apache-2.0",
+              "license_url": "https://spdx.org/licenses/Apache-2.0.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=Apache-2.0 | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-license-spdx",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"spdx_id\": \" Apache-2.0 \"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "a",
+                "l",
+                "p",
+                "h",
+                "a",
+                "日",
+                "本",
+                "語"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=a,l,p,h,a,日",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-topics-string",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": \"alpha日本語\", \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-stars-zero",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-year-duplicate",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"²⁰²⁶\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-year-retracted",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"retracted=true\", \"stargazers_count\": 1, \"updated_at\": \"²⁰²⁶\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "homepage": "https://fixture.test/project",
+              "language": "Rust",
+              "license_name": "MIT",
+              "license_url": "https://spdx.org/licenses/MIT.html",
+              "maintainer": "fixture",
+              "package_name": "repo0",
+              "provider_rank": 1,
+              "source_code_url": "https://github.com/fixture/repo0.git",
+              "stars": 0,
+              "topics": [
+                "alpha",
+                "日本語",
+                "retrieval"
+              ]
+            },
+            "published_at": "2026-01-02T03:04:05Z",
+            "rank": 1,
+            "score": 2.99,
+            "snippet": "language=Rust | alpha 日本語 implementation | stars=0 | updated=2026-01-02T03:04:05Z | license=MIT | topics=alpha,日本語,retrieval",
+            "source": "github",
+            "title": "fixture/repo0",
+            "url": "https://github.com/fixture/repo0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "rest-year-empty-url",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"²⁰²⁶\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    },
+    {
+      "expected": {
+        "error_kind": "ValueError"
+      },
+      "limit": 10,
+      "name": "rest-year-surviving",
+      "process_steps": [
+        {
+          "found": false,
+          "operation": "available",
+          "program": "gh"
+        }
+      ],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+            },
+            "url": "https://api.github.com/search/repositories?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&sort=stars&order=desc&per_page=10"
+          },
+          "text": "{\"items\": [{\"full_name\": \"fixture/repo0\", \"html_url\": \"https://github.com/fixture/repo0\", \"name\": \"repo0\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 0, \"updated_at\": \"2026-01-02T03:04:05Z\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo0.git\", \"homepage\": \"https://fixture.test/project\"}, {\"full_name\": \"fixture/repo1\", \"html_url\": \"https://github.com/fixture/repo1\", \"name\": \"repo1\", \"description\": \"alpha 日本語 implementation\", \"stargazers_count\": 1, \"updated_at\": \"²⁰²⁶\", \"fork\": false, \"owner\": {\"login\": \"fixture\"}, \"language\": \"Rust\", \"topics\": [\"alpha\", \"日本語\", \"retrieval\"], \"license\": {\"name\": \" MIT \", \"spdx_id\": \"MIT\"}, \"clone_url\": \"https://github.com/fixture/repo1.git\", \"homepage\": \"https://fixture.test/project\"}]}"
+        }
+      ],
+      "token": ""
+    }
+  ]
+}

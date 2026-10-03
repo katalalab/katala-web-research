@@ -363,8 +363,16 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             highlight_top,
             reader: _,
         } => {
-            if !["feed", "ddg", "searxng", "brave", "jina", "github_code"]
-                .contains(&provider.as_str())
+            if ![
+                "feed",
+                "ddg",
+                "searxng",
+                "brave",
+                "jina",
+                "github_code",
+                "github",
+            ]
+            .contains(&provider.as_str())
             {
                 return Err(format!("provider {provider} not migrated yet").into());
             }
@@ -391,6 +399,13 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 };
                 if provider == "ddg" {
                     kwr::providers::DuckDuckGo.search(
+                        &built.query,
+                        candidates,
+                        &mut transport,
+                        &context,
+                    )?
+                } else if provider == "github" {
+                    kwr::providers::github_repo::GitHubRepo::from_env().search(
                         &built.query,
                         candidates,
                         &mut transport,

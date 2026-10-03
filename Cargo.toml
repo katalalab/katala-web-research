@@ -31,6 +31,9 @@ url = "2.5.7"
 reqwest = { version = "=0.12.28", default-features = false, features = ["blocking", "rustls-tls-native-roots"] }
 encoding_rs = "=0.8.35"
 
+[target.'cfg(unix)'.dependencies]
+libc = "=0.2.190"
+
 [profile.release]
 lto = "thin"
 strip = "symbols"
@@ -66,3 +69,15 @@ path = "rust/tests/json_providers.rs"
 [[test]]
 name = "github_code"
 path = "rust/tests/github_code.rs"
+
+[[test]]
+name = "github_repo"
+path = "rust/tests/github_repo.rs"
+
+[[test]]
+name = "process"
+path = "rust/tests/process.rs"
+
+[[example]]
+name = "process_fixture"
+path = "rust/tests/support/process_fixture.rs"
