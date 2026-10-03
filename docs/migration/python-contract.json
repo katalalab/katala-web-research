@@ -1,0 +1,2872 @@
+{
+  "baseline": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "cli": [
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "query",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "brave",
+            "ddg",
+            "feed",
+            "github",
+            "github_code",
+            "jina",
+            "meta",
+            "openalex",
+            "searxng"
+          ],
+          "default": "ddg",
+          "dest": "provider",
+          "flags": [
+            "--provider"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 2.0,
+          "dest": "candidate_multiplier",
+          "flags": [
+            "--candidate-multiplier"
+          ],
+          "required": false,
+          "type": "float"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_AppendAction",
+          "choices": [
+            "github",
+            "research",
+            "pdf"
+          ],
+          "default": [],
+          "dest": "category",
+          "flags": [
+            "--category"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_AppendAction",
+          "choices": null,
+          "default": [],
+          "dest": "include_domain",
+          "flags": [
+            "--include-domain"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_AppendAction",
+          "choices": null,
+          "default": [],
+          "dest": "exclude_domain",
+          "flags": [
+            "--exclude-domain"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 0,
+          "dest": "enrich_top",
+          "flags": [
+            "--enrich-top"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 0,
+          "dest": "highlight_top",
+          "flags": [
+            "--highlight-top"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "auto",
+            "jina",
+            "direct"
+          ],
+          "default": "auto",
+          "dest": "reader",
+          "flags": [
+            "--reader"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "search",
+      "handler": "cmd_search"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "url",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "auto",
+            "jina",
+            "direct"
+          ],
+          "default": "auto",
+          "dest": "reader",
+          "flags": [
+            "--reader"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "cache",
+          "flags": [
+            "--cache"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "refresh",
+          "flags": [
+            "--refresh"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "read",
+      "handler": "cmd_read"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "seed",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "referenced",
+            "citing",
+            "both"
+          ],
+          "default": "both",
+          "dest": "direction",
+          "flags": [
+            "--direction"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "openalex expand",
+      "handler": "cmd_openalex_expand"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "query",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "brave",
+            "ddg",
+            "feed",
+            "github",
+            "github_code",
+            "jina",
+            "meta",
+            "openalex",
+            "searxng"
+          ],
+          "default": "ddg",
+          "dest": "provider",
+          "flags": [
+            "--provider"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "auto",
+            "jina",
+            "direct"
+          ],
+          "default": "auto",
+          "dest": "reader",
+          "flags": [
+            "--reader"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 3,
+          "dest": "read_top",
+          "flags": [
+            "--read-top"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "report",
+          "flags": [
+            "--report"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "collect",
+      "handler": "cmd_collect"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "terms",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "query",
+      "handler": "cmd_query"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "query",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 4,
+          "dest": "max_subqueries",
+          "flags": [
+            "--max-subqueries"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "year",
+          "flags": [
+            "--year"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "plan",
+      "handler": "cmd_plan"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "root",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 200,
+          "dest": "max_repos",
+          "flags": [
+            "--max-repos"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 80,
+          "dest": "max_files_per_repo",
+          "flags": [
+            "--max-files-per-repo"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 80000,
+          "dest": "max_bytes_per_file",
+          "flags": [
+            "--max-bytes-per-file"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "no_incremental",
+          "flags": [
+            "--no-incremental"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "repos scan",
+      "handler": "cmd_repos_scan"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "terms",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": "",
+          "dest": "repo",
+          "flags": [
+            "--repo"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": "",
+          "dest": "path",
+          "flags": [
+            "--path"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "repos query",
+      "handler": "cmd_repos_query"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "url",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": "",
+          "dest": "title",
+          "flags": [
+            "--title"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "feeds add",
+      "handler": "cmd_feeds_add"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "source",
+          "flags": [
+            "--source"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "feeds refresh",
+      "handler": "cmd_feeds_refresh"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "terms",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "feeds query",
+      "handler": "cmd_feeds_query"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "domain",
+          "flags": [
+            "--domain"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "query_type",
+          "flags": [
+            "--query-type"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 20,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "sources list",
+      "handler": "cmd_sources_list"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "url",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "sources match",
+      "handler": "cmd_sources_match"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": "Nicolas0315",
+          "dest": "owner",
+          "flags": [
+            "--owner"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "open",
+            "closed"
+          ],
+          "default": "open",
+          "dest": "state",
+          "flags": [
+            "--state"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "issues",
+            "prs",
+            "both"
+          ],
+          "default": "both",
+          "dest": "include",
+          "flags": [
+            "--include"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 50,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "from_json",
+          "flags": [
+            "--from-json"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "issue",
+            "pr"
+          ],
+          "default": "issue",
+          "dest": "kind",
+          "flags": [
+            "--kind"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "issues ingest",
+      "handler": "cmd_issues_ingest"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "terms",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 10,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "issues query",
+      "handler": "cmd_issues_query"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": "",
+          "dest": "owner",
+          "flags": [
+            "--owner"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 100,
+          "dest": "limit",
+          "flags": [
+            "--limit",
+            "-n"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "out",
+          "flags": [
+            "--out"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "issues report",
+      "handler": "cmd_issues_report"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "query",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "brave",
+            "ddg",
+            "feed",
+            "github",
+            "github_code",
+            "jina",
+            "meta",
+            "openalex",
+            "searxng"
+          ],
+          "default": "ddg",
+          "dest": "provider",
+          "flags": [
+            "--provider"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 5,
+          "dest": "web_limit",
+          "flags": [
+            "--web-limit"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 5,
+          "dest": "repo_limit",
+          "flags": [
+            "--repo-limit"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 0,
+          "dest": "feed_limit",
+          "flags": [
+            "--feed-limit"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 2.0,
+          "dest": "candidate_multiplier",
+          "flags": [
+            "--candidate-multiplier"
+          ],
+          "required": false,
+          "type": "float"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "expand_queries",
+          "flags": [
+            "--expand-queries"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 4,
+          "dest": "max_subqueries",
+          "flags": [
+            "--max-subqueries"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "no_web",
+          "flags": [
+            "--no-web"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "out",
+          "flags": [
+            "--out"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "brief",
+      "handler": "cmd_brief"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "query",
+          "flags": [],
+          "required": true,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "brave",
+            "ddg",
+            "feed",
+            "github",
+            "github_code",
+            "jina",
+            "meta",
+            "openalex",
+            "searxng"
+          ],
+          "default": "ddg",
+          "dest": "provider",
+          "flags": [
+            "--provider"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": [
+            "auto",
+            "jina",
+            "direct"
+          ],
+          "default": "auto",
+          "dest": "reader",
+          "flags": [
+            "--reader"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 8,
+          "dest": "web_limit",
+          "flags": [
+            "--web-limit"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 6,
+          "dest": "repo_limit",
+          "flags": [
+            "--repo-limit"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 0,
+          "dest": "feed_limit",
+          "flags": [
+            "--feed-limit"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 2.0,
+          "dest": "candidate_multiplier",
+          "flags": [
+            "--candidate-multiplier"
+          ],
+          "required": false,
+          "type": "float"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 3,
+          "dest": "read_top",
+          "flags": [
+            "--read-top"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "expand_queries",
+          "flags": [
+            "--expand-queries"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 4,
+          "dest": "max_subqueries",
+          "flags": [
+            "--max-subqueries"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "no_web",
+          "flags": [
+            "--no-web"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "out",
+          "flags": [
+            "--out"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "investigate",
+      "handler": "cmd_investigate"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "check_searxng",
+          "flags": [
+            "--check-searxng"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "doctor",
+      "handler": "cmd_doctor"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": ".katala-web-research/archive.sqlite",
+          "dest": "archive",
+          "flags": [
+            "--archive"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 50,
+          "dest": "window",
+          "flags": [
+            "--window"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "engines",
+      "handler": "cmd_engines"
+    },
+    {
+      "arguments": [
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 80,
+          "dest": "min_score",
+          "flags": [
+            "--min-score"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": 4,
+          "dest": "max_subqueries",
+          "flags": [
+            "--max-subqueries"
+          ],
+          "required": false,
+          "type": "int"
+        },
+        {
+          "action": "_StoreAction",
+          "choices": null,
+          "default": null,
+          "dest": "out",
+          "flags": [
+            "--out"
+          ],
+          "required": false,
+          "type": null
+        },
+        {
+          "action": "_StoreTrueAction",
+          "choices": null,
+          "default": false,
+          "dest": "json",
+          "flags": [
+            "--json"
+          ],
+          "required": false,
+          "type": null
+        }
+      ],
+      "command": "eval",
+      "handler": "cmd_eval"
+    },
+    {
+      "arguments": [],
+      "command": "mcp",
+      "handler": "cmd_mcp"
+    }
+  ],
+  "environment_references": {
+    "BRAVE_FRESHNESS": [
+      "providers.py:901",
+      "providers.py:926"
+    ],
+    "BRAVE_SAFESEARCH": [
+      "providers.py:904",
+      "providers.py:950"
+    ],
+    "BRAVE_SEARCH_API_KEY": [
+      "providers.py:324",
+      "providers.py:326",
+      "providers.py:774",
+      "providers.py:775"
+    ],
+    "BRAVE_SEARCH_COUNTRY": [
+      "providers.py:894"
+    ],
+    "BRAVE_SEARCH_LANG": [
+      "providers.py:895"
+    ],
+    "BRAVE_UI_LANG": [
+      "providers.py:896"
+    ],
+    "GITHUB_TOKEN": [
+      "providers.py:142",
+      "providers.py:169",
+      "providers.py:171",
+      "providers.py:756",
+      "providers.py:759",
+      "providers.py:760"
+    ],
+    "JINA_API_KEY": [
+      "providers.py:257",
+      "providers.py:259",
+      "providers.py:764",
+      "providers.py:765"
+    ],
+    "KWR_ARCHIVE": [
+      "cli.py:920",
+      "cli.py:921",
+      "cli.py:926",
+      "cli.py:928",
+      "providers.py:228",
+      "providers.py:630",
+      "providers.py:631",
+      "providers.py:737",
+      "providers.py:738",
+      "providers.py:743",
+      "providers.py:745",
+      "providers.py:754",
+      "workflow.py:85",
+      "workflow.py:86",
+      "workflow.py:91",
+      "workflow.py:93"
+    ],
+    "KWR_HTTP_TIMEOUT_SECONDS": [
+      "http.py:89",
+      "http.py:95",
+      "http.py:97"
+    ],
+    "KWR_META_PROFILE": [
+      "providers.py:810"
+    ],
+    "KWR_META_PROVIDERS": [
+      "providers.py:815"
+    ],
+    "KWR_SEARXNG_CATEGORIES": [
+      "providers.py:841"
+    ],
+    "KWR_SEARXNG_ENGINES": [
+      "providers.py:842"
+    ],
+    "KWR_SEARXNG_LANGUAGE": [
+      "providers.py:843"
+    ],
+    "KWR_SEARXNG_SAFESEARCH": [
+      "providers.py:845"
+    ],
+    "KWR_SEARXNG_TIME_RANGE": [
+      "providers.py:844"
+    ],
+    "KWR_SEARXNG_URL": [
+      "providers.py:286",
+      "providers.py:288",
+      "providers.py:769",
+      "providers.py:770",
+      "providers.py:791",
+      "providers.py:793"
+    ],
+    "KWR_SOURCE_REGISTRY_OVERLAY": [
+      "source_registry.py:11"
+    ],
+    "OPENALEX_API_KEY": [
+      "providers.py:492",
+      "providers.py:780"
+    ],
+    "OPENALEX_EXPAND_MAX": [
+      "providers.py:404",
+      "providers.py:412",
+      "providers.py:417",
+      "providers.py:470"
+    ],
+    "OPENALEX_FROM_DATE": [
+      "providers.py:1007"
+    ],
+    "OPENALEX_HAS_ABSTRACT": [
+      "providers.py:1010"
+    ],
+    "OPENALEX_HAS_PDF": [
+      "providers.py:1009"
+    ],
+    "OPENALEX_LANGUAGE": [
+      "providers.py:1005"
+    ],
+    "OPENALEX_MAILTO": [
+      "providers.py:495",
+      "providers.py:780"
+    ],
+    "OPENALEX_SELECT": [
+      "providers.py:471",
+      "providers.py:970",
+      "providers.py:999"
+    ],
+    "OPENALEX_TO_DATE": [
+      "providers.py:1008"
+    ],
+    "OPENALEX_YEAR": [
+      "providers.py:1006"
+    ]
+  },
+  "handlers": {
+    "cmd_brief": {
+      "json_keys": [
+        "archive",
+        "feed_hits",
+        "out",
+        "query",
+        "repo_hits",
+        "search_plan",
+        "web_results"
+      ],
+      "line": 724,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_collect": {
+      "json_keys": [
+        "archive",
+        "pages",
+        "report",
+        "results",
+        "run_id"
+      ],
+      "line": 379,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_doctor": {
+      "json_keys": [],
+      "line": 848,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_engines": {
+      "json_keys": [
+        "routed_around"
+      ],
+      "line": 860,
+      "returns": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "cmd_eval": {
+      "json_keys": [],
+      "line": 882,
+      "returns": [
+        "0 if summary.passed else 1"
+      ]
+    },
+    "cmd_feeds_add": {
+      "json_keys": [
+        "archive",
+        "source",
+        "source_count"
+      ],
+      "line": 520,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_feeds_query": {
+      "json_keys": [],
+      "line": 588,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_feeds_refresh": {
+      "json_keys": [
+        "archive",
+        "indexed_items",
+        "refreshed",
+        "source_count"
+      ],
+      "line": 542,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_investigate": {
+      "json_keys": [
+        "archive",
+        "feed_hits",
+        "out",
+        "pages",
+        "query",
+        "repo_hits",
+        "search_plan",
+        "web_results"
+      ],
+      "line": 775,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_issues_ingest": {
+      "json_keys": [
+        "archive",
+        "include",
+        "indexed_items",
+        "owner",
+        "state"
+      ],
+      "line": 649,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_issues_query": {
+      "json_keys": [],
+      "line": 679,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_issues_report": {
+      "json_keys": [
+        "archive",
+        "item_count",
+        "out"
+      ],
+      "line": 697,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_mcp": {
+      "json_keys": [],
+      "line": 899,
+      "returns": [
+        "mcp_main()"
+      ]
+    },
+    "cmd_openalex_expand": {
+      "json_keys": [],
+      "line": 363,
+      "returns": [
+        "0",
+        "0"
+      ]
+    },
+    "cmd_plan": {
+      "json_keys": [],
+      "line": 452,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_query": {
+      "json_keys": [],
+      "line": 436,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_read": {
+      "json_keys": [
+        "cached"
+      ],
+      "line": 337,
+      "returns": [
+        "0",
+        "0"
+      ]
+    },
+    "cmd_repos_query": {
+      "json_keys": [],
+      "line": 503,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_repos_scan": {
+      "json_keys": [
+        "archive",
+        "indexed_documents",
+        "repos",
+        "root",
+        "skipped_unchanged",
+        "warnings"
+      ],
+      "line": 462,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_search": {
+      "json_keys": [],
+      "line": 266,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_sources_list": {
+      "json_keys": [
+        "count",
+        "domain",
+        "query_type",
+        "sources"
+      ],
+      "line": 605,
+      "returns": [
+        "0"
+      ]
+    },
+    "cmd_sources_match": {
+      "json_keys": [
+        "matched",
+        "source",
+        "url"
+      ],
+      "line": 626,
+      "returns": [
+        "0"
+      ]
+    }
+  },
+  "mcp": {
+    "protocol": "2025-11-25",
+    "tools": [
+      {
+        "description": "Decompose a research question into bounded search queries.",
+        "inputSchema": {
+          "properties": {
+            "max_subqueries": {
+              "default": 4,
+              "type": "integer"
+            },
+            "query": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.plan"
+      },
+      {
+        "description": "Search the web with a configured katala-web-research provider.",
+        "inputSchema": {
+          "properties": {
+            "archive": {
+              "default": ".katala-web-research/archive.sqlite",
+              "type": "string"
+            },
+            "limit": {
+              "default": 5,
+              "type": "integer"
+            },
+            "provider": {
+              "default": "ddg",
+              "enum": [
+                "brave",
+                "ddg",
+                "feed",
+                "github",
+                "github_code",
+                "jina",
+                "meta",
+                "openalex",
+                "searxng"
+              ],
+              "type": "string"
+            },
+            "query": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.search"
+      },
+      {
+        "description": "Run deterministic research-quality benchmark cases.",
+        "inputSchema": {
+          "properties": {
+            "max_subqueries": {
+              "default": 4,
+              "type": "integer"
+            },
+            "min_score": {
+              "default": 80,
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "name": "kwr.eval"
+      },
+      {
+        "description": "Read a URL into clean text using Jina Reader with direct HTTP fallback.",
+        "inputSchema": {
+          "properties": {
+            "reader": {
+              "default": "auto",
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.read"
+      },
+      {
+        "description": "Search archived web page content in the local SQLite archive.",
+        "inputSchema": {
+          "properties": {
+            "archive": {
+              "default": ".katala-web-research/archive.sqlite",
+              "type": "string"
+            },
+            "limit": {
+              "default": 5,
+              "type": "integer"
+            },
+            "terms": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "terms"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.query"
+      },
+      {
+        "description": "Search indexed local Git repository documents.",
+        "inputSchema": {
+          "properties": {
+            "archive": {
+              "default": ".katala-web-research/archive.sqlite",
+              "type": "string"
+            },
+            "limit": {
+              "default": 5,
+              "type": "integer"
+            },
+            "terms": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "terms"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.repos_query"
+      },
+      {
+        "description": "Search archived RSS/Atom/JSON feed items in the local SQLite archive.",
+        "inputSchema": {
+          "properties": {
+            "archive": {
+              "default": ".katala-web-research/archive.sqlite",
+              "type": "string"
+            },
+            "limit": {
+              "default": 5,
+              "type": "integer"
+            },
+            "terms": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "terms"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.feeds_query"
+      },
+      {
+        "description": "Build a combined research brief from web candidates and local repository evidence.",
+        "inputSchema": {
+          "properties": {
+            "archive": {
+              "default": ".katala-web-research/archive.sqlite",
+              "type": "string"
+            },
+            "expand_queries": {
+              "default": false,
+              "type": "boolean"
+            },
+            "feed_limit": {
+              "default": 0,
+              "type": "integer"
+            },
+            "max_subqueries": {
+              "default": 4,
+              "type": "integer"
+            },
+            "no_web": {
+              "default": false,
+              "type": "boolean"
+            },
+            "provider": {
+              "default": "ddg",
+              "enum": [
+                "brave",
+                "ddg",
+                "feed",
+                "github",
+                "github_code",
+                "jina",
+                "meta",
+                "openalex",
+                "searxng"
+              ],
+              "type": "string"
+            },
+            "query": {
+              "type": "string"
+            },
+            "repo_limit": {
+              "default": 5,
+              "type": "integer"
+            },
+            "web_limit": {
+              "default": 5,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.brief"
+      },
+      {
+        "description": "Run web search, local repo lookup, selected URL capture, and return an investigation report.",
+        "inputSchema": {
+          "properties": {
+            "archive": {
+              "default": ".katala-web-research/archive.sqlite",
+              "type": "string"
+            },
+            "expand_queries": {
+              "default": false,
+              "type": "boolean"
+            },
+            "feed_limit": {
+              "default": 0,
+              "type": "integer"
+            },
+            "max_subqueries": {
+              "default": 4,
+              "type": "integer"
+            },
+            "no_web": {
+              "default": false,
+              "type": "boolean"
+            },
+            "provider": {
+              "default": "ddg",
+              "enum": [
+                "brave",
+                "ddg",
+                "feed",
+                "github",
+                "github_code",
+                "jina",
+                "meta",
+                "openalex",
+                "searxng"
+              ],
+              "type": "string"
+            },
+            "query": {
+              "type": "string"
+            },
+            "read_top": {
+              "default": 3,
+              "type": "integer"
+            },
+            "reader": {
+              "default": "auto",
+              "type": "string"
+            },
+            "repo_limit": {
+              "default": 6,
+              "type": "integer"
+            },
+            "web_limit": {
+              "default": 8,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "object"
+        },
+        "name": "kwr.investigate"
+      }
+    ]
+  },
+  "models": {
+    "ArchiveHit": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "snippet",
+        "type": "str"
+      },
+      {
+        "name": "rank",
+        "type": "float"
+      },
+      {
+        "name": "fetched_at",
+        "type": "str"
+      }
+    ],
+    "FeedHit": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "snippet",
+        "type": "str"
+      },
+      {
+        "name": "rank",
+        "type": "float"
+      },
+      {
+        "name": "source_url",
+        "type": "str"
+      },
+      {
+        "name": "source_title",
+        "type": "str"
+      },
+      {
+        "name": "published_at",
+        "type": "str | None"
+      },
+      {
+        "name": "fetched_at",
+        "type": "str"
+      }
+    ],
+    "FeedItem": [
+      {
+        "name": "source_url",
+        "type": "str"
+      },
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "summary",
+        "type": "str"
+      },
+      {
+        "name": "source_title",
+        "type": "str"
+      },
+      {
+        "name": "published_at",
+        "type": "str | None"
+      },
+      {
+        "name": "fetched_at",
+        "type": "str"
+      }
+    ],
+    "FeedSource": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "kind",
+        "type": "str"
+      },
+      {
+        "name": "added_at",
+        "type": "str"
+      },
+      {
+        "name": "last_fetched_at",
+        "type": "str"
+      },
+      {
+        "name": "status",
+        "type": "str"
+      },
+      {
+        "name": "health_score",
+        "type": "float"
+      },
+      {
+        "name": "error_kind",
+        "type": "str"
+      },
+      {
+        "name": "last_item_count",
+        "type": "int"
+      }
+    ],
+    "PageSnapshot": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "content",
+        "type": "str"
+      },
+      {
+        "name": "source",
+        "type": "str"
+      },
+      {
+        "name": "fetched_at",
+        "type": "str"
+      },
+      {
+        "name": "status_code",
+        "type": "int | None"
+      },
+      {
+        "name": "content_type",
+        "type": "str | None"
+      }
+    ],
+    "ProjectHit": [
+      {
+        "name": "kind",
+        "type": "str"
+      },
+      {
+        "name": "repository",
+        "type": "str"
+      },
+      {
+        "name": "number",
+        "type": "int"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "state",
+        "type": "str"
+      },
+      {
+        "name": "updated_at",
+        "type": "str"
+      },
+      {
+        "name": "labels",
+        "type": "list[str]"
+      },
+      {
+        "name": "priority",
+        "type": "str"
+      },
+      {
+        "name": "status",
+        "type": "str"
+      },
+      {
+        "name": "source",
+        "type": "str"
+      },
+      {
+        "name": "rank",
+        "type": "float"
+      },
+      {
+        "name": "snippet",
+        "type": "str"
+      }
+    ],
+    "ProjectItem": [
+      {
+        "name": "kind",
+        "type": "str"
+      },
+      {
+        "name": "repository",
+        "type": "str"
+      },
+      {
+        "name": "number",
+        "type": "int"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "state",
+        "type": "str"
+      },
+      {
+        "name": "updated_at",
+        "type": "str"
+      },
+      {
+        "name": "labels",
+        "type": "list[str]"
+      },
+      {
+        "name": "priority",
+        "type": "str"
+      },
+      {
+        "name": "status",
+        "type": "str"
+      },
+      {
+        "name": "source",
+        "type": "str"
+      }
+    ],
+    "RepoDocument": [
+      {
+        "name": "repo_path",
+        "type": "str"
+      },
+      {
+        "name": "repo_name",
+        "type": "str"
+      },
+      {
+        "name": "rel_path",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "content",
+        "type": "str"
+      },
+      {
+        "name": "kind",
+        "type": "str"
+      },
+      {
+        "name": "indexed_at",
+        "type": "str"
+      },
+      {
+        "name": "context",
+        "type": "str"
+      },
+      {
+        "name": "file_size",
+        "type": "int"
+      },
+      {
+        "name": "file_mtime_ns",
+        "type": "int"
+      },
+      {
+        "name": "content_sha256",
+        "type": "str"
+      }
+    ],
+    "RepoHit": [
+      {
+        "name": "repo_path",
+        "type": "str"
+      },
+      {
+        "name": "repo_name",
+        "type": "str"
+      },
+      {
+        "name": "rel_path",
+        "type": "str"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "snippet",
+        "type": "str"
+      },
+      {
+        "name": "kind",
+        "type": "str"
+      },
+      {
+        "name": "rank",
+        "type": "float"
+      },
+      {
+        "name": "indexed_at",
+        "type": "str"
+      }
+    ],
+    "SearchResult": [
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "snippet",
+        "type": "str"
+      },
+      {
+        "name": "source",
+        "type": "str"
+      },
+      {
+        "name": "published_at",
+        "type": "str | None"
+      },
+      {
+        "name": "rank",
+        "type": "int"
+      },
+      {
+        "name": "score",
+        "type": "float"
+      },
+      {
+        "name": "metadata",
+        "type": "dict[str, Any]"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/katala_web_research/__init__.py",
+      "sha256": "5adf1f5c1daed485dd01e45180162b314b41e96c09c4a095d43a1f9926d49e09"
+    },
+    {
+      "path": "src/katala_web_research/archive.py",
+      "sha256": "978aae67453986f9cde5acd3a36127e8d74989ce3f53e1825dce4b8d2342114b"
+    },
+    {
+      "path": "src/katala_web_research/archive_highlights.py",
+      "sha256": "cd8f1d37f5d74bcf94f2b9d5a35137b820529f6c1c6710d461be961263f692a1"
+    },
+    {
+      "path": "src/katala_web_research/brief.py",
+      "sha256": "7bfa091a2f225d11d7f16c933d1ddf16ed24930ae56e604dc7791edb1707e65a"
+    },
+    {
+      "path": "src/katala_web_research/cli.py",
+      "sha256": "3c711349e07ebcb9afc9c9cf89ba4808a25455728c66bc587d10902a6fab4d42"
+    },
+    {
+      "path": "src/katala_web_research/corpus.py",
+      "sha256": "f552e771e5c3ca0579db93a085bc96c36a818fabf8e8b5b08bcdb84deca6ea9e"
+    },
+    {
+      "path": "src/katala_web_research/engine_health.py",
+      "sha256": "54cd3df38b505cd2a327687d01d51dfaa1c9f14cfeb3b955b21f6eb44df4f7c0"
+    },
+    {
+      "path": "src/katala_web_research/evaluation.py",
+      "sha256": "7e24fde92ff48a93f82feeba38d869338465fb038e9937c5d60e9dbc35e16fca"
+    },
+    {
+      "path": "src/katala_web_research/feeds.py",
+      "sha256": "847dbe7892f47706f4d5729afb918c30ba6636b0212d5b041d3dd1fc80eb6385"
+    },
+    {
+      "path": "src/katala_web_research/fusion.py",
+      "sha256": "3d708639a0fc9ace5646c0e5a04c23c9d1d0740d85c3df8494d59383fc3d843d"
+    },
+    {
+      "path": "src/katala_web_research/http.py",
+      "sha256": "da912089dc74486bdbc1df4a40f117055ddda4c4d2e74ceceba3495217000b2d"
+    },
+    {
+      "path": "src/katala_web_research/investigation.py",
+      "sha256": "2ad830a26d43152749e6325adcd6f871347a053eb8252dd0305b006af257cb32"
+    },
+    {
+      "path": "src/katala_web_research/issues.py",
+      "sha256": "78961fc5c7dfbe33c849a089eaa785fca76f8b37b5441af6824f8e9958bc03d9"
+    },
+    {
+      "path": "src/katala_web_research/mcp_server.py",
+      "sha256": "3c357248118ff105247437002a47e787aef4a35aa4968cfe53559247d049af9b"
+    },
+    {
+      "path": "src/katala_web_research/models.py",
+      "sha256": "9c4b9fb0f3bfb787572bffe5624efd11f09a38f9e069ff825788bd3ac9a83202"
+    },
+    {
+      "path": "src/katala_web_research/planner.py",
+      "sha256": "8e6f0192915fc8723a2e82d72fdc9b967c7a1f630b4102c4906cbf3b64cdd29e"
+    },
+    {
+      "path": "src/katala_web_research/provider_parsing.py",
+      "sha256": "ba5eb9f98f98f67dfc0d1a49ba2bb842b4dc7d07f76a30581b4a4ffd32081cb0"
+    },
+    {
+      "path": "src/katala_web_research/providers.py",
+      "sha256": "0d7e64b88e2b3dd4aa74cee8e2866022863698315e08239d5f3a458e51568ab4"
+    },
+    {
+      "path": "src/katala_web_research/query_builder.py",
+      "sha256": "ab85cc38156514b713a0ac5a40833d308613e94b8331b324f27b80cc691ec60b"
+    },
+    {
+      "path": "src/katala_web_research/rank.py",
+      "sha256": "822d84cc1a89ad36856551bdb1a8e8c63ce454bbd2da96715eef6741556862af"
+    },
+    {
+      "path": "src/katala_web_research/reader.py",
+      "sha256": "371595a8ddd868ae4927e316b419668945d71801d2732b96fd41388797afb9f0"
+    },
+    {
+      "path": "src/katala_web_research/report.py",
+      "sha256": "ca5f5cb9e87b984487dad76bed59c3ab3771277c79b21af6f193d400d5367802"
+    },
+    {
+      "path": "src/katala_web_research/source_quality.py",
+      "sha256": "723e6b91a702d68b7177c3426de537f7856ea63fd868e0caf0c6222f31adf6b6"
+    },
+    {
+      "path": "src/katala_web_research/source_registry.py",
+      "sha256": "bcaf95d53521313dcd577f120336b3f803dcf6843f0b6596faa13ba9c9d5cbba"
+    },
+    {
+      "path": "src/katala_web_research/text.py",
+      "sha256": "3a8935de83f364979e49aeae7316a0ab9bf51c185f211335a32eb01cc4629544"
+    },
+    {
+      "path": "src/katala_web_research/workflow.py",
+      "sha256": "4d582d0825aaefd9be053a32be0ce34322cbce5248628c89462148b88b4dd900"
+    }
+  ],
+  "sqlite": {
+    "schema": [
+      {
+        "name": "engine_runs_provider",
+        "sql": "CREATE INDEX engine_runs_provider ON engine_runs(provider, id DESC)",
+        "tbl_name": "engine_runs",
+        "type": "index"
+      },
+      {
+        "name": "engine_runs",
+        "sql": "CREATE TABLE engine_runs (\n              id INTEGER PRIMARY KEY,\n              provider TEXT NOT NULL,\n              status TEXT NOT NULL,\n              latency_ms INTEGER NOT NULL,\n              result_count INTEGER NOT NULL,\n              error_kind TEXT NOT NULL DEFAULT '',\n              recorded_at TEXT NOT NULL\n            )",
+        "tbl_name": "engine_runs",
+        "type": "table"
+      },
+      {
+        "name": "feed_items",
+        "sql": "CREATE TABLE feed_items (\n              id INTEGER PRIMARY KEY,\n              source_url TEXT NOT NULL REFERENCES feed_sources(url),\n              url TEXT NOT NULL,\n              title TEXT NOT NULL,\n              summary TEXT NOT NULL,\n              source_title TEXT NOT NULL DEFAULT '',\n              published_at TEXT,\n              fetched_at TEXT NOT NULL,\n              UNIQUE(source_url, url)\n            )",
+        "tbl_name": "feed_items",
+        "type": "table"
+      },
+      {
+        "name": "feed_items_fts",
+        "sql": "CREATE VIRTUAL TABLE feed_items_fts\n              USING fts5(title, summary, source_title, url UNINDEXED, source_url UNINDEXED, content='feed_items', content_rowid='id')",
+        "tbl_name": "feed_items_fts",
+        "type": "table"
+      },
+      {
+        "name": "feed_items_fts_config",
+        "sql": "CREATE TABLE 'feed_items_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID",
+        "tbl_name": "feed_items_fts_config",
+        "type": "table"
+      },
+      {
+        "name": "feed_items_fts_data",
+        "sql": "CREATE TABLE 'feed_items_fts_data'(id INTEGER PRIMARY KEY, block BLOB)",
+        "tbl_name": "feed_items_fts_data",
+        "type": "table"
+      },
+      {
+        "name": "feed_items_fts_docsize",
+        "sql": "CREATE TABLE 'feed_items_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)",
+        "tbl_name": "feed_items_fts_docsize",
+        "type": "table"
+      },
+      {
+        "name": "feed_items_fts_idx",
+        "sql": "CREATE TABLE 'feed_items_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID",
+        "tbl_name": "feed_items_fts_idx",
+        "type": "table"
+      },
+      {
+        "name": "feed_sources",
+        "sql": "CREATE TABLE feed_sources (\n              id INTEGER PRIMARY KEY,\n              url TEXT NOT NULL UNIQUE,\n              title TEXT NOT NULL DEFAULT '',\n              kind TEXT NOT NULL DEFAULT '',\n              added_at TEXT NOT NULL,\n              last_fetched_at TEXT NOT NULL DEFAULT '',\n              status TEXT NOT NULL DEFAULT 'pending',\n              health_score REAL NOT NULL DEFAULT 0,\n              error_kind TEXT NOT NULL DEFAULT '',\n              last_item_count INTEGER NOT NULL DEFAULT 0\n            )",
+        "tbl_name": "feed_sources",
+        "type": "table"
+      },
+      {
+        "name": "pages",
+        "sql": "CREATE TABLE pages (\n              id INTEGER PRIMARY KEY,\n              url TEXT NOT NULL UNIQUE,\n              title TEXT NOT NULL,\n              content TEXT NOT NULL,\n              source TEXT NOT NULL,\n              fetched_at TEXT NOT NULL,\n              status_code INTEGER,\n              content_type TEXT\n            )",
+        "tbl_name": "pages",
+        "type": "table"
+      },
+      {
+        "name": "pages_fts",
+        "sql": "CREATE VIRTUAL TABLE pages_fts\n              USING fts5(title, content, url UNINDEXED, content='pages', content_rowid='id')",
+        "tbl_name": "pages_fts",
+        "type": "table"
+      },
+      {
+        "name": "pages_fts_config",
+        "sql": "CREATE TABLE 'pages_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID",
+        "tbl_name": "pages_fts_config",
+        "type": "table"
+      },
+      {
+        "name": "pages_fts_data",
+        "sql": "CREATE TABLE 'pages_fts_data'(id INTEGER PRIMARY KEY, block BLOB)",
+        "tbl_name": "pages_fts_data",
+        "type": "table"
+      },
+      {
+        "name": "pages_fts_docsize",
+        "sql": "CREATE TABLE 'pages_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)",
+        "tbl_name": "pages_fts_docsize",
+        "type": "table"
+      },
+      {
+        "name": "pages_fts_idx",
+        "sql": "CREATE TABLE 'pages_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID",
+        "tbl_name": "pages_fts_idx",
+        "type": "table"
+      },
+      {
+        "name": "project_items",
+        "sql": "CREATE TABLE project_items (\n              id INTEGER PRIMARY KEY,\n              kind TEXT NOT NULL,\n              repository TEXT NOT NULL,\n              number INTEGER NOT NULL,\n              title TEXT NOT NULL,\n              url TEXT NOT NULL,\n              state TEXT NOT NULL,\n              updated_at TEXT NOT NULL,\n              labels_json TEXT NOT NULL,\n              labels_text TEXT NOT NULL,\n              priority TEXT NOT NULL DEFAULT 'p3',\n              status TEXT NOT NULL DEFAULT '',\n              source TEXT NOT NULL DEFAULT 'github',\n              UNIQUE(kind, repository, number)\n            )",
+        "tbl_name": "project_items",
+        "type": "table"
+      },
+      {
+        "name": "project_items_fts",
+        "sql": "CREATE VIRTUAL TABLE project_items_fts\n              USING fts5(repository, title, labels_text, priority, status, url UNINDEXED, kind UNINDEXED, content='project_items', content_rowid='id')",
+        "tbl_name": "project_items_fts",
+        "type": "table"
+      },
+      {
+        "name": "project_items_fts_config",
+        "sql": "CREATE TABLE 'project_items_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID",
+        "tbl_name": "project_items_fts_config",
+        "type": "table"
+      },
+      {
+        "name": "project_items_fts_data",
+        "sql": "CREATE TABLE 'project_items_fts_data'(id INTEGER PRIMARY KEY, block BLOB)",
+        "tbl_name": "project_items_fts_data",
+        "type": "table"
+      },
+      {
+        "name": "project_items_fts_docsize",
+        "sql": "CREATE TABLE 'project_items_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)",
+        "tbl_name": "project_items_fts_docsize",
+        "type": "table"
+      },
+      {
+        "name": "project_items_fts_idx",
+        "sql": "CREATE TABLE 'project_items_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID",
+        "tbl_name": "project_items_fts_idx",
+        "type": "table"
+      },
+      {
+        "name": "repo_documents",
+        "sql": "CREATE TABLE repo_documents (\n              id INTEGER PRIMARY KEY,\n              repo_path TEXT NOT NULL,\n              repo_name TEXT NOT NULL,\n              rel_path TEXT NOT NULL,\n              title TEXT NOT NULL,\n              content TEXT NOT NULL,\n              kind TEXT NOT NULL,\n              indexed_at TEXT NOT NULL,\n              context TEXT NOT NULL DEFAULT '',\n              file_size INTEGER NOT NULL DEFAULT 0,\n              file_mtime_ns INTEGER NOT NULL DEFAULT 0,\n              content_sha256 TEXT NOT NULL DEFAULT '',\n              UNIQUE(repo_path, rel_path)\n            )",
+        "tbl_name": "repo_documents",
+        "type": "table"
+      },
+      {
+        "name": "repo_documents_fts",
+        "sql": "CREATE VIRTUAL TABLE repo_documents_fts\n              USING fts5(repo_name, rel_path, title, context, content, kind UNINDEXED, content='repo_documents', content_rowid='id')",
+        "tbl_name": "repo_documents_fts",
+        "type": "table"
+      },
+      {
+        "name": "repo_documents_fts_config",
+        "sql": "CREATE TABLE 'repo_documents_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID",
+        "tbl_name": "repo_documents_fts_config",
+        "type": "table"
+      },
+      {
+        "name": "repo_documents_fts_data",
+        "sql": "CREATE TABLE 'repo_documents_fts_data'(id INTEGER PRIMARY KEY, block BLOB)",
+        "tbl_name": "repo_documents_fts_data",
+        "type": "table"
+      },
+      {
+        "name": "repo_documents_fts_docsize",
+        "sql": "CREATE TABLE 'repo_documents_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)",
+        "tbl_name": "repo_documents_fts_docsize",
+        "type": "table"
+      },
+      {
+        "name": "repo_documents_fts_idx",
+        "sql": "CREATE TABLE 'repo_documents_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID",
+        "tbl_name": "repo_documents_fts_idx",
+        "type": "table"
+      },
+      {
+        "name": "runs",
+        "sql": "CREATE TABLE runs (\n              id INTEGER PRIMARY KEY,\n              query TEXT NOT NULL,\n              provider TEXT NOT NULL,\n              created_at TEXT NOT NULL\n            )",
+        "tbl_name": "runs",
+        "type": "table"
+      },
+      {
+        "name": "search_results",
+        "sql": "CREATE TABLE search_results (\n              id INTEGER PRIMARY KEY,\n              run_id INTEGER NOT NULL REFERENCES runs(id),\n              rank INTEGER NOT NULL,\n              score REAL NOT NULL,\n              title TEXT NOT NULL,\n              url TEXT NOT NULL,\n              snippet TEXT NOT NULL,\n              source TEXT NOT NULL,\n              published_at TEXT\n            )",
+        "tbl_name": "search_results",
+        "type": "table"
+      },
+      {
+        "name": "feed_items_ad",
+        "sql": "CREATE TRIGGER feed_items_ad AFTER DELETE ON feed_items BEGIN\n              INSERT INTO feed_items_fts(feed_items_fts, rowid, title, summary, source_title, url, source_url)\n              VALUES('delete', old.id, old.title, old.summary, old.source_title, old.url, old.source_url);\n            END",
+        "tbl_name": "feed_items",
+        "type": "trigger"
+      },
+      {
+        "name": "feed_items_ai",
+        "sql": "CREATE TRIGGER feed_items_ai AFTER INSERT ON feed_items BEGIN\n              INSERT INTO feed_items_fts(rowid, title, summary, source_title, url, source_url)\n              VALUES (new.id, new.title, new.summary, new.source_title, new.url, new.source_url);\n            END",
+        "tbl_name": "feed_items",
+        "type": "trigger"
+      },
+      {
+        "name": "feed_items_au",
+        "sql": "CREATE TRIGGER feed_items_au AFTER UPDATE ON feed_items BEGIN\n              INSERT INTO feed_items_fts(feed_items_fts, rowid, title, summary, source_title, url, source_url)\n              VALUES('delete', old.id, old.title, old.summary, old.source_title, old.url, old.source_url);\n              INSERT INTO feed_items_fts(rowid, title, summary, source_title, url, source_url)\n              VALUES (new.id, new.title, new.summary, new.source_title, new.url, new.source_url);\n            END",
+        "tbl_name": "feed_items",
+        "type": "trigger"
+      },
+      {
+        "name": "pages_ad",
+        "sql": "CREATE TRIGGER pages_ad AFTER DELETE ON pages BEGIN\n              INSERT INTO pages_fts(pages_fts, rowid, title, content, url)\n              VALUES('delete', old.id, old.title, old.content, old.url);\n            END",
+        "tbl_name": "pages",
+        "type": "trigger"
+      },
+      {
+        "name": "pages_ai",
+        "sql": "CREATE TRIGGER pages_ai AFTER INSERT ON pages BEGIN\n              INSERT INTO pages_fts(rowid, title, content, url)\n              VALUES (new.id, new.title, new.content, new.url);\n            END",
+        "tbl_name": "pages",
+        "type": "trigger"
+      },
+      {
+        "name": "pages_au",
+        "sql": "CREATE TRIGGER pages_au AFTER UPDATE ON pages BEGIN\n              INSERT INTO pages_fts(pages_fts, rowid, title, content, url)\n              VALUES('delete', old.id, old.title, old.content, old.url);\n              INSERT INTO pages_fts(rowid, title, content, url)\n              VALUES (new.id, new.title, new.content, new.url);\n            END",
+        "tbl_name": "pages",
+        "type": "trigger"
+      },
+      {
+        "name": "project_items_ad",
+        "sql": "CREATE TRIGGER project_items_ad AFTER DELETE ON project_items BEGIN\n              INSERT INTO project_items_fts(project_items_fts, rowid, repository, title, labels_text, priority, status, url, kind)\n              VALUES('delete', old.id, old.repository, old.title, old.labels_text, old.priority, old.status, old.url, old.kind);\n            END",
+        "tbl_name": "project_items",
+        "type": "trigger"
+      },
+      {
+        "name": "project_items_ai",
+        "sql": "CREATE TRIGGER project_items_ai AFTER INSERT ON project_items BEGIN\n              INSERT INTO project_items_fts(rowid, repository, title, labels_text, priority, status, url, kind)\n              VALUES (new.id, new.repository, new.title, new.labels_text, new.priority, new.status, new.url, new.kind);\n            END",
+        "tbl_name": "project_items",
+        "type": "trigger"
+      },
+      {
+        "name": "project_items_au",
+        "sql": "CREATE TRIGGER project_items_au AFTER UPDATE ON project_items BEGIN\n              INSERT INTO project_items_fts(project_items_fts, rowid, repository, title, labels_text, priority, status, url, kind)\n              VALUES('delete', old.id, old.repository, old.title, old.labels_text, old.priority, old.status, old.url, old.kind);\n              INSERT INTO project_items_fts(rowid, repository, title, labels_text, priority, status, url, kind)\n              VALUES (new.id, new.repository, new.title, new.labels_text, new.priority, new.status, new.url, new.kind);\n            END",
+        "tbl_name": "project_items",
+        "type": "trigger"
+      },
+      {
+        "name": "repo_documents_ad",
+        "sql": "CREATE TRIGGER repo_documents_ad AFTER DELETE ON repo_documents BEGIN\n              INSERT INTO repo_documents_fts(repo_documents_fts, rowid, repo_name, rel_path, title, context, content, kind)\n              VALUES('delete', old.id, old.repo_name, old.rel_path, old.title, old.context, old.content, old.kind);\n            END",
+        "tbl_name": "repo_documents",
+        "type": "trigger"
+      },
+      {
+        "name": "repo_documents_ai",
+        "sql": "CREATE TRIGGER repo_documents_ai AFTER INSERT ON repo_documents BEGIN\n              INSERT INTO repo_documents_fts(rowid, repo_name, rel_path, title, context, content, kind)\n              VALUES (new.id, new.repo_name, new.rel_path, new.title, new.context, new.content, new.kind);\n            END",
+        "tbl_name": "repo_documents",
+        "type": "trigger"
+      },
+      {
+        "name": "repo_documents_au",
+        "sql": "CREATE TRIGGER repo_documents_au AFTER UPDATE ON repo_documents BEGIN\n              INSERT INTO repo_documents_fts(repo_documents_fts, rowid, repo_name, rel_path, title, context, content, kind)\n              VALUES('delete', old.id, old.repo_name, old.rel_path, old.title, old.context, old.content, old.kind);\n              INSERT INTO repo_documents_fts(rowid, repo_name, rel_path, title, context, content, kind)\n              VALUES (new.id, new.repo_name, new.rel_path, new.title, new.context, new.content, new.kind);\n            END",
+        "tbl_name": "repo_documents",
+        "type": "trigger"
+      }
+    ],
+    "user_version": 0
+  }
+}
