@@ -1,7 +1,11 @@
 pub mod archive;
+pub mod feeds;
 pub mod migration;
 pub mod planner;
 pub mod registry;
+pub mod search;
+pub mod text;
+pub mod urls;
 
 pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 pub fn now() -> String {

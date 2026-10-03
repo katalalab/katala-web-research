@@ -131,6 +131,102 @@ class Differential(unittest.TestCase):
             self.assertEqual(json.loads(original.stdout),json.loads(rollback.stdout))
             type(self).comparisons += 1
 
+    def test_feed_refresh_search_and_repeated_refresh(self):
+        fixture = self.root/'feed 日本語.rss'
+        fixture.write_text((ROOT/'tests/fixtures/sample.rss.xml').read_text(),encoding='utf-8')
+        source=fixture.as_uri()
+        for rust,name in [(False,'python'),(True,'rust')]:
+            archive=self.root/(name+'-refresh.sqlite')
+            a=Archive(archive); a.upsert_feed_source(FeedSource(source,'Manual title','', 'fixed')); a.close()
+        def clean(value):
+            if isinstance(value,dict):
+                return {k: ('<time>' if k in ['added_at','last_fetched_at','fetched_at'] and v else '<archive>' if k=='archive' else clean(v)) for k,v in value.items()}
+            if isinstance(value,list):return [clean(v) for v in value]
+            return value
+        for round in range(2):
+            outputs=[]
+            for rust,name in [(False,'python'),(True,'rust')]:
+                archive=self.root/(name+'-refresh.sqlite')
+                p=self.call(['feeds','refresh','--archive',str(archive),'--json'],rust)
+                self.assertEqual(p.returncode,0,p.stderr);outputs.append(clean(json.loads(p.stdout)))
+            self.assertEqual(*outputs);type(self).comparisons+=1
+        for query in ['RSSHub adapter','design','missing']:
+            for limit in [-1,0,1,5]:
+                outputs=[]
+                for rust,name in [(False,'python'),(True,'rust')]:
+                    archive=self.root/(name+'-refresh.sqlite')
+                    p=self.call(['search',query,'--provider','feed','--archive',str(archive),'--limit',str(limit),'--json'],rust)
+                    self.assertEqual(p.returncode,0,p.stderr);outputs.append(clean(json.loads(p.stdout)))
+                self.assertEqual(*outputs,(query,limit));type(self).comparisons+=1
+        # Repeat with malformed XML: error_kind and previous source metadata must match.
+        fixture.write_text('<rss><broken>',encoding='utf-8')
+        outputs=[]
+        for rust,name in [(False,'python'),(True,'rust')]:
+            p=self.call(['feeds','refresh','--archive',str(self.root/(name+'-refresh.sqlite')),'--json'],rust)
+            self.assertEqual(p.returncode,0,p.stderr);outputs.append(clean(json.loads(p.stdout)))
+        self.assertEqual(*outputs);type(self).comparisons+=1
+    def test_local_feed_formats_selection_and_failure_state(self):
+        def clean(value):
+            if isinstance(value,dict):
+                return {k: ('<time>' if k in ['added_at','last_fetched_at','fetched_at'] and v else '<archive>' if k=='archive' else clean(v)) for k,v in value.items()}
+            if isinstance(value,list):return [clean(v) for v in value]
+            return value
+        for filename in ['sample.rss.xml','sample.atom.xml','sample.feed.json']:
+            fixture=self.root/('文書 '+filename)
+            fixture.write_bytes((ROOT/'tests/fixtures'/filename).read_bytes())
+            paths=[self.root/(name+filename+'.sqlite') for name in ['python','rust']]
+            def compare(args):
+                outputs=[]
+                for rust,path in zip([False,True],paths):
+                    proc=self.call([*args,'--archive',str(path),'--json'],rust)
+                    self.assertEqual(proc.returncode,0,proc.stderr)
+                    self.assertEqual(proc.stderr,'')
+                    outputs.append(clean(json.loads(proc.stdout)))
+                self.assertEqual(*outputs,(filename,args));type(self).comparisons+=1
+            compare(['feeds','refresh']) # no registered sources
+            compare(['feeds','refresh','--source',fixture.as_uri()])
+            compare(['feeds','refresh','--source','']) # empty source means refresh registry
+            compare(['feeds','query','feed'])
+            for path in paths:
+                with sqlite3.connect(path) as conn:
+                    self.assertEqual(conn.execute('PRAGMA integrity_check').fetchone(),('ok',))
+            fixture.write_text('{invalid}',encoding='utf-8')
+            compare(['feeds','refresh'])
+            fixture.unlink()
+            compare(['feeds','refresh'])
+            # Parse/fetch failure retains all old items and source identity.
+            sources=[];items=[]
+            for path in paths:
+                with sqlite3.connect(path) as conn:
+                    conn.row_factory=sqlite3.Row
+                    sources.append(clean([dict(r) for r in conn.execute('SELECT * FROM feed_sources ORDER BY url')]))
+                    items.append(clean([dict(r) for r in conn.execute('SELECT * FROM feed_items ORDER BY source_url,url')]))
+            self.assertEqual(*sources);self.assertEqual(*items);self.assertTrue(items[0])
+    def test_pending_feed_network_is_explicit_and_preserves_health(self):
+        with sqlite3.connect(self.db) as conn:
+            before=conn.execute('SELECT * FROM feed_sources').fetchall()
+        proc=self.call(['feeds','refresh','--archive',str(self.db),'--json'],True)
+        self.assertEqual(proc.returncode,1)
+        self.assertIn('network feeds not migrated yet',proc.stderr)
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(before,conn.execute('SELECT * FROM feed_sources').fetchall())
+        for args in [['search','evidence'],['search','evidence','--provider','feed','--enrich-top','1']]:
+            proc=self.call([*args,'--archive',str(self.db),'--json'],True)
+            self.assertEqual(proc.returncode,1);self.assertIn('not migrated yet',proc.stderr)
+
+    def test_feed_search_highlights(self):
+        for i, url in enumerate(['https://github.com/fixture/repo','https://www.cisa.gov/known-exploited-vulnerabilities-catalog','https://arxiv.org/abs/fixture','https://example.test/0']):
+            a=Archive(self.db)
+            a.upsert_feed_items([FeedItem('https://example.test/feed',url,'atomic evidence','atomic evidence rollback','Fixture feed',None,'fixed')]);a.close()
+        for top in [-1,0,1,5]:
+            self.parity(['search','atomic evidence','--provider','feed','--archive',str(self.db),'--highlight-top',str(top),'--json'])
+        self.parity(['search','atomic evidence','--provider','feed','--archive',str(self.db)],False)
+        for limit in [-2,-1,0,1,3,10]:
+            for multiplier in [0,1,1.00001,2.1,3]:
+                self.parity(['search','atomic evidence','--provider','feed','--archive',str(self.db),'--limit',str(limit),'--candidate-multiplier',str(multiplier),'--json'])
+        for args in [['--category','github'],['--category','research','--category','pdf'],['--include-domain','https://WWW.example.test/path','--exclude-domain','other.test'],['--enrich-top','-1'],['--highlight-top','2']]:
+            self.parity(['search','atomic evidence','--provider','feed','--archive',str(self.db),*args,'--json'])
+
     def test_parser_and_runtime_exit_codes(self):
         for args in [[], ['plan'], ['sources','missing'], ['query','evidence','--limit','invalid']]:
             self.assertEqual(self.call(args,False).returncode,self.call(args,True).returncode)

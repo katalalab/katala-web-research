@@ -1,6 +1,6 @@
 # Reproducible Rust preview and copy migration
 
-This is the first native migration slice, not a complete replacement. The Python `kwr` entry point remains the production/reference command. Rust builds `kwr-rs`; it never invokes Python. Python is used only by the development differential test harness. See [parity](parity.md) for every remaining command and [ledger](ledger.md) for actual verification evidence.
+This is a partial native migration preview, not a complete replacement. The Python `kwr` entry point remains the production/reference command. Rust builds `kwr-rs`; it never invokes Python. Python is used only by the development differential test harness. See [parity](parity.md) for every remaining command and [ledger](ledger.md) for actual verification evidence.
 
 ## Setup and build
 
@@ -45,8 +45,22 @@ Dependencies are pinned transitively in Cargo.lock. `dependency-licenses.json` l
 - `plan`, `sources list`, `sources match`
 - `query`, `repos query`, `feeds query`, `issues query`
 - `feeds add`, `engines`
+- `feeds refresh` with `file://` local fixtures only, RSS/Atom/JSONFeed; network sources fail clearly before source-health changes
+- `search QUERY --provider feed` over the selected local archive, query filters/candidate oversampling and cached-page highlights; positive `--enrich-top` and all network providers fail clearly
 - `read --cache` for an existing page only; uncached reads, refreshes, and cache misses fail clearly
 - new `migrate --source PATH --destination PATH [--dry-run]` emits a JSON validation report
+
+Example offline feed loop (synthetic destination only):
+
+```sh
+fixture_url="$(python3 -c 'from pathlib import Path; print(Path("tests/fixtures/sample.rss.xml").resolve().as_uri())')"
+./target/debug/kwr-rs feeds refresh --source "$fixture_url" --archive /tmp/kwr-feed-preview.sqlite --json
+./target/debug/kwr-rs search RSSHub --provider feed --archive /tmp/kwr-feed-preview.sqlite --json
+```
+
+The parser's normal RSS/Atom/JSONFeed fields are covered by committed Python goldens. Internal XML DTD/entity declarations remain unsupported, matching roxmltree's default rejection; unusual dates, malformed non-string JSON fields, ill-formed HTML/tokenizer edges, native file URL edge cases, and injected database-write failures require further reference fixtures before claiming full parser/refresh parity. Fetching local files currently reads the complete file as the reference does; file byte limits belong to a separately reviewed contract change. HTTP charset/TLS/proxy/timeout and live sources are pending. The CLI does not silently mark an unsupported network fetch as a refresh success.
+
+Regenerate synthetic parser/query/highlight/ranking fixtures with `PYTHONPATH=src python3 scripts/migration/generate_feed_goldens.py`; ranking uses an explicit fixture year. Do not regenerate expected values from Rust.
 
 All other reference commands remain available through Python and are pending in Rust. Parser diagnostics/help intentionally use clap wording; argument errors retain exit 2, runtime errors exit 1, success exit 0. JSON/UTF-8 outputs and supported command text outputs are compared with the reference. Numeric CLI arguments are signed 64-bit; arbitrary-size Python integers and invalid Unix filename bytes are not certified for parity.
 

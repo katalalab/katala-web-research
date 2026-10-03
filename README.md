@@ -19,8 +19,9 @@ scripts/verify.sh
 
 A native Rust preview is being migrated with the Python implementation retained
 as a compatibility reference. It currently supports local planning, source
-registry matching, archive retrieval, feed registration, engine health, cached
-page hits, and copy-only archive migration. It does not yet replace all `kwr`
+registry matching, archive retrieval, feed registration and local file refresh,
+stored-feed search, engine health, cached page hits, and copy-only archive
+migration. It does not yet replace all `kwr`
 commands. See [the parity ledger](docs/migration/parity.md),
 [setup and rollback instructions](docs/migration/runbook.md), and
 [verification evidence and remaining work](docs/migration/ledger.md).

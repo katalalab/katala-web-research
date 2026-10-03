@@ -123,6 +123,22 @@ impl Archive {
             .conn
             .query_row("SELECT COUNT(*) FROM feed_sources", [], |r| r.get(0))?)
     }
+    pub fn feed_sources(&self) -> Result<Vec<crate::feeds::FeedSource>> {
+        query_json(&self.conn,"SELECT url,title,kind,added_at,last_fetched_at,status,health_score,error_kind,last_item_count FROM feed_sources ORDER BY url", &[])?.into_iter().map(|r| Ok(serde_json::from_value(r)?)).collect()
+    }
+    pub fn upsert_feed_source(&self, source: &crate::feeds::FeedSource) -> Result<()> {
+        self.conn.execute("INSERT INTO feed_sources(url,title,kind,added_at,last_fetched_at,status,health_score,error_kind,last_item_count) VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(url) DO UPDATE SET title=CASE WHEN excluded.title!='' THEN excluded.title ELSE feed_sources.title END,kind=CASE WHEN excluded.kind!='' THEN excluded.kind ELSE feed_sources.kind END,last_fetched_at=CASE WHEN excluded.last_fetched_at!='' THEN excluded.last_fetched_at ELSE feed_sources.last_fetched_at END,status=CASE WHEN excluded.last_fetched_at!='' THEN excluded.status ELSE feed_sources.status END,health_score=CASE WHEN excluded.last_fetched_at!='' THEN excluded.health_score ELSE feed_sources.health_score END,error_kind=CASE WHEN excluded.last_fetched_at!='' THEN excluded.error_kind ELSE feed_sources.error_kind END,last_item_count=CASE WHEN excluded.last_fetched_at!='' THEN excluded.last_item_count ELSE feed_sources.last_item_count END",
+            params![source.url,source.title,source.kind,if source.added_at.is_empty(){now()}else{source.added_at.clone()},source.last_fetched_at,source.status,source.health_score,source.error_kind,source.last_item_count])?;
+        Ok(())
+    }
+    pub fn upsert_feed_items(&self, items: &[crate::feeds::FeedItem]) -> Result<usize> {
+        let tx = self.conn.unchecked_transaction()?;
+        for item in items {
+            tx.execute("INSERT INTO feed_items(source_url,url,title,summary,source_title,published_at,fetched_at) VALUES (?,?,?,?,?,?,?) ON CONFLICT(source_url,url) DO UPDATE SET title=excluded.title,summary=excluded.summary,source_title=excluded.source_title,published_at=excluded.published_at,fetched_at=excluded.fetched_at",params![item.source_url,item.url,item.title,item.summary,item.source_title,item.published_at,item.fetched_at])?;
+        }
+        tx.commit()?;
+        Ok(items.len())
+    }
     pub fn engines(&self, window: i64) -> Result<Vec<Value>> {
         let rows = query_json(
             &self.conn,
