@@ -122,6 +122,45 @@ impl Archive {
     pub fn cached_page(&self, url: &str) -> Result<Option<Value>> {
         Ok(query_json(&self.conn,"SELECT url,title,content,source,fetched_at,status_code,content_type FROM pages WHERE url=?", &[json!(url)])?.into_iter().next())
     }
+    pub fn store_run(
+        &self,
+        query: &str,
+        provider: &str,
+        results: &[crate::search::SearchResult],
+    ) -> Result<i64> {
+        self.store_run_with_clock(query, provider, results, now)
+    }
+    pub fn store_run_with_clock(
+        &self,
+        query: &str,
+        provider: &str,
+        results: &[crate::search::SearchResult],
+        clock: impl FnOnce() -> String,
+    ) -> Result<i64> {
+        let tx = self.conn.unchecked_transaction()?;
+        tx.execute(
+            "INSERT INTO runs(query,provider,created_at) VALUES (?,?,?)",
+            params![query, provider, clock()],
+        )?;
+        let run_id = tx.last_insert_rowid();
+        {
+            let mut insert = tx.prepare("INSERT INTO search_results(run_id,rank,score,title,url,snippet,source,published_at) VALUES (?,?,?,?,?,?,?,?)")?;
+            for result in results {
+                insert.execute(params![
+                    run_id,
+                    result.rank,
+                    result.score,
+                    result.title,
+                    result.url,
+                    result.snippet,
+                    result.source,
+                    result.published_at,
+                ])?;
+            }
+        }
+        tx.commit()?;
+        Ok(run_id)
+    }
     pub fn upsert_page(&self, page: &crate::reader::PageSnapshot) -> Result<()> {
         let tx = self.conn.unchecked_transaction()?;
         tx.execute("INSERT INTO pages(url,title,content,source,fetched_at,status_code,content_type) VALUES (?,?,?,?,?,?,?) ON CONFLICT(url) DO UPDATE SET title=excluded.title,content=excluded.content,source=excluded.source,fetched_at=excluded.fetched_at,status_code=excluded.status_code,content_type=excluded.content_type", params![page.url,page.title,page.content,page.source,page.fetched_at,page.status_code,page.content_type])?;
