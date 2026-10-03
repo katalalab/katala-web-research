@@ -1,11 +1,11 @@
 {
   "complete_migration": false,
   "dependency": {
-    "head": "23369e8c1b3119a27d028825f870b88322285310",
-    "merge_commit": "fc8db85fb0d0505899f410ba9d0b4455eb2b9df3",
-    "merged": true,
-    "pr": 22,
-    "review_scope": "parent predicate/source/fixtures/CI checks; TLS/native executions by author, no reviewer native/TLS rerun"
+    "base": "fc8db85fb0d0505899f410ba9d0b4455eb2b9df3",
+    "head": "c728562b513295ba1774c50b70e8a5bf680ecde9",
+    "merged": false,
+    "pr": 23,
+    "review_scope": "P2-repaired exact head pending independent review; existing Python CI is not Rust OS evidence"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
@@ -50,7 +50,7 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: feed + normal DDG/SearXNG/Brave/Jina; four providers, positive enrichment and edges pending",
+      "status": "partial: feed + DDG/SearXNG/Brave/Jina/GitHub-code; github/openalex/meta, positive enrichment and edges pending",
       "surface": "search"
     },
     {
@@ -488,6 +488,10 @@
     {
       "final_acceptance": "pending",
       "id": "provider:github_code",
+      "local_evidence": [
+        "github-code-golden.json (29 strict Python request/result/error cases)",
+        "github_code_differential.py (28 exact-target localhost TLS/proxy CLI comparisons; full old DB preserved)"
+      ],
       "required_cases": [
         "exact request URL/headers/order",
         "synthetic config/env success and preflight failure",
@@ -496,7 +500,7 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "native normal request/result/422/paging; malformed/transport/OS/live and final acceptance pending",
       "surface": "github_code"
     },
     {

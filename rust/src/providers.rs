@@ -1,4 +1,5 @@
 //! Provider boundary; strict offline adapters never fall through to network.
+pub mod github;
 pub mod json;
 use crate::{
     http::{HttpResponse, Settings},
@@ -36,6 +37,15 @@ impl ProviderError {
             kind,
             message: format!("synthetic provider failure ({kind})"),
         }
+    }
+    pub fn synthetic_http_status(status: u16) -> Self {
+        Self {
+            kind: "FetchError",
+            message: format!("HTTP {status} synthetic provider failure"),
+        }
+    }
+    pub fn has_http_status(&self, status: u16) -> bool {
+        self.kind == "FetchError" && self.message.starts_with(&format!("HTTP {status} "))
     }
     fn unexpected() -> Self {
         Self {
