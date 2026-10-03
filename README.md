@@ -25,6 +25,8 @@ migration. It does not yet replace all `kwr`
 commands. See [the parity ledger](docs/migration/parity.md),
 [setup and rollback instructions](docs/migration/runbook.md), and
 [verification evidence and remaining work](docs/migration/ledger.md).
+Copy migration requires an unused destination in a quiescent directory; see the
+runbook for the concurrent-writer constraint.
 
 ```sh
 scripts/rust.sh fetch --locked

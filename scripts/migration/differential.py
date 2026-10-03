@@ -171,9 +171,12 @@ class Differential(unittest.TestCase):
                 return {k: ('<time>' if k in ['added_at','last_fetched_at','fetched_at'] and v else '<archive>' if k=='archive' else clean(v)) for k,v in value.items()}
             if isinstance(value,list):return [clean(v) for v in value]
             return value
-        for filename in ['sample.rss.xml','sample.atom.xml','sample.feed.json']:
+        for filename in ['sample.rss.xml','sample.atom.xml','sample.feed.json','comparison.feed.json']:
             fixture=self.root/('文書 '+filename)
-            fixture.write_bytes((ROOT/'tests/fixtures'/filename).read_bytes())
+            if filename == 'comparison.feed.json':
+                fixture.write_text(json.dumps({'items':[{'url':'https://example.test/math','title':'Comparison','content_text':'Conditions: x < y > z, then continue.'}]}),encoding='utf-8')
+            else:
+                fixture.write_bytes((ROOT/'tests/fixtures'/filename).read_bytes())
             paths=[self.root/(name+filename+'.sqlite') for name in ['python','rust']]
             def compare(args):
                 outputs=[]

@@ -988,6 +988,35 @@
       "fetched_at": "fixed",
       "source_url": "https://fixture.test/feed",
       "text": "{\"items\": [{\"url\": \"https://fixture.test\", \"date_published\": \"Wed, 27 May 2026 12:00:00\"}]}"
+    },
+    {
+      "expected": {
+        "items": [
+          {
+            "fetched_at": "fixed",
+            "published_at": null,
+            "source_title": "https://fixture.test/feed",
+            "source_url": "https://fixture.test/feed",
+            "summary": "Conditions: x < y > z, then continue.",
+            "title": "Comparison",
+            "url": "https://example.test/math"
+          }
+        ],
+        "source": {
+          "added_at": "",
+          "error_kind": "",
+          "health_score": 1.0,
+          "kind": "json",
+          "last_fetched_at": "fixed",
+          "last_item_count": 1,
+          "status": "ok",
+          "title": "https://fixture.test/feed",
+          "url": "https://fixture.test/feed"
+        }
+      },
+      "fetched_at": "fixed",
+      "source_url": "https://fixture.test/feed",
+      "text": "{\"items\": [{\"url\": \"https://example.test/math\", \"title\": \"Comparison\", \"content_text\": \"Conditions: x < y > z, then continue.\"}]}"
     }
   ],
   "highlights": [
@@ -1056,6 +1085,11 @@
     {
       "content": "Unicode 文書\nNext",
       "input": "<p data-x=\"a>b\">Unicode 文書</p><!-- hidden --><p>Next</p>",
+      "title": ""
+    },
+    {
+      "content": "Conditions: x < y > z, then continue.",
+      "input": "Conditions: x < y > z, then continue.",
       "title": ""
     }
   ],

@@ -202,8 +202,21 @@ pub fn html_text(value: &str) -> HtmlText {
             );
             break;
         };
-        let raw = value[offset + 1..end].trim();
+        let raw = &value[offset + 1..end];
         offset = end + 1;
+        // HTMLParser does not accept whitespace immediately after '<'.
+        // Plain-text comparisons must retain their operands.
+        if raw.chars().next().is_some_and(char::is_whitespace) {
+            data(
+                &value[tag_start..offset],
+                &mut body,
+                &mut title,
+                skipped,
+                in_title,
+            );
+            continue;
+        }
+        let raw = raw.trim();
         if raw.starts_with(['!', '?']) {
             continue;
         }
