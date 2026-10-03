@@ -231,6 +231,38 @@
       ],
       "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
       "name": "snippet-link"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "name": "unquoted-slash"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "name": "self-closing"
     }
   ],
   "searches": [
@@ -1772,6 +1804,252 @@
       "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
       "limit": -2,
       "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 0,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 1,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 2,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 10,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": -1,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": -2,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 0,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 1,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 2,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 10,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": -1,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": -2,
+      "name": "self-closing",
       "query": "alpha",
       "request": {
         "headers": {

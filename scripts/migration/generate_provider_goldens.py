@@ -27,6 +27,8 @@ samples=[
     ('angle','<a class="result__a" href="https://example.test/math">Conditions: x < y > z</a>'),
     ('attrs','<a href="https://example.test/old" href="https://example.test/new?a=>b" class="result__a">duplicate attr</a><div class="result__snippet">sentence.</div>'),
     ('snippet-link','<a class="result__a" href="//example.test/a">One</a><a class="result__snippet">first <b>bold</b> after</a><a class="result__a" href="//example.test/b">Two</a>'),
+    ('unquoted-slash','<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>'),
+    ('self-closing','<a class="result__a" href="https://example.test/"/>No title<a class="result__a" href="https://example.test/yes">Yes</a>'),
 ]
 parsers=[];searches=[]
 for name,html in samples:

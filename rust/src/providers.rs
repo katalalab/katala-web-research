@@ -312,14 +312,19 @@ pub fn parse_ddg(html: &str) -> Vec<SearchResult> {
             continue;
         }
         let mut attrs = BTreeMap::new();
-        for caps in ATTR.captures_iter(&raw[name.len()..]) {
+        let tail = &raw[name.len()..];
+        let mut attribute_end = 0;
+        for caps in ATTR.captures_iter(tail) {
+            attribute_end = caps.get(0).unwrap().end();
             let value = (2..=4)
                 .find_map(|i| caps.get(i).map(|m| m.as_str()))
                 .unwrap_or("");
             attrs.insert(caps[1].to_ascii_lowercase(), crate::text::unescape(value));
         }
         parser.start(&lowered, attrs);
-        if raw.ends_with('/') {
+        // A slash consumed by an unquoted attribute belongs to that value.
+        // Only a remaining slash is the HTMLParser self-closing delimiter.
+        if tail[attribute_end..].trim() == "/" {
             parser.end(&lowered);
         } else if ["script", "style"].contains(&lowered.as_str()) {
             raw_mode = Some(lowered);

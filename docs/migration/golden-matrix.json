@@ -450,8 +450,8 @@
       "final_acceptance": "pending",
       "id": "provider:ddg",
       "local_evidence": [
-        "rust/tests/providers.rs (84 parser/request/rank goldens plus strict adapter/error tests)",
-        "scripts/migration/provider_differential.py (23 localhost CLI comparisons)"
+        "rust/tests/providers.rs (98 parser/request/rank goldens plus strict adapter/error tests)",
+        "scripts/migration/provider_differential.py (24 localhost CLI comparisons)"
       ],
       "required_cases": [
         "exact request URL/headers/order",

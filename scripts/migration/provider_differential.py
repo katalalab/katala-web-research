@@ -27,6 +27,7 @@ class DdgHandler(fixture.Handler):
         if parsed.path!='/html/':self.send_error(404);return
         body=HTML;status=200
         if query=='fixture-empty':body=b'<html>no results</html>'
+        elif query=='fixture-slash':body=b'<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>'
         elif query=='fixture-error':status=503;body=b'public synthetic failure body'
         elif query=='fixture-slow':time.sleep(0.4)
         self.send_response(status);self.send_header('Content-Type','text/html; charset=utf-8')
@@ -103,6 +104,19 @@ class ProviderFixture(fixture.TlsAndProxy):
                         if rust:self.assertNotIn('public synthetic failure body',result.stderr)
                 self.assertEqual(*values,query);self.assertEqual(*requests,query)
                 type(self).comparisons+=1
+    def test_unquoted_href_slash_cli_and_archive_preservation(self):
+        with tempfile.TemporaryDirectory(prefix='kwr-provider-slash-') as tmp:
+            outputs=[]
+            for rust,name in [(False,'python'),(True,'rust')]:
+                path=Path(tmp)/(name+'.sqlite');a=Archive(path)
+                a.upsert_page(PageSnapshot('https://example.test/','Old title','old evidence','cached','fixed'));a.close()
+                with sqlite3.connect(path) as conn:before=conn.execute('SELECT * FROM pages').fetchall()
+                result,seen=self.cli(['fixture-slash','--candidate-multiplier','1','--json'],rust,path)
+                self.assertEqual(result.returncode,0,result.stderr);self.assertEqual(result.stderr,'');self.assertEqual(len(seen),1)
+                rows=json.loads(result.stdout);self.assertEqual([(r['title'],r['url']) for r in rows],[('Title','https://example.test/')])
+                outputs.append(rows)
+                with sqlite3.connect(path) as conn:self.assertEqual(before,conn.execute('SELECT * FROM pages').fetchall())
+            self.assertEqual(*outputs);type(self).comparisons+=1
     # Only this slice's tests run; inherited transport tests belong to verify-http.
     test_downgrade_rejected=None
     test_http_proxy_and_environment_boundaries=None
