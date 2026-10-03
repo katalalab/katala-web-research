@@ -244,14 +244,29 @@ fn load_registry() -> Result<Registry> {
 fn local_feed_path(value: &str) -> Result<PathBuf> {
     let url = url::Url::parse(value)?;
     if url.scheme() != "file" || url.host_str().is_some_and(|h| h != "localhost") {
-        return Err(
-            "network feeds not migrated yet; this slice accepts local file fixtures".into(),
-        );
+        return Err("local file feed URL requires no host or localhost".into());
     }
     url.to_file_path()
         .map_err(|_| "invalid local file URL".into())
 }
-fn fetch_feed_local(value: &str) -> Result<String> {
+fn validate_feed_source(value: &str) -> Result<()> {
+    let url = url::Url::parse(value)?;
+    match url.scheme() {
+        "file" => {
+            local_feed_path(value)?;
+        }
+        "http" | "https" => {}
+        scheme => return Err(format!("feed scheme {scheme} not migrated yet").into()),
+    }
+    Ok(())
+}
+fn fetch_feed_text(value: &str) -> Result<String> {
+    if ["http", "https"].contains(&url::Url::parse(value)?.scheme()) {
+        let settings = kwr::http::Settings::from_env()?;
+        return Ok(
+            kwr::http::fetch_url(value, &[("Accept", kwr::http::FEED_ACCEPT)], &settings)?.text(),
+        );
+    }
     Ok(String::from_utf8_lossy(&std::fs::read(local_feed_path(value)?)?).into_owned())
 }
 fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
@@ -262,21 +277,21 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             let archive = Archive::open(&local.archive)?;
             let source = source.filter(|s| !s.is_empty());
             let sources = if let Some(url) = source.as_ref() {
-                local_feed_path(url)?;
+                validate_feed_source(url)?;
                 let s = kwr::feeds::FeedSource::pending(url.clone());
                 archive.upsert_feed_source(&s)?;
                 vec![s]
             } else {
                 archive.feed_sources()?
             };
-            // Reject pending network surfaces before changing any source health.
+            // Reject unsupported source schemes before changing any source health.
             for source in &sources {
-                local_feed_path(&source.url)?;
+                validate_feed_source(&source.url)?;
             }
             let mut refreshed = Vec::new();
             for source in sources {
                 let fetched_at = kwr::now();
-                let parsed = fetch_feed_local(&source.url)
+                let parsed = fetch_feed_text(&source.url)
                     .and_then(|text| kwr::feeds::parse(&text, &source.url, &fetched_at));
                 let row = match parsed {
                     Ok(parsed) => {
@@ -287,7 +302,9 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                         row
                     }
                     Err(e) => {
-                        let kind = if e.downcast_ref::<std::io::Error>().is_some() {
+                        let kind = if let Some(e) = e.downcast_ref::<kwr::http::HttpError>() {
+                            e.kind
+                        } else if e.downcast_ref::<std::io::Error>().is_some() {
                             "FetchError"
                         } else {
                             "ValueError"

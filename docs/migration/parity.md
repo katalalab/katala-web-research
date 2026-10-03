@@ -11,9 +11,9 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | sources list/match | bundled JSON, overlay KWR_SOURCE_REGISTRY_OVERLAY keyed by domain/type/name; exact normalized host; prefix path boundary; trust/name ordering | Native implemented; boundary/overlay differential tests |
 | query | pages FTS5, quoted whitespace tokens with quotes stripped, AND semantics, bm25/snippet, empty results | Native implemented; shared SQL schema and differential ranking |
 | repos query | FTS5 six columns, context weighting, inline repo:/path:, explicit filters win, escaped LIKE | Native query implemented; scanner remains pending |
-| feeds query | FTS5 summary snippets with source/published/fetched fields | Native query implemented; RSS/Atom/JSONFeed normal-input parsing and local file refresh implemented; HTTP and parser edge parity pending |
+| feeds query | FTS5 summary snippets with source/published/fetched fields | Native query implemented; normal RSS/Atom/JSONFeed file/HTTP(S) refresh implemented; parser/transport edge parity pending |
 | feeds add | upsert source without resetting health or added_at, empty strings preserved in CLI payload | Native implemented; differential archive writes |
-| feeds refresh | source selection/order, RSS/Atom/JSONFeed, per-source error health, upsert without deleting absent old items | Local file vertical slice implemented; non-file sources explicitly rejected before health writes; HTTP pending |
+| feeds refresh | source selection/order, RSS/Atom/JSONFeed, per-source error health, upsert without deleting absent old items | Native file/HTTP(S) refresh, environment proxy, common charset, TLS and error retention fixture gates; deliberate safety bounds in http-contract.md; OS proxy/full codec/URL edges pending |
 | issues query | FTS5 title snippets, labels JSON, computed item_key | Native implemented |
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
