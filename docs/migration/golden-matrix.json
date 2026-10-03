@@ -51,7 +51,7 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: all nine native provider normal paths, including Meta; enrichment/malformed/OS/live final acceptance pending",
+      "status": "partial: all nine native providers and sequential reader enrichment normal paths; all-provider combined/malformed/OS/live final acceptance pending",
       "surface": "search",
       "case_evidence": [
         {
@@ -107,14 +107,42 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; actual local target only",
           "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        },
+        {
+          "id": "search-enrichment-reference",
+          "status": "passed",
+          "scope": "57 raw unchanged-Python workflow/reader/rank transcripts, sequential request/clock/error/no-op/Unicode700/stale-metadata/dedup/rerank scope only",
+          "evidence": [
+            "scripts/migration/generate_enrichment_goldens.py",
+            "rust/tests/workflow.rs",
+            "rust/tests/fixtures/enrichment-golden.json"
+          ],
+          "count": 57,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent native execution not claimed",
+          "source_tree_sha256": "0930d484d0858a299732b34cfc75f3b02ac5d3ca7a047495820ef630a9024485"
+        },
+        {
+          "id": "search-enrichment-cli",
+          "status": "passed",
+          "scope": "52 paired feed/SearXNG→direct/Jina/auto JSON/text/signed-limit/category/highlight/failure cases; synthetic eight-table/schema/version/pages MATCH/rank1 integrity/unselected archive preservation",
+          "evidence": [
+            "scripts/migration/enrichment_differential.py",
+            "scripts/verify-enrichment.sh",
+            "docs/migration/enrichment-collect-contract.md"
+          ],
+          "count": 52,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent native execution not claimed",
+          "source_tree_sha256": "0930d484d0858a299732b34cfc75f3b02ac5d3ca7a047495820ef630a9024485"
         }
       ],
       "pending_reasons": [
-        "Positive enrichment/native network readers remain unimplemented",
+        "Combined positive enrichment across all nine providers, adversarial typed inputs and aggregate resource bounds remain unverified",
         "Complete flag/model/config/encoding/output/signal parity and approved safety differences are not closed"
       ],
       "missing_assertions": [
-        "Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet",
+        "Exercise combined enrichment across all nine providers, malformed metadata/ranking/read inputs, aggregate memory/output budgets and real lifecycle/OS gates; feed/SearXNG normal scopes alone do not close acceptance",
         "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"
       ],
       "next_tests": [
@@ -123,7 +151,7 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_search.py",
           "assertions": [
-            "Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet",
+            "Exercise combined enrichment across all nine providers, malformed metadata/ranking/read inputs, aggregate memory/output budgets and real lifecycle/OS gates; feed/SearXNG normal scopes alone do not close acceptance",
             "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"
           ],
           "execution_evidence": false
@@ -151,6 +179,16 @@
           {
             "case_evidence_id": "meta-combined-cli",
             "scope": "37 combined paired CLI/library cases; exact result replay at measured timing/order, request/header traces, selected archive/health preservation and explicit schema refusals. Ordinary cases only, no final acceptance.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "search-enrichment-reference",
+            "scope": "57 raw unchanged-Python workflow/reader/rank transcripts, sequential request/clock/error/no-op/Unicode700/stale-metadata/dedup/rerank scope only",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "search-enrichment-cli",
+            "scope": "52 paired feed/SearXNG→direct/Jina/auto JSON/text/signed-limit/category/highlight/failure cases; synthetic eight-table/schema/version/pages MATCH/rank1 integrity/unselected archive preservation",
             "status": "passed"
           }
         ]

@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 # Proposed names/files describe work to do; they are not execution evidence.
 MISSING={
-"cli:search":["Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet", "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"],
+"cli:search":["Exercise combined enrichment across all nine providers, malformed metadata/ranking/read inputs, aggregate memory/output budgets and real lifecycle/OS gates; feed/SearXNG normal scopes alone do not close acceptance", "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"],
 "cli:read":["Complete malformed URL/model/JSON-depth/codec cases and approve reader_stdout_byte_limit; direct/Jina/FetchError-only auto normal paths are scoped implemented", "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"],
 "cli:openalex expand":["Implement work/DOI quoting, incoming/outgoing/both graph traversal and 50-work bound; match cursor/dedup/metadata", "Compare fresh/stale/offline graph-cache key/version/partial-error semantics and copy preservation without live OpenAlex calls"],
 "cli:collect":["Implement runs/search_results/pages transaction and exact CLI outputs for mixed successful/failed URL captures", "Compare UTF8 Markdown evidence, reader fallback, report-write failure and rollback against copied synthetic histories"],

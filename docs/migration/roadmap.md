@@ -75,3 +75,14 @@ Output cap before cache write and trusted/untrusted target policy are explicit g
 Next native dependencies are positive search enrichment, collect evidence/report,
 then brief/investigate/eval and MCP adapters; graph/cache/repo/issues ingestion remain
 parallel final command requirements. No final row is closed by the reader preview.
+
+
+#28 repaired75e7980 and #29 exact0e9c5de were independently reviewed and normally
+merged to main08052376 thencc086afb. Trees match their approved heads. The next
+separate enrichment slice follows integratedcc086afb, enabling sequential direct/
+Jina/auto before signed slicing with57 Python raw transcripts and52 paired feed/
+SearXNG CLI cases plus2 owned HTTP-wait SIGINT executions. No archive write is added.
+Collect is next: native store_run/report still missing, and Python failed-capture
+upsert can overwrite a successful cached page. Review that concrete retention policy
+before implementation; preserve run/page commit boundaries rather than claim whole-
+command atomic rollback. All35 final rows remain pending; native MCP0/9.

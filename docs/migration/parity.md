@@ -18,7 +18,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
 | read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Native direct/Jina/FetchError-only auto/cache preview; output cap policy, full URL/model/codec/lifecycle/OS/live parity pending |
-| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native normal paths for all nine providers, including Unix gh/op and Meta fanout/fusion/ledger; positive enrichment, malformed/transport/lifecycle/OS/live final assertions pending |
+| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native normal paths for all nine providers, including Unix gh/op and Meta fanout/fusion/ledger; sequential direct/Jina/auto enrichment has scoped evidence; all-provider combined enrichment, malformed/transport/lifecycle/OS/live final assertions pending |
 | collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |

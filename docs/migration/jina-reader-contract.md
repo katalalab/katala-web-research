@@ -27,6 +27,11 @@ connect validation. No untrusted MCP adapter is enabled here. No new auth/networ
 settings or implicit broad target authorization are introduced. A URL accepted by
 trusted CLI is not automatic permission for untrusted tool access.
 
+The quoted Jina target includes the complete query, fragment and userinfo. Diagnostic
+masking does not authorize transmitting those values to r.jina.ai. Confidential URLs
+and untrusted MCP inputs need a separately reviewed transmission policy before use;
+do not adopt this Python-compatible opt-in CLI behavior as their default.
+
 Response-byte cap8MiB is inherited from transport. Tests must exercise exact cap and
 one over on owned loopback, source attribution on fallback/redirect, no silent partial
 success and original successful cache unchanged after failed fetch/over-cap. Native CLI read output is separately bounded to8MiB including UTF8 JSON/text/newline.

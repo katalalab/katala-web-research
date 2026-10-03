@@ -151,3 +151,18 @@ publication; this deliberate policy difference remains unapproved final acceptan
 MCP dependency coverage is checked with check_matrix.py; native tools/protocol remain
 0/9. Direct P3 helper proves pages inverted-index MATCH/rank1 integrity; complete other
 indexes/commit/crash/actual OS/live/package gates remain pending.
+
+## Search enrichment preview
+
+`sh scripts/verify-enrichment.sh` builds the pinned locked offline binary, executes57
+Python raw workflow/reader/rank transcripts, then52 paired CLI cases and2 owned
+HTTP-wait SIGINT executions. For a shared target set CARGO_TARGET_DIR and KWR_RUST_BINARY
+to its exact debug paths. Fixture method arguments permit focused retests; the endpoint
+whitelist and ephemeral CA stay child-local, with no real provider/key/vault calls.
+Expected values come only from generate_enrichment_goldens.py and unchanged Python.
+Search --enrich-top now uses direct/Jina/auto sequential reads before signed slicing;
+enrichment never persists pages. Other network providers share this integration but
+their combined enrichment cases remain pending. See enrichment-collect-contract.md
+for metadata, URL transmission and future collect commit/error-cache policy boundaries.
+Do not switch installed CLI or real archives. All35 final gates and native MCP0/9 remain
+pending; older checkpoint sections above describe their historical scope.
