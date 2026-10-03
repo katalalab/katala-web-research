@@ -3,9 +3,9 @@
   "dependency": {
     "base": "fc8db85fb0d0505899f410ba9d0b4455eb2b9df3",
     "head": "c728562b513295ba1774c50b70e8a5bf680ecde9",
-    "merged": false,
+    "merged": true,
     "pr": 23,
-    "review_scope": "P2-repaired exact head pending independent review; existing Python CI is not Rust OS evidence"
+    "review_scope": "Independent P2 repair/source/fixture/CI review confirmed; authorized normal merge as main 6fce86e35c96fca9e56b6be463f4555ff16da632; reviewer did not rerun native/TLS gates"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
@@ -50,8 +50,23 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: feed + DDG/SearXNG/Brave/Jina/GitHub-code; github/openalex/meta, positive enrichment and edges pending",
-      "surface": "search"
+      "status": "partial: feed + DDG/SearXNG/Brave/Jina/GitHub-code/GitHub repo (Unix subprocess); openalex/meta, positive enrichment and remaining edges pending",
+      "surface": "search",
+      "case_evidence": [
+        {
+          "id": "github-repo-search-cli",
+          "status": "passed",
+          "scope": "30 paired JSON/text/category/domain/candidate/highlight/signed-limit and config/fallback/error fixtures, eight-table source preservation; remaining provider/enrichment cases still pending",
+          "evidence": [
+            "scripts/migration/github_repo_differential.py",
+            "scripts/verify-github-repo.sh"
+          ],
+          "count": 30,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution still pending",
+          "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        }
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -482,8 +497,76 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
-      "surface": "github"
+      "status": "partial: native Unix gh-to-REST/normal metadata/request/rank; 51 adapter and 30 CLI cases; malformed model/env/Windows/live acceptance pending",
+      "surface": "github",
+      "case_evidence": [
+        {
+          "id": "github-repo-strict-transcripts",
+          "status": "passed",
+          "scope": "51 synthetic Python-derived availability/process args/fallback/REST request/metadata/dedup/retraction/year-discard expectations; exact steps, no network fallback",
+          "evidence": [
+            "rust/tests/github_repo.rs",
+            "rust/tests/fixtures/github-repo-golden.json",
+            "scripts/migration/generate_github_repo_goldens.py"
+          ],
+          "count": 51,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution still pending",
+          "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        },
+        {
+          "id": "github-repo-cli-history",
+          "status": "passed",
+          "scope": "30 paired owned-gh/loopback-REST CLI option/config/error comparisons; full populated eight-table synthetic dump/version/integrity preservation",
+          "evidence": [
+            "scripts/migration/github_repo_differential.py",
+            "scripts/verify-github-repo.sh"
+          ],
+          "count": 30,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution still pending",
+          "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        },
+        {
+          "id": "owned-process-raw-parity",
+          "status": "passed",
+          "scope": "Five owned executable raw argv/output comparisons; UTF8/space paths, CRLF/invalid bytes and exact stdout cap",
+          "evidence": [
+            "scripts/migration/process_differential.py",
+            "rust/tests/support/process_fixture.rs"
+          ],
+          "count": 5,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution still pending",
+          "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        },
+        {
+          "id": "owned-process-safety",
+          "status": "passed",
+          "scope": "Eight native-only policy assertions for shared cap, deadline, descendant and graceful signal cleanup; not Python signal/CLI exit/OS equivalence",
+          "evidence": [
+            "scripts/migration/process_differential.py",
+            "docs/migration/process-contract.md"
+          ],
+          "count": 8,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution still pending",
+          "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        },
+        {
+          "id": "process-completion-after-deadline",
+          "status": "passed",
+          "scope": "Owned successful child + drained streams, simulated post-poll descheduling across deadline; old success fails, repaired timeout passes. Helper is explicitly invoked in child, not an unexecuted acceptance gate.",
+          "evidence": [
+            "rust/src/process.rs",
+            "docs/migration/process-contract.md"
+          ],
+          "count": 1,
+          "target": "aarch64-apple-darwin",
+          "executor": "author",
+          "source_tree_sha256": "aed81db5edf48a09677f4100df395e7913acfd33e05fefc7e991371c531abfc2"
+        }
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -649,5 +732,19 @@
       "status": "pending",
       "surface": "live"
     }
-  ]
+  ],
+  "integrated_checkpoint": {
+    "pr": 24,
+    "head": "2f67545198cdad96c2ea85dd7632f67492ff16d6",
+    "main": "5a2ee672297e31ba78c340b824c791e75e200b80",
+    "review": "Independent Rust/Cargo feature-diff equality, eight-table seed execution/integrity and static SQL/CI confirmation; native/TLS tests by author only",
+    "tree_equivalence": "PR23 merged tree equals c728562; retargeted PR24 merged tree equals 2f67545"
+  },
+  "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures",
+  "process_review_repair": {
+    "original_head": "cb5c105826367d0a203ff7a4b2e8cfa4e70ea522",
+    "finding": "P3 completed streams accepted before elapsed deadline check",
+    "case_added": 1,
+    "scope": "move deadline check before success; private deterministic after-poll observer has no runtime input/flag; provider behavior and transcript fixtures unchanged"
+  }
 }

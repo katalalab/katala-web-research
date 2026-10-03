@@ -40,3 +40,7 @@ Three-OS execution remains pending; the existing Python-only CI is explicitly di
 
 
 Remaining-provider checkpoint 7a implements GitHub code only in the separate codex/rust-remaining-provider-parity worktree. Dependency PR #23 repaired head c728562 remains unmerged; a feature PR uses codex/rust-provider-edge-parity as stacked base and discloses both heads. Repair-first dependency review, approved main retarget and affected native gates precede integration. GitHub repo subprocess fallback, OpenAlex and meta remain the next native providers. Every final acceptance row remains pending.
+
+PR #23 repaired c728562 and #24 2f67545 passed independent source/fixture/CI review and explicitly authorized normal integration as main 6fce86e then 5a2ee67. Retarget tree equivalence was confirmed; native/TLS evidence remains author-only. The next-provider worktree starts at integrated main5a2ee67. All final acceptance/OS/live/cutover gates remain pending.
+
+Slice 7b now implements native GitHub repository Unix gh-to-REST fallback with owned subprocess fixtures; 51 adapter/30 CLI cases and 5 raw/8 safety process checks pass. Two providers, OpenAlex and meta, remain. Scoped evidence is recorded without closing final acceptance; Windows process implementation, Linux execution, full signal/data/downstream/release gates remain pending.

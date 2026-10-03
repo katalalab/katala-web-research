@@ -1,5 +1,6 @@
 //! Provider boundary; strict offline adapters never fall through to network.
 pub mod github;
+pub mod github_repo;
 pub mod json;
 use crate::{
     http::{HttpResponse, Settings},

@@ -15,6 +15,13 @@ providers=next(a['choices'] for a in search['arguments'] if a['dest']=='provider
 assert {r['surface'] for r in rows if r['id'].startswith('provider:')}==set(providers)-{'feed'},'missing/extra network provider'
 for row in rows:
     assert row['required_cases'] and row['final_acceptance'] in ['pending','passed'],row['id']
+    cases=row.get('case_evidence',[])
+    assert len({case['id'] for case in cases})==len(cases),row['id']
+    for case in cases:
+        assert case['status'] in ['pending','passed'] and case['scope'] and case['evidence'],row['id']
+        assert all((ROOT/path).is_file() for path in case['evidence']),(row['id'],case['id'],'missing evidence')
+        if case['status']=='passed':
+            assert case['target'] and case['executor'] and case['source_tree_sha256'] and case['count']>0,case['id']
 if matrix['complete_migration']:
     assert all(r['final_acceptance']=='passed' for r in rows),'complete migration still has pending gates'
 print('golden matrix:',len(expected),'commands,',len(providers)-1,'network providers,',len(rows),'total rows; complete =',matrix['complete_migration'])
