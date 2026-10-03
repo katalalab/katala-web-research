@@ -319,3 +319,40 @@ removal using immutable9451 native binary. No production/Cargo change, previous5
 expectation rewrite or feature-whole rerun. Independent exact-head CI/focus follow-up
 remains separate from merge permission. Trusted CLI and untrusted MCP target policies
 remain separate; full35 acceptance rows stay pending.
+
+## Separate Jina/auto reader vertical checkpoint
+
+Dedicated branch follows #28 test-only75e7980 repair; original/direct feature is not
+rewritten or mixed into its repair. Production source4bf2ce644b69da67b65d58245f3fe92201c296b1aee023b5f0cf02bfbd95d488.
+Native Jina quote/Markdown/JSON-error/source/original-target behavior and FetchError-only
+auto fallback are implemented; real raw TimeoutError stops without fallback. Jina
+transport error diagnostics mask opaque target URL/body/reason, direct errors retain
+inherited redaction. Native CLI output buffers at most8MiB before cache upsert/stdout;
+output cap differs from unbounded Python and awaits final policy approval.
+
+Author Mac evidence:93 exact Python response/request/error/clock transcripts and
+byte-identical regeneration;44 paired CLI cases (38 normal source/redirect/query/cache,
+6 failed-refresh/timeout/secret-diagnostic cases),7 separate exact/one-over byte cap
+policy cases (text/JSON/UTF8 and HTTP body),2 owned real TLS HTTP-wait SIGINT executions.
+Old successful cache/seven unrelated populated tables/schema/version, selected versus
+unselected archive/pages MATCH/rank1 integrity are preserved. Initial fixture's auto
+timeout expectation was wrong: actual Python/source propagates TimeoutError. Existing
+successes were retained; only remaining7 and new UTF8/query cases were executed.
+
+One existing serde_json raw_value feature is enabled to preserve huge integer spelling
+without changing ordinary Value parsing. Official cached license MIT OR Apache2; no
+new package/dependency/version/checksum/lock/license/workflow/runner/toolchain; the
+existing serde_json feature configuration changes explicitly.
+Because the shared feature changed, all locked offline native tests ran once and pass;
+warnings-denied clippy/debug/release and affected old cache method pass. Required
+verifier167 Python tests/benchmarks/smoke/artifact guards/gitleaks/no leaks pass. Prior
+provider TLS/218-wide gates remain inherited, not claimed rerun.
+
+MCP tool dependency map/checker requires all9 exact schema names and all35 rows accounted
+for, including standalone commands; mapping is not native protocol evidence (0/9).
+36 scoped records/35 final rows pending. Trusted opt-in CLI URL contract differs from
+future untrusted-tool resolved-address/redirect/proxy target policy. Real SQLite busy
+interrupt/before-during-after commit/restart, worker panic/redaction, SIGKILL/power-loss/
+broken-pipe and actual other OS/live/resource/package gates remain concrete and open.
+No mock closes those gates. No real data/credential store/installed CLI/network/OS setup
+or paid/live/API/model call; no speed claim.

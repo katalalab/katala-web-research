@@ -50,6 +50,18 @@ impl ProviderError {
     pub fn has_http_status(&self, status: u16) -> bool {
         self.kind == "FetchError" && self.message.starts_with(&format!("HTTP {status} "))
     }
+    pub(crate) fn reader_transport_error(kind: &'static str) -> Self {
+        Self {
+            kind,
+            message: format!("Jina reader transport failed ({kind})"),
+        }
+    }
+    pub(crate) fn reader_payload_error() -> Self {
+        Self {
+            kind: "FetchError",
+            message: "Jina reader returned an error payload".into(),
+        }
+    }
     pub(crate) fn invalid_value(message: &'static str) -> Self {
         Self {
             kind: "ValueError",

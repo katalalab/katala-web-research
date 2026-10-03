@@ -1,0 +1,8476 @@
+[
+  {
+    "name": "markdown-0",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": []
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "https://example.test/a b?q=x&z=1#frag",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-1",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            32,
+            9,
+            10,
+            28,
+            32
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "https://example.test/a b?q=x&z=1#frag",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-2",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            84,
+            105,
+            116,
+            108,
+            101,
+            10,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "Title",
+        "content": "# Title\nbody",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-3",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            9,
+            35,
+            32,
+            107,
+            101,
+            101,
+            112,
+            32,
+            104,
+            97,
+            115,
+            104,
+            10,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "keep hash",
+        "content": "# keep hash\nbody",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-4",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            32,
+            35,
+            32,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            32,
+            35,
+            32,
+            13,
+            10,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "title",
+        "content": "#  title # \r\nbody",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-5",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            35,
+            10,
+            35,
+            35,
+            35,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            102,
+            105,
+            114,
+            115,
+            116,
+            226,
+            128,
+            168,
+            110,
+            101,
+            120,
+            116
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "日本語 first",
+        "content": "##\n###\n日本語 first next",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-6",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            195,
+            169,
+            10,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+        "content": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé\nbody",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-7",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            229,
+            137,
+            141,
+            109,
+            111,
+            114,
+            101
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前",
+        "content": "前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前前more",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-8",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            108,
+            105,
+            110,
+            101,
+            11,
+            115,
+            101,
+            99,
+            111,
+            110,
+            100
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "line",
+        "content": "line\u000bsecond",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-9",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            97,
+            31,
+            98
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "a\u001fb",
+        "content": "a\u001fb",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-10",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            108,
+            105,
+            110,
+            101,
+            194,
+            133,
+            110,
+            101,
+            120,
+            116
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "line",
+        "content": "linenext",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "markdown-11",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            32,
+            38,
+            97,
+            109,
+            112,
+            59,
+            32,
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            32,
+            108,
+            105,
+            116,
+            101,
+            114,
+            97,
+            108,
+            32
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "&amp; <html> literal",
+        "content": "&amp; <html> literal",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-12",
+    "url": "https://example.test/-._~ +?#%/日本語",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2F-._~%20%2B%3F%23%25%2F%E6%97%A5%E6%9C%AC%E8%AA%9E",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": []
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/-._~ +?#%/日本語",
+        "title": "https://example.test/-._~ +?#%/日本語",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-13",
+    "url": "https://example.test/-._~ +?#%/日本語",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2F-._~%20%2B%3F%23%25%2F%E6%97%A5%E6%9C%AC%E8%AA%9E",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/-._~ +?#%/日本語",
+        "title": "title",
+        "content": "# title",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-14",
+    "url": "HTTP://example.test/",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/HTTP%3A%2F%2Fexample.test%2F",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": []
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "HTTP://example.test/",
+        "title": "HTTP://example.test/",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-15",
+    "url": "HTTP://example.test/",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/HTTP%3A%2F%2Fexample.test%2F",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "HTTP://example.test/",
+        "title": "title",
+        "content": "# title",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-16",
+    "url": " \u001chttps://example.test/x",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/%20%1Chttps%3A%2F%2Fexample.test%2Fx",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": []
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": " \u001chttps://example.test/x",
+        "title": " \u001chttps://example.test/x",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-17",
+    "url": " \u001chttps://example.test/x",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/%20%1Chttps%3A%2F%2Fexample.test%2Fx",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": " \u001chttps://example.test/x",
+        "title": "title",
+        "content": "# title",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-18",
+    "url": "https://user:public-fixture-key@example.test/a?api_key=public-fixture-key",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fuser%3Apublic-fixture-key%40example.test%2Fa%3Fapi_key%3Dpublic-fixture-key",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": []
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://user:public-fixture-key@example.test/a?api_key=public-fixture-key",
+        "title": "https://user:public-fixture-key@example.test/a?api_key=public-fixture-key",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-19",
+    "url": "https://user:public-fixture-key@example.test/a?api_key=public-fixture-key",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fuser%3Apublic-fixture-key%40example.test%2Fa%3Fapi_key%3Dpublic-fixture-key",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://user:public-fixture-key@example.test/a?api_key=public-fixture-key",
+        "title": "title",
+        "content": "# title",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-20",
+    "url": "https://example.test/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": []
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "title": "https://example.test/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "content": "",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "target-21",
+    "url": "https://example.test/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "title": "title",
+        "content": "# title",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-22",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            98,
+            114,
+            111,
+            107,
+            101,
+            110
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{broken",
+        "content": "{broken",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-23",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            98,
+            114,
+            111,
+            107,
+            101,
+            110
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{broken",
+        "content": "{broken",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-24",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            34,
+            115,
+            97,
+            109,
+            112,
+            108,
+            101,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            34,
+            100,
+            111,
+            109,
+            97,
+            105,
+            110,
+            32,
+            99,
+            111,
+            110,
+            116,
+            101,
+            110,
+            116,
+            34,
+            44,
+            34,
+            100,
+            97,
+            116,
+            97,
+            34,
+            58,
+            91,
+            49,
+            44,
+            50,
+            93,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":\"sample\",\"message\":\"domain content\",\"data\":[1,2]}",
+        "content": "{\"code\":\"sample\",\"message\":\"domain content\",\"data\":[1,2]}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-25",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            34,
+            115,
+            97,
+            109,
+            112,
+            108,
+            101,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            34,
+            100,
+            111,
+            109,
+            97,
+            105,
+            110,
+            32,
+            99,
+            111,
+            110,
+            116,
+            101,
+            110,
+            116,
+            34,
+            44,
+            34,
+            100,
+            97,
+            116,
+            97,
+            34,
+            58,
+            91,
+            49,
+            44,
+            50,
+            93,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":\"sample\",\"message\":\"domain content\",\"data\":[1,2]}",
+        "content": "{\"code\":\"sample\",\"message\":\"domain content\",\"data\":[1,2]}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-26",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            50,
+            50,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":422,\"name\":\"Error\"}",
+        "content": "{\"code\":422,\"name\":\"Error\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-27",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            50,
+            50,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":422,\"name\":\"Error\"}",
+        "content": "{\"code\":422,\"name\":\"Error\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-28",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"name\":\"Error\",\"message\":null}",
+        "content": "{\"name\":\"Error\",\"message\":null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-29",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"name\":\"Error\",\"message\":null}",
+        "content": "{\"name\":\"Error\",\"message\":null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-30",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            91,
+            49,
+            44,
+            50,
+            93
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "[1,2]",
+        "content": "[1,2]",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-31",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            91,
+            49,
+            44,
+            50,
+            93
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "[1,2]",
+        "content": "[1,2]",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-32",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            110,
+            117,
+            108,
+            108
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "null",
+        "content": "null",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-33",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            110,
+            117,
+            108,
+            108
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "null",
+        "content": "null",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-34",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            44,
+            34,
+            101,
+            120,
+            116,
+            114,
+            97,
+            34,
+            58,
+            78,
+            97,
+            78,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "json-35",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            44,
+            34,
+            101,
+            120,
+            116,
+            114,
+            97,
+            34,
+            58,
+            78,
+            97,
+            78,
+            125
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "json-36",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            92,
+            117,
+            100,
+            56,
+            48,
+            48,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "json-37",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            92,
+            117,
+            100,
+            56,
+            48,
+            48,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "json-38",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            92,
+            117,
+            48,
+            48,
+            52,
+            53,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "json-39",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            92,
+            117,
+            48,
+            48,
+            52,
+            53,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "json-40",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            92,
+            92,
+            117,
+            48,
+            48,
+            52,
+            53,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":400,\"name\":\"\\\\u0045rror\",\"message\":null}",
+        "content": "{\"code\":400,\"name\":\"\\\\u0045rror\",\"message\":null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-41",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            92,
+            92,
+            117,
+            48,
+            48,
+            52,
+            53,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":400,\"name\":\"\\\\u0045rror\",\"message\":null}",
+        "content": "{\"code\":400,\"name\":\"\\\\u0045rror\",\"message\":null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-42",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            44,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            51,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":400,\"name\":\"Error\",\"message\":null,\"code\":3}",
+        "content": "{\"code\":400,\"name\":\"Error\",\"message\":null,\"code\":3}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "json-43",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            52,
+            48,
+            48,
+            44,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            110,
+            117,
+            108,
+            108,
+            44,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            51,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\":400,\"name\":\"Error\",\"message\":null,\"code\":3}",
+        "content": "{\"code\":400,\"name\":\"Error\",\"message\":null,\"code\":3}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-44",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            51,
+            57,
+            57,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": 399, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": 399, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-45",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            51,
+            57,
+            57,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": 399, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": 399, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-46",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "code-47",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "code-48",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            52,
+            50,
+            50,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "code-49",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            52,
+            50,
+            50,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "code-50",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            49,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "code-51",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            49,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "code-52",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            46,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": 400.0, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": 400.0, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-53",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            46,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": 400.0, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": 400.0, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-54",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            45,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": -400, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": -400, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-55",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            45,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": -400, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": -400, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-56",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            34,
+            52,
+            48,
+            48,
+            34,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": \"400\", \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": \"400\", \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-57",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            34,
+            52,
+            48,
+            48,
+            34,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": \"400\", \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": \"400\", \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-58",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            116,
+            114,
+            117,
+            101,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": true, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": true, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-59",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            116,
+            114,
+            117,
+            101,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": true, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": true, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-60",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            102,
+            97,
+            108,
+            115,
+            101,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": false, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": false, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-61",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            102,
+            97,
+            108,
+            115,
+            101,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": false, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": false, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-62",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": null, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": null, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-63",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": null, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": null, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-64",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            73,
+            110,
+            102,
+            105,
+            110,
+            105,
+            116,
+            121,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": Infinity, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": Infinity, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-65",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            73,
+            110,
+            102,
+            105,
+            110,
+            105,
+            116,
+            121,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": Infinity, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": Infinity, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-66",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            78,
+            97,
+            78,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": NaN, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": NaN, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "code-67",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            99,
+            111,
+            100,
+            101,
+            34,
+            58,
+            32,
+            78,
+            97,
+            78,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            65,
+            115,
+            115,
+            101,
+            114,
+            116,
+            105,
+            111,
+            110,
+            70,
+            97,
+            105,
+            108,
+            117,
+            114,
+            101,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            109,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            117,
+            98,
+            108,
+            105,
+            99,
+            45,
+            102,
+            105,
+            120,
+            116,
+            117,
+            114,
+            101,
+            45,
+            107,
+            101,
+            121,
+            34,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"code\": NaN, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "content": "{\"code\": NaN, \"name\": \"AssertionFailureError\", \"message\": \"public-fixture-key\"}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "identity-68",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            69,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "identity-69",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            112,
+            114,
+            101,
+            102,
+            105,
+            120,
+            69,
+            114,
+            114,
+            111,
+            114,
+            83,
+            117,
+            102,
+            102,
+            105,
+            120,
+            34,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "identity-70",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            101,
+            114,
+            114,
+            111,
+            114,
+            34,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"status\": 400, \"name\": \"error\", \"readableMessage\": null}",
+        "content": "{\"status\": 400, \"name\": \"error\", \"readableMessage\": null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "identity-71",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            34,
+            34,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"status\": 400, \"name\": \"\", \"readableMessage\": null}",
+        "content": "{\"status\": 400, \"name\": \"\", \"readableMessage\": null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "identity-72",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"status\": 400, \"name\": null, \"readableMessage\": null}",
+        "content": "{\"status\": 400, \"name\": null, \"readableMessage\": null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "identity-73",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"status\": 400, \"name\": 400, \"readableMessage\": null}",
+        "content": "{\"status\": 400, \"name\": 400, \"readableMessage\": null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "identity-74",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            91,
+            93,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"status\": 400, \"name\": [], \"readableMessage\": null}",
+        "content": "{\"status\": 400, \"name\": [], \"readableMessage\": null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "identity-75",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            123,
+            34,
+            115,
+            116,
+            97,
+            116,
+            117,
+            115,
+            34,
+            58,
+            32,
+            52,
+            48,
+            48,
+            44,
+            32,
+            34,
+            110,
+            97,
+            109,
+            101,
+            34,
+            58,
+            32,
+            123,
+            125,
+            44,
+            32,
+            34,
+            114,
+            101,
+            97,
+            100,
+            97,
+            98,
+            108,
+            101,
+            77,
+            101,
+            115,
+            115,
+            97,
+            103,
+            101,
+            34,
+            58,
+            32,
+            110,
+            117,
+            108,
+            108,
+            125
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "{\"status\": 400, \"name\": {}, \"readableMessage\": null}",
+        "content": "{\"status\": 400, \"name\": {}, \"readableMessage\": null}",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8"
+      }
+    }
+  },
+  {
+    "name": "transport-76",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "FetchError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "transport-77",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "TimeoutError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "TimeoutError"
+    }
+  },
+  {
+    "name": "transport-78",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "ValueError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "transport-79",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "FetchError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "transport-80",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "TimeoutError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "TimeoutError"
+    }
+  },
+  {
+    "name": "transport-81",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "ValueError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "transport-82",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "direct",
+    "steps": [
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "transport-83",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "direct",
+    "steps": [
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "transport-84",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "direct",
+    "steps": [
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/direct-final",
+        "title": "direct title",
+        "content": "direct evidence",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/html"
+      }
+    }
+  },
+  {
+    "name": "transport-85",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "unknown",
+    "steps": [],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "transport-86",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "unknown",
+    "steps": [],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "transport-87",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "unknown",
+    "steps": [],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "invalid-88",
+    "url": "",
+    "reader": "auto",
+    "steps": [],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "invalid-89",
+    "url": "file:///tmp/owned",
+    "reader": "auto",
+    "steps": [],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "invalid-90",
+    "url": "https:/invalid",
+    "reader": "auto",
+    "steps": [],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "ValueError"
+    }
+  },
+  {
+    "name": "fallback-error",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "auto",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": "FetchError",
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "https://example.test/a b?q=x&z=1#frag",
+          "headers": {
+            "Accept": "text/html, text/plain;q=0.9, */*;q=0.5"
+          }
+        },
+        "error_kind": "FetchError",
+        "response": {
+          "url": "https://example.test/direct-final",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": [
+            60,
+            104,
+            116,
+            109,
+            108,
+            62,
+            60,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            116,
+            105,
+            116,
+            108,
+            101,
+            60,
+            47,
+            116,
+            105,
+            116,
+            108,
+            101,
+            62,
+            60,
+            112,
+            62,
+            100,
+            105,
+            114,
+            101,
+            99,
+            116,
+            32,
+            101,
+            118,
+            105,
+            100,
+            101,
+            110,
+            99,
+            101,
+            60,
+            47,
+            112,
+            62,
+            60,
+            47,
+            104,
+            116,
+            109,
+            108,
+            62
+          ]
+        }
+      }
+    ],
+    "clock_calls": 0,
+    "expected": {
+      "error_kind": "FetchError"
+    }
+  },
+  {
+    "name": "no-content-type",
+    "url": "https://example.test/a b?q=x&z=1#frag",
+    "reader": "jina",
+    "steps": [
+      {
+        "request": {
+          "url": "https://r.jina.ai/https%3A%2F%2Fexample.test%2Fa%20b%3Fq%3Dx%26z%3D1%23frag",
+          "headers": {
+            "Accept": "text/plain"
+          }
+        },
+        "error_kind": null,
+        "response": {
+          "url": "https://r.jina.ai/final",
+          "status": 200,
+          "headers": {},
+          "body": [
+            35,
+            32,
+            72,
+            101,
+            97,
+            100,
+            105,
+            110,
+            103,
+            10,
+            230,
+            151,
+            165,
+            230,
+            156,
+            172,
+            232,
+            170,
+            158,
+            32,
+            98,
+            111,
+            100,
+            121
+          ]
+        }
+      }
+    ],
+    "clock_calls": 1,
+    "expected": {
+      "page": {
+        "url": "https://example.test/a b?q=x&z=1#frag",
+        "title": "Heading",
+        "content": "# Heading\n日本語 body",
+        "source": "jina-reader",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": null
+      }
+    }
+  }
+]

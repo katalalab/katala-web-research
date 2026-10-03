@@ -1,0 +1,20 @@
+{
+  "reference_tool_count": 9,
+  "native_tools_implemented": 0,
+  "complete_migration": false,
+  "tools": [
+    {"name":"kwr.plan","rows":["cli:mcp","cli:plan","gate:release"]},
+    {"name":"kwr.search","rows":["cli:mcp","cli:search","provider:ddg","provider:github","provider:github_code","provider:jina","provider:searxng","provider:brave","provider:openalex","provider:meta","cli:feeds query","gate:network","gate:storage","gate:release","gate:live"]},
+    {"name":"kwr.eval","rows":["cli:mcp","cli:eval","gate:reports","gate:release"]},
+    {"name":"kwr.read","rows":["cli:mcp","cli:read","gate:network","gate:release","gate:live"]},
+    {"name":"kwr.query","rows":["cli:mcp","cli:query","gate:storage","gate:release"]},
+    {"name":"kwr.repos_query","rows":["cli:mcp","cli:repos query","gate:storage","gate:release"]},
+    {"name":"kwr.feeds_query","rows":["cli:mcp","cli:feeds query","gate:storage","gate:release"]},
+    {"name":"kwr.brief","rows":["cli:mcp","cli:brief","cli:search","cli:plan","cli:repos query","cli:feeds query","gate:reports","gate:network","gate:storage","gate:release","gate:live"]},
+    {"name":"kwr.investigate","rows":["cli:mcp","cli:investigate","cli:search","cli:plan","cli:read","cli:repos query","cli:feeds query","gate:reports","gate:network","gate:storage","gate:release","gate:live"]}
+  ],
+  "non_mcp_command_rows":["cli:openalex expand","cli:collect","cli:repos scan","cli:feeds add","cli:feeds refresh","cli:sources list","cli:sources match","cli:issues ingest","cli:issues query","cli:issues report","cli:doctor","cli:engines"],
+  "transitive_provider_rows":["provider:ddg","provider:github","provider:github_code","provider:jina","provider:searxng","provider:brave","provider:openalex","provider:meta"],
+  "target_policy_gate":"gate:network",
+  "status":"dependency mapping only; no native tools or protocol execution accepted"
+}

@@ -36,3 +36,13 @@ if matrix['complete_migration']:
     assert all(r['final_acceptance']=='passed' for r in rows),'complete migration still has pending gates'
 print('golden matrix:',len(expected),'commands,',len(providers)-1,'network providers,',len(rows),'total rows; complete =',matrix['complete_migration'])
 print('scoped passed case records:',sum(case['status']=='passed' for row in rows for case in row.get('case_evidence',[])),'final pending rows:',sum(row['final_acceptance']=='pending' for row in rows))
+
+map_path=ROOT/"docs/migration/mcp-tool-dependencies.json"
+if map_path.is_file():
+    dependencies=json.loads(map_path.read_text());tools=dependencies["tools"]
+    assert {t["name"] for t in tools}=={t["name"] for t in inventory["mcp"]["tools"]},"missing/extra MCP mapping"
+    assert len(tools)==dependencies["reference_tool_count"]==9
+    mapped={i for t in tools for i in t["rows"]}|set(dependencies["non_mcp_command_rows"])
+    assert mapped=={r["id"] for r in rows},("MCP/standalone gate mapping mismatch",mapped^{r["id"] for r in rows})
+    assert dependencies["native_tools_implemented"]==0 and not dependencies["complete_migration"]
+    print("MCP dependencies: all9 schemas mapped; all35 rows accounted for; native0/9")

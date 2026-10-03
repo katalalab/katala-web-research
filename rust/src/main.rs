@@ -643,36 +643,37 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 None
             };
             let cached = hit.is_some();
+            let snapshot = if hit.is_none() {
+                Some(kwr::reader::read_with(
+                    &url,
+                    &reader,
+                    &mut kwr::providers::EnvTransport::default(),
+                    kwr::now,
+                )?)
+            } else {
+                None
+            };
             let mut page = if let Some(hit) = hit {
                 hit
             } else {
-                if reader != "direct" {
-                    return Err(
-                        "auto/Jina reader not migrated yet; use direct preview or existing cache"
-                            .into(),
-                    );
-                }
-                let snapshot = kwr::reader::direct_with(
-                    &url,
-                    &mut kwr::providers::EnvTransport::default(),
-                    kwr::now,
-                )?;
-                if let Some(archive) = &archive {
-                    archive.upsert_page(&snapshot)?;
-                }
-                serde_json::to_value(snapshot)?
+                serde_json::to_value(snapshot.as_ref().unwrap())?
             };
+            let mut rendered = kwr::reader::CappedOutput::default();
             if local.json {
                 if cache {
                     page["cached"] = json!(cached);
                 }
-                emit(&page, out)?;
+                emit(&page, &mut rendered)?;
             } else {
-                if cache {
-                    eprintln!("cache: {}", if cached { "hit" } else { "miss" });
-                }
-                writeln!(out, "{}", field(&page, "content"))?;
+                writeln!(&mut rendered, "{}", field(&page, "content"))?;
             }
+            if let (Some(archive), Some(snapshot)) = (&archive, &snapshot) {
+                archive.upsert_page(snapshot)?;
+            }
+            if cache && !local.json {
+                eprintln!("cache: {}", if cached { "hit" } else { "miss" });
+            }
+            out.write_all(rendered.as_slice())?;
         }
         Command::Migrate {
             source,
