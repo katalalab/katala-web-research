@@ -86,3 +86,11 @@ Collect is next: native store_run/report still missing, and Python failed-captur
 upsert can overwrite a successful cached page. Review that concrete retention policy
 before implementation; preserve run/page commit boundaries rather than claim whole-
 command atomic rollback. All35 final rows remain pending; native MCP0/9.
+
+
+PR30 P2 repair supersedes the preceding runtime-enrichment checkpoint. Provider-
+derived URLs crossed into trusted local reader/network behavior. Positive CLI
+enrichment now fails before provider/reader/archive I/O; algorithm API is concrete
+OfflineTransport only. No runtime network entry point or native enrichment completion
+claim. Derive/pin/validate public targets and redirect/proxy/DNS plus Jina transmission
+policy in a separate reviewed slice before enabling search, collect or investigate.

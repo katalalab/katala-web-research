@@ -1,17 +1,20 @@
-//! Sequential search enrichment; reading does not persist pages.
+//! Offline enrichment calculation. Derived network targets remain disabled until
+//! connect/redirect/proxy/DNS and third-party transmission policy is implemented.
 use crate::{
-    providers::{Context, Transport},
+    providers::{Context, OfflineTransport},
     reader,
     search::{self, SearchResult},
 };
 use serde_json::json;
 
-pub fn enrich(
+/// The concrete offline transport rejects unscripted requests and cannot connect.
+/// There is no production network enrichment entry point in this slice.
+pub fn enrich_offline(
     query: &str,
     mut results: Vec<SearchResult>,
     read_top: i64,
     mode: &str,
-    transport: &mut impl Transport,
+    transport: &mut OfflineTransport,
     context: &Context<'_>,
     mut clock: impl FnMut() -> String,
 ) -> Vec<SearchResult> {

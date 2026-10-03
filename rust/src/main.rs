@@ -361,7 +361,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             exclude_domain,
             enrich_top,
             highlight_top,
-            reader,
+            reader: _,
         } => {
             if ![
                 "feed",
@@ -377,6 +377,12 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             .contains(&provider.as_str())
             {
                 return Err(format!("provider {provider} not migrated yet").into());
+            }
+            if enrich_top > 0 {
+                return Err(
+                    "derived-target enrichment is disabled pending target and transmission policy"
+                        .into(),
+                );
             }
             if !candidate_multiplier.is_finite() {
                 return Err("candidate multiplier must be finite".into());
@@ -445,29 +451,12 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                     )?
                 }
             };
-            let mut results = results;
+            let mut results = kwr::search::slice(results, limit);
             for r in &mut results {
                 if let Some(category) = kwr::search::category(&r.url, &built) {
                     r.metadata.insert("query_category".into(), json!(category));
                 }
             }
-            if enrich_top > 0 && !results.is_empty() {
-                use chrono::Datelike;
-                let context = kwr::providers::Context {
-                    registry: &registry,
-                    year: chrono::Local::now().year(),
-                };
-                results = kwr::workflow::enrich(
-                    &query,
-                    results,
-                    enrich_top,
-                    &reader,
-                    &mut kwr::providers::EnvTransport::default(),
-                    &context,
-                    || chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Secs, false),
-                );
-            }
-            let mut results = kwr::search::slice(results, limit);
             if highlight_top > 0 && !results.is_empty() {
                 let archive = Archive::open(&local.archive)?;
                 for r in results.iter_mut().take(highlight_top as usize) {

@@ -44,7 +44,7 @@ fn enrichment_reference_transcripts() {
             .collect();
         let mut transport = OfflineTransport::new(steps);
         let mut clocks = 0;
-        let results = kwr::workflow::enrich(
+        let results = kwr::workflow::enrich_offline(
             case["query"].as_str().unwrap(),
             serde_json::from_value(case["results"].clone()).unwrap(),
             case["read_top"].as_i64().unwrap(),

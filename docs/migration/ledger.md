@@ -418,3 +418,47 @@ identical. Recoverable owned checkpoints retain prior heads and the new exact-so
 binaries. Local artifact provenance (aarch64 macOS only):
 - debug: SHA256 de98d5a80f26d6d0b76a760cf14ae09b0094454317081080e67595dd7e4f3809, 28773752 bytes.
 - release: SHA256 e8dd6d6a044ca11c09fa36d66dfbdc011f344781ba7e01e234d4ccdd9493cb5f, 8384448 bytes.
+
+
+## PR30 independent P2 derived-target boundary repair
+
+Parent identified provider-controlled URL→rank/reader→HTTP private/link-local/DNS
+reachability, already enabled in CLI enrichment; MCP0/9 is not a security argument.
+Merge held. Source confirmed authority/title/dedup/scheme checks only, no resolved-IP
+target boundary. Jina disclosure and fallback need separate derived-input policy.
+
+Immediate fail-closed repair disables every positive --enrich-top before provider
+configuration/process/auth/token/ledger/archive/transport initialization. Offline
+enrichment calculation remains57 unchanged Python transcripts, now concrete
+OfflineTransport only; generic/native transport cannot be passed, no CLI caller.
+Previous52 compatibility pairs and2 signals apply only to unmerged7406; positive
+feature acceptance is withdrawn. Earlier statements of network enrichment enabled
+are historical and superseded. Explicit read behavior and positive provider search
+without enrichment remain unchanged. No expanded permissions or network settings.
+
+Owned synthetic repro:immutable7406 binary passes3 paired SearXNG→loopback direct/
+Jina-error fallback/direct-redirect cases, showing the unsafe derived boundary. No
+real internal service/metadata probe. Repaired55 native refusal assertions across
+all9 providers/3 readers/limits0-1 + missing archive show zero provider/reader/proxy
+requests, no implicit archive, eight-table/schema/version/pages MATCH/rank1 integrity
+and unselected archive preserved. Six paired nonpositive-top cases match Python.
+Core57 oracle remains byte-identical; named derived_enrichment_disabled is an
+intentional Python difference, not completed migration. Focused trusted read and
+required affected gates/release/provenance accompany the repaired exact head.
+
+Sourcea11d49404f21cfce765172f0003a38faaa2dfe7c1dc942c9bf14b3ecfe50bddf. Matrix has
+38 scoped passing records (including refusal-policy evidence),39 total case records;
+all35 final rows pending. Native MCP0/9. Derived resolved-public-IP/pinned connections/
+redirect/proxy/DNS and third-party target-secret transmission gate remains unimplemented.
+Collect/investigate must not reuse trusted generic read for derived URLs. Runtime
+enrichment may re-enable only after a separate policy implementation/review.
+
+Repair affected gates pass on aarch64 macOS:fmt/all-target warnings-denied clippy/
+all native tests including57 offline transcripts/218 counted CLI comparisons; required
+Python167/benchmark/smoke/artifact/gitleaks; locked offline debug/release jobs1. Explicit
+local direct/cache/index2 and Jina/auto/fallback/redirect6 focused pairs pass. Historical
+3-pair risk reproducer is available only as an explicit fixture method against7406.
+Neither positive-feature acceptance nor actual Linux/Windows/live evidence is claimed.
+Repaired local binaries (old7406 checkpoint retained):
+- debug: SHA256 89206eea6383b9530b626b31e9fcdb62dc3ae6ccdce506ed3602e180385248b3, 28748136 bytes.
+- release: SHA256 49c61ce2f65cdc0f2a9a959849d3f205bde516f7c13a4e29f93e5518401cc944, 8368112 bytes.

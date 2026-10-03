@@ -1,5 +1,10 @@
 # Enrichment and collect boundaries
 
+Current P2 repair disables every positive CLI enrichment before provider/reader I/O.
+Native calculation is exposed only with concrete OfflineTransport; no runtime
+network enrichment entry point remains. Explicit user-selected read is unchanged.
+Full enrichment acceptance is pending.
+
 Next independent slice starts from integrated main cc086afb (#29). This contract
 is saved before implementation. No real archive, credential or live provider is used.
 
@@ -69,7 +74,7 @@ Native MCP remains 0/9; no untrusted adapter or live Jina validation is enabled 
 Full migration remains pending across all35 acceptance rows, other OS targets,
 resource/release/security gates and live providers. No speed claim is made.
 
-## Enrichment implementation checkpoint
+## Historical pre-repair enrichment checkpoint (7406f8a; withdrawn from runtime acceptance)
 
 Native workflow::enrich reuses reader::read_with and shared rank, and CLI search now
 enriches before the first signed slice. No dependency/version/lock/toolchain change;
@@ -98,3 +103,45 @@ implementation comparisons; the218 counted baseline comparisons remain unchanged
 All-provider combined enrichment, adversarial typed/ranking inputs, per-command
 aggregate resource caps, actual Windows/Linux/live execution and full lifecycle
 remain pending. Collect/storage/report implementation and policy review are separate.
+
+
+## P2 derived-target repair
+
+Independent review correctly identified an already enabled trust boundary, not just
+a future MCP issue: provider-controlled result.url passed rank's authority/title/
+dedup checks, then reader's HTTP(S) check, into HTTP without private/link-local/DNS
+restrictions. Direct, redirects and auto fallback could reach internal targets; Jina
+also transmits complete derived URL secrets. MCP0/9 does not make this path safe.
+
+This slice takes the fail-closed option. All positive --enrich-top requests fail with
+exit1/empty stdout before provider configuration, API/token/process/ledger/archive
+access, HTTP settings/DNS/reader/proxy and Jina transmission. Even limit0 or an empty
+archive is rejected. CLI candidate/category/slice behavior is restored to #29 baseline.
+The57-case algorithm is retained as enrich_offline with concrete OfflineTransport,
+which cannot connect or fall through to network. Generic/native transports are not
+accepted by this API. No production CLI calls it. This is offline calculation work,
+not completed native search enrichment. No new permission/network/allowlist bypass.
+
+Pre-repair immutable7406 binary reproduces three owned-loopback paired cases: provider
+SearXNG result→direct, Jina error→direct fallback, and direct redirect. There is no
+real private service or metadata probe. Post-repair evidence:55 explicit native
+refusals across nine providers/three readers/limit0-or1 plus nonexistent archive;
+provider/reader/proxy request counts zero, all eight populated synthetic tables,
+schema/version/pages MATCH/rank1 integrity and unselected archive unchanged. Invalid
+provider/HTTP config and empty executable PATH prove refusal precedes initialization.
+Six nonpositive-top paired cases still match Python. Eight focused explicit read
+cache/fallback/redirect pairs preserve the trusted local CLI contract.
+
+Current source SHA256:a11d49404f21cfce765172f0003a38faaa2dfe7c1dc942c9bf14b3ecfe50bddf.
+The57 oracle fixture remains byte-identical. Historical52 successful compatibility
+pairs at7406 are superseded, not relabeled as current positive-feature acceptance.
+Their original artifacts and the3-case risk reproducer remain recoverable. The named
+derived_enrichment_disabled safety difference from Python is not final parity.
+
+Re-enable only in a separate reviewed slice that validates derived initial targets,
+resolved public IPs pinned to each connection, every redirect/proxy/DNS hop, and
+third-party Jina URL disclosure independently. Merely checking hostname/literal IP
+before a second DNS resolution does not prevent rebinding. Explicit local read
+authorization must remain separate; actual synthetic resolver/redirect/fallback/
+secret-transmission tests must precede runtime enablement. Collect/investigate also
+consume derived results and cannot reuse the old generic fetch path by default.

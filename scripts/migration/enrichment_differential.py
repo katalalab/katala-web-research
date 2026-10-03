@@ -18,6 +18,18 @@ import json_provider_differential as preservation
 from katala_web_research.archive import Archive
 from katala_web_research.models import FeedItem, PageSnapshot
 
+ATTEMPTS = []
+
+
+class RecordingProxy(jina.Proxy):
+    def do_CONNECT(self):
+        ATTEMPTS.append(("CONNECT",self.path))
+        return super().do_CONNECT()
+
+    def do_GET(self):
+        ATTEMPTS.append(("proxy-GET",self.path))
+        self.send_error(403)
+
 
 class CombinedHandler(jina.Handler):
     origins = []
@@ -41,10 +53,11 @@ class CombinedHandler(jina.Handler):
 class EnrichmentFixture(jina.JinaFixture):
     comparisons = 0
     signals = 0
+    refusals = 0
 
     @classmethod
     def setUpClass(cls):
-        with patch.object(jina,"Handler",CombinedHandler):
+        with patch.object(jina,"Handler",CombinedHandler),patch.object(jina,"Proxy",RecordingProxy):
             super().setUpClass()
         CombinedHandler.origins = [cls.plain,cls.plain.replace("127.0.0.1","localhost")]
 
@@ -137,6 +150,57 @@ class EnrichmentFixture(jina.JinaFixture):
                 self.compare_search(provider="searxng",reader=reader,limit=limit)
             self.compare_search(mode="normal.pdf",provider="searxng",reader=reader,highlight=True,extra=["--category","pdf","--include-domain","127.0.0.1"])
 
+    def test_derived_enrichment_disabled_before_any_provider_or_reader(self):
+        with tempfile.TemporaryDirectory(prefix="kwr-derived-refusal-") as tmp:
+            root = Path(tmp)
+            selected = root/"selected.sqlite"
+            other = root/"unselected.sqlite"
+            self.prepare(selected,"normal")
+            self.seed(other,self.plain+"/other")
+            before = direct.state(selected)
+            untouched = preservation.snapshot(other)
+            empty_path = root/"empty-path"
+            empty_path.mkdir()
+            env = dict(self.env_for(other,"normal"),PATH=str(empty_path),HTTP_PROXY=self.proxy,
+                       NO_PROXY="",KWR_HTTP_TIMEOUT_SECONDS="invalid",KWR_SEARXNG_URL=self.tls,
+                       KWR_META_PROVIDERS="invalid",OPENALEX_API_KEY="",GITHUB_TOKEN="")
+            for provider in ["feed","ddg","github","github_code","jina","searxng","brave","openalex","meta"]:
+                for reader in ["direct","jina","auto"]:
+                    for limit in [0,1]:
+                        trace_start,attempt_start = len(jina.TRACE),len(ATTEMPTS)
+                        proc = subprocess.run([str(fixture.BINARY),"search","alpha 日本語","--provider",provider,
+                                               "--reader",reader,"--enrich-top","1","--limit",str(limit),
+                                               "--archive",str(selected),"--json"],cwd=root,env=env,
+                                              capture_output=True,text=True,timeout=5)
+                        self.assertEqual(proc.returncode,1,(provider,reader,limit,proc.stderr))
+                        self.assertEqual(proc.stdout,"")
+                        self.assertIn("derived-target enrichment is disabled pending target and transmission policy",proc.stderr)
+                        self.assertEqual(jina.TRACE[trace_start:],[])
+                        self.assertEqual(ATTEMPTS[attempt_start:],[])
+                        self.assertEqual(before,direct.state(selected))
+                        self.assertEqual(untouched,preservation.snapshot(other))
+                        type(self).refusals += 1
+            missing = root/"missing"/"archive.sqlite"
+            proc = subprocess.run([str(fixture.BINARY),"search","alpha","--provider","feed","--enrich-top","1",
+                                   "--archive",str(missing)],cwd=root,env=env,capture_output=True,text=True,timeout=5)
+            self.assertEqual(proc.returncode,1)
+            self.assertFalse(missing.parent.exists())
+            self.assertFalse((root/".katala-web-research").exists())
+            type(self).refusals += 1
+
+    def test_disabled_enrichment_nonpositive_noop(self):
+        for reader in ["direct","jina","auto"]:
+            for top in [-3,0]:
+                self.compare_search(reader=reader,top=top)
+
+    def test_historical_derived_loopback_reproducer(self):
+        # Explicitly select this only with the immutable 7406 checkpoint. All
+        # targets/services/proxies are owned loopback; never a real metadata host.
+        start = len(jina.TRACE)
+        for mode,reader in [("normal","direct"),("error","auto"),("direct-redirect","auto")]:
+            self.compare_search(provider="searxng",mode=mode,reader=reader)
+        self.assertTrue(any(role=="direct" for role,_,_ in jina.TRACE[start:]))
+
     def test_owned_http_wait_interrupt(self):
         for native in [False,True]:
             with tempfile.TemporaryDirectory(prefix="kwr-enrichment-signal-") as tmp:
@@ -168,11 +232,15 @@ class EnrichmentFixture(jina.JinaFixture):
 
 if __name__ == "__main__":
     methods = {"test_reader_modes_signed_limits_and_rendering","test_failure_fallback_and_highlight",
-               "test_lazy_invalid_reader_and_top","test_owned_http_wait_interrupt","test_network_search_category_and_enrichment"}
-    wanted = set(sys.argv[1:]) or methods
+               "test_lazy_invalid_reader_and_top","test_owned_http_wait_interrupt","test_network_search_category_and_enrichment",
+               "test_derived_enrichment_disabled_before_any_provider_or_reader","test_disabled_enrichment_nonpositive_noop",
+               "test_historical_derived_loopback_reproducer"}
+    # Earlier positive cases are a historical compatibility reproducer for the
+    # immutable pre-repair binary, not current implementation acceptance.
+    wanted = set(sys.argv[1:]) or {"test_derived_enrichment_disabled_before_any_provider_or_reader","test_disabled_enrichment_nonpositive_noop"}
     assert wanted <= methods
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(EnrichmentFixture)
     suite = unittest.TestSuite(test for test in suite if test._testMethodName in wanted)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
-    print("Enrichment paired CLI cases:",EnrichmentFixture.comparisons,"owned signal executions:",EnrichmentFixture.signals)
+    print("Enrichment paired CLI cases:",EnrichmentFixture.comparisons,"owned signal executions:",EnrichmentFixture.signals,"native fail-closed refusals:",EnrichmentFixture.refusals)
     sys.exit(not result.wasSuccessful())
