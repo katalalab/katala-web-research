@@ -199,3 +199,24 @@ A separate owned worktree starts on that exact draft head. Meta contract/complet
 Author aarch64 macOS evidence: 60 profile/rewrite, 168 health boundary, 32 fusion inputs (each six signed limits), two annotation cases; 33 fixed provider/clock/completion transcripts with exact calls and partial/error/weak routing/duplicate behavior. Four native policy cases cover strict fixture refusal, channel-controlled completion, four-worker/all-jobs-drained after error and synthetic ledger 500/provider prune/50-row routing/seven unrelated populated tables/FTS/integrity/atomic rollback. Both generators replay byte-identically. fmt/warnings-denied all-target clippy/all locked offline native tests pass. Required Python verifier passes 167 tests, smoke/deterministic benchmarks, artifact guards and gitleaks/no leaks; inherited CLI/release/live checks are not relabeled as Meta execution.
 
 Three scoped Meta case records bring the matrix to 13 passing records and 35 pending final rows. Production source content hash is 7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad; original #26 binaries/provenance remain recoverable at their immutable checkpoint. No dependency/lock/toolchain/workflow/runner/protection/auth/network configuration changes. No live/paid/API/model calls, real archive/vault, installed CLI or other-host action. Remaining combined CLI/config/schema/refusal/signal/panic/representation/history-boundary and final OS/downstream/storage/release work is concrete in meta-contract.md and matrix pending_reasons.
+||||||| 91da387
+## PR #26 independent P3: unused best-location URL branch
+
+Parent focus review independently replayed all original 95 search/13 identifier Python
+expectations byte-identically and checked five green existing CI checks, with no new
+blocking issue. The review found that a valid primary URL plus string best_oa_location
+succeeds in Python but native eagerly inspected the unused best branch. The isolated
+repair only moves best lookup behind primary URL selection. Eight unannotated fixture
+cases (string/number/bool/array, each unused versus selected) first fail on unchanged
+91da387 production code and then pass. Original 95/13 expectations are unchanged.
+
+Author affected Mac gates: 103/13 strict cases, identical regeneration, fmt/warnings-denied
+all-target clippy, locked offline debug/owned-fixture and release builds pass. Existing
+34 paired OpenAlex CLI/218 broader CLI/Python evidence is inherited, not called rerun;
+independent native/TLS execution remains absent. Matrix adds only eight new scoped cases
+with production source hash a3a28d1739ceb921c5c7d1e139e798891c5b6f0b615af1fb95d5ec3f15281e98.
+All 35 final rows remain pending. Abstract-position/aggregate result/page/byte budgets
+and cap/one-over/allocation/interruption tests are concretely pending in openalex-contract.md.
+Meta remains on its separate local 7e6f3b8 branch and is not part of the repaired diff.
+No dependency/lock/CI/budget/auth/network/OS/real archive/installed CLI change. Repaired
+exact-head CI/focus confirmation and ordinary merge authorization remain separate steps.

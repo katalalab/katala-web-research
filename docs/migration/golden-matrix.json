@@ -761,12 +761,13 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "partial: native search/cursor/op/filters/normalization; 95 search + 13 identifier + 34 CLI cases; graph/cache/edges/OS/live final acceptance pending",
+      "status": "partial: native search/cursor/op/filters/normalization; 103 search + 13 identifier cases; inherited 34 CLI cases; graph/cache/edges/OS/live final acceptance pending",
       "surface": "openalex",
       "pending_reasons": [
         "95 search/13 identifier/34 CLI cases pass; arbitrary model/numeric/JSON/codec/env-byte/case-mapping/credential redirect behavior remains open",
         "Unix op safety differences need final acceptance; non-Unix op execution is unimplemented",
-        "live auth/availability/rate behavior is unverified; search preview does not implement graph/cache"
+        "live auth/availability/rate behavior is unverified; search preview does not implement graph/cache",
+        "before final acceptance, test decoded abstract-position and aggregate result/page/byte allocation bounds at a documented cap and one over; guard/cap policy has not been implemented or approved"
       ],
       "case_evidence": [
         {
@@ -809,6 +810,20 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; independent target execution not claimed",
           "source_tree_sha256": "8bfc92e80db944d8102874a6ff2b9a562aee4e182d3152c45abd5d333f40eb74"
+        },
+        {
+          "id": "openalex-unused-best-short-circuit",
+          "status": "passed",
+          "scope": "8 unannotated Python cases: truthy string/number/bool/array unused best location succeeds with valid primary URL, selected malformed best raises AttributeError; original 95/13 fixture values unchanged; 103 search cases rerun",
+          "evidence": [
+            "scripts/migration/generate_openalex_goldens.py",
+            "rust/tests/fixtures/openalex-golden.json",
+            "rust/tests/openalex.rs"
+          ],
+          "count": 8,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent Python/source focus review requested",
+          "source_tree_sha256": "a3a28d1739ceb921c5c7d1e139e798891c5b6f0b615af1fb95d5ec3f15281e98"
         }
       ]
     },
