@@ -307,6 +307,21 @@
         "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog;session=abc/details"
       },
       "stderr": ""
+    },
+    {
+      "args": [
+        "sources",
+        "match",
+        " www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "--json"
+      ],
+      "exit": 0,
+      "json": {
+        "matched": false,
+        "source": null,
+        "url": " www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      },
+      "stderr": ""
     }
   ]
 }

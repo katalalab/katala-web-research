@@ -11,8 +11,8 @@ The complete reference inventory is in `python-contract.json` (22 leaf commands,
 Local evidence (2026-10-03, aarch64 macOS only):
 
 - Python reference: 167 unit tests pass. Existing ResourceWarning about an unclosed Python test database is present.
-- Rust: 14 migration tests plus one golden test containing 11 CLI cases pass.
-- CLI differential: 138 comparisons pass (plan, registry boundaries/overlay, query JSON/text, repo filters, Unicode paths/content, health windows, cache hit, feed upsert, parser/runtime exits, source-preserving migration and Python reopen).
+- Rust: 14 migration tests plus one golden test containing 12 CLI cases pass.
+- CLI differential: 139 comparisons pass (plan, registry boundaries/overlay, query JSON/text, repo filters, Unicode paths/content, health windows, cache hit, feed upsert, parser/runtime exits, source-preserving migration and Python reopen).
 - Formatting and clippy with warnings denied pass on pinned toolchain.
 - Existing `scripts/verify.sh` passes (167 unit tests, CLI/benchmark/artifact gates; configured gitleaks found no leaks). Pinned `--release --locked --offline` build passes; local native binary reports kwr 0.1.0.
 - Recording/build workspace size was below 2 GiB throughout the slice. No cross-host operations, real archive/credential reads, paid API/model calls, or live providers.
@@ -36,3 +36,5 @@ The review of `14d6ae68e5f9bb871b164e3aad44f12a939137d2` requested three correct
 - P2: registry matching strips ASCII tab/newlines and leading C0/space like urllib, and handles semicolon params on the final path segment while preserving explicit ports and dot segments. Differential and committed golden fixtures cover the reported CISA cases.
 
 Concurrent uncooperative writers cannot be excluded by a namespace check alone; choose an unused destination in a quiescent directory. A late-race error preserves all files and requires operator inspection, rather than deleting a possibly owned archive or sidecar. No real archive, CLI cutover, main merge, or next-slice feature is included in this repair.
+
+The follow-up review found that a scheme-less URL with a leading space was over-matched. Scheme detection now uses urllib's cleaned view, while fallback `https://` completion uses the original string before the final parse cleanup. The reported leading-space CISA input is a committed unmatched golden and differential case. This is a separate compatibility-only repair commit.

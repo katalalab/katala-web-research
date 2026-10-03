@@ -47,8 +47,7 @@ fn parse(value: &str) -> Option<(String, String)> {
     let cleaned = value
         .trim_start_matches(|c: char| c as u32 <= 0x20)
         .replace(['\r', '\n', '\t'], "");
-    let value = cleaned.as_str();
-    let has_scheme = value.split_once(':').is_some_and(|(s, _)| {
+    let has_scheme = cleaned.split_once(':').is_some_and(|(s, _)| {
         !s.is_empty()
             && s.chars().next().is_some_and(|c| c.is_ascii_alphabetic())
             && s.chars()
@@ -59,6 +58,11 @@ fn parse(value: &str) -> Option<(String, String)> {
     } else {
         format!("https://{value}")
     };
+    // Scheme detection uses urlparse's cleaned view, but fallback completion
+    // prefixes the original value. Leading spaces then belong to the netloc.
+    let normalized = normalized
+        .trim_start_matches(|c: char| c as u32 <= 0x20)
+        .replace(['\r', '\n', '\t'], "");
     let (scheme, rest) = normalized.split_once("://")?;
     let end = rest.find(['/', '?', '#']).unwrap_or(rest.len());
     let authority = &rest[..end];
