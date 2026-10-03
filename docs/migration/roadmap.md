@@ -94,3 +94,14 @@ enrichment now fails before provider/reader/archive I/O; algorithm API is concre
 OfflineTransport only. No runtime network entry point or native enrichment completion
 claim. Derive/pin/validate public targets and redirect/proxy/DNS plus Jina transmission
 policy in a separate reviewed slice before enabling search, collect or investigate.
+
+
+PR30 P2 repair/offline-only slice with help-only386efd9 integrated normally as
+main83f2cf83. Positive enrichment remains disabled; no CLI/data cutover. Next small
+collect storage slice follows that main:one new run/result transaction primitive,
+28 Python sequences/57 commits,28 populated-copy pairs/2 abort pairs and actual lock/
+trigger/retry/default-clock evidence. Collect/capture/report/event orchestration is
+absent. Capture failures must preserve every existing page. Independent derived URL
+policy roadmap starts with pure offline resolver/connector fixtures, pinned address/
+redirect/proxy and disclosure boundaries before any runtime enablement. All35 final
+gates/native MCP0/9/actual other OS/live acceptance remain pending.

@@ -506,14 +506,15 @@
         "run/results/page persistence",
         "partial capture failures and UTF-8 evidence report"
       ],
-      "status": "pending",
+      "status": "partial: native store_run primitive only; collect CLI/capture/report/event orchestration remains unimplemented",
       "surface": "collect",
       "pending_reasons": [
-        "native collection/capture failure/storage/report/evidence flow is unimplemented"
+        "Native store_run has scoped synthetic evidence; collect CLI, derived capture authorization, success/failure retention and report/event orchestration remain unimplemented",
+        "Whole-command outputs/lifecycle/resource/OS/live final scope is not closed"
       ],
       "missing_assertions": [
-        "Implement runs/search_results/pages transaction and exact CLI outputs for mixed successful/failed URL captures",
-        "Compare UTF8 Markdown evidence, reader fallback, report-write failure and rollback against copied synthetic histories"
+        "Implement collect CLI with run-first/per-successful-page commit boundaries and exact outputs; derived capture must stay disabled until reviewed target/transmission policy; capture failure must not alter any existing page",
+        "Compare redacted failure evidence/UTF8 Markdown, report-write failure after durable commits and actual interrupt/restart on copied synthetic histories; retain approved Python differences"
       ],
       "next_tests": [
         {
@@ -521,18 +522,59 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_collect.py",
           "assertions": [
-            "Implement runs/search_results/pages transaction and exact CLI outputs for mixed successful/failed URL captures",
-            "Compare UTF8 Markdown evidence, reader fallback, report-write failure and rollback against copied synthetic histories"
+            "Implement collect CLI with run-first/per-successful-page commit boundaries and exact outputs; derived capture must stay disabled until reviewed target/transmission policy; capture failure must not alter any existing page",
+            "Compare redacted failure evidence/UTF8 Markdown, report-write failure after durable commits and actual interrupt/restart on copied synthetic histories; retain approved Python differences"
           ],
           "execution_evidence": false
         }
       ],
       "scope_acceptance": {
         "full_ready": false,
-        "status": "not_allocated",
-        "scopes": []
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "collect-store-run-reference",
+            "scope": "28 unchanged-Python sequences/57 committed store_run calls, exact fields/rowids/order/clock and durable reopen; native writer-lock/later-result trigger abort/retry/default UTC; library primitive only, not collect CLI/crash acceptance",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "collect-store-run-populated-copies",
+            "scope": "28 paired success sequences plus2 paired SQL-abort sequences after Python close/native rollback, all8 populated rows/schema/version/4FTS rank1 and MATCH/unselected copy preservation; prior commits persist; no crash/full collect acceptance",
+            "status": "passed"
+          }
+        ]
       },
-      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "collect-store-run-reference",
+          "status": "passed",
+          "scope": "28 unchanged-Python sequences/57 committed store_run calls, exact fields/rowids/order/clock and durable reopen; native writer-lock/later-result trigger abort/retry/default UTC; library primitive only, not collect CLI/crash acceptance",
+          "count": 28,
+          "evidence": [
+            "rust/tests/collect_storage.rs",
+            "rust/tests/fixtures/collect-storage-golden.json",
+            "scripts/migration/generate_collect_storage_goldens.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution not claimed",
+          "source_tree_sha256": "af7994bab2e31fba30061a5811ba31945e81b3a41cb6bab68993183c3f56291d"
+        },
+        {
+          "id": "collect-store-run-populated-copies",
+          "status": "passed",
+          "scope": "28 paired success sequences plus2 paired SQL-abort sequences after Python close/native rollback, all8 populated rows/schema/version/4FTS rank1 and MATCH/unselected copy preservation; prior commits persist; no crash/full collect acceptance",
+          "count": 30,
+          "evidence": [
+            "scripts/migration/collect_storage_differential.py",
+            "scripts/verify-collect-storage.sh",
+            "docs/migration/collect-storage-contract.md"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution not claimed",
+          "source_tree_sha256": "af7994bab2e31fba30061a5811ba31945e81b3a41cb6bab68993183c3f56291d"
+        }
+      ]
     },
     {
       "final_acceptance": "pending",

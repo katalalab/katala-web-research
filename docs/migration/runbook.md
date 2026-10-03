@@ -166,3 +166,15 @@ fetch/transmission policy must be implemented before enabling search/collect/MCP
 See enrichment-collect-contract.md for the P2 repair, validation and remaining policy.
 Do not switch installed CLI or real archives. All35 final gates/native MCP0/9 remain
 pending; older checkpoint sections describe historical scopes.
+
+## Collect run/result storage primitive
+
+`sh scripts/verify-collect-storage.sh` runs28 Python-derived sequences/57 commits and
+actual SQLite lock/abort/default-clock tests, builds owned store_run_probe, then compares
+28 successful and2 SQL-abort sequences on populated synthetic copies. For a shared
+target set CARGO_TARGET_DIR and KWR_STORE_RUN_PROBE to its exact target/example path.
+Regenerate expectations only with generate_collect_storage_goldens.py. No server/API/
+key/real archive is used. This primitive does not implement collect CLI/capture/report/
+event orchestration. See collect-storage-contract.md for immediate rollback difference
+and separate commit boundaries. Derived fetch remains disabled; the independent
+derived-target-policy-roadmap.md is a proposal without execution evidence.

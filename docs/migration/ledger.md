@@ -482,3 +482,56 @@ Help-only affected fmt/all-target clippy/debug/release/focused help and mandator
 Python167/benchmark/smoke/artifact/gitleaks gates pass. Exact-source local artifacts:
 - debug: SHA256 4e1a130216e9339b2711d344b442f5cce85ca81a1db3cacbd851076ef54eb8a6, 28748136 bytes.
 - release: SHA256 bbcab4e4716492835f3611e4ffbfa6c453571a911ad928d9e78c80d071d55b87, 8368112 bytes.
+
+
+## PR30 normal integration readback
+
+Parent independent re-review resolved b346 P2 as offline-only/refusal guard and
+authorized normal merge after help-only fix. Head386efd960d3dc33a3c9b33678a4a015538b69c0f/
+basecc086afb6a1c5acb080f00ac4ae24456262cf1c7/help-only production diff freshly
+confirmed:active ruleset24318413/no bypass actors,all5 SUCCESS checks,no unresolved
+threads/CLEAN/MERGEABLE,publicID1251159956. Normal exact-head merge completed
+2026-10-03T17:39:34Z; main83f2cf83aab160f61aaabe321c4f6aca17ff9d7c read back
+tree-identical to386. No admin/bypass/self-approval/forcepush/branch deletion/CLI/data
+cutover/security/budget/network setting change. Positive enrichment is unimplemented.
+Independent CA dirty task was told all Katala worktrees remain owned/active; no handoff.
+
+## Separate collect run/result storage primitive
+
+Owned codex/rust-collect-storage-parity starts from integrated83f2cf83. Storage contract
+and independent derived-target policy roadmap were saved before implementation.
+Native Archive store_run writes only run and input-order result fields in one new
+transaction, commits each successful call, returns rowid and omits metadata as Python.
+No rerank/dedup/URL/provider validation/page write/network/capture or native collect
+CLI/report/event enablement. Errors roll back immediately; Python can retain
+uncommitted partial data until close, a documented connection-state difference.
+
+Author aarch64 macOS:28 unchanged-Python sequences/57 commits with exact fields/
+rowids/order/once clock,Unicode/NUL/empty/duplicates/repeats/null-or-empty publication/
+i64/finite scores/metadata omission/durable reopen/default UTC shape. Actual writer
+lock20ms and later-result trigger abort preserve old run/page/FTS, rollback new batch
+and allow retry. 28 populated-copy success pairs +2 SQL-abort pairs compare all8 user
+rows/schema/version/4FTS rank1 integrity/positive MATCH/old-row-prefix/commit-count/
+unselected archive. Earlier successful calls persist when a later call fails. Initial
+project MATCH expected evidence; corrected to actual old token without dropping its
+nonempty check. Preservation assertions strengthened and all30 pairs reran. No mock/
+SQL abort is classified as actual signal/power-loss/crash recovery.
+
+Sourceaf7994bab2e31fba30061a5811ba31945e81b3a41cb6bab68993183c3f56291d; fixture
+92b1e6239cf454965704652bc911e1f08402bf793ba0b2e94667155e19e72631 regenerates byte-
+identically. Pinned fmt/all-target clippy/all native tests/218 CLI pairs, required
+Python167/benchmark/smoke/artifact/gitleaks and locked offline release jobs1 pass.
+Final default-clock assertion runs separately. Cargo adds scoped test/example only;
+no dependency/lock/toolchain/schema/license/workflow/runners/permissions/security/
+budget/auth/network change. Matrix41 scoped passing records/42 total case records;
+all35 final rows pending. Native MCP0/9. Collect/capture/report/event, derived target/
+transmission policy, malformed/nonfinite/size/busy-commit/nested transaction/signal/
+crash/actual Windows-Linux/live/release remain. Roadmap proposed, not execution.
+No real archive/vault/credential/private service/metadata probe/paid API/model/other
+host/installed CLI/data cutover or speed claim. Compact record budget stays below2GiB;
+build storage tracked separately with old/new recoverable checkpoints retained.
+
+Exact-source recoverable local artifacts (aarch64 macOS only):
+- kwr-rs-debug: SHA256 aa3d64077701975789e5ce515bcacadf422ccce3cd6ba0eb147e8b088b562aa4, 28746984 bytes.
+- kwr-rs-release: SHA256 25d1ae4b4db457eed65a65ba879d622990159e9246e1b50cd37d4bb41cdb140b, 8368176 bytes.
+- store_run_probe: SHA256 d6cf9d6d02504de938b8b48a8266d0b929ef264ee8b7023214157d7c861c6827, 4029424 bytes.
