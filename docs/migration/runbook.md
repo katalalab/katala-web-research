@@ -8,7 +8,7 @@ Use Rust **1.96.0** (MSRV also 1.96), `rust-toolchain.toml`, committed Cargo.loc
 
 ```sh
 rustup toolchain install 1.96.0 --profile minimal --component rustfmt --component clippy
-cargo +1.96.0 fetch --locked
+scripts/rust.sh fetch --locked
 ```
 
 With a shell that prioritizes Homebrew Rust, `scripts/rust.sh` selects the pinned cargo, rustc, rustdoc, and clippy explicitly. On Unix:
