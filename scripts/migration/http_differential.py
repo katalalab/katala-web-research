@@ -239,6 +239,8 @@ class TlsAndProxy(unittest.TestCase):
         root=Path(cls.tmp.name)
         ca_config=root/'ca.cnf';ca_config.write_text('[req]\nprompt=no\ndistinguished_name=dn\nx509_extensions=v3\n[dn]\nCN=kwr synthetic fixture CA\n[v3]\nbasicConstraints=critical,CA:TRUE\nkeyUsage=critical,keyCertSign,cRLSign\nsubjectKeyIdentifier=hash\nauthorityKeyIdentifier=keyid:always\n')
         leaf_config=root/'leaf.cnf';leaf_config.write_text('[req]\nprompt=no\ndistinguished_name=dn\n[dn]\nCN=localhost\n[v3]\nbasicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:localhost\nsubjectKeyIdentifier=hash\nauthorityKeyIdentifier=keyid,issuer\n')
+        if getattr(cls,'additional_san',''):
+            leaf_config.write_text(leaf_config.read_text().replace('subjectAltName=DNS:localhost','subjectAltName=DNS:localhost'+cls.additional_san))
         # Ephemeral test keys remain in TemporaryDirectory and are never tracked.
         commands=[['req','-x509','-newkey','rsa:2048','-nodes','-days','1','-config',str(ca_config),'-keyout',str(root/'ca.key'),'-out',str(root/'ca.crt')],
                   ['req','-new','-newkey','rsa:2048','-nodes','-config',str(leaf_config),'-keyout',str(root/'leaf.key'),'-out',str(root/'leaf.csr')],

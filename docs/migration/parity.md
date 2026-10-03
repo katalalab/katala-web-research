@@ -18,7 +18,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
 | read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Network pending; cached hits implemented |
-| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Stored-feed provider native: lexical rank/diversity/query filters/cache highlights; eight network providers and positive enrichment pending |
+| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native feed and normal DDG GET/parser/rank/CLI fields; shared strict offline transport; seven other network surfaces, positive enrichment and parser/transport edges pending |
 | collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |
@@ -43,3 +43,5 @@ Pin an already-installed Rust toolchain and MSRV with Cargo.lock; use native Pat
 ## Completion conditions
 
 A complete migration requires every pending row implemented natively, no Python runtime invocation, command/JSON/exit/report/provider differential gates, matching schema/content/index/cache semantics, offline reference suite coverage and deterministic evaluation, bounded networking/security/fallback tests, copy migration version rejection/dry-run/idempotence/interruption/rollback, and actual Mac/Windows/Linux build/test evidence. Live providers are separately marked unverified until authorized checks. Do not replace installed CLI, switch real archives, remove Python reference, or claim full migration while any row remains pending. A preview slice may enter main only after explicit integration authorization, independent review and exact-head required checks; that does not satisfy the complete-migration gate. Research-driven features get a separate evaluated commit.
+
+Execution order/dependency heads: [roadmap.md](roadmap.md). Machine-readable final acceptance inventory: [golden-matrix.json](golden-matrix.json), checked by `python3 scripts/migration/check_matrix.py`. Every final row remains pending; current preview evidence does not close the final gate.

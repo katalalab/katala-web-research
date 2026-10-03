@@ -8,10 +8,10 @@ Reference Python source: `e66e449cc210bd80ecb25a00391091e72abd9c2b`; inventory: 
 | --- | --- | --- |
 | Local retrieval / copy migration | PR #18 head 414d0ff | Merged as e2c1282 after independent review and exact-head checks. |
 | Feed parse / file refresh / stored-feed search | PR #19 head 969ab09 | Merged as main 9586f6e after separate authorization. |
-| Native HTTP feeds / transport safety | PR #20 head 5da9fc831b7fac6d08c796d97847bb7c735d57a5 | Draft, review pending; frozen. Five existing CI checks pass. Not merged. |
-| Provider common contract / first vertical provider | codex/rust-provider-parity | Own worktree starts at exact PR #20 head above. HTTP dependency is unmerged; no claim its APIs/security decisions are approved. |
+| Native HTTP feeds / transport safety | PR #20 head 5da9fc831b7fac6d08c796d97847bb7c735d57a5 | Parent's independent source/fixture/dependency/CI review found no blocker; normal authorized merge as main 96519c13350dfc35dab7847d932565fb24f4403e. Review did not rerun native tests. |
+| Provider common contract / first vertical provider | codex/rust-provider-parity | Own worktree started at exact PR #20 head above; documentation checkpoint fdf398b. After #20 integration the owned branch merges main 96519c1; feature PR now bases on main. |
 
-A provider PR must initially use codex/rust-http-feed-parity as its stacked base and name both head SHAs. It must not silently include PR #20 in an independent main-based feature diff. If HTTP review requests repairs, fix PR #20 first, then update only the owned provider branch to the reviewed dependency and repeat affected gates. After authorized PR #20 merge, retarget the provider PR to main and verify the final feature-only diff / exact heads again. No forcepush, main direct edit, or inherited merge authorization.
+Before #20 merged, a provider PR would have used codex/rust-http-feed-parity as its stacked base and named both head SHAs, rather than silently including #20 in a main-based feature diff. HTTP review and integration were handled first. Subsequent provider publication uses main 96519c1 and must verify feature-only diff / exact heads. Future unmerged dependencies follow the same explicit stacked-base ledger, repair-first order and retarget/retest gate. No forcepush, main direct edit, or inherited merge authorization.
 
 ## Implementation order and completion evidence
 

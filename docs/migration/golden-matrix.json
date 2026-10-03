@@ -2,8 +2,10 @@
   "complete_migration": false,
   "dependency": {
     "head": "5da9fc831b7fac6d08c796d97847bb7c735d57a5",
-    "merged": false,
-    "pr": 20
+    "merge_commit": "96519c13350dfc35dab7847d932565fb24f4403e",
+    "merged": true,
+    "pr": 20,
+    "review_scope": "source/fixtures/dependency/CI/evidence; no reviewer native rerun"
   },
   "intentional_differences": [
     "clap help/diagnostic wording; error exit 2 preserved",
@@ -20,8 +22,15 @@
     {
       "final_acceptance": "pending",
       "id": "cli:search",
+      "reference_handler": "cmd_search",
       "reference_tests": [
-        "cmd_search"
+        "tests/test_cli_search.py",
+        "tests/test_providers.py",
+        "tests/test_provider_boundaries.py",
+        "tests/test_text_and_provider_parse.py",
+        "tests/test_rank.py",
+        "tests/test_query_builder.py",
+        "tests/test_archive_highlights.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -34,14 +43,17 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial",
+      "status": "partial: feed + normal DDG; seven providers and positive enrichment pending",
       "surface": "search"
     },
     {
       "final_acceptance": "pending",
       "id": "cli:read",
+      "reference_handler": "cmd_read",
       "reference_tests": [
-        "cmd_read"
+        "tests/test_reader.py",
+        "tests/test_http.py",
+        "tests/test_archive.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -59,8 +71,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:openalex expand",
+      "reference_handler": "cmd_openalex_expand",
       "reference_tests": [
-        "cmd_openalex_expand"
+        "tests/test_openalex_expand.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -77,8 +90,11 @@
     {
       "final_acceptance": "pending",
       "id": "cli:collect",
+      "reference_handler": "cmd_collect",
       "reference_tests": [
-        "cmd_collect"
+        "tests/test_workflow.py",
+        "tests/test_report.py",
+        "tests/test_archive.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -95,8 +111,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:query",
+      "reference_handler": "cmd_query",
       "reference_tests": [
-        "cmd_query"
+        "tests/test_archive.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -112,8 +129,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:plan",
+      "reference_handler": "cmd_plan",
       "reference_tests": [
-        "cmd_plan"
+        "tests/test_planner.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -129,8 +147,10 @@
     {
       "final_acceptance": "pending",
       "id": "cli:repos scan",
+      "reference_handler": "cmd_repos_scan",
       "reference_tests": [
-        "cmd_repos_scan"
+        "tests/test_corpus.py",
+        "tests/test_cli_repos.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -148,8 +168,10 @@
     {
       "final_acceptance": "pending",
       "id": "cli:repos query",
+      "reference_handler": "cmd_repos_query",
       "reference_tests": [
-        "cmd_repos_query"
+        "tests/test_corpus.py",
+        "tests/test_cli_repos.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -166,8 +188,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:feeds add",
+      "reference_handler": "cmd_feeds_add",
       "reference_tests": [
-        "cmd_feeds_add"
+        "tests/test_feeds.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -183,8 +206,10 @@
     {
       "final_acceptance": "pending",
       "id": "cli:feeds refresh",
+      "reference_handler": "cmd_feeds_refresh",
       "reference_tests": [
-        "cmd_feeds_refresh"
+        "tests/test_feeds.py",
+        "tests/test_http.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -202,8 +227,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:feeds query",
+      "reference_handler": "cmd_feeds_query",
       "reference_tests": [
-        "cmd_feeds_query"
+        "tests/test_feeds.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -219,8 +245,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:sources list",
+      "reference_handler": "cmd_sources_list",
       "reference_tests": [
-        "cmd_sources_list"
+        "tests/test_source_registry.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -236,8 +263,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:sources match",
+      "reference_handler": "cmd_sources_match",
       "reference_tests": [
-        "cmd_sources_match"
+        "tests/test_source_registry.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -253,8 +281,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:issues ingest",
+      "reference_handler": "cmd_issues_ingest",
       "reference_tests": [
-        "cmd_issues_ingest"
+        "tests/test_project_issues.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -271,8 +300,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:issues query",
+      "reference_handler": "cmd_issues_query",
       "reference_tests": [
-        "cmd_issues_query"
+        "tests/test_project_issues.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -288,8 +318,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:issues report",
+      "reference_handler": "cmd_issues_report",
       "reference_tests": [
-        "cmd_issues_report"
+        "tests/test_project_issues.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -305,8 +336,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:brief",
+      "reference_handler": "cmd_brief",
       "reference_tests": [
-        "cmd_brief"
+        "tests/test_brief.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -322,8 +354,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:investigate",
+      "reference_handler": "cmd_investigate",
       "reference_tests": [
-        "cmd_investigate"
+        "tests/test_investigation.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -339,8 +372,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:doctor",
+      "reference_handler": "cmd_doctor",
       "reference_tests": [
-        "cmd_doctor"
+        "tests/test_cli_doctor.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -357,8 +391,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:engines",
+      "reference_handler": "cmd_engines",
       "reference_tests": [
-        "cmd_engines"
+        "tests/test_engine_health.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -375,8 +410,10 @@
     {
       "final_acceptance": "pending",
       "id": "cli:eval",
+      "reference_handler": "cmd_eval",
       "reference_tests": [
-        "cmd_eval"
+        "tests/test_evaluation.py",
+        "tests/test_retrieval_metrics.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -392,8 +429,9 @@
     {
       "final_acceptance": "pending",
       "id": "cli:mcp",
+      "reference_handler": "cmd_mcp",
       "reference_tests": [
-        "cmd_mcp"
+        "tests/test_mcp_server.py"
       ],
       "required_cases": [
         "defaults and all inventoried options",
@@ -411,6 +449,10 @@
     {
       "final_acceptance": "pending",
       "id": "provider:ddg",
+      "local_evidence": [
+        "rust/tests/providers.rs (84 parser/request/rank goldens plus strict adapter/error tests)",
+        "scripts/migration/provider_differential.py (23 localhost CLI comparisons)"
+      ],
       "required_cases": [
         "exact request URL/headers/order",
         "synthetic config/env success and preflight failure",
@@ -419,7 +461,7 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "native-normal-fields; parser/transport edges and live pending",
       "surface": "ddg"
     },
     {
@@ -540,7 +582,8 @@
         "byte/global-time/redirect bounds and no automatic retry",
         "TLS/trust/proxy/charset/redaction/auth header gates",
         "four-worker meta concurrency and bounded subprocesses",
-        "resolver/signal/broken-pipe and malformed input"
+        "resolver/signal/broken-pipe and malformed input",
+        "future HTTP/2 or HTTP/3 features explicitly disable and fixture-check protocol retries"
       ],
       "status": "pending",
       "surface": "network"
