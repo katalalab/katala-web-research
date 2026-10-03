@@ -16,11 +16,12 @@ With a shell that prioritizes Homebrew Rust, `scripts/rust.sh` selects the pinne
 ```sh
 scripts/rust.sh fetch --locked
 scripts/verify-rust.sh
+scripts/verify-http.sh
 scripts/rust.sh build --release --locked --offline
 ./target/release/kwr-rs plan 'agent evidence' --json
 ```
 
-Registry fetch is a one-time prerequisite; the gate itself uses `--offline --locked`. It performs formatting, clippy, native migration/golden tests, build, and CLI differential tests. The Python reference requires Python >=3.11; run `scripts/verify.sh` as the existing repository gate.
+Registry fetch is a one-time prerequisite; the gates use `--offline --locked`. The Rust gate performs formatting, clippy, native migration/golden tests, build, and CLI differential tests. The separate HTTP gate uses unauthenticated loopback servers/proxy and temporary synthetic TLS certificates, requiring an already installed OpenSSL CLI. It performs no provider request, install, or OS trust change. The Python reference requires Python >=3.11; run `scripts/verify.sh` as the existing repository gate.
 
 Windows PowerShell equivalent (design instructions; not executed on Windows):
 
@@ -34,6 +35,8 @@ cargo test --locked --offline
 cargo build --locked --offline
 $env:PYTHONPATH = 'src'
 python scripts/migration/differential.py
+cargo build --locked --offline --example http_probe
+python scripts/migration/http_differential.py
 ```
 
 Supply a C compiler (Visual Studio Build Tools on Windows; platform SDK/cc on macOS/Linux) for SQLite. No Windows/Linux execution or certificate/proxy/signal validation is claimed. No installer or global CLI replacement is included. The current CI workflows are unchanged to avoid adding runners or costs; Rust gates are local until the review decides how to integrate them into the existing CI budget.
@@ -45,7 +48,7 @@ Dependencies are pinned transitively in Cargo.lock. `dependency-licenses.json` l
 - `plan`, `sources list`, `sources match`
 - `query`, `repos query`, `feeds query`, `issues query`
 - `feeds add`, `engines`
-- `feeds refresh` with `file://` local fixtures only, RSS/Atom/JSONFeed; network sources fail clearly before source-health changes
+- `feeds refresh` with `file://`, `http://`, `https://`, normal RSS/Atom/JSONFeed; HTTP bounds/security differences and pending transport edges are recorded in [http-contract.md](http-contract.md)
 - `search QUERY --provider feed` over the selected local archive, query filters/candidate oversampling and cached-page highlights; positive `--enrich-top` and all network providers fail clearly
 - `read --cache` for an existing page only; uncached reads, refreshes, and cache misses fail clearly
 - new `migrate --source PATH --destination PATH [--dry-run]` emits a JSON validation report
@@ -58,7 +61,7 @@ fixture_url="$(python3 -c 'from pathlib import Path; print(Path("tests/fixtures/
 ./target/debug/kwr-rs search RSSHub --provider feed --archive /tmp/kwr-feed-preview.sqlite --json
 ```
 
-The parser's normal RSS/Atom/JSONFeed fields are covered by committed Python goldens. Internal XML DTD/entity declarations remain unsupported, matching roxmltree's default rejection; unusual dates, malformed non-string JSON fields, ill-formed HTML/tokenizer edges, native file URL edge cases, and injected database-write failures require further reference fixtures before claiming full parser/refresh parity. Fetching local files currently reads the complete file as the reference does; file byte limits belong to a separately reviewed contract change. HTTP charset/TLS/proxy/timeout and live sources are pending. The CLI does not silently mark an unsupported network fetch as a refresh success.
+The parser's normal RSS/Atom/JSONFeed fields are covered by committed Python goldens. Internal XML DTD/entity declarations remain unsupported, matching roxmltree's default rejection; unusual dates, malformed non-string JSON fields, ill-formed HTML/tokenizer edges, native file URL edge cases, and injected database-write failures require further reference fixtures before claiming full parser/refresh parity. Fetching local files currently reads the complete file as the reference does; file byte limits belong to a separately reviewed contract change. HTTP defaults to 8 MiB response bytes, at most 10 redirects, and a single 20-second total deadline (KWR_HTTP_TIMEOUT_SECONDS overrides the positive finite duration). It rejects HTTPS downgrades and URL userinfo, strips sensitive headers on cross-origin redirects, and does not retry. These intentional safety differences can reject inputs accepted by Python. Previous feed items remain on failure. Full charset/URL/OS proxy compatibility and all live sources remain unverified.
 
 Regenerate synthetic parser/query/highlight/ranking fixtures with `PYTHONPATH=src python3 scripts/migration/generate_feed_goldens.py`; ranking uses an explicit fixture year. Do not regenerate expected values from Rust.
 

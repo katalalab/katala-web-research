@@ -1,9 +1,16 @@
 //! Native HTTP GET transport. See the migration ledger for remaining boundaries.
 use reqwest::{blocking::Client, redirect::Policy};
-use std::{collections::BTreeMap, fmt, io::Read, time::Duration};
+use std::{
+    collections::BTreeMap,
+    fmt,
+    io::Read,
+    time::{Duration, Instant},
+};
 
 pub const USER_AGENT: &str = "katala-web-research/0.1 (+local research tool)";
 pub const DEFAULT_TIMEOUT: f64 = 20.0;
+pub const MAX_RESPONSE_BYTES: usize = 8 * 1024 * 1024;
+pub const MAX_REDIRECTS: usize = 10;
 pub const FEED_ACCEPT: &str = "application/rss+xml, application/atom+xml, application/feed+json, application/json, text/xml, */*";
 
 #[derive(Debug)]
@@ -106,7 +113,7 @@ impl Default for Settings {
         Self {
             timeout: Duration::from_secs(20),
             proxies: Proxies::default(),
-            body_limit: None,
+            body_limit: Some(MAX_RESPONSE_BYTES),
             root_certificates: Vec::new(),
         }
     }
@@ -159,8 +166,15 @@ pub fn resolve_timeout(raw: &str) -> Result<Duration, HttpError> {
             "KWR_HTTP_TIMEOUT_SECONDS must be a finite number greater than 0",
         ));
     }
-    Duration::try_from_secs_f64(value)
-        .map_err(|_| error("FetchError", "HTTP timeout is out of range"))
+    let duration = Duration::try_from_secs_f64(value)
+        .map_err(|_| error("FetchError", "HTTP timeout is out of range"))?;
+    if duration.is_zero() {
+        return Err(error(
+            "FetchError",
+            "HTTP timeout is below clock resolution",
+        ));
+    }
+    Ok(duration)
 }
 
 pub struct HttpResponse {
@@ -290,8 +304,10 @@ pub fn fetch_url(
     settings: &Settings,
 ) -> Result<HttpResponse, HttpError> {
     let mut current = url.to_string();
+    let started = Instant::now();
+    let mut forwarded_headers = headers.to_vec();
     let mut visited = BTreeMap::<String, usize>::new();
-    for _ in 0..=40 {
+    for hop in 0..=MAX_REDIRECTS {
         let parsed =
             url::Url::parse(&current).map_err(|_| error("FetchError", "invalid HTTP URL"))?;
         if !["http", "https"].contains(&parsed.scheme()) {
@@ -300,11 +316,22 @@ pub fn fetch_url(
                 "HTTP transport supports http/https only",
             ));
         }
+        if !parsed.username().is_empty() || parsed.password().is_some() {
+            return Err(error(
+                "FetchError",
+                diagnostic(url, "URL userinfo is unsupported"),
+            ));
+        }
+        let remaining = settings
+            .timeout
+            .checked_sub(started.elapsed())
+            .filter(|d| !d.is_zero())
+            .ok_or_else(|| error("TimeoutError", diagnostic(url, "total deadline exceeded")))?;
         let mut builder = Client::builder()
             .no_proxy()
             .redirect(Policy::none())
-            .timeout(settings.timeout)
-            .connect_timeout(settings.timeout)
+            .timeout(remaining)
+            .connect_timeout(remaining)
             .user_agent(USER_AGENT);
         if let Some(proxy) = settings.proxies.selected(&parsed, &current) {
             let proxy = reqwest::Proxy::all(proxy)
@@ -321,9 +348,17 @@ pub fn fetch_url(
             .get(&current)
             .header("Accept-Encoding", "identity")
             .header("Connection", "close");
-        for (key, value) in headers {
+        for (key, value) in &forwarded_headers {
             request = request.header(*key, *value);
         }
+        let remaining = settings
+            .timeout
+            .checked_sub(started.elapsed())
+            .filter(|d| !d.is_zero())
+            .ok_or_else(|| error("TimeoutError", diagnostic(url, "total deadline exceeded")))?;
+        // Request-level timeout also travels into reqwest's asynchronous body
+        // reader, so small chunks cannot reset the total deadline.
+        request = request.timeout(remaining);
         let mut response = request.send().map_err(|e| {
             error(
                 if e.is_timeout() && !e.is_connect() {
@@ -343,15 +378,32 @@ pub fn fetch_url(
         })?;
         let status = response.status().as_u16();
         if [301, 302, 303, 307, 308].contains(&status)
-            && let Some(location) = response.headers().get("location")
+            && let Some(location) = response
+                .headers()
+                .get("location")
+                .or_else(|| response.headers().get("uri"))
         {
             let location = location
                 .to_str()
                 .map_err(|_| error("FetchError", diagnostic(url, "invalid redirect")))?;
             let next = crate::urls::join(&current, location);
+            let next_parsed = url::Url::parse(&next)
+                .map_err(|_| error("FetchError", diagnostic(url, "invalid redirect")))?;
+            if parsed.scheme() == "https" && next_parsed.scheme() == "http" {
+                return Err(error(
+                    "FetchError",
+                    diagnostic(url, "HTTPS downgrade rejected"),
+                ));
+            }
+            if parsed.origin() != next_parsed.origin() {
+                forwarded_headers.retain(|(key, _)| {
+                    !["authorization", "cookie", "proxy-authorization"]
+                        .contains(&key.to_ascii_lowercase().as_str())
+                });
+            }
             let distinct = visited.len();
             let count = visited.entry(next.clone()).or_default();
-            if distinct >= 10 || *count >= 4 {
+            if hop >= MAX_REDIRECTS || distinct >= 10 || *count >= 4 {
                 return Err(error(
                     "FetchError",
                     diagnostic(url, "redirect limit exceeded"),
@@ -389,7 +441,7 @@ pub fn fetch_url(
         let read = match settings.body_limit {
             Some(limit) => response
                 .by_ref()
-                .take(limit as u64 + 1)
+                .take((limit as u64).saturating_add(1))
                 .read_to_end(&mut body),
             None => response.read_to_end(&mut body),
         };
@@ -427,5 +479,8 @@ pub fn fetch_url(
             body,
         });
     }
-    unreachable!()
+    Err(error(
+        "FetchError",
+        diagnostic(url, "redirect limit exceeded"),
+    ))
 }

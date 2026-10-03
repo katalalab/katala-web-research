@@ -60,7 +60,15 @@ fn timeout_configuration_is_finite_positive_and_representable() {
     ] {
         assert_eq!(resolve_timeout(value).unwrap().as_secs_f64(), seconds);
     }
-    for value in ["0", "-1", "bad", "nan", "inf", "-inf", "1e200"] {
+    for value in ["0", "-1", "bad", "nan", "inf", "-inf", "1e200", "1e-100"] {
         assert!(resolve_timeout(value).is_err(), "{value}");
     }
+}
+#[test]
+fn runtime_response_size_is_bounded_by_default() {
+    assert_eq!(
+        kwr::http::Settings::default().body_limit,
+        Some(8 * 1024 * 1024)
+    );
+    assert_eq!(kwr::http::MAX_REDIRECTS, 10);
 }

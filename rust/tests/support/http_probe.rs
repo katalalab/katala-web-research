@@ -20,13 +20,15 @@ fn main() {
         }
         settings
     });
-    let result = settings.and_then(|s| {
-        fetch_url(
-            input["url"].as_str().unwrap(),
-            &[("Accept", kwr::http::FEED_ACCEPT)],
-            &s,
-        )
-    });
+    let mut headers = vec![("Accept", kwr::http::FEED_ACCEPT)];
+    if let Some(values) = input["headers"].as_object() {
+        headers.extend(
+            values
+                .iter()
+                .map(|(k, v)| (k.as_str(), v.as_str().unwrap())),
+        );
+    }
+    let result = settings.and_then(|s| fetch_url(input["url"].as_str().unwrap(), &headers, &s));
     let output = match result {
         Ok(response) => {
             let text = response.text();

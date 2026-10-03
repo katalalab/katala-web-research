@@ -34,8 +34,18 @@ class Handler(BaseHTTPRequestHandler):
         route=self.path.split('?',1)[0]
         body=RSS;status=200;headers={'Content-Type':'application/rss+xml; charset=utf-8'}
         if route=='/redirect': status=302;headers['Location']='/rss';body=b''
+        elif route=='/uri-redirect':status=302;headers['URI']='/rss';body=b''
+        elif route=='/cross-origin':status=302;headers['Location']=f'http://localhost:{self.server.server_port}/rss';body=b''
         elif route=='/downgrade':status=302;headers['Location']=DOWNGRADE_ORIGIN+'/rss';body=b''
+        elif route.startswith('/slow-chain/'):
+            time.sleep(0.06)
+            n=int(route.rsplit('/',1)[1])
+            if n<4:status=302;headers['Location']=f'/slow-chain/{n+1}';body=b''
+        elif route=='/drip':body=b'12345'
+        elif route=='/declared-big':headers['Content-Length']=str(8*1024*1024+1);body=b'x'
         elif route=='/loop': status=302;headers['Location']='/loop';body=b''
+        elif route.startswith('/cycle/'):
+            n=int(route.rsplit('/',1)[1]);status=302;headers['Location']=f'/cycle/{(n+1)%5}';body=b''
         elif route.startswith('/chain/'):
             n=int(route.rsplit('/',1)[1])
             if n<10:status=302;headers['Location']=f'/chain/{n+1}';body=b''
@@ -59,12 +69,17 @@ class Handler(BaseHTTPRequestHandler):
         if route!='/close-big' and 'Content-Length' not in headers:self.send_header('Content-Length',str(len(body)))
         self.end_headers()
         if route=='/slow-body':time.sleep(0.4)
-        try:self.wfile.write(body)
+        try:
+            if route=='/drip':
+                for byte in body:
+                    time.sleep(0.06);self.wfile.write(bytes([byte]));self.wfile.flush()
+            else:self.wfile.write(body)
         except (BrokenPipeError,ConnectionResetError):pass
         self.close_connection=True
 
 class Fixtures(unittest.TestCase):
     comparisons=0
+    safety_checks=0
     @classmethod
     def setUpClass(cls):
         cls.server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
@@ -86,22 +101,71 @@ class Fixtures(unittest.TestCase):
         self.assertEqual(p.returncode,0,p.stderr);self.assertEqual(p.stderr,'')
         return json.loads(p.stdout)
     def test_response_parity(self):
-        for route in ['/rss','/redirect','/chain/0','/latin1','/sjis','/unknown-charset','/invalid']:
+        for route in ['/rss','/redirect','/uri-redirect','/chain/0','/latin1','/sjis','/unknown-charset','/invalid']:
             url=self.origin+route
             p=fetch_url(url,headers={'Accept':'application/rss+xml, application/atom+xml, application/feed+json, application/json, text/xml, */*'})
             r=self.probe(url)
             self.assertEqual(p.url,r['url'],route);self.assertEqual(p.status,r['status'],route)
             self.assertEqual(p.body,bytes(r['body']),route);self.assertEqual(p.text,r['text'],route)
             type(self).comparisons+=1
+    def test_safety_policy(self):
+        # Reference timeouts apply per socket operation. Native owns one total
+        # deadline: a deliberately measured contract difference, not parity.
+        for route in ['/drip','/slow-chain/0']:
+            self.assertEqual(fetch_url(self.origin+route,timeout=0.15).status,200)
+            start=time.monotonic();r=self.probe(self.origin+route,timeout=0.15)
+            self.assertEqual(r['error_kind'],'TimeoutError',(route,r))
+            self.assertLess(time.monotonic()-start,1.5)
+            type(self).safety_checks+=1
+        r=self.probe(self.origin+'/declared-big')
+        self.assertEqual(r['error_kind'],'FetchError');self.assertIn('exceeds limit',r['error_message'])
+        before=len(RECORDS)
+        r=self.probe(self.origin.replace('http://','http://fixture-user:fixture-password@')+'/rss')
+        self.assertEqual(r['error_kind'],'FetchError');self.assertEqual(before,len(RECORDS))
+        self.assertNotIn('fixture-password',r['error_message'])
+        r=self.probe(self.origin+'/404?token=fixture-secret#fixture-fragment')
+        for marker in ['fixture-secret','fixture-fragment','fixture error body']:
+            self.assertNotIn(marker,r['error_message'])
+        for route,retained in [('/redirect',True),('/cross-origin',False)]:
+            start=len(RECORDS)
+            r=self.probe(self.origin+route,headers={'Authorization':'public-fixture-marker','Cookie':'public-fixture-cookie','Proxy-Authorization':'public-fixture-proxy'})
+            self.assertEqual(r['status'],200)
+            destination=RECORDS[start:][-1][1]
+            for header in ['authorization','cookie','proxy-authorization']:
+                self.assertEqual(header in destination,retained,(route,header,destination))
+        type(self).safety_checks+=5
+        start=len(RECORDS)
+        with self.assertRaises(FetchError):fetch_url(self.origin+'/cycle/0',timeout=1)
+        reference_requests=len(RECORDS)-start;start=len(RECORDS)
+        r=self.probe(self.origin+'/cycle/0',timeout=3)
+        self.assertEqual(r['error_kind'],'FetchError');self.assertIn('redirect limit',r['error_message'])
+        self.assertEqual(len(RECORDS)-start,11)
+        self.assertGreater(reference_requests,11)
+        type(self).safety_checks+=1
+    def test_guard_rejection_retains_archive_items(self):
+        for route in ['/declared-big','/drip','/slow-chain/0']:
+            with tempfile.TemporaryDirectory(prefix='kwr-guard-fixture-') as tmp:
+                path=Path(tmp)/'guard.sqlite';source=self.origin+route;a=Archive(path)
+                a.upsert_feed_source(FeedSource(source,'Old title','rss','fixed','fixed','ok',1.0,'',1))
+                a.upsert_feed_items([FeedItem(source,'https://fixture.test/old','Old evidence','must remain','Old title',None,'fixed')]);a.close()
+                p=subprocess.run([str(BINARY),'feeds','refresh','--archive',str(path),'--json'],env=dict(self.env,KWR_HTTP_TIMEOUT_SECONDS='0.15'),capture_output=True,text=True,timeout=5)
+                self.assertEqual(p.returncode,0,p.stderr);self.assertEqual(p.stderr,'')
+                result=json.loads(p.stdout);self.assertEqual(result['indexed_items'],0)
+                with sqlite3.connect(path) as conn:
+                    self.assertEqual(conn.execute('SELECT title,summary FROM feed_items').fetchall(),[('Old evidence','must remain')])
+                    self.assertEqual(conn.execute('PRAGMA integrity_check').fetchone()[0],'ok')
+                    self.assertEqual(conn.execute('SELECT status FROM feed_sources').fetchone()[0],'error')
+                type(self).safety_checks+=1
         for _,headers in RECORDS:
             self.assertEqual(headers.get('user-agent'),'katala-web-research/0.1 (+local research tool)')
     def test_errors_and_no_retries(self):
         for route in ['/404','/503','/302-no-location','/loop','/slow-headers']:
             start=len(RECORDS);url=self.origin+route
-            try:fetch_url(url,timeout=0.15)
+            timeout=0.15 if route=='/slow-headers' else 1.0
+            try:fetch_url(url,timeout=timeout)
             except Exception as e:kind=e.__class__.__name__
             else:self.fail('expected fetch failure')
-            r=self.probe(url,timeout=0.15)
+            r=self.probe(url,timeout=timeout)
             self.assertEqual(r['error_kind'],kind,(route,r))
             expected=10 if route=='/loop' else 2
             self.assertEqual(len(RECORDS)-start,expected,route)
@@ -125,7 +189,7 @@ class Fixtures(unittest.TestCase):
                     path=Path(tmp)/(name+'.sqlite');a=Archive(path)
                     a.upsert_feed_source(FeedSource(source,'Old title','rss','fixed','fixed','ok',1.0,'',1))
                     a.upsert_feed_items([FeedItem(source,'https://fixture.test/old','Old evidence','must remain','Old title',None,'fixed')]);a.close()
-                    env=dict(self.env,KWR_HTTP_TIMEOUT_SECONDS='0.15')
+                    env=dict(self.env,KWR_HTTP_TIMEOUT_SECONDS='0.15' if route in ['/slow-headers','/slow-body'] else '1')
                     prefix=[str(BINARY)] if rust else [sys.executable,'-m','katala_web_research.cli']
                     p=subprocess.run(prefix+['feeds','refresh','--archive',str(path),'--json'],env=env,capture_output=True,text=True,timeout=5)
                     self.assertEqual(p.returncode,0,(route,p.stderr));self.assertEqual(p.stderr,'')
@@ -166,6 +230,7 @@ class ProxyHandler(Handler):
 
 class TlsAndProxy(unittest.TestCase):
     comparisons=0
+    safety_checks=0
     probe=Fixtures.probe
     @classmethod
     def setUpClass(cls):
@@ -232,6 +297,14 @@ class TlsAndProxy(unittest.TestCase):
         self.assertEqual(self.compare(self.tls+'/rss',trust=True)['status'],200)
         self.assertEqual(self.compare(self.tls+'/rss')['error_kind'],'FetchError')
         self.assertEqual(self.compare(self.wrong_host+'/rss',trust=True)['error_kind'],'FetchError')
+    def test_downgrade_rejected(self):
+        p=self.python_response(self.tls+'/downgrade',trust=True)
+        self.assertEqual(p['status'],200)
+        start=len(RECORDS)
+        r=self.probe(self.tls+'/downgrade',timeout=1,root_pem=self.ca_pem)
+        self.assertEqual(r['error_kind'],'FetchError');self.assertIn('downgrade rejected',r['error_message'])
+        self.assertEqual([path for path,_ in RECORDS[start:]],['/downgrade'])
+        type(self).safety_checks+=1
     def test_http_proxy_and_environment_boundaries(self):
         start=len(RECORDS)
         self.compare(self.plain+'/rss',{'http_proxy':self.proxy,'HTTP_PROXY':'http://127.0.0.1:1'})
@@ -265,4 +338,5 @@ if __name__=='__main__':
     suite=unittest.TestSuite([unittest.defaultTestLoader.loadTestsFromTestCase(c) for c in [Fixtures,TlsAndProxy]])
     result=unittest.TextTestRunner(verbosity=2).run(suite)
     print('offline HTTP comparisons:',Fixtures.comparisons+TlsAndProxy.comparisons)
+    print('intentional safety checks:',Fixtures.safety_checks+TlsAndProxy.safety_checks)
     raise SystemExit(not result.wasSuccessful())
