@@ -7,6 +7,25 @@ use std::{
 fn main() {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     match args.first().map(String::as_str).unwrap_or("") {
+        "read" => {
+            assert_eq!(args.len(), 2);
+            if let Ok(path) = std::env::var("KWR_FIXTURE_OP_TRACE") {
+                let mut trace = std::fs::OpenOptions::new()
+                    .create(true)
+                    .append(true)
+                    .open(path)
+                    .unwrap();
+                writeln!(trace, "{}", serde_json::to_string(&args).unwrap()).unwrap();
+            }
+            match args[1].as_str() {
+                "op://fixture/nonzero" => std::process::exit(7),
+                "op://fixture/empty" => print!(" \t"),
+                "op://fixture/invalid-stdout" => stdout().write_all(&[255]).unwrap(),
+                "op://fixture/invalid-stderr" => stderr().write_all(&[255]).unwrap(),
+                "op://fixture/Research/key" => print!(" \u{1c}public-fixture-key\r\n"),
+                _ => std::process::exit(8),
+            }
+        }
         "probe" => {
             use kwr::process::{NativeRunner, ProcessRequest, ProcessRunner};
             let mut input = String::new();

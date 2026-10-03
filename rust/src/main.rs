@@ -371,6 +371,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 "jina",
                 "github_code",
                 "github",
+                "openalex",
             ]
             .contains(&provider.as_str())
             {
@@ -399,6 +400,13 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 };
                 if provider == "ddg" {
                     kwr::providers::DuckDuckGo.search(
+                        &built.query,
+                        candidates,
+                        &mut transport,
+                        &context,
+                    )?
+                } else if provider == "openalex" {
+                    kwr::providers::openalex::OpenAlex::from_env().search(
                         &built.query,
                         candidates,
                         &mut transport,

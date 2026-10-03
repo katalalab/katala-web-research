@@ -50,7 +50,7 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: feed + DDG/SearXNG/Brave/Jina/GitHub-code/GitHub repo (Unix subprocess); openalex/meta, positive enrichment and remaining edges pending",
+      "status": "partial: feed + seven component network providers (Unix gh/op); meta, positive enrichment and remaining malformed/OS/live acceptance pending",
       "surface": "search",
       "case_evidence": [
         {
@@ -65,7 +65,24 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; independent target execution still pending",
           "source_tree_sha256": "4e01890ea36594c7d3a0eb30d4f31ae6519b7396b6a6d4e9164fe86bf1aa5a08"
+        },
+        {
+          "id": "openalex-search-cli",
+          "status": "passed",
+          "scope": "34 paired JSON/text/options/candidate/filter/highlight/paging/op/config/rate/error/history cases; remaining final search scope still open",
+          "evidence": [
+            "scripts/migration/openalex_differential.py",
+            "scripts/verify-openalex.sh"
+          ],
+          "count": 34,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution not claimed",
+          "source_tree_sha256": "8bfc92e80db944d8102874a6ff2b9a562aee4e182d3152c45abd5d333f40eb74"
         }
+      ],
+      "pending_reasons": [
+        "meta provider and positive enrichment remain unimplemented",
+        "complete malformed model/config/encoding/output/signal parity and approved safety differences are not closed"
       ]
     },
     {
@@ -88,7 +105,11 @@
         "hit/miss/refresh and cache write failure"
       ],
       "status": "partial",
-      "surface": "read"
+      "surface": "read",
+      "pending_reasons": [
+        "network auto/Jina/direct readers and refresh/cache-miss extraction/storage are unimplemented",
+        "only cache-hit source fixtures exist; full timeout/fallback/metadata/capture-error behavior is open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -107,7 +128,11 @@
         "references/citing cursor/cache/dedup"
       ],
       "status": "pending",
-      "surface": "openalex expand"
+      "surface": "openalex expand",
+      "pending_reasons": [
+        "citation graph directions/lookup/filter URL quoting/cache and per-direction bounds are unimplemented",
+        "identifier helper evidence alone does not implement this command"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -128,7 +153,10 @@
         "partial capture failures and UTF-8 evidence report"
       ],
       "status": "pending",
-      "surface": "collect"
+      "surface": "collect",
+      "pending_reasons": [
+        "native collection/capture failure/storage/report/evidence flow is unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -146,7 +174,10 @@
         "FTS5 bm25/snippets/AND tokens"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "query"
+      "surface": "query",
+      "pending_reasons": [
+        "normal FTS fixtures pass; complete legacy/schema/env/path/encoding/bounds and source-preservation contract is not closed"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -164,7 +195,10 @@
         "whitespace/duplicate/year/max-subqueries"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "plan"
+      "surface": "plan",
+      "pending_reasons": [
+        "normal inventoried-option/Unicode fixtures pass; arbitrary Python integer versus i64 boundaries and final output/signal/platform differences await acceptance"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -185,7 +219,10 @@
         "FTS insert/update/delete"
       ],
       "status": "pending",
-      "surface": "repos scan"
+      "surface": "repos scan",
+      "pending_reasons": [
+        "native traversal/incremental hashing/context/skip rules and write transaction/FTS behavior are unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -205,7 +242,10 @@
         "weighted context/escaped LIKE"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "repos query"
+      "surface": "repos query",
+      "pending_reasons": [
+        "normal FTS/context fixtures pass; all historical schema/path/encoding/numeric/error behavior remains unallocated/unverified"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -223,7 +263,10 @@
         "upsert retains prior health/items"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "feeds add"
+      "surface": "feeds add",
+      "pending_reasons": [
+        "normal insertion fixtures pass; all URL/model/version/path/config malformed cases and approved numeric/encoding differences remain open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -244,7 +287,10 @@
         "DTD/date/ill-typed JSON/HTML/file-URI pending edges"
       ],
       "status": "partial",
-      "surface": "feeds refresh"
+      "surface": "feeds refresh",
+      "pending_reasons": [
+        "ordinary RSS/Atom/JSONFeed/file/HTTP fixtures pass; malformed XML/HTML/date/model/codec/file URI and crash/transaction/partial-failure coverage remains incomplete"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -262,7 +308,10 @@
         "FTS metadata and summary snippets"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "feeds query"
+      "surface": "feeds query",
+      "pending_reasons": [
+        "normal feed FTS fixtures pass; complete version/model/encoding/limits/error/transaction contract remains open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -280,7 +329,10 @@
         "overlay and trust/name ordering"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "sources list"
+      "surface": "sources list",
+      "pending_reasons": [
+        "normal registry/overlay fixtures pass; complete malformed/duplicate/type/order/config-byte/numeric boundary acceptance is open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -298,7 +350,10 @@
         "urllib cleaning/host/path prefix/ports/params"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "sources match"
+      "surface": "sources match",
+      "pending_reasons": [
+        "normal URL/overlay fixtures pass; complete URL/IDN/normalization/overlay-malformation/config-byte acceptance is open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -317,7 +372,10 @@
         "gh transcript timeout/auth/status failures"
       ],
       "status": "pending",
-      "surface": "issues ingest"
+      "surface": "issues ingest",
+      "pending_reasons": [
+        "native gh/JSON ingest, metadata/priority/state/source and FTS transaction parity are unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -335,7 +393,10 @@
         "FTS labels/item_key metadata"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "issues query"
+      "surface": "issues query",
+      "pending_reasons": [
+        "normal synthetic issue FTS/status fixtures pass; all schema/model/type/encoding/limit/error cases remain open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -353,7 +414,10 @@
         "priority/status/phase ordering Markdown radar"
       ],
       "status": "pending",
-      "surface": "issues report"
+      "surface": "issues report",
+      "pending_reasons": [
+        "native radar sorting/filtering/Markdown/evidence/report storage parity is unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -371,7 +435,10 @@
         "local/web quality ranking/plan/report"
       ],
       "status": "pending",
-      "surface": "brief"
+      "surface": "brief",
+      "pending_reasons": [
+        "native multi-source planning/evidence/capture/Markdown provenance parity is unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -389,7 +456,10 @@
         "selected URL captures/provenance/checklist/failures"
       ],
       "status": "pending",
-      "surface": "investigate"
+      "surface": "investigate",
+      "pending_reasons": [
+        "native iterative research/capture/checklist/evidence/report failure flow is unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -408,7 +478,10 @@
         "SQLite FTS probe and optional local SearXNG preflight"
       ],
       "status": "pending",
-      "surface": "doctor"
+      "surface": "doctor",
+      "pending_reasons": [
+        "native FTS/config/dependency/cost/offline diagnosis and all exit/output paths are unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -427,7 +500,10 @@
         "500/provider ledger pruning through meta"
       ],
       "status": "implemented-partial-evidence",
-      "surface": "engines"
+      "surface": "engines",
+      "pending_reasons": [
+        "normal synthetic health stats fixtures pass; all malformed/ledger/window/rounding/p95/pruning/status/config parity and intentional differences remain open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -446,7 +522,10 @@
         "deterministic metrics/80 threshold/Markdown/failing exit"
       ],
       "status": "pending",
-      "surface": "eval"
+      "surface": "eval",
+      "pending_reasons": [
+        "native deterministic benchmark/dataset/scoring/threshold/error/report parity is unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -466,7 +545,10 @@
         "partial/invalid frames/clean stdout"
       ],
       "status": "pending",
-      "surface": "mcp"
+      "surface": "mcp",
+      "pending_reasons": [
+        "native seven-tool stdio implementation, NDJSON/Content-Length framing, notifications/errors/partial input/signal/stdout purity are unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -484,7 +566,10 @@
         "strict offline adapter plus localhost CLI comparison"
       ],
       "status": "native-normal-fields; parser/transport edges and live pending",
-      "surface": "ddg"
+      "surface": "ddg",
+      "pending_reasons": [
+        "normal parser/request/rank cases pass; malformed HTML/URL/charset/env/transport and selected safety acceptance remain incomplete"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -566,6 +651,10 @@
           "executor": "author",
           "source_tree_sha256": "aed81db5edf48a09677f4100df395e7913acfd33e05fefc7e991371c531abfc2"
         }
+      ],
+      "pending_reasons": [
+        "normal Unix gh/REST and deadline fixtures pass; arbitrary model/representation/env/codec/ignored-custom-signal/concurrent/parent-death/escaped-group behavior remains open",
+        "Windows subprocess ownership/PATHEXT implementation is missing; Linux execution unverified"
       ]
     },
     {
@@ -584,7 +673,10 @@
         "strict offline adapter plus localhost CLI comparison"
       ],
       "status": "native normal request/result/422/paging; malformed/transport/OS/live and final acceptance pending",
-      "surface": "github_code"
+      "surface": "github_code",
+      "pending_reasons": [
+        "normal requests/token/paging/422/metadata fixtures pass; all malformed collections/fragments/model/numeric/encoding/env/transport cases remain open"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -604,7 +696,11 @@
         "strict offline adapter plus localhost CLI comparison"
       ],
       "status": "native-normal plus typed/Unicode/config edge fixtures; named safety differences and final/live/platform gates pending",
-      "surface": "jina"
+      "surface": "jina",
+      "pending_reasons": [
+        "five named JSON safety policies/55 combined measured differences need final approval",
+        "remaining URL/codec/model/encoding/env/auth/transport edge behavior remains unverified"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -624,7 +720,11 @@
         "strict offline adapter plus localhost CLI comparison"
       ],
       "status": "native-normal plus typed/Unicode/config edge fixtures; named safety differences and final/live/platform gates pending",
-      "surface": "searxng"
+      "surface": "searxng",
+      "pending_reasons": [
+        "five named JSON safety policies/55 combined measured differences need final approval",
+        "remaining endpoint/config/URL/codec/model/env/auth/transport edge behavior remains unverified"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -644,7 +744,11 @@
         "strict offline adapter plus localhost CLI comparison"
       ],
       "status": "native-normal plus typed/Unicode/config edge fixtures; named safety differences and final/live/platform gates pending",
-      "surface": "brave"
+      "surface": "brave",
+      "pending_reasons": [
+        "five named JSON safety policies/55 combined measured differences need final approval",
+        "remaining URL/codec/model/env/auth/transport edge behavior remains unverified"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -657,8 +761,56 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
-      "surface": "openalex"
+      "status": "partial: native search/cursor/op/filters/normalization; 95 search + 13 identifier + 34 CLI cases; graph/cache/edges/OS/live final acceptance pending",
+      "surface": "openalex",
+      "pending_reasons": [
+        "95 search/13 identifier/34 CLI cases pass; arbitrary model/numeric/JSON/codec/env-byte/case-mapping/credential redirect behavior remains open",
+        "Unix op safety differences need final acceptance; non-Unix op execution is unimplemented",
+        "live auth/availability/rate behavior is unverified; search preview does not implement graph/cache"
+      ],
+      "case_evidence": [
+        {
+          "id": "openalex-search-transcripts",
+          "status": "passed",
+          "scope": "95 exact Python-derived HTTP/op/config/filter/abstract/metadata/cursor/rate/error expectations with strict consumption and no network fallback",
+          "evidence": [
+            "rust/tests/openalex.rs",
+            "rust/tests/fixtures/openalex-golden.json",
+            "scripts/migration/generate_openalex_goldens.py"
+          ],
+          "count": 95,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution not claimed",
+          "source_tree_sha256": "8bfc92e80db944d8102874a6ff2b9a562aee4e182d3152c45abd5d333f40eb74"
+        },
+        {
+          "id": "openalex-identifier-helper",
+          "status": "passed",
+          "scope": "13 exact standalone identifier spelling expectations; no graph lookup/quoting/cache claim",
+          "evidence": [
+            "rust/tests/openalex.rs",
+            "rust/tests/fixtures/openalex-golden.json",
+            "docs/migration/openalex-contract.md"
+          ],
+          "count": 13,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution not claimed",
+          "source_tree_sha256": "8bfc92e80db944d8102874a6ff2b9a562aee4e182d3152c45abd5d333f40eb74"
+        },
+        {
+          "id": "openalex-cli-history-auth",
+          "status": "passed",
+          "scope": "34 paired localhost/owned-op CLI cases; all eight user tables populated and full dump/version/integrity preserved across success/error; retry/partial results absent",
+          "evidence": [
+            "scripts/migration/openalex_differential.py",
+            "scripts/verify-openalex.sh"
+          ],
+          "count": 34,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent target execution not claimed",
+          "source_tree_sha256": "8bfc92e80db944d8102874a6ff2b9a562aee4e182d3152c45abd5d333f40eb74"
+        }
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -672,7 +824,10 @@
         "strict offline adapter plus localhost CLI comparison"
       ],
       "status": "pending",
-      "surface": "meta"
+      "surface": "meta",
+      "pending_reasons": [
+        "native provider selection/profiles/four-worker fanout/fusion/health routing/partial failures/pruning/clock/completion-order parity is unimplemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -685,7 +840,11 @@
         "interruption before/during publish, restart, rollback; hard-kill/power-loss remains pending"
       ],
       "status": "pending",
-      "surface": "storage"
+      "surface": "storage",
+      "pending_reasons": [
+        "known synthetic copy/dry-run/idempotence/rollback cases pass; hard-kill/interruption/power-loss/publication-race/complete version/legacy variants remain open",
+        "all native writers and actual target WAL/file-lock/FTS/source fingerprint equivalence are not closed"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -698,7 +857,11 @@
         "future HTTP/2 or HTTP/3 features explicitly disable and fixture-check protocol retries"
       ],
       "status": "pending",
-      "surface": "network"
+      "surface": "network",
+      "pending_reasons": [
+        "normal local HTTP/TLS/proxy/header/deadline/safety fixtures pass; remaining codec/resolver/env/auth-proxy/credential redirect/lifecycle/security policies need complete evidence and approval",
+        "live behavior and Linux/Windows native execution are unverified"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -710,7 +873,11 @@
         "no Python subprocess/interpreter/runtime dependency"
       ],
       "status": "pending",
-      "surface": "release"
+      "surface": "release",
+      "pending_reasons": [
+        "all inventoried native features and final rows are not complete",
+        "Windows/Linux target execution, packaging/notices/reproducible setup/signal/stdio/path gates are missing; proposed CI is not execution evidence"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -720,7 +887,10 @@
         "only declared temp paths/timestamps/latencies normalized"
       ],
       "status": "pending",
-      "surface": "reports"
+      "surface": "reports",
+      "pending_reasons": [
+        "native report/evidence/capture failure/provenance/checklist/file-format behavior is not yet implemented"
+      ]
     },
     {
       "final_acceptance": "pending",
@@ -730,15 +900,18 @@
         "no paid credentials/providers/large search execution"
       ],
       "status": "pending",
-      "surface": "live"
+      "surface": "live",
+      "pending_reasons": [
+        "no live provider certification was performed; all work remains synthetic/offline under cost/access constraints"
+      ]
     }
   ],
   "integrated_checkpoint": {
-    "pr": 24,
-    "head": "2f67545198cdad96c2ea85dd7632f67492ff16d6",
-    "main": "5a2ee672297e31ba78c340b824c791e75e200b80",
-    "review": "Independent Rust/Cargo feature-diff equality, eight-table seed execution/integrity and static SQL/CI confirmation; native/TLS tests by author only",
-    "tree_equivalence": "PR23 merged tree equals c728562; retargeted PR24 merged tree equals 2f67545"
+    "pr": 25,
+    "head": "eda15e2c23dbf9564183c7a2751dbf68bba37c27",
+    "main": "e91513bc0516b328d6432ba73d293343b8b3af42",
+    "review": "Independent source/transcript/CI P3 confirmation; author native/scheduling/TLS gates",
+    "tree_equivalence": "normal authorized merge main tree equals reviewed eda15e2; no old repair in OpenAlex feature diff"
   },
   "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures",
   "process_review_repair": {
@@ -746,5 +919,15 @@
     "finding": "P3 completed streams accepted before elapsed deadline check",
     "case_added": 1,
     "scope": "move deadline check before success; private deterministic after-poll observer has no runtime input/flag; provider behavior and transcript fixtures unchanged"
+  },
+  "final_acceptance_scope": {
+    "row": "all required_cases, remaining pending_reasons and explicit approved differences; scoped passed cases alone never close a row",
+    "targets": [
+      "aarch64-apple-darwin actual author tests",
+      "Linux actual native execution pending",
+      "Windows native subprocess and execution pending"
+    ],
+    "complete": "all 35 final rows passed plus release evidence; live/cutover require separate authorization",
+    "aggregation": "inherited broad successful tests are not allocated as fake per-row completion; exact source hashes and measured scoped cases remain visible"
   }
 }

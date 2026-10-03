@@ -5,6 +5,7 @@ pub mod migration;
 pub mod planner;
 pub mod process;
 pub mod providers;
+pub mod python_alpha;
 pub mod python_digits;
 pub mod registry;
 pub mod search;

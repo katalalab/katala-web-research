@@ -81,3 +81,7 @@ path = "rust/tests/process.rs"
 [[example]]
 name = "process_fixture"
 path = "rust/tests/support/process_fixture.rs"
+
+[[test]]
+name = "openalex"
+path = "rust/tests/openalex.rs"
