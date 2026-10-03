@@ -179,3 +179,34 @@ One new direct dependency relationship uses already locked/cached libc=0.2.190 o
 Parent independent source/scope review confirmed no blocking issue and replayed all 51 Python/transcript cases with five green CI checks. It identified a small deadline-order issue: completed child status and both captured streams returned success before elapsed was checked. A separate repair commit changes only the process decision order, a private owned-child scheduling fixture and its documentation/evidence. The fixture first fails against the old production decision order, then passes after deadline is checked before success. Test helper selection is explicit; no production environment/CLI fault hook or installed executable is used. No OpenAlex feature or older repair enters this commit.
 
 Final affected author gates: fmt/warnings-denied all-target clippy, process boundary/lib and strict runner/51 GitHub-repository adapter cases, five owned-process raw comparisons/eight safety assertions, 30 paired repository CLI comparisons and locked offline release pass; existing broad 218 CLI/Python/other-provider gates are unchanged and not redundantly rerun. The case record includes the repaired production content hash. Exact-head CI is recorded in PR readback; independent repaired-head review and normal merge authorization still pending. OpenAlex remains in its separate dirty worktree at the old dependency, to follow the repaired checkpoint separately. No paid/live API, real data/credential, OS/network configuration or installed CLI change.
+
+## Authorized PR #25 integration and slice 7c OpenAlex search
+
+Parent final independent repair review confirmed eda15e2 P3 closure/no additional blocker and explicitly authorized ordinary integration. Fresh readback: head eda15e2c23dbf9564183c7a2751dbf68bba37c27/base5a2ee672297e31ba78c340b824c791e75e200b80, active ruleset24318413/no bypass actors/five checks SUCCESS/no review threads/CLEAN/MERGEABLE. Normal merge at 2026-10-03T12:37:10Z yielded main e91513bc0516b328d6432ba73d293343b8b3af42, tree-identical to eda15e2. No admin/self-approval/forcepush/branch deletion/direct main edit. Separate OpenAlex worktree followed that integrated main with existing owned dirty feature files preserved; the feature diff contains no previous process repair. Installed CLI and real archives were never switched.
+
+Native OpenAlex search now includes lazy/per-page raw/op key resolution and filter validation order, exact select/query/cursor/remaining count parameters, normal identifier/abstract/metadata/snippet/date/URL normalization, shared rank discard-year order and CLI wiring. Pure work_id spelling helper is included but does not implement graph/cache. The only op executable exercised is our own Rust fixture in isolated PATH; all HTTP maps api.openalex.org only to loopback using process-local ephemeral CA. No real credential/vault/op, paid API/model/live DNS/call, user research archive or OS/network/auth setup.
+
+Author final executed gates on aarch64 macOS: 95 exact Python search/HTTP/op transcript cases, 13 identifier cases, 34 paired localhost/owned-op CLI comparisons preserving all eight populated user tables/full dump/version/integrity across errors; byte-identical oracle replay; 660 Python3.13/Unicode15.1 alphabetic ranges replay identically after pinned formatting without rewriting sources. fmt/warnings-denied all-target clippy/all native tests plus 218 baseline CLI comparisons, required verifier 167 Python tests/deterministic benchmark/smoke/artifact/gitleaks and locked offline release pass. No new dependency/lock/workflow/runner/protection change. Previous HTTP/DDG/JSON/GitHub localhost gates are unchanged and inherited, not claimed as rerun here. The offline unsupported-provider guard now uses remaining meta and cannot accidentally access OpenAlex.
+
+All 35 rows now contain concrete pending_reasons separate from scoped case_evidence and final_acceptance_scope; ten measured passing case records are present, while final acceptance remains pending in every row. Historical unallocated aggregate gates are not inflated into per-row completion. Meta is the remaining component provider; graph/cache, enrichment and downstream command/report/storage/release/Windows/Linux/full lifecycle/live/safety approval gates remain open. No final migration or speed claim. Exact source/binary provenance and CI/independent review are recorded with the published checkpoint.
+
+## PR #26 independent P3: unused best-location URL branch
+
+Parent focus review independently replayed all original 95 search/13 identifier Python
+expectations byte-identically and checked five green existing CI checks, with no new
+blocking issue. The review found that a valid primary URL plus string best_oa_location
+succeeds in Python but native eagerly inspected the unused best branch. The isolated
+repair only moves best lookup behind primary URL selection. Eight unannotated fixture
+cases (string/number/bool/array, each unused versus selected) first fail on unchanged
+91da387 production code and then pass. Original 95/13 expectations are unchanged.
+
+Author affected Mac gates: 103/13 strict cases, identical regeneration, fmt/warnings-denied
+all-target clippy, locked offline debug/owned-fixture and release builds pass. Existing
+34 paired OpenAlex CLI/218 broader CLI/Python evidence is inherited, not called rerun;
+independent native/TLS execution remains absent. Matrix adds only eight new scoped cases
+with production source hash a3a28d1739ceb921c5c7d1e139e798891c5b6f0b615af1fb95d5ec3f15281e98.
+All 35 final rows remain pending. Abstract-position/aggregate result/page/byte budgets
+and cap/one-over/allocation/interruption tests are concretely pending in openalex-contract.md.
+Meta remains on its separate local 7e6f3b8 branch and is not part of the repaired diff.
+No dependency/lock/CI/budget/auth/network/OS/real archive/installed CLI change. Repaired
+exact-head CI/focus confirmation and ordinary merge authorization remain separate steps.

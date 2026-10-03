@@ -1,0 +1,45 @@
+# OpenAlex search preview contract
+
+Search is native Rust. Limit <=0 returns before credentials, op, filters or HTTP. Positive requests start cursor=* and per_page=min(100, remaining raw count), then use the reference search/sort=relevance_score:desc/select field order. SELECT contains content_urls (plural), not content_url. Nonempty pages advance the raw count before ranking/dedup/retraction; a repeated cursor still progresses through that bounded requested count. Missing/false cursor stops; scalar number/bool cursor spelling is preserved. Empty results stop before reading cursor. No arbitrary page cap, invented query rewrite, retry/backoff, rate quota or performance claim is added.
+
+OPENALEX_API_KEY is read per page. The untrimmed value decides whether it starts with op://. Only that exact prefix checks op availability and invokes op read with the original reference and 10-second deadline. Missing op, nonzero or timeout silently omit the key as the reference does; executable disappearance and UTF-8 errors propagate. text=True universal newline behavior and Python whitespace stripping are preserved for resolved values. Then optional raw-key/mailto whitespace is stripped and encoded in query parameters. No real op, vault/auth store or credential was accessed: strict transcripts and our owned Rust fixture executable named op in an isolated PATH provide all evidence. Unix subprocess policies/remaining Windows gates are inherited from process-contract.md. Invalid filters are evaluated after credential resolution but before HTTP, preserving reference error/call order.
+
+Language prefix/lowercase, four isdigit year characters, structural YYYY-MM-DD and bool aliases reproduce the code contract, including dates that are syntactically valid without calendar validation and isdigit-only superscripts. Unicode isalpha uses frozen existing Python 3.13 / Unicode15.1 facts (660 ranges); it avoids Rust's broader Alphabetic property. No runtime Python or dependency is added. Rare cross-version Unicode case mapping remains pending rather than claiming every Python version agrees. OP errors/token absence do not certify that the current live service permits anonymous access; live access/rate/auth/pricing were not exercised.
+
+Identifier spelling preserves the standalone _openalex_work_id contract: strip Python whitespace; reject empty input; extract the last slash segment only for the two exact lowercase OpenAlex URL prefixes; retain DOI URLs; prepend https://doi.org/ to a bare 10.* DOI; leave other spelling untouched. Search result IDs/DOIs/location URLs and metadata are preserved separately and are not canonicalized by this helper. Graph lookup/expansion/caching/URL quoting are still unimplemented; thirteen identifier helper cases do not close graph acceptance.
+
+Abstract inverted indexes keep list entries that are Python integers, including bool 0/1, and sort by position then Unicode word spelling. Negative and signed/unsigned 64-bit positions, duplicate positions/words and ignored float/string/null/non-list entries are measured. The full abstract feeds a 420 Unicode-character snippet prefix. Snippets retain year/type/citations/retracted/oa/source parts; retraction is gated by shared rank, not silently removed from normalization. URL order is primary landing page, best OA landing page, DOI, ID; title and publication-date/year fallback preserve normal fields. Metadata retains ID/DOI/type/year/citation values including false/zero, content_urls.pdf, both location/license/version/pdf/OA/source maps, and open_access is_oa/status. String-year conversion occurs after common URL/title/retraction/dedup discard gates. Unsupported arbitrary model/container/numeric/date representations, nonstandard JSON constants/depth/surrogates and codec/env-byte cases remain pending.
+
+HTTP 401/403/404/429/503, transport timeout and non-JSON/rate HTML propagate once without retry or partial results, including failure after a good page. Retry-After is measured as an observed response header, not an authorization to issue additional calls. Native diagnostics omit response bodies, API-key values and op references; general HTTP security/redirect/proxy/TLS assumptions and untested authenticated redirect cases remain in the network acceptance scope.
+
+Author aarch64 macOS evidence: 95 strict Python-derived search/HTTP/op transcripts, 13 identifier cases and 34 paired native/reference CLI comparisons with fixed api.openalex.org CONNECT mapped only to loopback and ephemeral process-local CA trust. Each CLI child archive seeds/asserts nonempty rows in all eight user tables before complete dump/user_version/integrity comparisons across successes and failures. This proves those synthetic histories, not arbitrary real archives, graph cache, migration interruption or crash recovery. The fixture trace checks op read arguments/call counts, including each page and before invalid filters; no unknown/installed op or live DNS/API is used.
+
+Reproduce with pinned scripts/rust.sh and locked offline dependencies: scripts/verify-openalex.sh builds kwr-rs/process_fixture and executes loopback comparisons. KWR_RUST_BINARY/KWR_PROCESS_FIXTURE must point to absolute artifacts when sharing CARGO_TARGET_DIR. PYTHONPATH=src python3 scripts/migration/generate_openalex_goldens.py regenerates the oracle; generate_python_alpha.py requires recorded Python3.13/Unicode15.1 followed by pinned fmt. Committed native fixtures require no generator or Python runtime. The original 218 CLI offline guard now targets remaining meta, so it cannot accidentally invoke newly implemented OpenAlex. Scoped passed evidence and individual pending reasons are recorded in all 35 acceptance rows; complete migration, live certification and installed CLI/real-data cutover remain separate gates.
+
+## Independent P3: unused best location short circuit
+
+Focus review replayed the original 95 search/13 identifier Python expectations and five
+green existing CI checks; no new blocking issue. It found that native URL selection
+validated best_oa_location before selecting a valid primary URL. Python never evaluates
+that unused branch. An isolated repair delays the best-location lookup until primary
+landing_page_url is false/absent. Metadata already ignores non-object locations and is
+unchanged. Eight new ordinary expectations cover truthy string, number, boolean and
+array best values: unused branches succeed, selected malformed branches still raise
+AttributeError. The new fixture fails against unchanged 91da387 and passes after repair;
+all original 95 cases and 13 identifiers retain exactly the same expected values.
+
+Author affected gates: 103 search/13 identifier strict cases, byte-identical oracle replay,
+fmt/warnings-denied all-target clippy, locked offline debug/owned-fixture and release
+builds. The inherited 34 paired CLI/218 broader CLI/Python gates are unchanged and are
+not redundantly rerun or claimed as independent native/TLS evidence. New source hash is
+recorded separately in matrix case_evidence. No Meta feature, dependency, lock, workflow,
+installed CLI or real data change enters this repair.
+
+Final resource assertions remain open: select and approve documented decoded-position,
+aggregate result/page/byte budgets before constructing unbounded inputs; test exact cap
+and one-over rejection before allocation, many small pages with repeated/nonrepeated
+cursors and a huge requested limit, interruption while accumulating, body/key redaction,
+no partial result or ledger publication and measured peak memory/deadline. Each fixture
+must remain bounded synthetic data. The existing per-response 8 MiB transport cap does
+not establish total-result or decoded abstract-position bounds. No new cap or complete
+resource-safety acceptance is inferred from this short-circuit repair.

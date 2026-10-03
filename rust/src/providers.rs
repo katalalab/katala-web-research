@@ -2,6 +2,7 @@
 pub mod github;
 pub mod github_repo;
 pub mod json;
+pub mod openalex;
 use crate::{
     http::{HttpResponse, Settings},
     registry::Registry,

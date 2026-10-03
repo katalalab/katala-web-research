@@ -214,7 +214,7 @@ class Differential(unittest.TestCase):
         self.assertIn('feed scheme ftp not migrated yet',proc.stderr)
         with sqlite3.connect(self.db) as conn:
             self.assertEqual(before,conn.execute('SELECT * FROM feed_sources').fetchall())
-        for args in [['search','evidence','--provider','openalex'],['search','evidence','--provider','feed','--enrich-top','1']]:
+        for args in [['search','evidence','--provider','meta'],['search','evidence','--provider','feed','--enrich-top','1']]:
             proc=self.call([*args,'--archive',str(self.db),'--json'],True)
             self.assertEqual(proc.returncode,1);self.assertIn('not migrated yet',proc.stderr)
 
