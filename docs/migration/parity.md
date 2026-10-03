@@ -1,6 +1,6 @@
 # Rust migration contract and completion gate
 
-Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e72abd9c2b (2026-10-03). Dedicated clone; no existing checkout edited. Open PR collection was empty; five remote branches contained no Rust branch. App thread inventory showed no second active Rust migration. AGENTS.md and CONTRIBUTING.md apply; no repository .agents/skills found. Recording/build budget: 2 GiB (starting free space exceeds 20 GiB). No credentials, real archive, company repository, other host, paid provider, or live search used.
+Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e72abd9c2b (2026-10-03). Dedicated clone; no existing checkout edited. Open PR collection was empty; five remote branches contained no Rust branch. App thread inventory showed no second active Rust migration. AGENTS.md and CONTRIBUTING.md apply; no repository .agents/skills found. Recording budget: min(10% starting free space, 2 GiB), currently 2 GiB; build targets are monitored separately and reused. No credentials, real archive, company repository, other host, paid provider, or live search used.
 
 `python-contract.json` is generated from all 22 leaf commands, argparse defaults and choices, dataclass fields, handler JSON literals/exit branches, every environment reference, all SQLite DDL (tables, indexes, FTS shadow tables, triggers), and all seven MCP tool schemas. Regenerate with `PYTHONPATH=src python3 scripts/migration/inventory.py`. It supplements this behavioral ledger; AST literals are not a complete execution trace.
 
@@ -18,7 +18,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
 | read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Network pending; cached hits implemented |
-| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native feed and normal DDG GET/parser/rank/CLI fields; shared strict offline transport; seven other network surfaces, positive enrichment and parser/transport edges pending |
+| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native feed and normal DDG/SearXNG/Brave/Jina GET/parser/rank/CLI fields; shared strict offline transport; four other network surfaces, positive enrichment and parser/transport edges pending |
 | collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |
