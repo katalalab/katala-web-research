@@ -50,7 +50,12 @@ enum Command {
         include_domain: Vec<String>,
         #[arg(long)]
         exclude_domain: Vec<String>,
-        #[arg(long, default_value_t = 0, allow_hyphen_values = true)]
+        #[arg(
+            long,
+            default_value_t = 0,
+            allow_hyphen_values = true,
+            help = "Disabled for positive values pending safe handling of URLs returned by search; use 0 to skip enrichment"
+        )]
         enrich_top: i64,
         #[arg(long, default_value_t = 0, allow_hyphen_values = true)]
         highlight_top: i64,
@@ -379,7 +384,10 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 return Err(format!("provider {provider} not migrated yet").into());
             }
             if enrich_top > 0 {
-                return Err("network enrichment not migrated yet".into());
+                return Err(
+                    "derived-target enrichment is disabled pending target and transmission policy"
+                        .into(),
+                );
             }
             if !candidate_multiplier.is_finite() {
                 return Err("candidate multiplier must be finite".into());

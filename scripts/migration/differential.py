@@ -214,9 +214,9 @@ class Differential(unittest.TestCase):
         self.assertIn('feed scheme ftp not migrated yet',proc.stderr)
         with sqlite3.connect(self.db) as conn:
             self.assertEqual(before,conn.execute('SELECT * FROM feed_sources').fetchall())
-        for args in [['search','evidence','--provider','feed','--enrich-top','1']]:
-            proc=self.call([*args,'--archive',str(self.db),'--json'],True)
-            self.assertEqual(proc.returncode,1);self.assertIn('not migrated yet',proc.stderr)
+        proc=self.call(['search','evidence','--provider','feed','--enrich-top','1','--archive',str(self.db),'--json'],True)
+        self.assertEqual(proc.returncode,1)
+        self.assertIn('derived-target enrichment is disabled',proc.stderr)
 
     def test_feed_search_highlights(self):
         for i, url in enumerate(['https://github.com/fixture/repo','https://www.cisa.gov/known-exploited-vulnerabilities-catalog','https://arxiv.org/abs/fixture','https://example.test/0']):

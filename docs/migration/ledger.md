@@ -356,3 +356,129 @@ interrupt/before-during-after commit/restart, worker panic/redaction, SIGKILL/po
 broken-pipe and actual other OS/live/resource/package gates remain concrete and open.
 No mock closes those gates. No real data/credential store/installed CLI/network/OS setup
 or paid/live/API/model call; no speed claim.
+
+
+## PR28 and PR29 authorized normal integration
+
+Parent independently reviewed the #28 P3 helper and exact75e7980 with five green CI
+checks; native production remained9451 content. Fresh head75e798023dac23689168201948ccc867fc9c3d26/
+basecb79a8a2a6af316cea9d547835a5277ac24dee9d, active ruleset24318413/no bypass actors,
+five SUCCESS checks/no threads/CLEAN/MERGEABLE were confirmed. Normal exact-head
+merge completed2026-10-03T16:41:02Z, main08052376f50601f32c5bff80aa03e5574ed7fbbc
+read back tree-identical to75. #29 retargeted to that main without changing0e9 head;
+effective diff SHA2567e49b6a538c4cac8b8917a207b77ebcb2e5414bb705c5981c39dd4dcb8bf8897
+was byte-identical to the earlier stacked-base diff; retained gates stayed applicable.
+
+Parent independently checked93 Python oracle structures, FetchError-only fallback,
+cap-before-cache and diagnostic masking; no new preview blocker. Independent native/
+TLS execution was not claimed. Explicit29-only normal merge authorization preceded
+fresh head0e9c5defc2baaf57c64d8231ea19427b441a3a49/base08052376, unchanged active
+protection/no bypass actors/all five SUCCESS checks/no threads/CLEAN/MERGEABLE and
+public repositoryID1251159956 readback. Existing workflows were unchanged. Normal
+merge completed2026-10-03T16:57:21Z, maincc086afb6a1c5acb080f00ac4ae24456262cf1c7
+read back tree-identical to0e9. No admin/bypass/self-approval/forcepush/branch deletion,
+installed CLI/data cutover, budget or authentication/network setting change.
+Jina complete target query/fragment/userinfo transmission remains a distinct policy
+gate from diagnostic masking; confidential URLs/untrusted MCP must not default to it.
+
+## Separate search enrichment slice
+
+Dedicated codex/rust-enrichment-parity worktree starts at integratedcc086afb; #29 head
+was kept fixed. Contract enrichment-collect-contract.md was saved before implementation.
+Native workflow and search CLI reuse the existing reader, transport, registry/ranker
+and cache highlights. Initial candidate order, plain Python whitespace/Unicode700,
+stale metadata, title fallback, exception class only, original result URL/source,
+original-query rerank and enrichment-before-signed-slice are preserved. No page write.
+Cargo.toml adds the workflow test target only; lock/toolchain/dependencies unchanged.
+
+Author aarch64 macOS evidence:57 exact raw Python transcripts with request/clock/error
+assertions;40 paired feed CLI cases +12 separately added SearXNG/category/domain/
+highlight cases =52 unique pairs;2 actual owned TLS HTTP-wait SIGINT executions.
+Selected/unselected eight-table synthetic archives/schema/version/pages MATCH/rank1
+integrity remain unchanged. Initial fixture seed/dedup/invalid-CLI-choice assumptions
+were corrected against Python, not learned from native output. Successful scopes were
+retained; only added12 cases reran. The old uncounted unsupported-enrichment refusal
+was removed;218 counted existing comparisons still pass. Pinned fmt/all-target
+warnings-denied clippy/all native tests, existing Python167/benchmark/smoke/artifact/
+gitleaks gates pass. Release result/provenance is recorded with the final checkpoint.
+
+Source0930d484d0858a299732b34cfc75f3b02ac5d3ca7a047495820ef630a9024485; fixture
+7c1958a92f1ca10cd9c02b5ea5b7097ae40d5bf4114f836390be8369ef48afbb. Matrix now38
+scoped case records/35 final rows pending; native MCP0/9. All-provider combined
+enrichment, malformed/resource/full lifecycle/actual Windows-Linux/live gates remain.
+Collect/report/store_run remain unimplemented; failed error-page upsert conflicts
+with successful-cache retention and needs a separate concrete policy/test slice.
+No live/paid/API/model/real credential/archive/other-host/installed CLI changes.
+Shared build target ~3.36GiB is tracked separately; source/fixture/log recordings stay
+under2GiB, free disk ~569GiB. No budgets, workflows/runners/protection, OS/auth/network
+configuration were changed; no new package/license condition or speed claim.
+
+Pinned locked offline release build passes (jobs1); fixture regeneration is byte-
+identical. Recoverable owned checkpoints retain prior heads and the new exact-source
+binaries. Local artifact provenance (aarch64 macOS only):
+- debug: SHA256 de98d5a80f26d6d0b76a760cf14ae09b0094454317081080e67595dd7e4f3809, 28773752 bytes.
+- release: SHA256 e8dd6d6a044ca11c09fa36d66dfbdc011f344781ba7e01e234d4ccdd9493cb5f, 8384448 bytes.
+
+
+## PR30 independent P2 derived-target boundary repair
+
+Parent identified provider-controlled URL→rank/reader→HTTP private/link-local/DNS
+reachability, already enabled in CLI enrichment; MCP0/9 is not a security argument.
+Merge held. Source confirmed authority/title/dedup/scheme checks only, no resolved-IP
+target boundary. Jina disclosure and fallback need separate derived-input policy.
+
+Immediate fail-closed repair disables every positive --enrich-top before provider
+configuration/process/auth/token/ledger/archive/transport initialization. Offline
+enrichment calculation remains57 unchanged Python transcripts, now concrete
+OfflineTransport only; generic/native transport cannot be passed, no CLI caller.
+Previous52 compatibility pairs and2 signals apply only to unmerged7406; positive
+feature acceptance is withdrawn. Earlier statements of network enrichment enabled
+are historical and superseded. Explicit read behavior and positive provider search
+without enrichment remain unchanged. No expanded permissions or network settings.
+
+Owned synthetic repro:immutable7406 binary passes3 paired SearXNG→loopback direct/
+Jina-error fallback/direct-redirect cases, showing the unsafe derived boundary. No
+real internal service/metadata probe. Repaired55 native refusal assertions across
+all9 providers/3 readers/limits0-1 + missing archive show zero provider/reader/proxy
+requests, no implicit archive, eight-table/schema/version/pages MATCH/rank1 integrity
+and unselected archive preserved. Six paired nonpositive-top cases match Python.
+Core57 oracle remains byte-identical; named derived_enrichment_disabled is an
+intentional Python difference, not completed migration. Focused trusted read and
+required affected gates/release/provenance accompany the repaired exact head.
+
+Sourcea11d49404f21cfce765172f0003a38faaa2dfe7c1dc942c9bf14b3ecfe50bddf. Matrix has
+38 scoped passing records (including refusal-policy evidence),39 total case records;
+all35 final rows pending. Native MCP0/9. Derived resolved-public-IP/pinned connections/
+redirect/proxy/DNS and third-party target-secret transmission gate remains unimplemented.
+Collect/investigate must not reuse trusted generic read for derived URLs. Runtime
+enrichment may re-enable only after a separate policy implementation/review.
+
+Repair affected gates pass on aarch64 macOS:fmt/all-target warnings-denied clippy/
+all native tests including57 offline transcripts/218 counted CLI comparisons; required
+Python167/benchmark/smoke/artifact/gitleaks; locked offline debug/release jobs1. Explicit
+local direct/cache/index2 and Jina/auto/fallback/redirect6 focused pairs pass. Historical
+3-pair risk reproducer is available only as an explicit fixture method against7406.
+Neither positive-feature acceptance nor actual Linux/Windows/live evidence is claimed.
+Repaired local binaries (old7406 checkpoint retained):
+- debug: SHA256 89206eea6383b9530b626b31e9fcdb62dc3ae6ccdce506ed3602e180385248b3, 28748136 bytes.
+- release: SHA256 49c61ce2f65cdc0f2a9a959849d3f205bde516f7c13a4e29f93e5518401cc944, 8368112 bytes.
+
+
+## PR30 reviewed repair/help-only follow-up
+
+Independent parent re-review confirms b346c33 P2 resolution, offline-only scope and
+positive enrichment unimplemented labeling; exact-head five CI SUCCESS. Parent
+authorizes normal integration after adding disabled-positive --enrich-top help and
+focused assertion, then checking fixed head CI/diff. Follow-up production diff is
+only the search clap argument help attribute; guard/workflow/reader unchanged.
+Focused native search --help asserts disabled-positive/use0 text,exit0/stdout-only,
+no runtime data even with invalid settings. No new provider/network behavior.
+Source81c4a51236753019eebbb08d11d8f83568783eb6ed4e98fc4a74a1756b672dca; inherited
+b34657/55/6/8/218 evidence retained, not relabeled rerun. Matrix39 scoped passed
+records/40 total case records; all35 final rows pending. No permission/security/
+budget setting change; collect/derived target policy remains next separate work.
+
+Help-only affected fmt/all-target clippy/debug/release/focused help and mandatory
+Python167/benchmark/smoke/artifact/gitleaks gates pass. Exact-source local artifacts:
+- debug: SHA256 4e1a130216e9339b2711d344b442f5cce85ca81a1db3cacbd851076ef54eb8a6, 28748136 bytes.
+- release: SHA256 bbcab4e4716492835f3611e4ffbfa6c453571a911ad928d9e78c80d071d55b87, 8368112 bytes.

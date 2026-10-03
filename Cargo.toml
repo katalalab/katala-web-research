@@ -97,3 +97,7 @@ path = "rust/tests/support/meta_probe.rs"
 [[test]]
 name = "reader"
 path = "rust/tests/reader.rs"
+
+[[test]]
+name = "workflow"
+path = "rust/tests/workflow.rs"

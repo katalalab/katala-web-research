@@ -51,7 +51,7 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: all nine native provider normal paths, including Meta; enrichment/malformed/OS/live final acceptance pending",
+      "status": "partial: all nine native provider normal paths; offline enrichment calculation only; positive CLI enrichment disabled pending derived-target/transmission policy",
       "surface": "search",
       "case_evidence": [
         {
@@ -107,14 +107,69 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; actual local target only",
           "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        },
+        {
+          "id": "search-enrichment-reference",
+          "status": "passed",
+          "scope": "57 unchanged-Python workflow/reader/rank transcripts on concrete non-network OfflineTransport only; no runtime enrichment acceptance",
+          "evidence": [
+            "scripts/migration/generate_enrichment_goldens.py",
+            "rust/tests/workflow.rs",
+            "rust/tests/fixtures/enrichment-golden.json"
+          ],
+          "count": 57,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent native execution not claimed",
+          "source_tree_sha256": "a11d49404f21cfce765172f0003a38faaa2dfe7c1dc942c9bf14b3ecfe50bddf"
+        },
+        {
+          "id": "search-enrichment-cli",
+          "status": "pending",
+          "scope": "Historical52 compatibility cases on unmerged7406f8a enabled derived private-target fetch; superseded by P2 fail-closed repair; positive runtime implementation acceptance withdrawn",
+          "evidence": [
+            "scripts/migration/enrichment_differential.py",
+            "scripts/verify-enrichment.sh",
+            "docs/migration/enrichment-collect-contract.md"
+          ],
+          "count": 52,
+          "target": "aarch64-apple-darwin",
+          "executor": "author; independent native execution not claimed",
+          "source_tree_sha256": "0930d484d0858a299732b34cfc75f3b02ac5d3ca7a047495820ef630a9024485"
+        },
+        {
+          "id": "derived-enrichment-refusal-policy",
+          "status": "passed",
+          "scope": "55 native positive-top refusals before provider/reader/proxy/archive initialization, zero recorded requests, synthetic eight-table/schema/version/pages MATCH/rank1/unselected preservation; refusal is safety evidence, not positive feature acceptance",
+          "count": 55,
+          "evidence": [
+            "scripts/migration/enrichment_differential.py",
+            "docs/migration/enrichment-collect-contract.md",
+            "scripts/verify-enrichment.sh"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; focused independent review pending",
+          "source_tree_sha256": "a11d49404f21cfce765172f0003a38faaa2dfe7c1dc942c9bf14b3ecfe50bddf"
+        },
+        {
+          "id": "enrichment-help-disabled-scope",
+          "status": "passed",
+          "scope": "One focused native search --help check: disabled positive enrichment wording, zero skip, exit0/stdout-only, invalid config does not initialize runtime data; not positive feature acceptance",
+          "count": 1,
+          "evidence": [
+            "scripts/migration/enrichment_help.py",
+            "scripts/verify-enrichment.sh"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; help-only follow-up",
+          "source_tree_sha256": "81c4a51236753019eebbb08d11d8f83568783eb6ed4e98fc4a74a1756b672dca"
         }
       ],
       "pending_reasons": [
-        "Positive enrichment/native network readers remain unimplemented",
+        "Positive runtime enrichment is disabled: derived initial/resolved-IP/redirect/proxy/DNS and Jina transmission policy is not implemented",
         "Complete flag/model/config/encoding/output/signal parity and approved safety differences are not closed"
       ],
       "missing_assertions": [
-        "Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet",
+        "Implement and test derived target/public-IP/pinned DNS/connect/redirect/proxy authorization and Jina secret-transmission policy before re-enabling any positive enrichment; cover all nine providers, malformed inputs, aggregate resources/lifecycle/OS gates",
         "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"
       ],
       "next_tests": [
@@ -123,7 +178,7 @@
           "status": "proposed",
           "planned_file": "scripts/migration/final_contract_cli_search.py",
           "assertions": [
-            "Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet",
+            "Implement and test derived target/public-IP/pinned DNS/connect/redirect/proxy authorization and Jina secret-transmission policy before re-enabling any positive enrichment; cover all nine providers, malformed inputs, aggregate resources/lifecycle/OS gates",
             "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"
           ],
           "execution_evidence": false
@@ -151,6 +206,26 @@
           {
             "case_evidence_id": "meta-combined-cli",
             "scope": "37 combined paired CLI/library cases; exact result replay at measured timing/order, request/header traces, selected archive/health preservation and explicit schema refusals. Ordinary cases only, no final acceptance.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "search-enrichment-reference",
+            "scope": "57 unchanged-Python workflow/reader/rank transcripts on concrete non-network OfflineTransport only; no runtime enrichment acceptance",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "search-enrichment-cli",
+            "scope": "Historical52 compatibility cases on unmerged7406f8a enabled derived private-target fetch; superseded by P2 fail-closed repair; positive runtime implementation acceptance withdrawn",
+            "status": "pending"
+          },
+          {
+            "case_evidence_id": "derived-enrichment-refusal-policy",
+            "scope": "55 native positive-top refusals before provider/reader/proxy/archive initialization, zero recorded requests, synthetic eight-table/schema/version/pages MATCH/rank1/unselected preservation; refusal is safety evidence, not positive feature acceptance",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "enrichment-help-disabled-scope",
+            "scope": "One focused native search --help check: disabled positive enrichment wording, zero skip, exit0/stdout-only, invalid config does not initialize runtime data; not positive feature acceptance",
             "status": "passed"
           }
         ]

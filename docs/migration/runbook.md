@@ -151,3 +151,18 @@ publication; this deliberate policy difference remains unapproved final acceptan
 MCP dependency coverage is checked with check_matrix.py; native tools/protocol remain
 0/9. Direct P3 helper proves pages inverted-index MATCH/rank1 integrity; complete other
 indexes/commit/crash/actual OS/live/package gates remain pending.
+
+## Offline enrichment and derived-target refusal
+
+`sh scripts/verify-enrichment.sh` builds the pinned locked offline binary, runs57
+Python workflow/reader/rank transcripts with concrete OfflineTransport, then55 native
+fail-closed refusals and6 paired nonpositive-top cases on owned loopback. Set
+CARGO_TARGET_DIR and KWR_RUST_BINARY to exact debug paths for a shared target.
+Every positive search --enrich-top is disabled before provider/reader/archive I/O.
+Earlier positive fixture methods explicitly selected with a7406 checkpoint binary
+are historical compatibility/risk reproducers only, not current acceptance.
+The trusted explicit read command retains its local target behavior; derived URL
+fetch/transmission policy must be implemented before enabling search/collect/MCP.
+See enrichment-collect-contract.md for the P2 repair, validation and remaining policy.
+Do not switch installed CLI or real archives. All35 final gates/native MCP0/9 remain
+pending; older checkpoint sections describe historical scopes.
