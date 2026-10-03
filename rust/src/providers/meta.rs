@@ -566,6 +566,7 @@ pub struct NativeEngines<'a> {
 }
 impl EngineRunner for NativeEngines<'_> {
     fn run(&self, request: &EngineRequest) -> ProviderResult<Vec<SearchResult>> {
+        crate::process::check_interrupt()?;
         use super::SearchProvider;
         let mut transport = super::EnvTransport::default();
         let q = &request.query;
@@ -596,6 +597,81 @@ impl EngineRunner for NativeEngines<'_> {
             }
         }
     }
+}
+
+/// Native library call: only an explicitly selected/nonempty ledger path tracks health.
+/// The CLI supplies its archive; no process-wide environment mutation is needed.
+pub fn native_search(
+    query: &str,
+    limit: i64,
+    archive: Option<&std::path::Path>,
+    context: &Context<'_>,
+) -> ProviderResult<Vec<SearchResult>> {
+    let value = |key| match std::env::var(key) {
+        Ok(value) => Ok(value),
+        Err(std::env::VarError::NotPresent) => Ok(String::new()),
+        Err(_) => Err(ProviderError::synthetic("FetchError")),
+    };
+    let profile = profile(&value("KWR_META_PROFILE")?);
+    let explicit = value("KWR_META_PROVIDERS")?;
+    let env_archive = if archive.is_none() {
+        std::env::var_os("KWR_ARCHIVE").map(std::path::PathBuf::from)
+    } else {
+        None
+    };
+    let archive = archive.or(env_archive.as_deref());
+    let feed_archive =
+        archive.unwrap_or(std::path::Path::new(".katala-web-research/archive.sqlite"));
+    // Python Path("") denotes the current directory, never an anonymous SQLite DB.
+    let feed_archive = if feed_archive.as_os_str().is_empty() {
+        std::path::Path::new(".")
+    } else {
+        feed_archive
+    };
+    let signals = crate::process::InterruptScope::enter()?;
+    let engines = NativeEngines {
+        context,
+        archive: feed_archive,
+    };
+    let mut executor = NativeExecutor { runner: &engines };
+    // Hold signal scope through the last completion and before ledger publication.
+    struct InterruptedLedger<'a> {
+        inner: &'a mut dyn Ledger,
+        signals: &'a crate::process::InterruptScope,
+    }
+    impl Ledger for InterruptedLedger<'_> {
+        fn weak(&mut self) -> ProviderResult<Vec<String>> {
+            self.signals.check()?;
+            self.inner.weak()
+        }
+        fn record(&mut self, runs: &[EngineRun]) -> ProviderResult<()> {
+            self.signals.check()?;
+            self.inner.record(runs)
+        }
+    }
+    let mut no_ledger = NoLedger;
+    let mut selected;
+    let ledger: &mut dyn Ledger = if let Some(path) = archive.filter(|p| !p.as_os_str().is_empty())
+    {
+        selected = ArchiveLedger { path };
+        &mut selected
+    } else {
+        &mut no_ledger
+    };
+    let results = search_with(
+        query,
+        limit,
+        &profile,
+        &explicit,
+        &mut executor,
+        &mut InterruptedLedger {
+            inner: ledger,
+            signals: &signals,
+        },
+        context,
+    );
+    signals.check()?;
+    results
 }
 
 #[cfg(test)]

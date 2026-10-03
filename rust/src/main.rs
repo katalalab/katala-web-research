@@ -372,6 +372,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 "github_code",
                 "github",
                 "openalex",
+                "meta",
             ]
             .contains(&provider.as_str())
             {
@@ -398,7 +399,14 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                     registry: &registry,
                     year: chrono::Local::now().year(),
                 };
-                if provider == "ddg" {
+                if provider == "meta" {
+                    kwr::providers::meta::native_search(
+                        &built.query,
+                        candidates,
+                        Some(&local.archive),
+                        &context,
+                    )?
+                } else if provider == "ddg" {
                     kwr::providers::DuckDuckGo.search(
                         &built.query,
                         candidates,
@@ -654,6 +662,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
 }
 fn main() {
     let cli = Cli::parse();
+    let meta = matches!(&cli.command, Command::Search { provider, .. } if provider == "meta");
     let result = run(cli, &mut io::stdout().lock());
     if let Err(error) = result {
         if error
@@ -663,6 +672,13 @@ fn main() {
             std::process::exit(1);
         }
         eprintln!("kwr: error: {error}");
+        if meta && let Some(error) = error.downcast_ref::<kwr::providers::ProviderError>() {
+            match error.kind {
+                "KeyboardInterrupt" => std::process::exit(130),
+                "SignalError" => std::process::exit(143),
+                _ => {}
+            }
+        }
         std::process::exit(1);
     }
 }
