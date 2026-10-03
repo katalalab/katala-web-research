@@ -8887,6 +8887,419 @@
       "query": "alpha 日本語 + * ~",
       "steps": [],
       "year": 2026
+    },
+    {
+      "env": {
+        "KWR_SEARXNG_URL": "http://fixture.test///"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2026-02-01",
+            "rank": 1,
+            "score": 2.19,
+            "snippet": "alpha 内容 & text",
+            "source": "searxng",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-duplicate",
+      "provider": "searxng",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "http://fixture.test/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&format=json"
+          },
+          "text": "{\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"2026-02-01\"}, {\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 1\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "KWR_SEARXNG_URL": "http://fixture.test///"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2026-02-01",
+            "rank": 1,
+            "score": 2.19,
+            "snippet": "alpha 内容 & text",
+            "source": "searxng",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-retracted",
+      "provider": "searxng",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "http://fixture.test/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&format=json"
+          },
+          "text": "{\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"2026-02-01\"}, {\"url\": \"https://fixture1.test/item\", \"title\": \"alpha 日本語 1\", \"content\": \"retracted=true\", \"publishedDate\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "KWR_SEARXNG_URL": "http://fixture.test///"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2026-02-01",
+            "rank": 1,
+            "score": 2.19,
+            "snippet": "alpha 内容 & text",
+            "source": "searxng",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-empty-url",
+      "provider": "searxng",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "http://fixture.test/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&format=json"
+          },
+          "text": "{\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"2026-02-01\"}, {\"url\": \"\", \"title\": \"alpha 日本語 1\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "KWR_SEARXNG_URL": "http://fixture.test///"
+      },
+      "expected": {
+        "error_kind": "ValueError"
+      },
+      "limit": 10,
+      "name": "year-conversion-surviving-error",
+      "provider": "searxng",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "http://fixture.test/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&format=json"
+          },
+          "text": "{\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"2026-02-01\"}, {\"url\": \"https://fixture1.test/item\", \"title\": \"alpha 日本語 1\", \"content\": \"alpha 内容 & text\", \"publishedDate\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "BRAVE_SEARCH_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2025-03-01",
+            "rank": 1,
+            "score": 2.04,
+            "snippet": "alpha 内容 & text",
+            "source": "brave",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-duplicate",
+      "provider": "brave",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "X-Subscription-Token": "public-fixture-key"
+            },
+            "url": "https://api.search.brave.com/res/v1/web/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&count=20"
+          },
+          "text": "{\"web\": {\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"age\": \"2025-03-01\"}, {\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 1\", \"description\": \"alpha 内容 & text\", \"age\": \"²⁰²⁶-01-01\"}]}}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "BRAVE_SEARCH_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2025-03-01",
+            "rank": 1,
+            "score": 2.04,
+            "snippet": "alpha 内容 & text",
+            "source": "brave",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-retracted",
+      "provider": "brave",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "X-Subscription-Token": "public-fixture-key"
+            },
+            "url": "https://api.search.brave.com/res/v1/web/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&count=20"
+          },
+          "text": "{\"web\": {\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"age\": \"2025-03-01\"}, {\"url\": \"https://fixture1.test/item\", \"title\": \"alpha 日本語 1\", \"description\": \"retracted=true\", \"age\": \"²⁰²⁶-01-01\"}]}}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "BRAVE_SEARCH_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2025-03-01",
+            "rank": 1,
+            "score": 2.04,
+            "snippet": "alpha 内容 & text",
+            "source": "brave",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-empty-url",
+      "provider": "brave",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "X-Subscription-Token": "public-fixture-key"
+            },
+            "url": "https://api.search.brave.com/res/v1/web/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&count=20"
+          },
+          "text": "{\"web\": {\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"age\": \"2025-03-01\"}, {\"url\": \"\", \"title\": \"alpha 日本語 1\", \"description\": \"alpha 内容 & text\", \"age\": \"²⁰²⁶-01-01\"}]}}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "BRAVE_SEARCH_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "error_kind": "ValueError"
+      },
+      "limit": 10,
+      "name": "year-conversion-surviving-error",
+      "provider": "brave",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "X-Subscription-Token": "public-fixture-key"
+            },
+            "url": "https://api.search.brave.com/res/v1/web/search?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&count=20"
+          },
+          "text": "{\"web\": {\"results\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"age\": \"2025-03-01\"}, {\"url\": \"https://fixture1.test/item\", \"title\": \"alpha 日本語 1\", \"description\": \"alpha 内容 & text\", \"age\": \"²⁰²⁶-01-01\"}]}}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "JINA_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2026-02-01",
+            "rank": 1,
+            "score": 2.44,
+            "snippet": "alpha 内容 & text",
+            "source": "jina",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-duplicate",
+      "provider": "jina",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "Authorization": "Bearer public-fixture-key"
+            },
+            "url": "https://s.jina.ai/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+          },
+          "text": "{\"data\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"2026-02-01\"}, {\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 1\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "JINA_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2026-02-01",
+            "rank": 1,
+            "score": 2.44,
+            "snippet": "alpha 内容 & text",
+            "source": "jina",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-retracted",
+      "provider": "jina",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "Authorization": "Bearer public-fixture-key"
+            },
+            "url": "https://s.jina.ai/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+          },
+          "text": "{\"data\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"2026-02-01\"}, {\"url\": \"https://fixture1.test/item\", \"title\": \"alpha 日本語 1\", \"description\": \"retracted=true\", \"publishedTime\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "JINA_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "provider_rank": 1
+            },
+            "published_at": "2026-02-01",
+            "rank": 1,
+            "score": 2.44,
+            "snippet": "alpha 内容 & text",
+            "source": "jina",
+            "title": "alpha 日本語 0",
+            "url": "https://fixture0.test/item"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "year-conversion-after-empty-url",
+      "provider": "jina",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "Authorization": "Bearer public-fixture-key"
+            },
+            "url": "https://s.jina.ai/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+          },
+          "text": "{\"data\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"2026-02-01\"}, {\"url\": \"\", \"title\": \"alpha 日本語 1\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
+    },
+    {
+      "env": {
+        "JINA_API_KEY": "public-fixture-key"
+      },
+      "expected": {
+        "error_kind": "ValueError"
+      },
+      "limit": 10,
+      "name": "year-conversion-surviving-error",
+      "provider": "jina",
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json",
+              "Authorization": "Bearer public-fixture-key"
+            },
+            "url": "https://s.jina.ai/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+          },
+          "text": "{\"data\": [{\"url\": \"https://fixture0.test/item\", \"title\": \"alpha 日本語 0\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"2026-02-01\"}, {\"url\": \"https://fixture1.test/item\", \"title\": \"alpha 日本語 1\", \"description\": \"alpha 内容 & text\", \"publishedTime\": \"²⁰²⁶-01-01\"}]}"
+        }
+      ],
+      "year": 2026
     }
   ],
   "oracle_python": "3.13 / Unicode 15.1",

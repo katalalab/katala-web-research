@@ -76,6 +76,18 @@ pub fn rank(
     registry: &Registry,
     year: i32,
 ) -> Vec<SearchResult> {
+    rank_with_validation(query, results, registry, year, |_| {
+        Ok::<(), std::convert::Infallible>(())
+    })
+    .unwrap_or_else(|never| match never {})
+}
+pub(crate) fn rank_with_validation<E>(
+    query: &str,
+    results: Vec<SearchResult>,
+    registry: &Registry,
+    year: i32,
+    mut validate: impl FnMut(&SearchResult) -> std::result::Result<(), E>,
+) -> std::result::Result<Vec<SearchResult>, E> {
     let tokens = tokens(query);
     let mut seen = BTreeSet::new();
     let mut ranked = Vec::new();
@@ -98,6 +110,7 @@ pub fn rank(
         {
             continue;
         }
+        validate(&result)?;
         if result.rank != 0 {
             result
                 .metadata
@@ -188,7 +201,7 @@ pub fn rank(
     for (i, r) in ranked.iter_mut().enumerate() {
         r.rank = i as i64 + 1;
     }
-    ranked
+    Ok(ranked)
 }
 pub fn feed(
     query: &str,

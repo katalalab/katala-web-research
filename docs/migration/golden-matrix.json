@@ -19,6 +19,12 @@
     "injected bounded clock/latency samples; never ranking/output fields"
   ],
   "reference": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "review_repair": {
+    "cases_added": 12,
+    "finding": "P2 string year conversion before rank discard gates",
+    "policy_differences": 55,
+    "scope": "discarded duplicate/retracted/empty-URL strings skip conversion; surviving invalid digit year still ValueError; typed-field policy unchanged"
+  },
   "rows": [
     {
       "final_acceptance": "pending",
@@ -499,8 +505,8 @@
       "local_evidence": [
         "rust/tests/json_providers.rs (19 jina Python request/result/error goldens)",
         "scripts/migration/json_provider_differential.py (22 jina localhost CLI comparisons; full synthetic DB dump preserved)",
-        "json-provider-edges.json (83 jina additional library cases)",
-        "json_provider_edge_differential.py (84 jina additional paired CLI comparisons; some named safety differences)"
+        "json-provider-edges.json (87 jina additional library cases)",
+        "json_provider_edge_differential.py (88 jina additional paired CLI comparisons; some named safety differences)"
       ],
       "required_cases": [
         "exact request URL/headers/order",
@@ -519,8 +525,8 @@
       "local_evidence": [
         "rust/tests/json_providers.rs (31 searxng Python request/result/error goldens)",
         "scripts/migration/json_provider_differential.py (27 searxng localhost CLI comparisons; full synthetic DB dump preserved)",
-        "json-provider-edges.json (90 searxng additional library cases)",
-        "json_provider_edge_differential.py (92 searxng additional paired CLI comparisons; some named safety differences)"
+        "json-provider-edges.json (94 searxng additional library cases)",
+        "json_provider_edge_differential.py (96 searxng additional paired CLI comparisons; some named safety differences)"
       ],
       "required_cases": [
         "exact request URL/headers/order",
@@ -539,8 +545,8 @@
       "local_evidence": [
         "rust/tests/json_providers.rs (33 brave Python request/result/error goldens)",
         "scripts/migration/json_provider_differential.py (27 brave localhost CLI comparisons; full synthetic DB dump preserved)",
-        "json-provider-edges.json (86 brave additional library cases)",
-        "json_provider_edge_differential.py (87 brave additional paired CLI comparisons; some named safety differences)"
+        "json-provider-edges.json (90 brave additional library cases)",
+        "json_provider_edge_differential.py (91 brave additional paired CLI comparisons; some named safety differences)"
       ],
       "required_cases": [
         "exact request URL/headers/order",
