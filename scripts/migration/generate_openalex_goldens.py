@@ -62,6 +62,9 @@ for name,overrides in [('best',{'primary_location':None}),('doi',{'primary_locat
 add('metadata-false-zero',bodies=[{'results':[dict(item(0),publication_year=0,cited_by_count=0,open_access={'is_oa':False,'oa_status':''},primary_location={'landing_page_url':'https://arxiv.org/abs/fixture0','is_oa':False,'license':'','version':None,'source':{'id':'','type':'repository'}})]}])
 add('dedup-retraction',bodies=[{'results':[item(0),dict(item(0),display_name='duplicate'),dict(item(1),is_retracted=True),item(2)]}])
 for name,overrides in [('duplicate',{'primary_location':item(0)['primary_location']}),('retracted',{'is_retracted':True}),('empty-url',{'primary_location':None,'best_oa_location':None,'doi':None,'id':''}),('surviving',{})]:add('bad-year-'+name,bodies=[{'results':[item(0),dict(item(1),publication_date='²⁰²⁶',**overrides)]}])
+for name,best in [('string','unused-best'),('number',7),('bool',True),('array',['unused-best'])]:
+    add('unused-best-short-circuit-'+name,bodies=[{'results':[dict(item(0),best_oa_location=best)]}])
+    add('selected-best-type-error-'+name,bodies=[{'results':[dict(item(0),primary_location=None,best_oa_location=best)]}])
 for seed in ['', ' \u001c ', 'W1',' W1 ','https://openalex.org/W1','https://api.openalex.org/works/W1','https://openalex.org/','https://openalex.org/W1#fragment','10.1/fixture','https://doi.org/10.1/fixture','http://doi.org/10.1/fixture','HTTPS://OPENALEX.ORG/W1','日本語']:
     try:expected={'id':_openalex_work_id(seed)}
     except Exception as e:expected={'error_kind':type(e).__name__}

@@ -7506,6 +7506,290 @@
           "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": {\"landing_page_url\": \"https://arxiv.org/abs/fixture0\", \"pdf_url\": \"https://fixture.test/paper0.pdf\", \"is_oa\": true, \"license\": \"cc-by\", \"version\": \"publishedVersion\", \"source\": {\"id\": \"https://openalex.org/S1\", \"display_name\": \"Fixture journal\", \"type\": \"journal\"}}, \"best_oa_location\": {\"landing_page_url\": \"https://fixture.test/best0\", \"pdf_url\": \"https://fixture.test/best0.pdf\", \"is_oa\": false, \"license\": \"cc0\", \"version\": \"submittedVersion\", \"source\": {\"id\": \"https://openalex.org/S2\", \"display_name\": \"Fixture archive\", \"type\": \"repository\"}}, \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}, {\"id\": \"https://openalex.org/W1\", \"doi\": \"https://doi.org/10.1/fixture1\", \"display_name\": \"alpha 日本語 work 1\", \"publication_year\": 2026, \"publication_date\": \"²⁰²⁶\", \"type\": \"article\", \"cited_by_count\": 1, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": {\"landing_page_url\": \"https://arxiv.org/abs/fixture1\", \"pdf_url\": \"https://fixture.test/paper1.pdf\", \"is_oa\": true, \"license\": \"cc-by\", \"version\": \"publishedVersion\", \"source\": {\"id\": \"https://openalex.org/S1\", \"display_name\": \"Fixture journal\", \"type\": \"journal\"}}, \"best_oa_location\": {\"landing_page_url\": \"https://fixture.test/best1\", \"pdf_url\": \"https://fixture.test/best1.pdf\", \"is_oa\": false, \"license\": \"cc0\", \"version\": \"submittedVersion\", \"source\": {\"id\": \"https://openalex.org/S2\", \"display_name\": \"Fixture archive\", \"type\": \"repository\"}}, \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W1.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
         }
       ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "cited_by_count": 0,
+              "content_url": "https://content.openalex.org/works/W0.pdf",
+              "doi": "https://doi.org/10.1/fixture0",
+              "open_access_is_oa": true,
+              "open_access_oa_status": "gold",
+              "openalex_id": "https://openalex.org/W0",
+              "primary_is_oa": true,
+              "primary_landing_page_url": "https://arxiv.org/abs/fixture0",
+              "primary_license": "cc-by",
+              "primary_pdf_url": "https://fixture.test/paper0.pdf",
+              "primary_source_display_name": "Fixture journal",
+              "primary_source_id": "https://openalex.org/S1",
+              "primary_source_type": "journal",
+              "primary_version": "publishedVersion",
+              "provider_rank": 1,
+              "publication_year": 2026,
+              "work_type": "article"
+            },
+            "published_at": "2026-01-02",
+            "rank": 1,
+            "score": 2.94,
+            "snippet": "alpha 日本語 evidence alpha | year=2026 | type=article | citations=0 | oa=true | source=Fixture journal",
+            "source": "openalex",
+            "title": "alpha 日本語 work 0",
+            "url": "https://arxiv.org/abs/fixture0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "unused-best-short-circuit-string",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": {\"landing_page_url\": \"https://arxiv.org/abs/fixture0\", \"pdf_url\": \"https://fixture.test/paper0.pdf\", \"is_oa\": true, \"license\": \"cc-by\", \"version\": \"publishedVersion\", \"source\": {\"id\": \"https://openalex.org/S1\", \"display_name\": \"Fixture journal\", \"type\": \"journal\"}}, \"best_oa_location\": \"unused-best\", \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "selected-best-type-error-string",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": null, \"best_oa_location\": \"unused-best\", \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "cited_by_count": 0,
+              "content_url": "https://content.openalex.org/works/W0.pdf",
+              "doi": "https://doi.org/10.1/fixture0",
+              "open_access_is_oa": true,
+              "open_access_oa_status": "gold",
+              "openalex_id": "https://openalex.org/W0",
+              "primary_is_oa": true,
+              "primary_landing_page_url": "https://arxiv.org/abs/fixture0",
+              "primary_license": "cc-by",
+              "primary_pdf_url": "https://fixture.test/paper0.pdf",
+              "primary_source_display_name": "Fixture journal",
+              "primary_source_id": "https://openalex.org/S1",
+              "primary_source_type": "journal",
+              "primary_version": "publishedVersion",
+              "provider_rank": 1,
+              "publication_year": 2026,
+              "work_type": "article"
+            },
+            "published_at": "2026-01-02",
+            "rank": 1,
+            "score": 2.94,
+            "snippet": "alpha 日本語 evidence alpha | year=2026 | type=article | citations=0 | oa=true | source=Fixture journal",
+            "source": "openalex",
+            "title": "alpha 日本語 work 0",
+            "url": "https://arxiv.org/abs/fixture0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "unused-best-short-circuit-number",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": {\"landing_page_url\": \"https://arxiv.org/abs/fixture0\", \"pdf_url\": \"https://fixture.test/paper0.pdf\", \"is_oa\": true, \"license\": \"cc-by\", \"version\": \"publishedVersion\", \"source\": {\"id\": \"https://openalex.org/S1\", \"display_name\": \"Fixture journal\", \"type\": \"journal\"}}, \"best_oa_location\": 7, \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "selected-best-type-error-number",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": null, \"best_oa_location\": 7, \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "cited_by_count": 0,
+              "content_url": "https://content.openalex.org/works/W0.pdf",
+              "doi": "https://doi.org/10.1/fixture0",
+              "open_access_is_oa": true,
+              "open_access_oa_status": "gold",
+              "openalex_id": "https://openalex.org/W0",
+              "primary_is_oa": true,
+              "primary_landing_page_url": "https://arxiv.org/abs/fixture0",
+              "primary_license": "cc-by",
+              "primary_pdf_url": "https://fixture.test/paper0.pdf",
+              "primary_source_display_name": "Fixture journal",
+              "primary_source_id": "https://openalex.org/S1",
+              "primary_source_type": "journal",
+              "primary_version": "publishedVersion",
+              "provider_rank": 1,
+              "publication_year": 2026,
+              "work_type": "article"
+            },
+            "published_at": "2026-01-02",
+            "rank": 1,
+            "score": 2.94,
+            "snippet": "alpha 日本語 evidence alpha | year=2026 | type=article | citations=0 | oa=true | source=Fixture journal",
+            "source": "openalex",
+            "title": "alpha 日本語 work 0",
+            "url": "https://arxiv.org/abs/fixture0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "unused-best-short-circuit-bool",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": {\"landing_page_url\": \"https://arxiv.org/abs/fixture0\", \"pdf_url\": \"https://fixture.test/paper0.pdf\", \"is_oa\": true, \"license\": \"cc-by\", \"version\": \"publishedVersion\", \"source\": {\"id\": \"https://openalex.org/S1\", \"display_name\": \"Fixture journal\", \"type\": \"journal\"}}, \"best_oa_location\": true, \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "selected-best-type-error-bool",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": null, \"best_oa_location\": true, \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "results": [
+          {
+            "metadata": {
+              "cited_by_count": 0,
+              "content_url": "https://content.openalex.org/works/W0.pdf",
+              "doi": "https://doi.org/10.1/fixture0",
+              "open_access_is_oa": true,
+              "open_access_oa_status": "gold",
+              "openalex_id": "https://openalex.org/W0",
+              "primary_is_oa": true,
+              "primary_landing_page_url": "https://arxiv.org/abs/fixture0",
+              "primary_license": "cc-by",
+              "primary_pdf_url": "https://fixture.test/paper0.pdf",
+              "primary_source_display_name": "Fixture journal",
+              "primary_source_id": "https://openalex.org/S1",
+              "primary_source_type": "journal",
+              "primary_version": "publishedVersion",
+              "provider_rank": 1,
+              "publication_year": 2026,
+              "work_type": "article"
+            },
+            "published_at": "2026-01-02",
+            "rank": 1,
+            "score": 2.94,
+            "snippet": "alpha 日本語 evidence alpha | year=2026 | type=article | citations=0 | oa=true | source=Fixture journal",
+            "source": "openalex",
+            "title": "alpha 日本語 work 0",
+            "url": "https://arxiv.org/abs/fixture0"
+          }
+        ]
+      },
+      "limit": 10,
+      "name": "unused-best-short-circuit-array",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": {\"landing_page_url\": \"https://arxiv.org/abs/fixture0\", \"pdf_url\": \"https://fixture.test/paper0.pdf\", \"is_oa\": true, \"license\": \"cc-by\", \"version\": \"publishedVersion\", \"source\": {\"id\": \"https://openalex.org/S1\", \"display_name\": \"Fixture journal\", \"type\": \"journal\"}}, \"best_oa_location\": [\"unused-best\"], \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
+    },
+    {
+      "env": {},
+      "expected": {
+        "error_kind": "AttributeError"
+      },
+      "limit": 10,
+      "name": "selected-best-type-error-array",
+      "process_steps": [],
+      "query": "alpha 日本語 + * ~",
+      "steps": [
+        {
+          "request": {
+            "headers": {
+              "Accept": "application/json"
+            },
+            "url": "https://api.openalex.org/works?search=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~&per_page=10&cursor=%2A&sort=relevance_score%3Adesc&select=id%2Cdoi%2Ctitle%2Cdisplay_name%2Cpublication_year%2Cpublication_date%2Ctype%2Ccited_by_count%2Cis_retracted%2Copen_access%2Cprimary_location%2Cbest_oa_location%2Ccontent_urls%2Cabstract_inverted_index"
+          },
+          "text": "{\"results\": [{\"id\": \"https://openalex.org/W0\", \"doi\": \"https://doi.org/10.1/fixture0\", \"display_name\": \"alpha 日本語 work 0\", \"publication_year\": 2026, \"publication_date\": \"2026-01-02\", \"type\": \"article\", \"cited_by_count\": 0, \"is_retracted\": false, \"abstract_inverted_index\": {\"alpha\": [0, 3], \"日本語\": [1], \"evidence\": [2]}, \"primary_location\": null, \"best_oa_location\": [\"unused-best\"], \"content_urls\": {\"pdf\": \"https://content.openalex.org/works/W0.pdf\"}, \"open_access\": {\"is_oa\": true, \"oa_status\": \"gold\"}}]}"
+        }
+      ]
     }
   ],
   "identifiers": [

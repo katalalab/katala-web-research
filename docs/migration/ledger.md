@@ -189,3 +189,24 @@ Native OpenAlex search now includes lazy/per-page raw/op key resolution and filt
 Author final executed gates on aarch64 macOS: 95 exact Python search/HTTP/op transcript cases, 13 identifier cases, 34 paired localhost/owned-op CLI comparisons preserving all eight populated user tables/full dump/version/integrity across errors; byte-identical oracle replay; 660 Python3.13/Unicode15.1 alphabetic ranges replay identically after pinned formatting without rewriting sources. fmt/warnings-denied all-target clippy/all native tests plus 218 baseline CLI comparisons, required verifier 167 Python tests/deterministic benchmark/smoke/artifact/gitleaks and locked offline release pass. No new dependency/lock/workflow/runner/protection change. Previous HTTP/DDG/JSON/GitHub localhost gates are unchanged and inherited, not claimed as rerun here. The offline unsupported-provider guard now uses remaining meta and cannot accidentally access OpenAlex.
 
 All 35 rows now contain concrete pending_reasons separate from scoped case_evidence and final_acceptance_scope; ten measured passing case records are present, while final acceptance remains pending in every row. Historical unallocated aggregate gates are not inflated into per-row completion. Meta is the remaining component provider; graph/cache, enrichment and downstream command/report/storage/release/Windows/Linux/full lifecycle/live/safety approval gates remain open. No final migration or speed claim. Exact source/binary provenance and CI/independent review are recorded with the published checkpoint.
+
+## PR #26 independent P3: unused best-location URL branch
+
+Parent focus review independently replayed all original 95 search/13 identifier Python
+expectations byte-identically and checked five green existing CI checks, with no new
+blocking issue. The review found that a valid primary URL plus string best_oa_location
+succeeds in Python but native eagerly inspected the unused best branch. The isolated
+repair only moves best lookup behind primary URL selection. Eight unannotated fixture
+cases (string/number/bool/array, each unused versus selected) first fail on unchanged
+91da387 production code and then pass. Original 95/13 expectations are unchanged.
+
+Author affected Mac gates: 103/13 strict cases, identical regeneration, fmt/warnings-denied
+all-target clippy, locked offline debug/owned-fixture and release builds pass. Existing
+34 paired OpenAlex CLI/218 broader CLI/Python evidence is inherited, not called rerun;
+independent native/TLS execution remains absent. Matrix adds only eight new scoped cases
+with production source hash a3a28d1739ceb921c5c7d1e139e798891c5b6f0b615af1fb95d5ec3f15281e98.
+All 35 final rows remain pending. Abstract-position/aggregate result/page/byte budgets
+and cap/one-over/allocation/interruption tests are concretely pending in openalex-contract.md.
+Meta remains on its separate local 7e6f3b8 branch and is not part of the repaired diff.
+No dependency/lock/CI/budget/auth/network/OS/real archive/installed CLI change. Repaired
+exact-head CI/focus confirmation and ordinary merge authorization remain separate steps.

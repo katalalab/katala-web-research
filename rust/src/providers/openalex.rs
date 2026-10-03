@@ -163,9 +163,12 @@ fn result(item: &Value, index: usize) -> ProviderResult<SearchResult> {
     let m = object(item)?;
     let empty = Map::new();
     let primary = nested(m, "primary_location", &empty)?;
-    let best = nested(m, "best_oa_location", &empty)?;
-    let url = get(primary, "landing_page_url")
-        .or_else(|| get(best, "landing_page_url"))
+    let location_url = if let Some(primary_url) = get(primary, "landing_page_url") {
+        Some(primary_url)
+    } else {
+        get(nested(m, "best_oa_location", &empty)?, "landing_page_url")
+    };
+    let url = location_url
         .or_else(|| get(m, "doi"))
         .or_else(|| get(m, "id"))
         .map(scalar)

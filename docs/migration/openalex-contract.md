@@ -15,3 +15,31 @@ HTTP 401/403/404/429/503, transport timeout and non-JSON/rate HTML propagate onc
 Author aarch64 macOS evidence: 95 strict Python-derived search/HTTP/op transcripts, 13 identifier cases and 34 paired native/reference CLI comparisons with fixed api.openalex.org CONNECT mapped only to loopback and ephemeral process-local CA trust. Each CLI child archive seeds/asserts nonempty rows in all eight user tables before complete dump/user_version/integrity comparisons across successes and failures. This proves those synthetic histories, not arbitrary real archives, graph cache, migration interruption or crash recovery. The fixture trace checks op read arguments/call counts, including each page and before invalid filters; no unknown/installed op or live DNS/API is used.
 
 Reproduce with pinned scripts/rust.sh and locked offline dependencies: scripts/verify-openalex.sh builds kwr-rs/process_fixture and executes loopback comparisons. KWR_RUST_BINARY/KWR_PROCESS_FIXTURE must point to absolute artifacts when sharing CARGO_TARGET_DIR. PYTHONPATH=src python3 scripts/migration/generate_openalex_goldens.py regenerates the oracle; generate_python_alpha.py requires recorded Python3.13/Unicode15.1 followed by pinned fmt. Committed native fixtures require no generator or Python runtime. The original 218 CLI offline guard now targets remaining meta, so it cannot accidentally invoke newly implemented OpenAlex. Scoped passed evidence and individual pending reasons are recorded in all 35 acceptance rows; complete migration, live certification and installed CLI/real-data cutover remain separate gates.
+
+## Independent P3: unused best location short circuit
+
+Focus review replayed the original 95 search/13 identifier Python expectations and five
+green existing CI checks; no new blocking issue. It found that native URL selection
+validated best_oa_location before selecting a valid primary URL. Python never evaluates
+that unused branch. An isolated repair delays the best-location lookup until primary
+landing_page_url is false/absent. Metadata already ignores non-object locations and is
+unchanged. Eight new ordinary expectations cover truthy string, number, boolean and
+array best values: unused branches succeed, selected malformed branches still raise
+AttributeError. The new fixture fails against unchanged 91da387 and passes after repair;
+all original 95 cases and 13 identifiers retain exactly the same expected values.
+
+Author affected gates: 103 search/13 identifier strict cases, byte-identical oracle replay,
+fmt/warnings-denied all-target clippy, locked offline debug/owned-fixture and release
+builds. The inherited 34 paired CLI/218 broader CLI/Python gates are unchanged and are
+not redundantly rerun or claimed as independent native/TLS evidence. New source hash is
+recorded separately in matrix case_evidence. No Meta feature, dependency, lock, workflow,
+installed CLI or real data change enters this repair.
+
+Final resource assertions remain open: select and approve documented decoded-position,
+aggregate result/page/byte budgets before constructing unbounded inputs; test exact cap
+and one-over rejection before allocation, many small pages with repeated/nonrepeated
+cursors and a huge requested limit, interruption while accumulating, body/key redaction,
+no partial result or ledger publication and measured peak memory/deadline. Each fixture
+must remain bounded synthetic data. The existing per-response 8 MiB transport cap does
+not establish total-result or decoded abstract-position bounds. No new cap or complete
+resource-safety acceptance is inferred from this short-circuit repair.
