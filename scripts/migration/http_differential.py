@@ -128,11 +128,12 @@ class Fixtures(unittest.TestCase):
             self.assertNotIn(marker,r['error_message'])
         for route,retained in [('/redirect',True),('/cross-origin',False)]:
             start=len(RECORDS)
-            r=self.probe(self.origin+route,headers={'Authorization':'public-fixture-marker','Cookie':'public-fixture-cookie','Proxy-Authorization':'public-fixture-proxy'})
+            r=self.probe(self.origin+route,headers={'Authorization':'public-fixture-marker','Cookie':'public-fixture-cookie','Proxy-Authorization':'public-fixture-proxy','X-Subscription-Token':'public-fixture-brave','x-Api-Key':'public-fixture-api','X-Unknown-Credential':'public-fixture-custom','Accept-Language':'ja'})
             self.assertEqual(r['status'],200)
             destination=RECORDS[start:][-1][1]
-            for header in ['authorization','cookie','proxy-authorization']:
+            for header in ['authorization','cookie','proxy-authorization','x-subscription-token','x-api-key','x-unknown-credential']:
                 self.assertEqual(header in destination,retained,(route,header,destination))
+            self.assertEqual(destination.get('accept-language'),'ja')
         type(self).safety_checks+=5
         start=len(RECORDS)
         with self.assertRaises(FetchError):fetch_url(self.origin+'/cycle/0',timeout=1)

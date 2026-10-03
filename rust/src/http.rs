@@ -396,9 +396,20 @@ pub fn fetch_url(
                 ));
             }
             if parsed.origin() != next_parsed.origin() {
+                // Provider-specific and future credential headers must not
+                // escape their original origin. Only ordinary negotiation and
+                // cache controls may cross; same-origin redirects retain all.
                 forwarded_headers.retain(|(key, _)| {
-                    !["authorization", "cookie", "proxy-authorization"]
-                        .contains(&key.to_ascii_lowercase().as_str())
+                    [
+                        "accept",
+                        "accept-encoding",
+                        "accept-language",
+                        "user-agent",
+                        "content-type",
+                        "cache-control",
+                        "pragma",
+                    ]
+                    .contains(&key.to_ascii_lowercase().as_str())
                 });
             }
             let distinct = visited.len();

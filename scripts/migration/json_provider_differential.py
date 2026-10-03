@@ -36,11 +36,20 @@ class JsonHandler(fixture.Handler):
     def do_GET(self):
         parsed=urlsplit(self.path);params=parse_qs(parsed.query);q=params.get('q',[''])[0]
         if parsed.path=='/search':provider='searxng';page=int(params.get('pageno',['1'])[0])
-        elif parsed.path=='/res/v1/web/search':provider='brave';page=int(params.get('offset',['0'])[0])+1
+        elif parsed.path in {'/res/v1/web/search','/brave-final','/brave-return'}:provider='brave';page=int(params.get('offset',['0'])[0])+1
         elif parsed.path=='/':provider='jina';page=1
         else:self.send_error(404);return
         headers={k.lower():v for k,v in self.headers.items()}
         REQUESTS.append((provider,self.path,headers))
+        redirect=None
+        if parsed.path=='/res/v1/web/search':
+            if q=='fixture-redirect-same':redirect='/brave-final?'+parsed.query
+            elif q=='fixture-redirect-host':redirect='https://s.jina.ai/brave-final?'+parsed.query
+            elif q=='fixture-redirect-port':redirect=f'https://api.search.brave.com:{self.server.server_port}/brave-final?'+parsed.query
+            elif q=='fixture-redirect-return':redirect='https://s.jina.ai/brave-return?'+parsed.query
+        elif parsed.path=='/brave-return':redirect='https://api.search.brave.com/brave-final?'+parsed.query
+        if redirect:
+            self.send_response(302);self.send_header('Location',redirect);self.send_header('Content-Length','0');self.end_headers();self.close_connection=True;return
         rows=items(provider,page)
         if q=='fixture-empty' or (q=='fixture-empty-second' and page>1):rows=[]
         payload={'results':rows} if provider=='searxng' else {'web':{'results':rows}} if provider=='brave' else {'data':rows}
@@ -56,7 +65,7 @@ class JsonHandler(fixture.Handler):
 class JsonProxy(fixture.ProxyHandler):
     tls_port=0
     def do_CONNECT(self):
-        if self.path not in {'api.search.brave.com:443','s.jina.ai:443'}:self.send_error(403);return
+        if self.path not in {'api.search.brave.com:443','s.jina.ai:443',f'api.search.brave.com:{self.tls_port}'}:self.send_error(403);return
         # Map only the two synthetic fixture names to our TLS socket. Never
         # resolve/connect a remote hostname or forward an arbitrary target.
         upstream=socket.create_connection(('127.0.0.1',self.tls_port),timeout=2)
@@ -78,6 +87,7 @@ def snapshot(path):
 class JsonFixture(fixture.TlsAndProxy):
     additional_san=',DNS:api.search.brave.com,DNS:s.jina.ai'
     comparisons={p:0 for p in ['searxng','brave','jina']}
+    redirect_safety_comparisons=0
     @classmethod
     def setUpClass(cls):
         with patch.object(fixture,'Handler',JsonHandler),patch.object(fixture,'ProxyHandler',JsonProxy):super().setUpClass()
@@ -139,6 +149,27 @@ class JsonFixture(fixture.TlsAndProxy):
         self.assertEqual(self.compare('brave',extra={'BRAVE_FRESHNESS':'invalid'},expected=1),[])
         self.compare('searxng',extra={'KWR_SEARXNG_CATEGORIES':'general,it','KWR_SEARXNG_LANGUAGE':'ja','KWR_SEARXNG_TIME_RANGE':'month','KWR_SEARXNG_SAFESEARCH':'1'})
         self.compare('brave',extra={'BRAVE_SEARCH_COUNTRY':'JP','BRAVE_SEARCH_LANG':'ja','BRAVE_UI_LANG':'ja-JP','BRAVE_FRESHNESS':'week','BRAVE_SAFESEARCH':'moderate'})
+    def test_brave_key_redirect_origin_boundaries(self):
+        # Safety policy differs from urllib: its same public synthetic key is
+        # forwarded across origins. No production token or external DNS is used.
+        for query,retained,hops in [('fixture-redirect-same',True,2),('fixture-redirect-host',False,2),('fixture-redirect-port',False,2),('fixture-redirect-return',False,3)]:
+            with tempfile.TemporaryDirectory(prefix='kwr-brave-redirect-') as tmp:
+                values=[]
+                for rust in [False,True]:
+                    path=Path(tmp)/('rust.sqlite' if rust else 'python.sqlite');a=Archive(path)
+                    a.upsert_page(PageSnapshot('https://fixture.test/old','Old title','must remain','fixture','fixed'));a.close();before=snapshot(path)
+                    env=dict(self.env,HTTPS_PROXY=self.proxy,SSL_CERT_FILE=str(self.ca_path),KWR_HTTP_TIMEOUT_SECONDS='1',BRAVE_SEARCH_API_KEY=PUBLIC_KEY)
+                    prefix=[str(fixture.BINARY)] if rust else [sys.executable,'-m','katala_web_research.cli']
+                    start=len(REQUESTS)
+                    result=subprocess.run(prefix+['search',query,'--provider','brave','--limit','1','--candidate-multiplier','1','--json','--archive',str(path)],env=env,capture_output=True,text=True,timeout=10)
+                    self.assertEqual(result.returncode,0,(query,rust,result.stderr));self.assertEqual(result.stderr,'')
+                    values.append(json.loads(result.stdout));self.assertTrue(values[-1]);self.assertNotIn(PUBLIC_KEY,result.stdout)
+                    self.assertEqual(before,snapshot(path));trace=REQUESTS[start:];self.assertEqual(len(trace),hops,(query,rust,trace))
+                    self.assertEqual(trace[0][2].get('x-subscription-token'),PUBLIC_KEY)
+                    for _,_,headers in trace[1:]:
+                        self.assertEqual(headers.get('x-subscription-token'),PUBLIC_KEY if retained or not rust else None,(query,rust))
+                        self.assertEqual(headers.get('accept'),'application/json');self.assertEqual(headers.get('user-agent'),DEFAULT_USER_AGENT)
+                self.assertEqual(*values,query);type(self).redirect_safety_comparisons+=1
     test_downgrade_rejected=None
     test_http_proxy_and_environment_boundaries=None
     test_https_connect_proxy=None
@@ -148,4 +179,5 @@ class JsonFixture(fixture.TlsAndProxy):
 if __name__=='__main__':
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(JsonFixture))
     print('offline JSON provider CLI comparisons:',JsonFixture.comparisons)
+    print('intentional Brave redirect safety comparisons:',JsonFixture.redirect_safety_comparisons)
     raise SystemExit(not result.wasSuccessful())
