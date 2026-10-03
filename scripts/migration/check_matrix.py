@@ -17,6 +17,12 @@ for row in rows:
     assert row['required_cases'] and row['final_acceptance'] in ['pending','passed'],row['id']
     if row['final_acceptance']=='pending':
         assert row.get('pending_reasons') and all(row['pending_reasons']),row['id']
+        assert row.get('missing_assertions') and all(row['missing_assertions']),row['id']
+        assert row.get('next_tests') and row.get('close_when'),row['id']
+        for test in row['next_tests']:
+            assert test['status'] in ['proposed','blocked'] and not test['execution_evidence'],row['id']
+            assert test['assertions'] and test['planned_file'] and test['id'],row['id']
+        assert row['scope_acceptance']['full_ready'] is False,row['id']
     else:
         assert not row.get('pending_reasons'),row['id']
     cases=row.get('case_evidence',[])

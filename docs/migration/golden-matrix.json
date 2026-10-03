@@ -50,7 +50,7 @@
         "rank/dedup/retraction/diversity and metadata",
         "positive enrichment and cache highlights"
       ],
-      "status": "partial: feed + seven component network providers (Unix gh/op); meta, positive enrichment and remaining malformed/OS/live acceptance pending",
+      "status": "partial: all nine native provider normal paths, including Meta; enrichment/malformed/OS/live final acceptance pending",
       "surface": "search",
       "case_evidence": [
         {
@@ -78,12 +78,83 @@
           "target": "aarch64-apple-darwin",
           "executor": "author; independent target execution not claimed",
           "source_tree_sha256": "8bfc92e80db944d8102874a6ff2b9a562aee4e182d3152c45abd5d333f40eb74"
+        },
+        {
+          "id": "existing-cli-measured-search",
+          "status": "passed",
+          "count": 40,
+          "scope": "Observed parity-hook scope only: 39 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        },
+        {
+          "id": "meta-combined-cli",
+          "status": "passed",
+          "count": 37,
+          "scope": "37 combined paired CLI/library cases; exact result replay at measured timing/order, request/header traces, selected archive/health preservation and explicit schema refusals. Ordinary cases only, no final acceptance.",
+          "evidence": [
+            "scripts/migration/meta_differential.py",
+            "scripts/migration/meta_reference_fixture.py",
+            "scripts/verify-meta.sh"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
         }
       ],
       "pending_reasons": [
-        "meta provider and positive enrichment remain unimplemented",
-        "complete malformed model/config/encoding/output/signal parity and approved safety differences are not closed"
-      ]
+        "Positive enrichment/native network readers remain unimplemented",
+        "Complete flag/model/config/encoding/output/signal parity and approved safety differences are not closed"
+      ],
+      "missing_assertions": [
+        "Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet",
+        "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-search-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_search.py",
+          "assertions": [
+            "Positive enrich-top invokes only selected readers, preserves failed captures and exact metadata; no native reader implementation yet",
+            "For each inventoried search flag/default, measure paired JSON/text/exit/negative-limit cases on all nine providers; cover UTF8/signed-bound parser and explicit safety differences"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "github-repo-search-cli",
+            "scope": "30 paired JSON/text/category/domain/candidate/highlight/signed-limit and config/fallback/error fixtures, eight-table source preservation; remaining provider/enrichment cases still pending",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "openalex-search-cli",
+            "scope": "34 paired JSON/text/options/candidate/filter/highlight/paging/op/config/rate/error/history cases; remaining final search scope still open",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "existing-cli-measured-search",
+            "scope": "Observed parity-hook scope only: 39 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "meta-combined-cli",
+            "scope": "37 combined paired CLI/library cases; exact result replay at measured timing/order, request/header traces, selected archive/health preservation and explicit schema refusals. Ordinary cases only, no final acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -109,6 +180,50 @@
       "pending_reasons": [
         "network auto/Jina/direct readers and refresh/cache-miss extraction/storage are unimplemented",
         "only cache-hit source fixtures exist; full timeout/fallback/metadata/capture-error behavior is open"
+      ],
+      "missing_assertions": [
+        "Implement direct/Jina/auto readers; auto falls back only on FetchError and preserves the two failure kinds",
+        "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-read-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_read.py",
+          "assertions": [
+            "Implement direct/Jina/auto readers; auto falls back only on FetchError and preserves the two failure kinds",
+            "Compare header/meta charset, HTML/PDF/text extraction, cache miss/hit/refresh write failure and original archive contents on eight populated tables"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-read",
+            "scope": "Observed parity-hook scope only: 1 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-read",
+          "status": "passed",
+          "count": 2,
+          "scope": "Observed parity-hook scope only: 1 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -132,7 +247,29 @@
       "pending_reasons": [
         "citation graph directions/lookup/filter URL quoting/cache and per-direction bounds are unimplemented",
         "identifier helper evidence alone does not implement this command"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement work/DOI quoting, incoming/outgoing/both graph traversal and 50-work bound; match cursor/dedup/metadata",
+        "Compare fresh/stale/offline graph-cache key/version/partial-error semantics and copy preservation without live OpenAlex calls"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-openalex-expand-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_openalex_expand.py",
+          "assertions": [
+            "Implement work/DOI quoting, incoming/outgoing/both graph traversal and 50-work bound; match cursor/dedup/metadata",
+            "Compare fresh/stale/offline graph-cache key/version/partial-error semantics and copy preservation without live OpenAlex calls"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -156,7 +293,29 @@
       "surface": "collect",
       "pending_reasons": [
         "native collection/capture failure/storage/report/evidence flow is unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement runs/search_results/pages transaction and exact CLI outputs for mixed successful/failed URL captures",
+        "Compare UTF8 Markdown evidence, reader fallback, report-write failure and rollback against copied synthetic histories"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-collect-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_collect.py",
+          "assertions": [
+            "Implement runs/search_results/pages transaction and exact CLI outputs for mixed successful/failed URL captures",
+            "Compare UTF8 Markdown evidence, reader fallback, report-write failure and rollback against copied synthetic histories"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -177,6 +336,50 @@
       "surface": "query",
       "pending_reasons": [
         "normal FTS fixtures pass; complete legacy/schema/env/path/encoding/bounds and source-preservation contract is not closed"
+      ],
+      "missing_assertions": [
+        "Compare invalid FTS expression, all punctuation/empty/C0 whitespace, signed-i64 endpoints and UTF8 argv with explicit parser policy",
+        "Verify query refusal on future/old-column schema and no source/sidecar damage on broken stdout or interrupt"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-query-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_query.py",
+          "assertions": [
+            "Compare invalid FTS expression, all punctuation/empty/C0 whitespace, signed-i64 endpoints and UTF8 argv with explicit parser policy",
+            "Verify query refusal on future/old-column schema and no source/sidecar damage on broken stdout or interrupt"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-query",
+            "scope": "Observed parity-hook scope only: 11 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-query",
+          "status": "passed",
+          "count": 12,
+          "scope": "Observed parity-hook scope only: 11 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -198,6 +401,50 @@
       "surface": "plan",
       "pending_reasons": [
         "normal inventoried-option/Unicode fixtures pass; arbitrary Python integer versus i64 boundaries and final output/signal/platform differences await acceptance"
+      ],
+      "missing_assertions": [
+        "Compare absent versus explicit year, duplicate/whitespace subqueries and i64 endpoints against the declared Python numeric-bound policy",
+        "Measure default/text/JSON/invalid-argument coverage and OS newline/UTF8 stdout with exact source evidence"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-plan-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_plan.py",
+          "assertions": [
+            "Compare absent versus explicit year, duplicate/whitespace subqueries and i64 endpoints against the declared Python numeric-bound policy",
+            "Measure default/text/JSON/invalid-argument coverage and OS newline/UTF8 stdout with exact source evidence"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-plan",
+            "scope": "Observed parity-hook scope only: 36 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-plan",
+          "status": "passed",
+          "count": 37,
+          "scope": "Observed parity-hook scope only: 36 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -222,7 +469,29 @@
       "surface": "repos scan",
       "pending_reasons": [
         "native traversal/incremental hashing/context/skip rules and write transaction/FTS behavior are unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement traversal/skip rules, symlink loops/escape policy and mixed UTF8/invalid-byte file handling on an owned tree",
+        "Assert size/mtime/hash/context invalidation, deletion and FTS insert/update/delete transaction rollback on interrupted scans"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-repos-scan-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_repos_scan.py",
+          "assertions": [
+            "Implement traversal/skip rules, symlink loops/escape policy and mixed UTF8/invalid-byte file handling on an owned tree",
+            "Assert size/mtime/hash/context invalidation, deletion and FTS insert/update/delete transaction rollback on interrupted scans"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -245,6 +514,50 @@
       "surface": "repos query",
       "pending_reasons": [
         "normal FTS/context fixtures pass; all historical schema/path/encoding/numeric/error behavior remains unallocated/unverified"
+      ],
+      "missing_assertions": [
+        "Compare precedence of inline/explicit repo/path filters, literal percent/underscore/backslash LIKE escaping and context weights at signed bounds",
+        "Verify old/future-schema refusal and broken stdout/interrupt preserve the complete copied archive"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-repos-query-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_repos_query.py",
+          "assertions": [
+            "Compare precedence of inline/explicit repo/path filters, literal percent/underscore/backslash LIKE escaping and context weights at signed bounds",
+            "Verify old/future-schema refusal and broken stdout/interrupt preserve the complete copied archive"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-repos-query",
+            "scope": "Observed parity-hook scope only: 16 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-repos-query",
+          "status": "passed",
+          "count": 17,
+          "scope": "Observed parity-hook scope only: 16 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -266,7 +579,29 @@
       "surface": "feeds add",
       "pending_reasons": [
         "normal insertion fixtures pass; all URL/model/version/path/config malformed cases and approved numeric/encoding differences remain open"
-      ]
+      ],
+      "missing_assertions": [
+        "Compare absent/empty/duplicate URL/title and empty/UTF8 archive argv; retain every existing health field/item and source count",
+        "Verify read-only/future/old-column archive failures and transaction/sidecar preservation under interrupt"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-feeds-add-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_feeds_add.py",
+          "assertions": [
+            "Compare absent/empty/duplicate URL/title and empty/UTF8 archive argv; retain every existing health field/item and source count",
+            "Verify read-only/future/old-column archive failures and transaction/sidecar preservation under interrupt"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -290,7 +625,29 @@
       "surface": "feeds refresh",
       "pending_reasons": [
         "ordinary RSS/Atom/JSONFeed/file/HTTP fixtures pass; malformed XML/HTML/date/model/codec/file URI and crash/transaction/partial-failure coverage remains incomplete"
-      ]
+      ],
+      "missing_assertions": [
+        "Compare DTD/entity/date/non-object JSONFeed and malformed HTML/file URI boundaries with named rejection policies approved",
+        "Assert source selection/order and batch failure/write rollback retain previous items/health; cap-one-over body/global time at owned transport"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-feeds-refresh-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_feeds_refresh.py",
+          "assertions": [
+            "Compare DTD/entity/date/non-object JSONFeed and malformed HTML/file URI boundaries with named rejection policies approved",
+            "Assert source selection/order and batch failure/write rollback retain previous items/health; cap-one-over body/global time at owned transport"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -311,6 +668,50 @@
       "surface": "feeds query",
       "pending_reasons": [
         "normal feed FTS fixtures pass; complete version/model/encoding/limits/error/transaction contract remains open"
+      ],
+      "missing_assertions": [
+        "Compare all FTS punctuation/empty/Unicode/signed endpoints with exact title/summary/source metadata and bm25 order",
+        "Assert malformed/null-date schema rows and read-only/future/old-column refusal do not mutate data"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-feeds-query-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_feeds_query.py",
+          "assertions": [
+            "Compare all FTS punctuation/empty/Unicode/signed endpoints with exact title/summary/source metadata and bm25 order",
+            "Assert malformed/null-date schema rows and read-only/future/old-column refusal do not mutate data"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-feeds-query",
+            "scope": "Observed parity-hook scope only: 11 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-feeds-query",
+          "status": "passed",
+          "count": 12,
+          "scope": "Observed parity-hook scope only: 11 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -332,6 +733,50 @@
       "surface": "sources list",
       "pending_reasons": [
         "normal registry/overlay fixtures pass; complete malformed/duplicate/type/order/config-byte/numeric boundary acceptance is open"
+      ],
+      "missing_assertions": [
+        "Compare malformed overlay root/fields, duplicate identity and trust-score types, stable name ordering and signed endpoints",
+        "Measure every inventory flag/default/JSON/text/error shape and Unicode/OS path behavior against accepted policies"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-sources-list-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_sources_list.py",
+          "assertions": [
+            "Compare malformed overlay root/fields, duplicate identity and trust-score types, stable name ordering and signed endpoints",
+            "Measure every inventory flag/default/JSON/text/error shape and Unicode/OS path behavior against accepted policies"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-sources-list",
+            "scope": "Observed parity-hook scope only: 10 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-sources-list",
+          "status": "passed",
+          "count": 11,
+          "scope": "Observed parity-hook scope only: 10 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -353,6 +798,50 @@
       "surface": "sources match",
       "pending_reasons": [
         "normal URL/overlay fixtures pass; complete URL/IDN/normalization/overlay-malformation/config-byte acceptance is open"
+      ],
+      "missing_assertions": [
+        "Compare userinfo/IPv6/IDNA, slashless URLs, C0 cleaning, params/ports and prefix boundaries against literal urllib semantics",
+        "Assert malformed overlay error behavior and no URI canonicalization changes trust/category matches"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-sources-match-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_sources_match.py",
+          "assertions": [
+            "Compare userinfo/IPv6/IDNA, slashless URLs, C0 cleaning, params/ports and prefix boundaries against literal urllib semantics",
+            "Assert malformed overlay error behavior and no URI canonicalization changes trust/category matches"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-sources-match",
+            "scope": "Observed parity-hook scope only: 15 JSON and 2 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-sources-match",
+          "status": "passed",
+          "count": 17,
+          "scope": "Observed parity-hook scope only: 15 JSON and 2 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -375,7 +864,29 @@
       "surface": "issues ingest",
       "pending_reasons": [
         "native gh/JSON ingest, metadata/priority/state/source and FTS transaction parity are unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement from-json issue/PR normalization including labels/priority/status, unknown/duplicate fields and malformed records",
+        "Implement bounded owned gh transcript auth/timeout/nonzero behavior and atomic project-item/FTS rollback"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-issues-ingest-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_issues_ingest.py",
+          "assertions": [
+            "Implement from-json issue/PR normalization including labels/priority/status, unknown/duplicate fields and malformed records",
+            "Implement bounded owned gh transcript auth/timeout/nonzero behavior and atomic project-item/FTS rollback"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -396,6 +907,50 @@
       "surface": "issues query",
       "pending_reasons": [
         "normal synthetic issue FTS/status fixtures pass; all schema/model/type/encoding/limit/error cases remain open"
+      ],
+      "missing_assertions": [
+        "Compare FTS label/item_key fields, unknown/null metadata and signed/empty query endpoints",
+        "Assert read-only/future/old-column schema and stdout/interrupt failures retain copied archive data"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-issues-query-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_issues_query.py",
+          "assertions": [
+            "Compare FTS label/item_key fields, unknown/null metadata and signed/empty query endpoints",
+            "Assert read-only/future/old-column schema and stdout/interrupt failures retain copied archive data"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-issues-query",
+            "scope": "Observed parity-hook scope only: 11 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-issues-query",
+          "status": "passed",
+          "count": 12,
+          "scope": "Observed parity-hook scope only: 11 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -417,7 +972,29 @@
       "surface": "issues report",
       "pending_reasons": [
         "native radar sorting/filtering/Markdown/evidence/report storage parity is unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement radar Markdown grouping and priority/status/phase/number tie ordering with duplicate labels",
+        "Compare empty/mixed Unicode report, JSON/text/exit and output-path write failure without source mutation"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-issues-report-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_issues_report.py",
+          "assertions": [
+            "Implement radar Markdown grouping and priority/status/phase/number tie ordering with duplicate labels",
+            "Compare empty/mixed Unicode report, JSON/text/exit and output-path write failure without source mutation"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -438,7 +1015,29 @@
       "surface": "brief",
       "pending_reasons": [
         "native multi-source planning/evidence/capture/Markdown provenance parity is unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement local/web source selection, plan, dedup/quality scores and top-N report metadata",
+        "Compare no-web/partial-network/error cases and exact report/provenance on populated copied histories"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-brief-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_brief.py",
+          "assertions": [
+            "Implement local/web source selection, plan, dedup/quality scores and top-N report metadata",
+            "Compare no-web/partial-network/error cases and exact report/provenance on populated copied histories"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -459,7 +1058,29 @@
       "surface": "investigate",
       "pending_reasons": [
         "native iterative research/capture/checklist/evidence/report failure flow is unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement selected URL captures, source lineage, checklist/evidence fields and reader-error retention",
+        "Compare failed report/capture writes, partial success, UTF8 Markdown and copied archive rollback"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-investigate-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_investigate.py",
+          "assertions": [
+            "Implement selected URL captures, source lineage, checklist/evidence fields and reader-error retention",
+            "Compare failed report/capture writes, partial success, UTF8 Markdown and copied archive rollback"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -481,7 +1102,29 @@
       "surface": "doctor",
       "pending_reasons": [
         "native FTS/config/dependency/cost/offline diagnosis and all exit/output paths are unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement provider status/configuration posture without reading secrets or issuing requests by default",
+        "Compare SQLite FTS probe and explicitly requested local SearXNG preflight, missing program/key/env failures and JSON/text/exit"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-doctor-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_doctor.py",
+          "assertions": [
+            "Implement provider status/configuration posture without reading secrets or issuing requests by default",
+            "Compare SQLite FTS probe and explicitly requested local SearXNG preflight, missing program/key/env failures and JSON/text/exit"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -503,6 +1146,50 @@
       "surface": "engines",
       "pending_reasons": [
         "normal synthetic health stats fixtures pass; all malformed/ledger/window/rounding/p95/pruning/status/config parity and intentional differences remain open"
+      ],
+      "missing_assertions": [
+        "Expand recent-window tests at four/five samples, exact 0.5 failure/0.2 useful/5000ms latency thresholds, duplicate providers and nearest-rank p95",
+        "Compare 500-row prune, newest-error selection, ledger write/read failure and no implicit archive creation in the library"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-engines-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_engines.py",
+          "assertions": [
+            "Expand recent-window tests at four/five samples, exact 0.5 failure/0.2 useful/5000ms latency thresholds, duplicate providers and nearest-rank p95",
+            "Compare 500-row prune, newest-error selection, ledger write/read failure and no implicit archive creation in the library"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "existing-cli-measured-engines",
+            "scope": "Observed parity-hook scope only: 6 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row.",
+      "case_evidence": [
+        {
+          "id": "existing-cli-measured-engines",
+          "status": "passed",
+          "count": 7,
+          "scope": "Observed parity-hook scope only: 6 JSON and 1 text cases. Exercised and unmeasured flags/output keys are recorded separately; unsupported-command refusal is not implementation acceptance.",
+          "evidence": [
+            "docs/migration/cli-coverage.json",
+            "scripts/migration/measure_cli_coverage.py",
+            "scripts/migration/differential.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
       ]
     },
     {
@@ -525,7 +1212,29 @@
       "surface": "eval",
       "pending_reasons": [
         "native deterministic benchmark/dataset/scoring/threshold/error/report parity is unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement native deterministic metrics, fixtures, threshold-80 pass/fail/exit and report serialization",
+        "Compare all inventoried defaults/limits/output paths and exact Markdown; repeat counts must be deterministic, never live/model calls"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-eval-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_eval.py",
+          "assertions": [
+            "Implement native deterministic metrics, fixtures, threshold-80 pass/fail/exit and report serialization",
+            "Compare all inventoried defaults/limits/output paths and exact Markdown; repeat counts must be deterministic, never live/model calls"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -548,7 +1257,29 @@
       "surface": "mcp",
       "pending_reasons": [
         "native seven-tool stdio implementation, NDJSON/Content-Length framing, notifications/errors/partial input/signal/stdout purity are unimplemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement seven inventoried tool names/descriptions/input schemas and every mapped command JSON/error shape; native MCP currently absent",
+        "Compare initialize/list/call/notifications/unknown methods/tools and fragmented/malformed UTF8 Content-Length CRLF plus NDJSON; stdout contains protocol only"
+      ],
+      "next_tests": [
+        {
+          "id": "cli-mcp-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_cli_mcp.py",
+          "assertions": [
+            "Implement seven inventoried tool names/descriptions/input schemas and every mapped command JSON/error shape; native MCP currently absent",
+            "Compare initialize/list/call/notifications/unknown methods/tools and fragmented/malformed UTF8 Content-Length CRLF plus NDJSON; stdout contains protocol only"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -569,7 +1300,29 @@
       "surface": "ddg",
       "pending_reasons": [
         "normal parser/request/rank cases pass; malformed HTML/URL/charset/env/transport and selected safety acceptance remain incomplete"
-      ]
+      ],
+      "missing_assertions": [
+        "Extend HTML parser oracle to malformed nesting/entities/attributes/raw-text boundaries and URL/query scalar edge cases",
+        "Assert invalid-byte env, remaining charset/redirect/proxy behavior and discard/freshness metadata through named approved policies"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-ddg-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_ddg.py",
+          "assertions": [
+            "Extend HTML parser oracle to malformed nesting/entities/attributes/raw-text boundaries and URL/query scalar edge cases",
+            "Assert invalid-byte env, remaining charset/redirect/proxy behavior and discard/freshness metadata through named approved policies"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -655,7 +1408,55 @@
       "pending_reasons": [
         "normal Unix gh/REST and deadline fixtures pass; arbitrary model/representation/env/codec/ignored-custom-signal/concurrent/parent-death/escaped-group behavior remains open",
         "Windows subprocess ownership/PATHEXT implementation is missing; Linux execution unverified"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement/test actual Windows PATH/PATHEXT/child-group/pipe lifecycle; Linux target execution is missing",
+        "Compare remaining gh/REST malformed numeric/container/date representations, missing/replaced executable and signal-before-fallback/no partial success"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-github-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_github.py",
+          "assertions": [
+            "Implement/test actual Windows PATH/PATHEXT/child-group/pipe lifecycle; Linux target execution is missing",
+            "Compare remaining gh/REST malformed numeric/container/date representations, missing/replaced executable and signal-before-fallback/no partial success"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "github-repo-strict-transcripts",
+            "scope": "51 synthetic Python-derived availability/process args/fallback/REST request/metadata/dedup/retraction/year-discard expectations; exact steps, no network fallback",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "github-repo-cli-history",
+            "scope": "30 paired owned-gh/loopback-REST CLI option/config/error comparisons; full populated eight-table synthetic dump/version/integrity preservation",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "owned-process-raw-parity",
+            "scope": "Five owned executable raw argv/output comparisons; UTF8/space paths, CRLF/invalid bytes and exact stdout cap",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "owned-process-safety",
+            "scope": "Eight native-only policy assertions for shared cap, deadline, descendant and graceful signal cleanup; not Python signal/CLI exit/OS equivalence",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "process-completion-after-deadline",
+            "scope": "Owned successful child + drained streams, simulated post-poll descheduling across deadline; old success fails, repaired timeout passes. Helper is explicitly invoked in child, not an unexecuted acceptance gate.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -676,7 +1477,29 @@
       "surface": "github_code",
       "pending_reasons": [
         "normal requests/token/paging/422/metadata fixtures pass; all malformed collections/fragments/model/numeric/encoding/env/transport cases remain open"
-      ]
+      ],
+      "missing_assertions": [
+        "Compare 100/page and 10-page boundaries with malformed collection/numeric/date fields and rank holes after discard",
+        "Verify invalid-byte token/env, auth/422/late error and cap-one-over output/JSON depth against approved policies"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-github_code-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_github_code.py",
+          "assertions": [
+            "Compare 100/page and 10-page boundaries with malformed collection/numeric/date fields and rank holes after discard",
+            "Verify invalid-byte token/env, auth/422/late error and cap-one-over output/JSON depth against approved policies"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -700,7 +1523,29 @@
       "pending_reasons": [
         "five named JSON safety policies/55 combined measured differences need final approval",
         "remaining URL/codec/model/encoding/env/auth/transport edge behavior remains unverified"
-      ]
+      ],
+      "missing_assertions": [
+        "Approve or repair the five named typed_fields/typed_collections/strict_json_constants/strict_unicode/depth_limit policies and their 55 recorded differences",
+        "Compare remaining query/env-byte/charset/scalar branches and secret-bearing cross-origin redirects; no live service claim"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-jina-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_jina.py",
+          "assertions": [
+            "Approve or repair the five named typed_fields/typed_collections/strict_json_constants/strict_unicode/depth_limit policies and their 55 recorded differences",
+            "Compare remaining query/env-byte/charset/scalar branches and secret-bearing cross-origin redirects; no live service claim"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -724,7 +1569,29 @@
       "pending_reasons": [
         "five named JSON safety policies/55 combined measured differences need final approval",
         "remaining endpoint/config/URL/codec/model/env/auth/transport edge behavior remains unverified"
-      ]
+      ],
+      "missing_assertions": [
+        "Approve or repair named JSON shape/constants/Unicode/depth differences; cover all categories/engines/language/time/safesearch combinations",
+        "Compare endpoint/env-byte/charset/redirect and late-page error/candidate/maximum-response boundaries without live queries"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-searxng-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_searxng.py",
+          "assertions": [
+            "Approve or repair named JSON shape/constants/Unicode/depth differences; cover all categories/engines/language/time/safesearch combinations",
+            "Compare endpoint/env-byte/charset/redirect and late-page error/candidate/maximum-response boundaries without live queries"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -748,7 +1615,29 @@
       "pending_reasons": [
         "five named JSON safety policies/55 combined measured differences need final approval",
         "remaining URL/codec/model/env/auth/transport edge behavior remains unverified"
-      ]
+      ],
+      "missing_assertions": [
+        "Approve or repair named JSON shape/constants/Unicode/depth differences; cover country/search/ui language/freshness/safesearch boundaries",
+        "Compare invalid-byte key/env and same/cross-host/port/return redirects; Subscription-Token must never restore across an origin change"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-brave-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_brave.py",
+          "assertions": [
+            "Approve or repair named JSON shape/constants/Unicode/depth differences; cover country/search/ui language/freshness/safesearch boundaries",
+            "Compare invalid-byte key/env and same/cross-host/port/return redirects; Subscription-Token must never restore across an origin change"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -825,7 +1714,50 @@
           "executor": "author; independent Python/source focus review requested",
           "source_tree_sha256": "a3a28d1739ceb921c5c7d1e139e798891c5b6f0b615af1fb95d5ec3f15281e98"
         }
-      ]
+      ],
+      "missing_assertions": [
+        "Test documented decoded-position/aggregate results/pages/bytes cap and one-over before allocation, huge requested limit and interrupted accumulation; cap policy is not chosen",
+        "Cover remaining scalar/Unicode mapping/env-byte and authenticated redirect branches; graph/quoting/cache are separate unimplemented commands"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-openalex-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_openalex.py",
+          "assertions": [
+            "Test documented decoded-position/aggregate results/pages/bytes cap and one-over before allocation, huge requested limit and interrupted accumulation; cap policy is not chosen",
+            "Cover remaining scalar/Unicode mapping/env-byte and authenticated redirect branches; graph/quoting/cache are separate unimplemented commands"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "openalex-search-transcripts",
+            "scope": "95 exact Python-derived HTTP/op/config/filter/abstract/metadata/cursor/rate/error expectations with strict consumption and no network fallback",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "openalex-identifier-helper",
+            "scope": "13 exact standalone identifier spelling expectations; no graph lookup/quoting/cache claim",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "openalex-cli-history-auth",
+            "scope": "34 paired localhost/owned-op CLI cases; all eight user tables populated and full dump/version/integrity preserved across success/error; retry/partial results absent",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "openalex-unused-best-short-circuit",
+            "scope": "8 unannotated Python cases: truthy string/number/bool/array unused best location succeeds with valid primary URL, selected malformed best raises AttributeError; original 95/13 fixture values unchanged; 103 search cases rerun",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -838,11 +1770,129 @@
         "provider rank/metadata/dedup/quality parity",
         "strict offline adapter plus localhost CLI comparison"
       ],
-      "status": "pending",
+      "status": "partial: native CLI/fanout/fusion/health ledger and combined offline fixtures; commit/panic/edge/OS/live final acceptance pending",
       "surface": "meta",
       "pending_reasons": [
-        "native provider selection/profiles/four-worker fanout/fusion/health routing/partial failures/pruning/clock/completion-order parity is unimplemented"
-      ]
+        "Ledger-busy/during-commit interruption and worker-panic/redaction semantics remain unverified",
+        "Remaining config/model/byte/threshold boundaries, approved policy differences and actual target/live gates remain open"
+      ],
+      "case_evidence": [
+        {
+          "id": "meta-components",
+          "status": "passed",
+          "scope": "60 profile/rewrite + 168 health boundaries + 32 fusion inputs (each six signed limits) + 2 annotation inputs; pure Python expectations",
+          "evidence": [
+            "scripts/migration/generate_meta_component_goldens.py",
+            "rust/tests/fixtures/meta-component-golden.json",
+            "rust/tests/meta.rs"
+          ],
+          "count": 262,
+          "target": "aarch64-apple-darwin",
+          "executor": "author only; independent target execution pending",
+          "source_tree_sha256": "7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad"
+        },
+        {
+          "id": "meta-completion-transcripts",
+          "status": "passed",
+          "scope": "strict fixed clock/provider completion order, routing/all-weak/duplicates/partial errors/record errors and exact calls; no native combined CLI claim",
+          "evidence": [
+            "scripts/migration/generate_meta_goldens.py",
+            "rust/tests/fixtures/meta-golden.json",
+            "rust/tests/meta.rs"
+          ],
+          "count": 33,
+          "target": "aarch64-apple-darwin",
+          "executor": "author only; independent target execution pending",
+          "source_tree_sha256": "7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad"
+        },
+        {
+          "id": "meta-native-policies",
+          "status": "passed",
+          "scope": "controlled channel completion, four-worker bound/all-jobs-drained, strict fixture refusals, synthetic seven-table/FTS preservation and atomic 500/provider prune/50-run routing/rollback; separate policy tests",
+          "evidence": [
+            "rust/src/providers/meta.rs",
+            "rust/tests/meta.rs"
+          ],
+          "count": 4,
+          "target": "aarch64-apple-darwin",
+          "executor": "author only; independent target execution pending",
+          "source_tree_sha256": "7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad"
+        },
+        {
+          "id": "meta-worker-signals",
+          "status": "passed",
+          "count": 2,
+          "scope": "Two owned-worker signal scenarios SIGINT/SIGTERM, four paired executions. Native 130/143 vs Python captured -2/-15; unchanged archive/stdout empty/descendant stops. Commit/busy/panic/hard-kill semantics remain pending.",
+          "evidence": [
+            "scripts/migration/meta_differential.py",
+            "rust/tests/support/process_fixture.rs"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        },
+        {
+          "id": "meta-returned-metadata",
+          "status": "passed",
+          "count": 5,
+          "scope": "Five paired schema comparisons, 26 native returned rows; eight component source metadata observed, SearchResult eight fields and engine-run seven fields. No normalization of health/score/rank/output.",
+          "evidence": [
+            "docs/migration/meta-metadata-coverage.json",
+            "scripts/migration/measure_meta_metadata.py"
+          ],
+          "target": "aarch64-apple-darwin",
+          "executor": "author; actual local target only",
+          "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
+        }
+      ],
+      "missing_assertions": [
+        "Expand duplicate/weak/all-weak recent-window thresholds and all inventoried config/CLI flags at signed/invalid-byte boundaries",
+        "Assert interrupt while ledger is busy/before/during commit, worker panic/redaction and no partial-success publication; worker-time signal fixtures alone do not close commit/crash semantics"
+      ],
+      "next_tests": [
+        {
+          "id": "provider-meta-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_provider_meta.py",
+          "assertions": [
+            "Expand duplicate/weak/all-weak recent-window thresholds and all inventoried config/CLI flags at signed/invalid-byte boundaries",
+            "Assert interrupt while ledger is busy/before/during commit, worker panic/redaction and no partial-success publication; worker-time signal fixtures alone do not close commit/crash semantics"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "passed_scopes",
+        "scopes": [
+          {
+            "case_evidence_id": "meta-components",
+            "scope": "60 profile/rewrite + 168 health boundaries + 32 fusion inputs (each six signed limits) + 2 annotation inputs; pure Python expectations",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "meta-completion-transcripts",
+            "scope": "strict fixed clock/provider completion order, routing/all-weak/duplicates/partial errors/record errors and exact calls; no native combined CLI claim",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "meta-native-policies",
+            "scope": "controlled channel completion, four-worker bound/all-jobs-drained, strict fixture refusals, synthetic seven-table/FTS preservation and atomic 500/provider prune/50-run routing/rollback; separate policy tests",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "meta-worker-signals",
+            "scope": "Two owned-worker signal scenarios SIGINT/SIGTERM, four paired executions. Native 130/143 vs Python captured -2/-15; unchanged archive/stdout empty/descendant stops. Commit/busy/panic/hard-kill semantics remain pending.",
+            "status": "passed"
+          },
+          {
+            "case_evidence_id": "meta-returned-metadata",
+            "scope": "Five paired schema comparisons, 26 native returned rows; eight component source metadata observed, SearchResult eight fields and engine-run seven fields. No normalization of health/score/rank/output.",
+            "status": "passed"
+          }
+        ]
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -859,7 +1909,29 @@
       "pending_reasons": [
         "known synthetic copy/dry-run/idempotence/rollback cases pass; hard-kill/interruption/power-loss/publication-race/complete version/legacy variants remain open",
         "all native writers and actual target WAL/file-lock/FTS/source fingerprint equivalence are not closed"
-      ]
+      ],
+      "missing_assertions": [
+        "Kill only an owned migration child before/after backup/transaction/fsync/publish; restart/dry-run/idempotence/rollback and occupied WAL/SHM/journal/race retain source fingerprints",
+        "Execute known old/upgraded/future schema variants and all native writers against populated eight-table/41-object/FTS copies on actual targets; real cutover remains unauthorized"
+      ],
+      "next_tests": [
+        {
+          "id": "gate-storage-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_gate_storage.py",
+          "assertions": [
+            "Kill only an owned migration child before/after backup/transaction/fsync/publish; restart/dry-run/idempotence/rollback and occupied WAL/SHM/journal/race retain source fingerprints",
+            "Execute known old/upgraded/future schema variants and all native writers against populated eight-table/41-object/FTS copies on actual targets; real cutover remains unauthorized"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -876,7 +1948,29 @@
       "pending_reasons": [
         "normal local HTTP/TLS/proxy/header/deadline/safety fixtures pass; remaining codec/resolver/env/auth-proxy/credential redirect/lifecycle/security policies need complete evidence and approval",
         "live behavior and Linux/Windows native execution are unverified"
-      ]
+      ],
+      "missing_assertions": [
+        "Assert resolver/client-startup/global timeout, interrupt/broken-pipe and remaining charset/proxy/env/credential redirect cases; HTTP2/3 stay disabled",
+        "Bound aggregate provider results/abstract allocations and observe peak memory/deadline; accepted per-response cap is not a total-search bound"
+      ],
+      "next_tests": [
+        {
+          "id": "gate-network-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_gate_network.py",
+          "assertions": [
+            "Assert resolver/client-startup/global timeout, interrupt/broken-pipe and remaining charset/proxy/env/credential redirect cases; HTTP2/3 stay disabled",
+            "Bound aggregate provider results/abstract allocations and observe peak memory/deadline; accepted per-response cap is not a total-search bound"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -892,7 +1986,29 @@
       "pending_reasons": [
         "all inventoried native features and final rows are not complete",
         "Windows/Linux target execution, packaging/notices/reproducible setup/signal/stdio/path gates are missing; proposed CI is not execution evidence"
-      ]
+      ],
+      "missing_assertions": [
+        "Run pinned setup/build/test/release and process/path/newline/signal fixtures on actual Mac/Windows/Linux, after target authorization/cost approval",
+        "Verify package contents, bundled SQLite/TLS dependency LICENSE/NOTICE and no Python runtime subprocess; deterministic build evidence requires artifact hashes"
+      ],
+      "next_tests": [
+        {
+          "id": "gate-release-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_gate_release.py",
+          "assertions": [
+            "Run pinned setup/build/test/release and process/path/newline/signal fixtures on actual Mac/Windows/Linux, after target authorization/cost approval",
+            "Verify package contents, bundled SQLite/TLS dependency LICENSE/NOTICE and no Python runtime subprocess; deterministic build evidence requires artifact hashes"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -905,7 +2021,29 @@
       "surface": "reports",
       "pending_reasons": [
         "native report/evidence/capture failure/provenance/checklist/file-format behavior is not yet implemented"
-      ]
+      ],
+      "missing_assertions": [
+        "Implement each downstream native report, then compare UTF8 Markdown sections/order/citations/checklists/evidence models to Python",
+        "Normalize only declared owned paths/timestamps/measured clock inputs after exact algorithm replay; never titles/URLs/health/scores/ranks/provenance"
+      ],
+      "next_tests": [
+        {
+          "id": "gate-reports-remaining-contract",
+          "status": "proposed",
+          "planned_file": "scripts/migration/final_contract_gate_reports.py",
+          "assertions": [
+            "Implement each downstream native report, then compare UTF8 Markdown sections/order/citations/checklists/evidence models to Python",
+            "Normalize only declared owned paths/timestamps/measured clock inputs after exact algorithm replay; never titles/URLs/health/scores/ranks/provenance"
+          ],
+          "execution_evidence": false
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     },
     {
       "final_acceptance": "pending",
@@ -918,15 +2056,36 @@
       "surface": "live",
       "pending_reasons": [
         "no live provider certification was performed; all work remains synthetic/offline under cost/access constraints"
-      ]
+      ],
+      "missing_assertions": [
+        "Record a separately authorized bounded read-only check for each configured free provider with fresh auth/rate/availability observations",
+        "No paid/unpriced API, real key/vault, new auth/network or large search is authorized; absent permission/config remains explicitly unverified"
+      ],
+      "next_tests": [
+        {
+          "id": "gate-live-remaining-contract",
+          "status": "blocked",
+          "planned_file": "scripts/migration/final_contract_gate_live.py",
+          "assertions": [
+            "Record a separately authorized bounded read-only check for each configured free provider with fresh auth/rate/availability observations",
+            "No paid/unpriced API, real key/vault, new auth/network or large search is authorized; absent permission/config remains explicitly unverified"
+          ],
+          "execution_evidence": false,
+          "blocked_reason": "Separate live authorization/configuration/cost evidence absent; paid/unpriced calls prohibited"
+        }
+      ],
+      "scope_acceptance": {
+        "full_ready": false,
+        "status": "not_allocated",
+        "scopes": []
+      },
+      "close_when": "Execute every missing assertion with exact-source evidence, approve named contract differences, and satisfy the applicable target/storage/network/report/release/live final scope. Scoped cases alone never close this row."
     }
   ],
   "integrated_checkpoint": {
-    "pr": 25,
-    "head": "eda15e2c23dbf9564183c7a2751dbf68bba37c27",
-    "main": "e91513bc0516b328d6432ba73d293343b8b3af42",
-    "review": "Independent source/transcript/CI P3 confirmation; author native/scheduling/TLS gates",
-    "tree_equivalence": "normal authorized merge main tree equals reviewed eda15e2; no old repair in OpenAlex feature diff"
+    "main": "186511a102d241dd207d9b616c00b94bfd16537e",
+    "openalex_head": "5dffce09d2a04c1281dc36c1149b44823d80902e",
+    "meta_source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77"
   },
   "case_evidence_hash_algorithm": "SHA256 of sorted rust/src/**/*.rs plus Cargo.toml/Cargo.lock/rust-toolchain.toml, each relative UTF8 path + NUL + file bytes + NUL; excludes documentation and test fixtures",
   "process_review_repair": {

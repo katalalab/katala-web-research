@@ -1,0 +1,816 @@
+{
+  "reference": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "source_tree_sha256": "2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77",
+  "target": "aarch64-apple-darwin",
+  "executor": "author; actual target only",
+  "aggregate_cli_comparisons": 218,
+  "strict_parity_hook_cases": 168,
+  "coverage": [
+    {
+      "command": "search",
+      "strict_paired_cases_measured": 40,
+      "json_cases": 39,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--candidate-multiplier",
+        "--category",
+        "--enrich-top",
+        "--exclude-domain",
+        "--highlight-top",
+        "--include-domain",
+        "--json",
+        "--limit",
+        "--provider"
+      ],
+      "unmeasured_explicit_flags": [
+        "--reader",
+        "-n"
+      ],
+      "output_keys_observed": [
+        "metadata",
+        "published_at",
+        "rank",
+        "score",
+        "snippet",
+        "source",
+        "title",
+        "url"
+      ],
+      "metadata_keys_observed": [
+        "archive_rank",
+        "fetched_at",
+        "highlight_fetched_at",
+        "highlight_source",
+        "highlight_status",
+        "provider_rank",
+        "query_category",
+        "source_title",
+        "source_url"
+      ],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "read",
+      "strict_paired_cases_measured": 2,
+      "json_cases": 1,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--cache",
+        "--json"
+      ],
+      "unmeasured_explicit_flags": [
+        "--reader",
+        "--refresh"
+      ],
+      "output_keys_observed": [
+        "cached",
+        "content",
+        "content_type",
+        "fetched_at",
+        "source",
+        "status_code",
+        "title",
+        "url"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "openalex expand",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--direction",
+        "--json",
+        "--limit",
+        "-n"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "collect",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--json",
+        "--limit",
+        "--provider",
+        "--read-top",
+        "--reader",
+        "--report",
+        "-n"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "query",
+      "strict_paired_cases_measured": 12,
+      "json_cases": 11,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--json",
+        "--limit"
+      ],
+      "unmeasured_explicit_flags": [
+        "-n"
+      ],
+      "output_keys_observed": [
+        "fetched_at",
+        "rank",
+        "snippet",
+        "title",
+        "url"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "plan",
+      "strict_paired_cases_measured": 37,
+      "json_cases": 36,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--json",
+        "--max-subqueries",
+        "--year"
+      ],
+      "unmeasured_explicit_flags": [],
+      "output_keys_observed": [
+        "intent",
+        "query"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "repos scan",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--json",
+        "--max-bytes-per-file",
+        "--max-files-per-repo",
+        "--max-repos",
+        "--no-incremental"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "repos query",
+      "strict_paired_cases_measured": 17,
+      "json_cases": 16,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--json",
+        "--limit",
+        "--path",
+        "--repo"
+      ],
+      "unmeasured_explicit_flags": [
+        "-n"
+      ],
+      "output_keys_observed": [
+        "document_url",
+        "indexed_at",
+        "kind",
+        "rank",
+        "rel_path",
+        "repo_name",
+        "repo_path",
+        "snippet",
+        "title"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "feeds add",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--json",
+        "--title"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "feeds refresh",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--json",
+        "--source"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "feeds query",
+      "strict_paired_cases_measured": 12,
+      "json_cases": 11,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--json",
+        "--limit"
+      ],
+      "unmeasured_explicit_flags": [
+        "-n"
+      ],
+      "output_keys_observed": [
+        "fetched_at",
+        "published_at",
+        "rank",
+        "snippet",
+        "source_title",
+        "source_url",
+        "title",
+        "url"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "sources list",
+      "strict_paired_cases_measured": 11,
+      "json_cases": 10,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--domain",
+        "--json",
+        "--limit",
+        "--query-type"
+      ],
+      "unmeasured_explicit_flags": [
+        "-n"
+      ],
+      "output_keys_observed": [
+        "count",
+        "domain",
+        "query_type",
+        "sources"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "sources match",
+      "strict_paired_cases_measured": 17,
+      "json_cases": 15,
+      "text_cases": 2,
+      "exercised_flags": [
+        "--json"
+      ],
+      "unmeasured_explicit_flags": [],
+      "output_keys_observed": [
+        "matched",
+        "source",
+        "url"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "issues ingest",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--from-json",
+        "--include",
+        "--json",
+        "--kind",
+        "--limit",
+        "--owner",
+        "--state",
+        "-n"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "issues query",
+      "strict_paired_cases_measured": 12,
+      "json_cases": 11,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--json",
+        "--limit"
+      ],
+      "unmeasured_explicit_flags": [
+        "-n"
+      ],
+      "output_keys_observed": [
+        "item_key",
+        "kind",
+        "labels",
+        "number",
+        "priority",
+        "rank",
+        "repository",
+        "snippet",
+        "source",
+        "state",
+        "status",
+        "title",
+        "updated_at",
+        "url"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "issues report",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--json",
+        "--limit",
+        "--out",
+        "--owner",
+        "-n"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "brief",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--candidate-multiplier",
+        "--expand-queries",
+        "--feed-limit",
+        "--json",
+        "--max-subqueries",
+        "--no-web",
+        "--out",
+        "--provider",
+        "--repo-limit",
+        "--web-limit"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "investigate",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--archive",
+        "--candidate-multiplier",
+        "--expand-queries",
+        "--feed-limit",
+        "--json",
+        "--max-subqueries",
+        "--no-web",
+        "--out",
+        "--provider",
+        "--read-top",
+        "--reader",
+        "--repo-limit",
+        "--web-limit"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "doctor",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--check-searxng"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "engines",
+      "strict_paired_cases_measured": 7,
+      "json_cases": 6,
+      "text_cases": 1,
+      "exercised_flags": [
+        "--archive",
+        "--json",
+        "--window"
+      ],
+      "unmeasured_explicit_flags": [],
+      "output_keys_observed": [
+        "failure_rate",
+        "failures",
+        "health_score",
+        "last_error_kind",
+        "p95_latency_ms",
+        "provider",
+        "routed_around",
+        "runs",
+        "useful_rate"
+      ],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "passed_measured_cases",
+      "full_ready": false
+    },
+    {
+      "command": "eval",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [
+        "--json",
+        "--max-subqueries",
+        "--min-score",
+        "--out"
+      ],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    },
+    {
+      "command": "mcp",
+      "strict_paired_cases_measured": 0,
+      "json_cases": 0,
+      "text_cases": 0,
+      "exercised_flags": [],
+      "unmeasured_explicit_flags": [],
+      "output_keys_observed": [],
+      "metadata_keys_observed": [],
+      "scope_acceptance": "not_measured",
+      "full_ready": false
+    }
+  ],
+  "search_result_fields": [
+    "metadata",
+    "published_at",
+    "rank",
+    "score",
+    "snippet",
+    "source",
+    "title",
+    "url"
+  ],
+  "mcp": {
+    "reference_tools": 9,
+    "reference_snapshot_equal": true,
+    "schemas": [
+      {
+        "name": "kwr.plan",
+        "description": "Decompose a research question into bounded search queries.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "max_subqueries": {
+              "type": "integer",
+              "default": 4
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "kwr.search",
+        "description": "Search the web with a configured katala-web-research provider.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "provider": {
+              "type": "string",
+              "default": "ddg",
+              "enum": [
+                "brave",
+                "ddg",
+                "feed",
+                "github",
+                "github_code",
+                "jina",
+                "meta",
+                "openalex",
+                "searxng"
+              ]
+            },
+            "limit": {
+              "type": "integer",
+              "default": 5
+            },
+            "archive": {
+              "type": "string",
+              "default": ".katala-web-research/archive.sqlite"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "kwr.eval",
+        "description": "Run deterministic research-quality benchmark cases.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "min_score": {
+              "type": "integer",
+              "default": 80
+            },
+            "max_subqueries": {
+              "type": "integer",
+              "default": 4
+            }
+          }
+        }
+      },
+      {
+        "name": "kwr.read",
+        "description": "Read a URL into clean text using Jina Reader with direct HTTP fallback.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "reader": {
+              "type": "string",
+              "default": "auto"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      },
+      {
+        "name": "kwr.query",
+        "description": "Search archived web page content in the local SQLite archive.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "terms": {
+              "type": "string"
+            },
+            "archive": {
+              "type": "string",
+              "default": ".katala-web-research/archive.sqlite"
+            },
+            "limit": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          "required": [
+            "terms"
+          ]
+        }
+      },
+      {
+        "name": "kwr.repos_query",
+        "description": "Search indexed local Git repository documents.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "terms": {
+              "type": "string"
+            },
+            "archive": {
+              "type": "string",
+              "default": ".katala-web-research/archive.sqlite"
+            },
+            "limit": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          "required": [
+            "terms"
+          ]
+        }
+      },
+      {
+        "name": "kwr.feeds_query",
+        "description": "Search archived RSS/Atom/JSON feed items in the local SQLite archive.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "terms": {
+              "type": "string"
+            },
+            "archive": {
+              "type": "string",
+              "default": ".katala-web-research/archive.sqlite"
+            },
+            "limit": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          "required": [
+            "terms"
+          ]
+        }
+      },
+      {
+        "name": "kwr.brief",
+        "description": "Build a combined research brief from web candidates and local repository evidence.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "archive": {
+              "type": "string",
+              "default": ".katala-web-research/archive.sqlite"
+            },
+            "provider": {
+              "type": "string",
+              "default": "ddg",
+              "enum": [
+                "brave",
+                "ddg",
+                "feed",
+                "github",
+                "github_code",
+                "jina",
+                "meta",
+                "openalex",
+                "searxng"
+              ]
+            },
+            "web_limit": {
+              "type": "integer",
+              "default": 5
+            },
+            "repo_limit": {
+              "type": "integer",
+              "default": 5
+            },
+            "feed_limit": {
+              "type": "integer",
+              "default": 0
+            },
+            "expand_queries": {
+              "type": "boolean",
+              "default": false
+            },
+            "max_subqueries": {
+              "type": "integer",
+              "default": 4
+            },
+            "no_web": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "kwr.investigate",
+        "description": "Run web search, local repo lookup, selected URL capture, and return an investigation report.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "archive": {
+              "type": "string",
+              "default": ".katala-web-research/archive.sqlite"
+            },
+            "provider": {
+              "type": "string",
+              "default": "ddg",
+              "enum": [
+                "brave",
+                "ddg",
+                "feed",
+                "github",
+                "github_code",
+                "jina",
+                "meta",
+                "openalex",
+                "searxng"
+              ]
+            },
+            "reader": {
+              "type": "string",
+              "default": "auto"
+            },
+            "web_limit": {
+              "type": "integer",
+              "default": 8
+            },
+            "repo_limit": {
+              "type": "integer",
+              "default": 6
+            },
+            "feed_limit": {
+              "type": "integer",
+              "default": 0
+            },
+            "read_top": {
+              "type": "integer",
+              "default": 3
+            },
+            "expand_queries": {
+              "type": "boolean",
+              "default": false
+            },
+            "max_subqueries": {
+              "type": "integer",
+              "default": 4
+            },
+            "no_web": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      }
+    ],
+    "native_tools_implemented": 0,
+    "native_protocol_executed": false,
+    "scope_acceptance": "reference_schema_snapshot_only",
+    "full_ready": false
+  },
+  "complete_migration": false,
+  "inventoried_leaf_cases": 167,
+  "root_version_cases": 1
+}

@@ -190,6 +190,16 @@ Author final executed gates on aarch64 macOS: 95 exact Python search/HTTP/op tra
 
 All 35 rows now contain concrete pending_reasons separate from scoped case_evidence and final_acceptance_scope; ten measured passing case records are present, while final acceptance remains pending in every row. Historical unallocated aggregate gates are not inflated into per-row completion. Meta is the remaining component provider; graph/cache, enrichment and downstream command/report/storage/release/Windows/Linux/full lifecycle/live/safety approval gates remain open. No final migration or speed claim. Exact source/binary provenance and CI/independent review are recorded with the published checkpoint.
 
+## Draft #26 freeze and local Meta components
+
+OpenAlex Draft PR #26 remains fixed at 91da3879ee84e8226f858da7d812e0ccb2d898e3/basee91513bc0516b328d6432ba73d293343b8b3af42. Read-only readback confirms all five existing CI checks SUCCESS, draft OPEN; these Ubuntu Python/security checks are not native Linux evidence. No #26 merge authorization or independent-review completion is inferred.
+
+A separate owned worktree starts on that exact draft head. Meta contract/completion gates were saved before implementation. The local native component checkpoint implements profile/rewrite, bounded four-worker execution, completion-order fusion, health annotations/routing and transactional ledger writes. It deliberately leaves the Meta CLI refusal in place until combined native/config/archive/CLI/error/signal cases are executed. No partial provider completion, release or final-migration claim.
+
+Author aarch64 macOS evidence: 60 profile/rewrite, 168 health boundary, 32 fusion inputs (each six signed limits), two annotation cases; 33 fixed provider/clock/completion transcripts with exact calls and partial/error/weak routing/duplicate behavior. Four native policy cases cover strict fixture refusal, channel-controlled completion, four-worker/all-jobs-drained after error and synthetic ledger 500/provider prune/50-row routing/seven unrelated populated tables/FTS/integrity/atomic rollback. Both generators replay byte-identically. fmt/warnings-denied all-target clippy/all locked offline native tests pass. Required Python verifier passes 167 tests, smoke/deterministic benchmarks, artifact guards and gitleaks/no leaks; inherited CLI/release/live checks are not relabeled as Meta execution.
+
+Three scoped Meta case records bring the matrix to 13 passing records and 35 pending final rows. Production source content hash is 7d37ae7cd1bdf374e886bed5d056013616dc6aa8b9aede9b37dfa61a2849f6ad; original #26 binaries/provenance remain recoverable at their immutable checkpoint. No dependency/lock/toolchain/workflow/runner/protection/auth/network configuration changes. No live/paid/API/model calls, real archive/vault, installed CLI or other-host action. Remaining combined CLI/config/schema/refusal/signal/panic/representation/history-boundary and final OS/downstream/storage/release work is concrete in meta-contract.md and matrix pending_reasons.
+
 ## PR #26 independent P3: unused best-location URL branch
 
 Parent focus review independently replayed all original 95 search/13 identifier Python
@@ -210,3 +220,40 @@ and cap/one-over/allocation/interruption tests are concretely pending in openale
 Meta remains on its separate local 7e6f3b8 branch and is not part of the repaired diff.
 No dependency/lock/CI/budget/auth/network/OS/real archive/installed CLI change. Repaired
 exact-head CI/focus confirmation and ordinary merge authorization remain separate steps.
+
+## Authorized PR #26 integration and native Meta preview
+
+Parent final independent review confirmed the eight-case short-circuit repair on
+5dffce09d2a04c1281dc36c1149b44823d80902e and explicitly authorized ordinary merge.
+Fresh head/base e91513bc, active ruleset24318413/no bypass actors, five SUCCESS checks,
+no review threads and CLEAN/MERGEABLE were checked. Normal merge at
+2026-10-03T13:54:50Z yielded main186511a102d241dd207d9b616c00b94bfd16537e,
+tree-identical to repaired head; fresh API readback confirms MERGED/main. No bypass,
+self-approval, forcepush, branch deletion, installed CLI or archive cutover.
+
+The separate Meta branch normally merged that integrated base before CLI publication.
+Native preview now includes all component providers, four-worker completion fusion,
+health routing and transactional ledger; exact-source tests run only on author Mac.
+Production source SHA256:
+2fa7950c42f6c2db3baf05c6fae6ff6081702e91376b675a43416d0eb79d9b77.
+Completed gates are retained rather than rerun because of a model/session change:
+262 component fixture inputs/33 fixed completion transcripts/four native policy cases,
+all locked offline native tests, warnings-denied clippy, 37 combined CLI/library pairs,
+four worker-time signal executions, 218 baseline CLI comparisons, locked offline release
+and required verifier (167 Python tests/benchmarks/smoke/artifact guards/gitleaks).
+Five additional schema pairs expose all eight returned component metadata sources
+(26 native rows). The clock/order replay uses raw reference components and recomputes
+all health/fusion/ranking/output; no result/health/score/rank normalization. Freshness
+and limits are explicit in meta-contract.md.
+
+CLI coverage allocates 167 leaf cases and one root version case from 168 strict hooks;
+remaining aggregate assertions are unallocated, not claimed as per-command evidence.
+Native MCP is 0/7; all 35 final rows remain pending with concrete missing assertions,
+proposed test files and closure conditions, distinct from 27 scoped passing case records.
+Worker-time archive preservation does not cover SQLite-busy/during-commit interruption
+or panic/redaction; raw signal exits differ explicitly. Other OS/native release, graph,
+read/enrichment, downstream/report/storage crash and live/resource-budget gates stay open.
+No dependencies/lock/toolchain/workflows/runners/protection changes, paid API/model/live
+calls, real data/credential, OS/auth/network setup or other-host execution. No speed claim.
+Source/log recording remains far below the 2 GiB cap; shared build cache is measured
+separately. Existing public CI and exact draft head will be read back before review.

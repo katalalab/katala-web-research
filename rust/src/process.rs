@@ -78,6 +78,39 @@ impl ProcessRunner for OfflineRunner {
     }
 }
 pub struct NativeRunner;
+/// Reference-counted signal observation shared by a fan-out and its owned children.
+pub struct InterruptScope {
+    #[cfg(unix)]
+    _scope: native_unix::SignalScope,
+}
+impl InterruptScope {
+    pub fn enter() -> ProviderResult<Self> {
+        Ok(Self {
+            #[cfg(unix)]
+            _scope: native_unix::SignalScope::enter()?,
+        })
+    }
+    pub fn check(&self) -> ProviderResult<()> {
+        #[cfg(unix)]
+        {
+            native_unix::check_signals()
+        }
+        #[cfg(not(unix))]
+        {
+            Ok(())
+        }
+    }
+}
+pub(crate) fn check_interrupt() -> ProviderResult<()> {
+    #[cfg(unix)]
+    {
+        native_unix::check_signals()
+    }
+    #[cfg(not(unix))]
+    {
+        Ok(())
+    }
+}
 fn executable(program: &str) -> Option<PathBuf> {
     let path = std::path::Path::new(program);
     let candidates = if path.components().count() > 1 {
@@ -149,9 +182,9 @@ mod native_unix {
         // Only a lock-free atomic store runs in signal context.
         INTERRUPTED.store(signal, Ordering::Relaxed);
     }
-    struct SignalScope;
+    pub(super) struct SignalScope;
     impl SignalScope {
-        fn enter() -> ProviderResult<Self> {
+        pub(super) fn enter() -> ProviderResult<Self> {
             let mut state = SIGNALS
                 .lock()
                 .map_err(|_| ProviderError::synthetic("OSError"))?;
@@ -177,6 +210,13 @@ mod native_unix {
             }
             state.users += 1;
             Ok(Self)
+        }
+    }
+    pub(super) fn check_signals() -> ProviderResult<()> {
+        match INTERRUPTED.load(Ordering::Relaxed) {
+            libc::SIGINT => Err(ProviderError::synthetic("KeyboardInterrupt")),
+            libc::SIGTERM => Err(ProviderError::synthetic("SignalError")),
+            _ => Ok(()),
         }
     }
     impl Drop for SignalScope {

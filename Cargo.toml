@@ -85,3 +85,11 @@ path = "rust/tests/support/process_fixture.rs"
 [[test]]
 name = "openalex"
 path = "rust/tests/openalex.rs"
+
+[[test]]
+name = "meta"
+path = "rust/tests/meta.rs"
+
+[[example]]
+name = "meta_probe"
+path = "rust/tests/support/meta_probe.rs"

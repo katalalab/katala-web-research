@@ -18,7 +18,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | issues ingest/report | synthetic --from-json parsing, priority/status/phase ordering, Markdown radar; live gh search | Pending |
 | engines | last N/provider, nearest-rank p95, rounded rates/health, weak engine routing flag | Native implemented |
 | read | HTTP(S) only; auto Jina then direct on FetchError only; charset header/meta sniff; cache upsert/refresh | Network pending; cached hits implemented |
-| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native feed and normal DDG/SearXNG/Brave/Jina GET/parser/rank/CLI fields; shared strict offline transport; four other network surfaces, positive enrichment and parser/transport edges pending |
+| search | ddg/feed/github/github_code/jina/searxng/brave/openalex/meta; query filters, candidate oversampling, enrichment, highlights | Native normal paths for all nine providers, including Unix gh/op and Meta fanout/fusion/ledger; positive enrichment, malformed/transport/lifecycle/OS/live final assertions pending |
 | collect | run/results + selected pages, errors stored as source=error; optional UTF-8 evidence report | Pending |
 | repos scan | bounded traversal, skip artifacts/private data, encoding candidates, incremental size/mtime/hash/context | Pending |
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |
