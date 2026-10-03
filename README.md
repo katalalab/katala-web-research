@@ -20,7 +20,7 @@ scripts/verify.sh
 A native Rust preview is being migrated with the Python implementation retained
 as a compatibility reference. It currently supports local planning, source
 registry matching, archive retrieval, feed registration and file/HTTP(S) refresh,
-stored-feed search, engine health, cached page hits, and copy-only archive
+stored-feed and normal DuckDuckGo search, engine health, cached page hits, and copy-only archive
 migration. It does not yet replace all `kwr`
 commands. See [the parity ledger](docs/migration/parity.md),
 [setup and rollback instructions](docs/migration/runbook.md), and
@@ -33,6 +33,7 @@ scripts/rust.sh fetch --locked
 scripts/verify-rust.sh
 # Separate localhost-only HTTP/proxy/TLS fixture gate; requires existing OpenSSL:
 scripts/verify-http.sh
+scripts/verify-providers.sh
 ./target/debug/kwr-rs plan "agentic retrieval source quality" --json
 ```
 

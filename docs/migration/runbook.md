@@ -15,13 +15,16 @@ With a shell that prioritizes Homebrew Rust, `scripts/rust.sh` selects the pinne
 
 ```sh
 scripts/rust.sh fetch --locked
-scripts/verify-rust.sh
-scripts/verify-http.sh
-scripts/rust.sh build --release --locked --offline
+CARGO_BUILD_JOBS=1 scripts/verify-rust.sh
+CARGO_BUILD_JOBS=1 scripts/verify-http.sh
+scripts/verify-providers.sh
+CARGO_BUILD_JOBS=1 scripts/rust.sh build --release --locked --offline
 ./target/release/kwr-rs plan 'agent evidence' --json
 ```
 
 Registry fetch is a one-time prerequisite; the gates use `--offline --locked`. The Rust gate performs formatting, clippy, native migration/golden tests, build, and CLI differential tests. The separate HTTP gate uses unauthenticated loopback servers/proxy and temporary synthetic TLS certificates, requiring an already installed OpenSSL CLI. It performs no provider request, install, or OS trust change. The Python reference requires Python >=3.11; run `scripts/verify.sh` as the existing repository gate.
+
+The provider gate checks the complete golden matrix and uses synthetic TLS/proxy mappings to test the unchanged DDG endpoint/request path against Python. Only the exact fixture DDG CONNECT target maps to a loopback server; other targets are rejected, with no external DNS/provider request. Its CA is process-local and temporary. No authentication/API/model cost or OS trust change. Run build gates sequentially with CARGO_BUILD_JOBS=1 and inspect all owned worktree/target sizes against the 2 GiB task cap; remove only idle recoverable self-generated cache when needed.
 
 Windows PowerShell equivalent (design instructions; not executed on Windows):
 
@@ -29,6 +32,7 @@ Windows PowerShell equivalent (design instructions; not executed on Windows):
 $env:RUSTC = (rustup which --toolchain 1.96.0 rustc)
 $env:RUSTDOC = (rustup which --toolchain 1.96.0 rustdoc)
 $env:PATH = (Split-Path $env:RUSTC) + ';' + $env:PATH
+$env:CARGO_BUILD_JOBS = '1'
 cargo fmt -- --check
 cargo clippy --locked --offline --all-targets -- -D warnings
 cargo test --locked --offline
@@ -37,6 +41,8 @@ $env:PYTHONPATH = 'src'
 python scripts/migration/differential.py
 cargo build --locked --offline --example http_probe
 python scripts/migration/http_differential.py
+python scripts/migration/check_matrix.py
+python scripts/migration/provider_differential.py
 ```
 
 Supply a C compiler (Visual Studio Build Tools on Windows; platform SDK/cc on macOS/Linux) for SQLite. No Windows/Linux execution or certificate/proxy/signal validation is claimed. No installer or global CLI replacement is included. The current CI workflows are unchanged to avoid adding runners or costs; Rust gates are local until the review decides how to integrate them into the existing CI budget.
@@ -49,7 +55,8 @@ Dependencies are pinned transitively in Cargo.lock. `dependency-licenses.json` l
 - `query`, `repos query`, `feeds query`, `issues query`
 - `feeds add`, `engines`
 - `feeds refresh` with `file://`, `http://`, `https://`, normal RSS/Atom/JSONFeed; HTTP bounds/security differences and pending transport edges are recorded in [http-contract.md](http-contract.md)
-- `search QUERY --provider feed` over the selected local archive, query filters/candidate oversampling and cached-page highlights; positive `--enrich-top` and all network providers fail clearly
+- `search QUERY --provider feed` over the selected local archive, query filters/candidate oversampling and cached-page highlights
+- `search QUERY` / `--provider ddg` fetches ordinary DDG HTML, normalizes links/title/snippet, ranks and applies existing query/category/candidate/highlight/slicing behavior; this explicitly opts into HTTP. Seven other network providers and positive enrichment remain unsupported. Malformed HTML/tokenizer and unusual transport edges plus all live DDG behavior remain unverified.
 - `read --cache` for an existing page only; uncached reads, refreshes, and cache misses fail clearly
 - new `migrate --source PATH --destination PATH [--dry-run]` emits a JSON validation report
 

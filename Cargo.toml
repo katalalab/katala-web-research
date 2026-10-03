@@ -54,3 +54,7 @@ path = "rust/tests/support/http_probe.rs"
 [[test]]
 name = "http"
 path = "rust/tests/http.rs"
+
+[[test]]
+name = "providers"
+path = "rust/tests/providers.rs"

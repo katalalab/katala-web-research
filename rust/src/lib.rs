@@ -3,6 +3,7 @@ pub mod feeds;
 pub mod http;
 pub mod migration;
 pub mod planner;
+pub mod providers;
 pub mod registry;
 pub mod search;
 pub mod text;

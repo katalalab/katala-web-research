@@ -1,0 +1,2063 @@
+{
+  "baseline": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "parsers": [
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "Standard library HTTP client for Python 3, supporting GET and POST.",
+          "source": "ddg",
+          "title": "urllib.request — Python 3 docs",
+          "url": "https://docs.python.org/3/library/urllib.html"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "Snippet for the second search result.",
+          "source": "ddg",
+          "title": "Second Result Title",
+          "url": "https://example.com/two"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Third Result With No Snippet",
+          "url": "https://example.com/three"
+        }
+      ],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "name": "normal"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "before middle after",
+          "source": "ddg",
+          "title": "One bold tail",
+          "url": "https://example.test/one"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "name": "nested"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "x y ≂̸ < z",
+          "source": "ddg",
+          "title": "日本語 & ©",
+          "url": "https://example.test/?a=1&b=2"
+        }
+      ],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "name": "entities"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "first bold last",
+          "source": "ddg",
+          "title": "Unicode 文書",
+          "url": "https://example.test/u"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "name": "unquoted"
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "name": "empty"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "name": "missing"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "alpha first",
+          "source": "ddg",
+          "title": "alpha repo",
+          "url": "https://github.com/fixture/repo?q=1"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "alpha duplicate",
+          "url": "https://github.com/fixture/repo#two"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "alpha docs",
+          "url": "https://docs.python.org/3/"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "name": "dedup"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "retracted=true",
+          "source": "ddg",
+          "title": "alpha",
+          "url": "https://example.test/retracted"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "name": "retracted"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "before raw <a href=\"fake\"> text & after",
+          "source": "ddg",
+          "title": "alpha",
+          "url": "https://example.test/raw"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "name": "raw"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Conditions: x < y > z",
+          "url": "https://example.test/math"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "name": "angle"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "sentence.",
+          "source": "ddg",
+          "title": "duplicate attr",
+          "url": "https://example.test/new?a=>b"
+        }
+      ],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "name": "attrs"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "first bold after",
+          "source": "ddg",
+          "title": "One",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Two",
+          "url": "https://example.test/b"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "name": "snippet-link"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "name": "unquoted-slash"
+    },
+    {
+      "expected": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 0,
+          "score": 0.0,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "name": "self-closing"
+    }
+  ],
+  "searches": [
+    {
+      "expected": [],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "limit": 0,
+      "name": "normal",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.59,
+          "snippet": "Standard library HTTP client for Python 3, supporting GET and POST.",
+          "source": "ddg",
+          "title": "urllib.request — Python 3 docs",
+          "url": "https://docs.python.org/3/library/urllib.html"
+        }
+      ],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "limit": 1,
+      "name": "normal",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.59,
+          "snippet": "Standard library HTTP client for Python 3, supporting GET and POST.",
+          "source": "ddg",
+          "title": "urllib.request — Python 3 docs",
+          "url": "https://docs.python.org/3/library/urllib.html"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 0.68,
+          "snippet": "Snippet for the second search result.",
+          "source": "ddg",
+          "title": "Second Result Title",
+          "url": "https://example.com/two"
+        }
+      ],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "limit": 2,
+      "name": "normal",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.59,
+          "snippet": "Standard library HTTP client for Python 3, supporting GET and POST.",
+          "source": "ddg",
+          "title": "urllib.request — Python 3 docs",
+          "url": "https://docs.python.org/3/library/urllib.html"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 0.68,
+          "snippet": "Snippet for the second search result.",
+          "source": "ddg",
+          "title": "Second Result Title",
+          "url": "https://example.com/two"
+        },
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": null,
+          "rank": 3,
+          "score": 0.67,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Third Result With No Snippet",
+          "url": "https://example.com/three"
+        }
+      ],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "limit": 10,
+      "name": "normal",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.59,
+          "snippet": "Standard library HTTP client for Python 3, supporting GET and POST.",
+          "source": "ddg",
+          "title": "urllib.request — Python 3 docs",
+          "url": "https://docs.python.org/3/library/urllib.html"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 0.68,
+          "snippet": "Snippet for the second search result.",
+          "source": "ddg",
+          "title": "Second Result Title",
+          "url": "https://example.com/two"
+        }
+      ],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "limit": -1,
+      "name": "normal",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.59,
+          "snippet": "Standard library HTTP client for Python 3, supporting GET and POST.",
+          "source": "ddg",
+          "title": "urllib.request — Python 3 docs",
+          "url": "https://docs.python.org/3/library/urllib.html"
+        }
+      ],
+      "html": "<!DOCTYPE html>\n<html>\n<head><title>Test DuckDuckGo HTML results</title></head>\n<body>\n<div class=\"results\">\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Furllib.html\">urllib.request — Python 3 docs</a>\n    <div class=\"result__snippet\">Standard library HTTP client for Python 3, supporting GET and POST.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/two\">Second Result Title</a>\n    <div class=\"result__snippet\">Snippet for the second search result.</div>\n  </div>\n  <div class=\"result\">\n    <a class=\"result__a\" href=\"https://example.com/three\">Third Result With No Snippet</a>\n  </div>\n</div>\n</body>\n</html>\n",
+      "limit": -2,
+      "name": "normal",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "limit": 0,
+      "name": "nested",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "before middle after",
+          "source": "ddg",
+          "title": "One bold tail",
+          "url": "https://example.test/one"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "limit": 1,
+      "name": "nested",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "before middle after",
+          "source": "ddg",
+          "title": "One bold tail",
+          "url": "https://example.test/one"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "limit": 2,
+      "name": "nested",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "before middle after",
+          "source": "ddg",
+          "title": "One bold tail",
+          "url": "https://example.test/one"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "limit": 10,
+      "name": "nested",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "limit": -1,
+      "name": "nested",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/one\">One <b>bold</b> tail</a><div class=\"result__snippet\">before <a href=\"https://example.test/link\">middle</a> after</div>",
+      "limit": -2,
+      "name": "nested",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "limit": 0,
+      "name": "entities",
+      "query": "alpha 日本語 + * ~",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.39,
+          "snippet": "x y ≂̸ < z",
+          "source": "ddg",
+          "title": "日本語 & ©",
+          "url": "https://example.test/?a=1&b=2"
+        }
+      ],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "limit": 1,
+      "name": "entities",
+      "query": "alpha 日本語 + * ~",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.39,
+          "snippet": "x y ≂̸ < z",
+          "source": "ddg",
+          "title": "日本語 & ©",
+          "url": "https://example.test/?a=1&b=2"
+        }
+      ],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "limit": 2,
+      "name": "entities",
+      "query": "alpha 日本語 + * ~",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.39,
+          "snippet": "x y ≂̸ < z",
+          "source": "ddg",
+          "title": "日本語 & ©",
+          "url": "https://example.test/?a=1&b=2"
+        }
+      ],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "limit": 10,
+      "name": "entities",
+      "query": "alpha 日本語 + * ~",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "limit": -1,
+      "name": "entities",
+      "query": "alpha 日本語 + * ~",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<A CLASS=\"other result__a\" HREF=\"https://example.test/?a=1&amp;b=2\">日本語 &amp;amp; ©</A><DIV CLASS=\"result__snippet\">x&nbsp;y &NotEqualTilde; &lt; z</DIV>",
+      "limit": -2,
+      "name": "entities",
+      "query": "alpha 日本語 + * ~",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha+%E6%97%A5%E6%9C%AC%E8%AA%9E+%2B+%2A+~"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "limit": 0,
+      "name": "unquoted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold last",
+          "source": "ddg",
+          "title": "Unicode 文書",
+          "url": "https://example.test/u"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "limit": 1,
+      "name": "unquoted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold last",
+          "source": "ddg",
+          "title": "Unicode 文書",
+          "url": "https://example.test/u"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "limit": 2,
+      "name": "unquoted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold last",
+          "source": "ddg",
+          "title": "Unicode 文書",
+          "url": "https://example.test/u"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "limit": 10,
+      "name": "unquoted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "limit": -1,
+      "name": "unquoted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/u>Unicode 文書</a><span class='result__snippet'>first <b>bold</b> last</span>",
+      "limit": -2,
+      "name": "unquoted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "limit": 0,
+      "name": "empty",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "limit": 1,
+      "name": "empty",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "limit": 2,
+      "name": "empty",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "limit": 10,
+      "name": "empty",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "limit": -1,
+      "name": "empty",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<html><body>no result</body></html>",
+      "limit": -2,
+      "name": "empty",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 0,
+      "name": "missing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 1,
+      "name": "missing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 2,
+      "name": "missing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 10,
+      "name": "missing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": -1,
+      "name": "missing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\">No URL</a><a class=\"result__a\" href=\"https://example.test/empty\"></a><a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": -2,
+      "name": "missing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "limit": 0,
+      "name": "dedup",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 2.64,
+          "snippet": "alpha first",
+          "source": "ddg",
+          "title": "alpha repo",
+          "url": "https://github.com/fixture/repo?q=1"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "limit": 1,
+      "name": "dedup",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 2.64,
+          "snippet": "alpha first",
+          "source": "ddg",
+          "title": "alpha repo",
+          "url": "https://github.com/fixture/repo?q=1"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "limit": 2,
+      "name": "dedup",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 3
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 2.77,
+          "snippet": "",
+          "source": "ddg",
+          "title": "alpha docs",
+          "url": "https://docs.python.org/3/"
+        },
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 2.64,
+          "snippet": "alpha first",
+          "source": "ddg",
+          "title": "alpha repo",
+          "url": "https://github.com/fixture/repo?q=1"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "limit": 10,
+      "name": "dedup",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 2.64,
+          "snippet": "alpha first",
+          "source": "ddg",
+          "title": "alpha repo",
+          "url": "https://github.com/fixture/repo?q=1"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "limit": -1,
+      "name": "dedup",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 2.64,
+          "snippet": "alpha first",
+          "source": "ddg",
+          "title": "alpha repo",
+          "url": "https://github.com/fixture/repo?q=1"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://github.com/fixture/repo?q=1\">alpha repo</a><div class=\"result__snippet\">alpha first</div><a class=\"result__a\" href=\"https://github.com/fixture/repo#two\">alpha duplicate</a><a class=\"result__a\" href=\"https://docs.python.org/3/\">alpha docs</a>",
+      "limit": -2,
+      "name": "dedup",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "limit": 0,
+      "name": "retracted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "limit": 1,
+      "name": "retracted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "limit": 2,
+      "name": "retracted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "limit": 10,
+      "name": "retracted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "limit": -1,
+      "name": "retracted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/retracted\">alpha</a><div class=\"result__snippet\">retracted=true</div>",
+      "limit": -2,
+      "name": "retracted",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "limit": 0,
+      "name": "raw",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.89,
+          "snippet": "before raw <a href=\"fake\"> text & after",
+          "source": "ddg",
+          "title": "alpha",
+          "url": "https://example.test/raw"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "limit": 1,
+      "name": "raw",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.89,
+          "snippet": "before raw <a href=\"fake\"> text & after",
+          "source": "ddg",
+          "title": "alpha",
+          "url": "https://example.test/raw"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "limit": 2,
+      "name": "raw",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 1.89,
+          "snippet": "before raw <a href=\"fake\"> text & after",
+          "source": "ddg",
+          "title": "alpha",
+          "url": "https://example.test/raw"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "limit": 10,
+      "name": "raw",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "limit": -1,
+      "name": "raw",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/raw\">alpha</a><div class=\"result__snippet\">before<script>raw <a href=\"fake\"> text &amp;</script>after</div>",
+      "limit": -2,
+      "name": "raw",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "limit": 0,
+      "name": "angle",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Conditions: x < y > z",
+          "url": "https://example.test/math"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "limit": 1,
+      "name": "angle",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Conditions: x < y > z",
+          "url": "https://example.test/math"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "limit": 2,
+      "name": "angle",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Conditions: x < y > z",
+          "url": "https://example.test/math"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "limit": 10,
+      "name": "angle",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "limit": -1,
+      "name": "angle",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/math\">Conditions: x < y > z</a>",
+      "limit": -2,
+      "name": "angle",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "limit": 0,
+      "name": "attrs",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "sentence.",
+          "source": "ddg",
+          "title": "duplicate attr",
+          "url": "https://example.test/new?a=>b"
+        }
+      ],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "limit": 1,
+      "name": "attrs",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "sentence.",
+          "source": "ddg",
+          "title": "duplicate attr",
+          "url": "https://example.test/new?a=>b"
+        }
+      ],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "limit": 2,
+      "name": "attrs",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "sentence.",
+          "source": "ddg",
+          "title": "duplicate attr",
+          "url": "https://example.test/new?a=>b"
+        }
+      ],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "limit": 10,
+      "name": "attrs",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "limit": -1,
+      "name": "attrs",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a href=\"https://example.test/old\" href=\"https://example.test/new?a=>b\" class=\"result__a\">duplicate attr</a><div class=\"result__snippet\">sentence.</div>",
+      "limit": -2,
+      "name": "attrs",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "limit": 0,
+      "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold after",
+          "source": "ddg",
+          "title": "One",
+          "url": "https://example.test/a"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "limit": 1,
+      "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold after",
+          "source": "ddg",
+          "title": "One",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 0.68,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Two",
+          "url": "https://example.test/b"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "limit": 2,
+      "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold after",
+          "source": "ddg",
+          "title": "One",
+          "url": "https://example.test/a"
+        },
+        {
+          "metadata": {
+            "provider_rank": 2
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 0.68,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Two",
+          "url": "https://example.test/b"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "limit": 10,
+      "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "first bold after",
+          "source": "ddg",
+          "title": "One",
+          "url": "https://example.test/a"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "limit": -1,
+      "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"//example.test/a\">One</a><a class=\"result__snippet\">first <b>bold</b> after</a><a class=\"result__a\" href=\"//example.test/b\">Two</a>",
+      "limit": -2,
+      "name": "snippet-link",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 0,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 1,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 2,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "Slash belongs to URL",
+          "source": "ddg",
+          "title": "Title",
+          "url": "https://example.test/"
+        }
+      ],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": 10,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": -1,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=result__a href=https://example.test/>Title</a><div class=result__snippet>Slash belongs to URL</div>",
+      "limit": -2,
+      "name": "unquoted-slash",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 0,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 1,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 2,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [
+        {
+          "metadata": {
+            "provider_rank": 1
+          },
+          "published_at": null,
+          "rank": 1,
+          "score": 0.69,
+          "snippet": "",
+          "source": "ddg",
+          "title": "Yes",
+          "url": "https://example.test/yes"
+        }
+      ],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": 10,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": -1,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    },
+    {
+      "expected": [],
+      "html": "<a class=\"result__a\" href=\"https://example.test/\"/>No title<a class=\"result__a\" href=\"https://example.test/yes\">Yes</a>",
+      "limit": -2,
+      "name": "self-closing",
+      "query": "alpha",
+      "request": {
+        "headers": {
+          "Accept": "text/html"
+        },
+        "url": "https://html.duckduckgo.com/html/?q=alpha"
+      },
+      "year": 2026
+    }
+  ]
+}

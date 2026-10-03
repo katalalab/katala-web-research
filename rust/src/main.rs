@@ -363,7 +363,7 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             highlight_top,
             reader: _,
         } => {
-            if provider != "feed" {
+            if !["feed", "ddg"].contains(&provider.as_str()) {
                 return Err(format!("provider {provider} not migrated yet").into());
             }
             if enrich_top > 0 {
@@ -377,10 +377,25 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 kwr::search::build_query(&query, &category, &include_domain, &exclude_domain);
             let candidates =
                 limit.max((limit.max(1) as f64 * candidate_multiplier.max(1.0) + 0.9999) as i64);
-            let mut results = kwr::search::slice(
-                kwr::search::feed(&built.query, &local.archive, candidates, &registry)?,
-                limit,
-            );
+            let results = if provider == "feed" {
+                kwr::search::feed(&built.query, &local.archive, candidates, &registry)?
+            } else {
+                use chrono::Datelike;
+                use kwr::providers::SearchProvider;
+                let mut transport = kwr::providers::NativeTransport {
+                    settings: kwr::http::Settings::from_env()?,
+                };
+                kwr::providers::DuckDuckGo.search(
+                    &built.query,
+                    candidates,
+                    &mut transport,
+                    &kwr::providers::Context {
+                        registry: &registry,
+                        year: chrono::Local::now().year(),
+                    },
+                )?
+            };
+            let mut results = kwr::search::slice(results, limit);
             for r in &mut results {
                 if let Some(category) = kwr::search::category(&r.url, &built) {
                     r.metadata.insert("query_category".into(), json!(category));

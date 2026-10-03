@@ -1,0 +1,624 @@
+{
+  "complete_migration": false,
+  "dependency": {
+    "head": "5da9fc831b7fac6d08c796d97847bb7c735d57a5",
+    "merge_commit": "96519c13350dfc35dab7847d932565fb24f4403e",
+    "merged": true,
+    "pr": 20,
+    "review_scope": "source/fixtures/dependency/CI/evidence; no reviewer native rerun"
+  },
+  "intentional_differences": [
+    "clap help/diagnostic wording; error exit 2 preserved",
+    "finite representable timeout and signed-i64 numeric boundary",
+    "HTTP safety policy in http-contract.md; separate policy assertions"
+  ],
+  "normalization_allowed": [
+    "synthetic temporary archive paths",
+    "fixture-owned timestamps",
+    "injected bounded clock/latency samples; never ranking/output fields"
+  ],
+  "reference": "e66e449cc210bd80ecb25a00391091e72abd9c2b",
+  "rows": [
+    {
+      "final_acceptance": "pending",
+      "id": "cli:search",
+      "reference_handler": "cmd_search",
+      "reference_tests": [
+        "tests/test_cli_search.py",
+        "tests/test_providers.py",
+        "tests/test_provider_boundaries.py",
+        "tests/test_text_and_provider_parse.py",
+        "tests/test_rank.py",
+        "tests/test_query_builder.py",
+        "tests/test_archive_highlights.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "all 9 providers; 8 network surfaces",
+        "query/candidates/categories/domain filters",
+        "rank/dedup/retraction/diversity and metadata",
+        "positive enrichment and cache highlights"
+      ],
+      "status": "partial: feed + normal DDG; seven providers and positive enrichment pending",
+      "surface": "search"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:read",
+      "reference_handler": "cmd_read",
+      "reference_tests": [
+        "tests/test_reader.py",
+        "tests/test_http.py",
+        "tests/test_archive.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "auto Jina/direct FetchError fallback only",
+        "header/meta charset and extraction",
+        "hit/miss/refresh and cache write failure"
+      ],
+      "status": "partial",
+      "surface": "read"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:openalex expand",
+      "reference_handler": "cmd_openalex_expand",
+      "reference_tests": [
+        "tests/test_openalex_expand.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "ID/DOI/directions/bounded 50",
+        "references/citing cursor/cache/dedup"
+      ],
+      "status": "pending",
+      "surface": "openalex expand"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:collect",
+      "reference_handler": "cmd_collect",
+      "reference_tests": [
+        "tests/test_workflow.py",
+        "tests/test_report.py",
+        "tests/test_archive.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "run/results/page persistence",
+        "partial capture failures and UTF-8 evidence report"
+      ],
+      "status": "pending",
+      "surface": "collect"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:query",
+      "reference_handler": "cmd_query",
+      "reference_tests": [
+        "tests/test_archive.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "FTS5 bm25/snippets/AND tokens"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "query"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:plan",
+      "reference_handler": "cmd_plan",
+      "reference_tests": [
+        "tests/test_planner.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "whitespace/duplicate/year/max-subqueries"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "plan"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:repos scan",
+      "reference_handler": "cmd_repos_scan",
+      "reference_tests": [
+        "tests/test_corpus.py",
+        "tests/test_cli_repos.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "encoding/skip/traversal/symlink policy",
+        "incremental size/mtime/hash/context",
+        "FTS insert/update/delete"
+      ],
+      "status": "pending",
+      "surface": "repos scan"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:repos query",
+      "reference_handler": "cmd_repos_query",
+      "reference_tests": [
+        "tests/test_corpus.py",
+        "tests/test_cli_repos.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "inline and explicit filters",
+        "weighted context/escaped LIKE"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "repos query"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:feeds add",
+      "reference_handler": "cmd_feeds_add",
+      "reference_tests": [
+        "tests/test_feeds.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "upsert retains prior health/items"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "feeds add"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:feeds refresh",
+      "reference_handler": "cmd_feeds_refresh",
+      "reference_tests": [
+        "tests/test_feeds.py",
+        "tests/test_http.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "RSS/Atom/JSONFeed file and HTTP",
+        "selection/order/health/atomic batch/old items",
+        "DTD/date/ill-typed JSON/HTML/file-URI pending edges"
+      ],
+      "status": "partial",
+      "surface": "feeds refresh"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:feeds query",
+      "reference_handler": "cmd_feeds_query",
+      "reference_tests": [
+        "tests/test_feeds.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "FTS metadata and summary snippets"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "feeds query"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:sources list",
+      "reference_handler": "cmd_sources_list",
+      "reference_tests": [
+        "tests/test_source_registry.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "overlay and trust/name ordering"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "sources list"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:sources match",
+      "reference_handler": "cmd_sources_match",
+      "reference_tests": [
+        "tests/test_source_registry.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "urllib cleaning/host/path prefix/ports/params"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "sources match"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:issues ingest",
+      "reference_handler": "cmd_issues_ingest",
+      "reference_tests": [
+        "tests/test_project_issues.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "from-json synthetic issue/PR metadata",
+        "gh transcript timeout/auth/status failures"
+      ],
+      "status": "pending",
+      "surface": "issues ingest"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:issues query",
+      "reference_handler": "cmd_issues_query",
+      "reference_tests": [
+        "tests/test_project_issues.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "FTS labels/item_key metadata"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "issues query"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:issues report",
+      "reference_handler": "cmd_issues_report",
+      "reference_tests": [
+        "tests/test_project_issues.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "priority/status/phase ordering Markdown radar"
+      ],
+      "status": "pending",
+      "surface": "issues report"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:brief",
+      "reference_handler": "cmd_brief",
+      "reference_tests": [
+        "tests/test_brief.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "local/web quality ranking/plan/report"
+      ],
+      "status": "pending",
+      "surface": "brief"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:investigate",
+      "reference_handler": "cmd_investigate",
+      "reference_tests": [
+        "tests/test_investigation.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "selected URL captures/provenance/checklist/failures"
+      ],
+      "status": "pending",
+      "surface": "investigate"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:doctor",
+      "reference_handler": "cmd_doctor",
+      "reference_tests": [
+        "tests/test_cli_doctor.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "provider configuration posture",
+        "SQLite FTS probe and optional local SearXNG preflight"
+      ],
+      "status": "pending",
+      "surface": "doctor"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:engines",
+      "reference_handler": "cmd_engines",
+      "reference_tests": [
+        "tests/test_engine_health.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "nearest-rank p95/rates/rounding/health windows",
+        "500/provider ledger pruning through meta"
+      ],
+      "status": "implemented-partial-evidence",
+      "surface": "engines"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:eval",
+      "reference_handler": "cmd_eval",
+      "reference_tests": [
+        "tests/test_evaluation.py",
+        "tests/test_retrieval_metrics.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "deterministic metrics/80 threshold/Markdown/failing exit"
+      ],
+      "status": "pending",
+      "surface": "eval"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "cli:mcp",
+      "reference_handler": "cmd_mcp",
+      "reference_tests": [
+        "tests/test_mcp_server.py"
+      ],
+      "required_cases": [
+        "defaults and all inventoried options",
+        "JSON and text/stdout/stderr/exit codes",
+        "Unicode path/query/content and empty input",
+        "positive/zero/negative/signed bounds",
+        "failure without source or credential overwrite",
+        "seven tools/request errors/notifications",
+        "legacy Content-Length UTF-8 CRLF + NDJSON",
+        "partial/invalid frames/clean stdout"
+      ],
+      "status": "pending",
+      "surface": "mcp"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:ddg",
+      "local_evidence": [
+        "rust/tests/providers.rs (98 parser/request/rank goldens plus strict adapter/error tests)",
+        "scripts/migration/provider_differential.py (24 localhost CLI comparisons)"
+      ],
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "native-normal-fields; parser/transport edges and live pending",
+      "surface": "ddg"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:github",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "github"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:github_code",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "github_code"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:jina",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "jina"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:searxng",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "searxng"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:brave",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "brave"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:openalex",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "openalex"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "provider:meta",
+      "required_cases": [
+        "exact request URL/headers/order",
+        "synthetic config/env success and preflight failure",
+        "raw charset/response normalization and all SearchResult fields",
+        "paging/fallback/empty/error/no unintended retry",
+        "provider rank/metadata/dedup/quality parity",
+        "strict offline adapter plus localhost CLI comparison"
+      ],
+      "status": "pending",
+      "surface": "meta"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "gate:storage",
+      "required_cases": [
+        "41 baseline SQLite objects/types/defaults/triggers/indexes/FTS",
+        "user_version rejection and known legacy copy upgrades",
+        "fingerprint/count/integrity/FTS checks and Python reopen",
+        "dry-run/idempotence/occupied body-sidecars",
+        "interruption before/during publish, restart, rollback; hard-kill/power-loss remains pending"
+      ],
+      "status": "pending",
+      "surface": "storage"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "gate:network",
+      "required_cases": [
+        "byte/global-time/redirect bounds and no automatic retry",
+        "TLS/trust/proxy/charset/redaction/auth header gates",
+        "four-worker meta concurrency and bounded subprocesses",
+        "resolver/signal/broken-pipe and malformed input",
+        "future HTTP/2 or HTTP/3 features explicitly disable and fixture-check protocol retries"
+      ],
+      "status": "pending",
+      "surface": "network"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "gate:release",
+      "required_cases": [
+        "pinned toolchain/lock and offline fixtures",
+        "actual Mac/Windows/Linux build/test/release gates",
+        "dependency LICENSE/NOTICE and package content validation",
+        "no Python subprocess/interpreter/runtime dependency"
+      ],
+      "status": "pending",
+      "surface": "release"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "gate:reports",
+      "required_cases": [
+        "exact UTF-8 Markdown/evidence/provenance/checklist models",
+        "only declared temp paths/timestamps/latencies normalized"
+      ],
+      "status": "pending",
+      "surface": "reports"
+    },
+    {
+      "final_acceptance": "pending",
+      "id": "gate:live",
+      "required_cases": [
+        "each provider marked unverified until separately authorized",
+        "no paid credentials/providers/large search execution"
+      ],
+      "status": "pending",
+      "surface": "live"
+    }
+  ]
+}
