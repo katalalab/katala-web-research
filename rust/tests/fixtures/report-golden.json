@@ -1,0 +1,2707 @@
+[
+  {
+    "name": "empty",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [],
+    "pages": [],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 0\n- pages_read: 0\n\n## Ranked Results\n"
+  },
+  {
+    "name": "single",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "empty-fields",
+    "query": "",
+    "provider": "",
+    "archive": "",
+    "results": [
+      {
+        "title": "",
+        "url": "",
+        "snippet": "",
+        "source": "",
+        "published_at": "",
+        "rank": 0,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: \n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: \n- archive: ``\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 0. \n\n- url: \n- source: \n- score: 1.25\n- published_at: unknown\n- snippet: none\n"
+  },
+  {
+    "name": "duplicates-order",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 7,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      },
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": -9,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      },
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 0,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 3\n- pages_read: 0\n\n## Ranked Results\n\n### 7. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n### -9. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n### 0. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "literal-markdown",
+    "query": "query\n## literal",
+    "provider": "feed",
+    "archive": "a`b.sqlite",
+    "results": [
+      {
+        "title": "# `title`\n日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "&amp; \n literal\t",
+        "source": "fixture\u0000",
+        "published_at": "invalid\n",
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: query\n## literal\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `a`b.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. # `title`\n日本語\n\n- url: https://fixture.test/item\n- source: fixture\u0000\n- score: 1.25\n- published_at: invalid\n\n- snippet: &amp; \n literal\n"
+  },
+  {
+    "name": "page-5",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n"
+  },
+  {
+    "name": "page-6",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "\t \n\r\u001c\u001d\u001e\u001f      　",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n"
+  },
+  {
+    "name": "page-7",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "a\n\nb\r\tc &amp; <html>",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n\na  b\r\tc &amp; <html>\n"
+  },
+  {
+    "name": "page-8",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n\n😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語😀日本語\n"
+  },
+  {
+    "name": "page-9",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nz",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n"
+  },
+  {
+    "name": "page-10",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa😀z",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa😀\n"
+  },
+  {
+    "name": "page-11",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "\u001c alpha \u001f",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n\nalpha\n"
+  },
+  {
+    "name": "page-12",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "a​b﻿c",
+        "source": "direct",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 1\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: direct\n- fetched_at: 2026-01-01T00:00:00+00:00\n\na​b﻿c\n"
+  },
+  {
+    "name": "multiple-pages",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Captured 日本語",
+        "url": "https://fixture.test/page",
+        "content": "one\n\ntwo",
+        "source": "jina",
+        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "status_code": 200,
+        "content_type": "text/plain"
+      },
+      {
+        "title": "",
+        "url": "https://fixture.test/page",
+        "content": "Read failed: synthetic classification",
+        "source": "error",
+        "fetched_at": "",
+        "status_code": null,
+        "content_type": null
+      }
+    ],
+    "score_text": null,
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 2\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.25\n- published_at: unknown\n- snippet: evidence\n\n## Captured Pages\n\n### Captured 日本語\n\n- url: https://fixture.test/page\n- reader: jina\n- fetched_at: 2026-01-01T00:00:00+00:00\n\none  two\n\n### \n\n- url: https://fixture.test/page\n- reader: error\n- fetched_at: \n\nRead failed: synthetic classification\n"
+  },
+  {
+    "name": "score-0.0",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "0.0",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 0.0\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score--0.0",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-0.0",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -0.0\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1.0",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.0",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.0\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score--1.25",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.25",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.25\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-0.0001",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "0.0001",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 0.0001\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-0.00001",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "0.00001",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1e-05\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-0.000001",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "0.000001",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1e-06\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1000000000000000.0",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1000000000000000.0",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1000000000000000.0\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1e16",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1e16",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1e+16\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1e23",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1e23",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1e+23\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1e100",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1e100",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1e+100\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1e-100",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1e-100",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1e-100\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-2.2250738585072014e-308",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "2.2250738585072014e-308",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 2.2250738585072014e-308\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-5e-324",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "5e-324",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 5e-324\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-1.7976931348623157e308",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.7976931348623157e308",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.7976931348623157e+308\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-nan",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "nan",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: nan\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-inf",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "inf",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: inf\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score--inf",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-inf",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -inf\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-0",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.1768474996568002e+271",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.1768474996568002e+271\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-1",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-3.6008074314376634e+17",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -3.6008074314376634e+17\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-2",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "5.3465250737232555e-135",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 5.3465250737232555e-135\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-3",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "2.61411928072662e-255",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 2.61411928072662e-255\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-4",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.8118157298232107e+247",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.8118157298232107e+247\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-5",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-3.049075933252092e-265",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -3.049075933252092e-265\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-6",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-7.36950258794077e-48",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -7.36950258794077e-48\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-7",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.5197232778266383e-136",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.5197232778266383e-136\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-8",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.0495169546462257e+286",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.0495169546462257e+286\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-9",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "7.955049659668017e-268",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 7.955049659668017e-268\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-10",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "6.483794782468795e-234",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 6.483794782468795e-234\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-11",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.2368721388847438e-23",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.2368721388847438e-23\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-12",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-3.817970732962777e-22",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -3.817970732962777e-22\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-13",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.6068193976133862e-276",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.6068193976133862e-276\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-14",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "5.665310253302955e-56",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 5.665310253302955e-56\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-15",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-6.913450139283658e-194",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -6.913450139283658e-194\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-16",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "5.3763600818239195e-163",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 5.3763600818239195e-163\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-17",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.871799440978881e+25",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.871799440978881e+25\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-18",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.1426987312657533e+170",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.1426987312657533e+170\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-19",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.4776827390635096e+113",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.4776827390635096e+113\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-20",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "9.656247818895671e-55",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 9.656247818895671e-55\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-21",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "2.1920643047085563e+175",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 2.1920643047085563e+175\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-22",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-3.097162510709991e-189",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -3.097162510709991e-189\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-23",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "0.00011739448848604496",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 0.00011739448848604496\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-24",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.7244963041803788e-32",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.7244963041803788e-32\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-25",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "2.647688013543315e+205",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 2.647688013543315e+205\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-26",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-5.165321832925969e-108",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -5.165321832925969e-108\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-27",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.243546526929851e-234",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.243546526929851e-234\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-28",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "4.408412267931164e-245",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 4.408412267931164e-245\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-29",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "7.361188867754946e-87",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 7.361188867754946e-87\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-30",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.5559989259467365e-142",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.5559989259467365e-142\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-31",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.2351350394067399e-126",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.2351350394067399e-126\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-32",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.3089037204125535e+57",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.3089037204125535e+57\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-33",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.5307356409505287e+156",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.5307356409505287e+156\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-34",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.753542069659803e-202",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.753542069659803e-202\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-35",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-3.6567980156449355e-270",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -3.6567980156449355e-270\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-36",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "9.119664436965424e+232",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 9.119664436965424e+232\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-37",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-8.112852199705893e+72",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -8.112852199705893e+72\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-38",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.5916009510366489e-52",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.5916009510366489e-52\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-39",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.5869148206903502e+225",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.5869148206903502e+225\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-40",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.4541437921938535e+145",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.4541437921938535e+145\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-41",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "5.768776139516791e+99",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 5.768776139516791e+99\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-42",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.4736776870987406e+85",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.4736776870987406e+85\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-43",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "3.1555929528589184e+286",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 3.1555929528589184e+286\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-44",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "6.743895942945631e+16",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 6.743895942945631e+16\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-45",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "6.3482016621331486e+53",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 6.3482016621331486e+53\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-46",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-5.2962579481788266e-220",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -5.2962579481788266e-220\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-47",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.4761042484424232e+286",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.4761042484424232e+286\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-48",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-9.103097423301691e-123",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -9.103097423301691e-123\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-49",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.425474317406718e+82",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.425474317406718e+82\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-50",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "7.630702897409598e-46",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 7.630702897409598e-46\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-51",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-0.24756645875344008",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -0.24756645875344008\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-52",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "3.8612365606120925e-191",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 3.8612365606120925e-191\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-53",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.0727930180563024e+28",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.0727930180563024e+28\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-54",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-7.374341145908092e+180",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -7.374341145908092e+180\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-55",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-8.136324178364649e-235",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -8.136324178364649e-235\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-56",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-4.127807684362052e+229",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -4.127807684362052e+229\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-57",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-1.5988422732015266e+109",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -1.5988422732015266e+109\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-58",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "8.088509755388083e+55",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 8.088509755388083e+55\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-59",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.1862632333392704e-94",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.1862632333392704e-94\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-60",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "3.3115060204332115e-273",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 3.3115060204332115e-273\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-61",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-2.7212457811979408e+54",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -2.7212457811979408e+54\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-62",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "1.2735660652213929e+154",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: 1.2735660652213929e+154\n- published_at: unknown\n- snippet: evidence\n"
+  },
+  {
+    "name": "score-bits-63",
+    "query": "alpha 日本語",
+    "provider": "feed",
+    "archive": "日本語 selected.sqlite",
+    "results": [
+      {
+        "title": "alpha 日本語",
+        "url": "https://fixture.test/item",
+        "snippet": "evidence",
+        "source": "feed",
+        "published_at": null,
+        "rank": 1,
+        "score": 1.25,
+        "metadata": {
+          "ignored": [
+            true,
+            null
+          ]
+        }
+      }
+    ],
+    "pages": [],
+    "score_text": "-3.693412118711763e+255",
+    "clock_calls": 1,
+    "expected": "# Web Research Report: alpha 日本語\n\n- generated_at: 2026-01-01T00:00:00+00:00\n- provider: feed\n- archive: `日本語 selected.sqlite`\n- results: 1\n- pages_read: 0\n\n## Ranked Results\n\n### 1. alpha 日本語\n\n- url: https://fixture.test/item\n- source: feed\n- score: -3.693412118711763e+255\n- published_at: unknown\n- snippet: evidence\n"
+  }
+]
