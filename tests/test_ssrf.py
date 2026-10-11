@@ -58,6 +58,10 @@ class PublicAddressTests(unittest.TestCase):
             "2002:7f00:1::",
             "::7f00:1",
             "fec0::1",
+            "224.0.0.1",
+            "239.255.255.250",
+            "ff02::1",
+            "::ffff:224.0.0.1",
         ):
             with self.subTest(address=address), self.assertRaises(FetchError):
                 self.check(address)
@@ -175,6 +179,12 @@ class BoundedReadTests(unittest.TestCase):
 
 
 class ReadUrlTests(unittest.TestCase):
+    def test_invalid_reader_is_rejected_before_any_dns_lookup(self):
+        with patch("katala_web_research.http.socket.getaddrinfo") as lookup:
+            with self.assertRaises(ValueError):
+                read_url("https://example.com/", reader="bogus")
+        lookup.assert_not_called()
+
     def test_private_url_is_never_sent_to_jina(self):
         with patch("katala_web_research.reader.fetch_url") as fetch:
             for reader in ("auto", "jina", "direct"):

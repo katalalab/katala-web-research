@@ -15,9 +15,9 @@ _META_CHARSET_RE = re.compile(rb"""<meta[^>]+charset=["']?\s*([a-zA-Z0-9_-]+)"""
 
 def read_url(url: str, *, reader: str = "auto") -> PageSnapshot:
     _require_http_url(url)
-    require_public_url(url)
     if reader not in {"auto", "jina", "direct"}:
         raise ValueError("reader must be one of: auto, jina, direct")
+    require_public_url(url)
     if reader in {"auto", "jina"}:
         try:
             return read_with_jina(url)

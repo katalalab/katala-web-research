@@ -83,9 +83,9 @@ def _is_public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
         embedded = ip.ipv4_mapped or ip.sixtofour
         if ip in _NAT64:
             embedded = ipaddress.IPv4Address(int(ip) & 0xFFFFFFFF)
-        if embedded is not None and not embedded.is_global:
+        if embedded is not None and (not embedded.is_global or embedded.is_multicast):
             return False
-    return ip.is_global  # ponytail: Teredo (2001::/32) is not unwrapped; add if it ever matters
+    return ip.is_global and not ip.is_multicast  # ponytail: Teredo (2001::/32) is not unwrapped; add if it ever matters
 
 
 _NAT64 = ipaddress.ip_network("64:ff9b::/96")
