@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+- `kwr read`, `kwr.read` and the page fetches in `kwr.investigate` now refuse URLs that resolve to a
+  non-public address (loopback, private, link-local and cloud metadata ranges, including IPv4 wrapped in
+  IPv6). The check runs on the connection itself, so DNS rebinding and redirects are covered, and a
+  private URL is never forwarded to r.jina.ai. These fetches also ignore proxy environment variables
+  and cap the body at 8 MiB. Provider calls (for example `KWR_SEARXNG_URL`) are unchanged.
+
 ### Added
 - ruff + mypy linting config in `pyproject.toml` (advisory mypy, blocking ruff).
 - CI Python matrix expanded to 3.11 and 3.12.
