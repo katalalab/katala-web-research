@@ -6,7 +6,7 @@ import re
 from json import JSONDecodeError
 from urllib.parse import quote, urlparse
 
-from .http import FetchError, fetch_url
+from .http import FetchError, fetch_url, require_public_url
 from .models import PageSnapshot, utc_now_iso
 from .text import SimpleHTMLTextExtractor
 
@@ -17,6 +17,7 @@ def read_url(url: str, *, reader: str = "auto") -> PageSnapshot:
     _require_http_url(url)
     if reader not in {"auto", "jina", "direct"}:
         raise ValueError("reader must be one of: auto, jina, direct")
+    require_public_url(url)
     if reader in {"auto", "jina"}:
         try:
             return read_with_jina(url)
@@ -44,7 +45,7 @@ def read_with_jina(url: str) -> PageSnapshot:
 
 
 def read_direct(url: str) -> PageSnapshot:
-    response = fetch_url(url, headers={"Accept": "text/html, text/plain;q=0.9, */*;q=0.5"})
+    response = fetch_url(url, headers={"Accept": "text/html, text/plain;q=0.9, */*;q=0.5"}, public_only=True)
     content_type = response.headers.get("content-type", "")
     text = response.text
     if "charset=" not in content_type.lower():

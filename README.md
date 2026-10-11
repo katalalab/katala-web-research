@@ -205,6 +205,10 @@ The stdio server exposes:
 - `kwr.brief`
 - `kwr.investigate`
 
+`kwr.read` and the pages `kwr.investigate` fetches only reach publicly routable hosts: loopback, private,
+link-local and metadata addresses are refused, including via redirects and DNS answers. Those fetches
+ignore `HTTP_PROXY`/`HTTPS_PROXY`.
+
 It follows the MCP tool discovery and invocation surface: `initialize`, `tools/list`, and `tools/call`.
 
 See [docs/mcp-config-examples.md](docs/mcp-config-examples.md) for client config examples.
