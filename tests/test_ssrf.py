@@ -56,6 +56,8 @@ class PublicAddressTests(unittest.TestCase):
             "::ffff:127.0.0.1",
             "64:ff9b::7f00:1",
             "2002:7f00:1::",
+            "::7f00:1",
+            "fec0::1",
         ):
             with self.subTest(address=address), self.assertRaises(FetchError):
                 self.check(address)
@@ -133,6 +135,43 @@ class PublicFetchTests(unittest.TestCase):
         # Provider calls (for example a private SearXNG) keep working: the guard is opt-in.
         response = fetch_url(f"http://127.0.0.1:{self.port}/page")
         self.assertEqual(response.body, b"ok")
+
+
+class BoundedReadTests(unittest.TestCase):
+    def test_redirect_body_drain_is_bounded(self):
+        calls = []
+
+        class Fp:
+            def read(self, size=-1):
+                calls.append(size)
+                return b""
+
+            def close(self):
+                pass
+
+        handler = kwr_http._PublicRedirectHandler()
+        handler.parent = unittest.mock.Mock()
+        req = kwr_http.Request("http://pub.test/")
+        req.timeout = 5
+        handler.http_error_302(req, Fp(), 302, "Found", {"location": "http://pub.test/next"})
+        self.assertEqual(calls, [64 * 1024])
+
+    def test_error_body_read_is_bounded(self):
+        sizes = []
+
+        class Fp:
+            def read(self, size=-1):
+                sizes.append(size)
+                return b"x"
+
+            def close(self):
+                pass
+
+        error = kwr_http.HTTPError("http://pub.test/", 500, "boom", {}, Fp())
+        # Only 200 bytes of the error body are reported, so a hostile body is never drained.
+        with patch("katala_web_research.http.urlopen", side_effect=error), self.assertRaises(FetchError):
+            fetch_url("http://pub.test/")
+        self.assertEqual(sizes, [200])
 
 
 class ReadUrlTests(unittest.TestCase):

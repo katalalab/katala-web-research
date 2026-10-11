@@ -77,6 +77,8 @@ def redact_url(url: str) -> str:
 def _is_public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
     if isinstance(ip, ipaddress.IPv6Address):
         # IPv4 reachable through a v6 wrapper must pass the v4 check too.
+        if any(ip in net for net in _DENIED_V6):
+            return False
         embedded = ip.ipv4_mapped or ip.sixtofour
         if ip in _NAT64:
             embedded = ipaddress.IPv4Address(int(ip) & 0xFFFFFFFF)
@@ -86,6 +88,8 @@ def _is_public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
 
 
 _NAT64 = ipaddress.ip_network("64:ff9b::/96")
+# Deprecated IPv4-compatible (::/96) and site-local (fec0::/10) ranges: never legitimate public targets.
+_DENIED_V6 = (ipaddress.ip_network("::/96"), ipaddress.ip_network("fec0::/10"))
 
 
 def public_addresses(host: str, port: int) -> list[str]:
@@ -133,6 +137,26 @@ class _PublicHTTPSConnection(http.client.HTTPSConnection):
         self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
 
 
+class _CappedBody:
+    """HTTPRedirectHandler drains the redirect body with an unbounded read(); bound it."""
+
+    def __init__(self, fp, limit: int = 64 * 1024) -> None:
+        self._fp, self._limit = fp, limit
+
+    def read(self, *_args) -> bytes:
+        return self._fp.read(self._limit)
+
+    def close(self) -> None:
+        self._fp.close()
+
+
+class _PublicRedirectHandler(HTTPRedirectHandler):
+    def http_error_302(self, req, fp, code, msg, headers):
+        return super().http_error_302(req, _CappedBody(fp), code, msg, headers)
+
+    http_error_301 = http_error_303 = http_error_307 = http_error_308 = http_error_302
+
+
 class _PublicHTTPHandler(HTTPHandler):
     def http_open(self, req):
         return self.do_open(_PublicHTTPConnection, req)
@@ -149,7 +173,7 @@ def _public_open(request: Request, *, timeout: float):
     for handler in (
         _PublicHTTPHandler(),
         _PublicHTTPSHandler(),
-        HTTPRedirectHandler(),
+        _PublicRedirectHandler(),
         HTTPDefaultErrorHandler(),
         HTTPErrorProcessor(),
         UnknownHandler(),
@@ -184,7 +208,7 @@ def fetch_url(
                 body=body,
             )
     except HTTPError as exc:
-        body = exc.read()
+        body = exc.read(200)  # only 200 bytes are reported; never drain a hostile body
         raise FetchError(f"HTTP {exc.code} for {redact_url(url)}: {body[:200]!r}") from exc
     except URLError as exc:
         raise FetchError(f"fetch failed for {redact_url(url)}: {exc.reason}") from exc
