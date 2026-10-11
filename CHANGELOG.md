@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Security
+- The MCP `archive` argument no longer accepts an arbitrary path. It must name a `.sqlite`, `.sqlite3` or
+  `.db` file inside the default archive directory (`.katala-web-research/`), or inside
+  `KWR_MCP_ARCHIVE_ROOT` when the operator sets it. `..` and symlinks are resolved before the check. Before
+  this, a tool call could create directories and database files anywhere the process could write, or
+  add tables to an unrelated SQLite database. The CLI `--archive` option is unchanged.
 - `kwr read`, `kwr.read` and the page fetches in `kwr.investigate` now refuse URLs that resolve to a
   non-public address (loopback, private, link-local and cloud metadata ranges, including IPv4 wrapped in
   IPv6). The check runs on the connection itself, so DNS rebinding and redirects are covered, and a
