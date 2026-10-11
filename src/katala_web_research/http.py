@@ -4,6 +4,7 @@ import http.client
 import ipaddress
 import os
 import socket
+import ssl
 from dataclasses import dataclass
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
@@ -134,7 +135,7 @@ class _PublicHTTPConnection(http.client.HTTPConnection):
 class _PublicHTTPSConnection(http.client.HTTPSConnection):
     def connect(self) -> None:
         sock = _connect_public(self.host, self.port, self.timeout)
-        self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
+        self.sock = ssl.create_default_context().wrap_socket(sock, server_hostname=self.host)
 
 
 class _CappedBody:
@@ -164,7 +165,7 @@ class _PublicHTTPHandler(HTTPHandler):
 
 class _PublicHTTPSHandler(HTTPSHandler):
     def https_open(self, req):
-        return self.do_open(_PublicHTTPSConnection, req, context=self._context)
+        return self.do_open(_PublicHTTPSConnection, req)
 
 
 def _public_open(request: Request, *, timeout: float):
