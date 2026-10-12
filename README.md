@@ -209,6 +209,10 @@ The stdio server exposes:
 link-local and metadata addresses are refused, including via redirects and DNS answers. Those fetches
 ignore `HTTP_PROXY`/`HTTPS_PROXY`.
 
+The `archive` argument of the MCP tools must name a `.sqlite`/`.sqlite3`/`.db` file inside `.katala-web-research/`
+(or inside `KWR_MCP_ARCHIVE_ROOT`, which the operator sets in the server's environment). Paths outside it are
+refused, so a tool call cannot create or modify files elsewhere. The CLI `--archive` option is not restricted.
+
 It follows the MCP tool discovery and invocation surface: `initialize`, `tools/list`, and `tools/call`.
 
 See [docs/mcp-config-examples.md](docs/mcp-config-examples.md) for client config examples.

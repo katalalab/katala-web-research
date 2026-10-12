@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
+from pathlib import Path
 from typing import Any
 
 from .archive import DEFAULT_ARCHIVE, Archive
@@ -15,6 +17,8 @@ from .reader import read_url
 from .workflow import search_with_plan
 
 PROTOCOL_VERSION = "2025-11-25"
+ARCHIVE_ROOT_ENV = "KWR_MCP_ARCHIVE_ROOT"
+ARCHIVE_SUFFIXES = {".sqlite", ".sqlite3", ".db"}
 PROVIDER_NAMES = sorted(PROVIDERS)
 
 
@@ -179,6 +183,28 @@ def handle_request(request: dict[str, Any]) -> dict[str, Any] | None:
         return error_response(request_id, -32000, str(exc))
 
 
+def _archive_arg(arguments: dict[str, Any]) -> str:
+    """The `archive` tool argument comes from the model, so it may only name a database inside the root.
+
+    The root is the default archive's directory, or KWR_MCP_ARCHIVE_ROOT when the operator sets it.
+    Relative paths keep their meaning (relative to the working directory); symlinks and `..` are
+    resolved before the check, so neither can step outside.
+    """
+    raw = arguments.get("archive")
+    if raw is None:
+        raw = DEFAULT_ARCHIVE
+        root = DEFAULT_ARCHIVE.parent.resolve()
+    else:
+        root = Path(os.environ.get(ARCHIVE_ROOT_ENV) or DEFAULT_ARCHIVE.parent).resolve()
+    path = Path(str(raw)).resolve()
+    if path.suffix.lower() not in ARCHIVE_SUFFIXES or not path.is_relative_to(root):
+        raise ValueError(
+            f"archive must be a {'/'.join(sorted(ARCHIVE_SUFFIXES))} file inside the archive root; "
+            f"the operator can widen it with {ARCHIVE_ROOT_ENV}"
+        )
+    return str(path)
+
+
 def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
     if name == "kwr.plan":
         plan = build_search_plan(
@@ -191,7 +217,7 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             str(arguments["query"]),
             provider=str(arguments.get("provider", "ddg")),
             limit=int(arguments.get("limit", 5)),
-            archive_path=str(arguments.get("archive", DEFAULT_ARCHIVE)),
+            archive_path=_archive_arg(arguments),
         )
         return text_result(json.dumps([item.to_dict() for item in results], ensure_ascii=False, indent=2))
     if name == "kwr.read":
@@ -204,21 +230,21 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         )
         return text_result(build_eval_report(summary))
     if name == "kwr.query":
-        archive = Archive(str(arguments.get("archive", DEFAULT_ARCHIVE)))
+        archive = Archive(_archive_arg(arguments))
         try:
             hits = archive.query(str(arguments["terms"]), limit=int(arguments.get("limit", 5)))
         finally:
             archive.close()
         return text_result(json.dumps([hit.to_dict() for hit in hits], ensure_ascii=False, indent=2))
     if name == "kwr.repos_query":
-        archive = Archive(str(arguments.get("archive", DEFAULT_ARCHIVE)))
+        archive = Archive(_archive_arg(arguments))
         try:
             repo_hits = archive.query_repos(str(arguments["terms"]), limit=int(arguments.get("limit", 5)))
         finally:
             archive.close()
         return text_result(json.dumps([hit.to_dict() for hit in repo_hits], ensure_ascii=False, indent=2))
     if name == "kwr.feeds_query":
-        archive = Archive(str(arguments.get("archive", DEFAULT_ARCHIVE)))
+        archive = Archive(_archive_arg(arguments))
         try:
             feed_hits = archive.query_feeds(str(arguments["terms"]), limit=int(arguments.get("limit", 5)))
         finally:
@@ -226,7 +252,7 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         return text_result(json.dumps([hit.to_dict() for hit in feed_hits], ensure_ascii=False, indent=2))
     if name == "kwr.brief":
         query = str(arguments["query"])
-        archive_path = str(arguments.get("archive", DEFAULT_ARCHIVE))
+        archive_path = _archive_arg(arguments)
         web_results: list[SearchResult] = []
         search_plan: list[SearchPlanStep] = []
         if not bool(arguments.get("no_web", False)):
@@ -257,7 +283,7 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         )
     if name == "kwr.investigate":
         query = str(arguments["query"])
-        archive_path = str(arguments.get("archive", DEFAULT_ARCHIVE))
+        archive_path = _archive_arg(arguments)
         provider = str(arguments.get("provider", "ddg"))
         web_results = []
         search_plan = []

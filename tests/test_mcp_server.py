@@ -11,6 +11,12 @@ FIXTURES = Path(__file__).parent / "fixtures"
 
 
 class McpServerTests(unittest.TestCase):
+    def setUp(self):
+        # These tests keep archives in a temp dir; the operator-set root is how MCP is allowed to reach it.
+        patcher = patch.dict("os.environ", {"KWR_MCP_ARCHIVE_ROOT": tempfile.gettempdir()})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_initialize(self):
         response = handle_request({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})
         self.assertEqual(response["result"]["serverInfo"]["name"], "katala-web-research")
