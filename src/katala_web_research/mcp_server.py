@@ -192,15 +192,17 @@ def _archive_arg(arguments: dict[str, Any]) -> str:
     """
     raw = arguments.get("archive")
     if raw is None:
-        return str(DEFAULT_ARCHIVE)
-    root = Path(os.environ.get(ARCHIVE_ROOT_ENV) or DEFAULT_ARCHIVE.parent).resolve()
+        raw = DEFAULT_ARCHIVE
+        root = DEFAULT_ARCHIVE.parent.resolve()
+    else:
+        root = Path(os.environ.get(ARCHIVE_ROOT_ENV) or DEFAULT_ARCHIVE.parent).resolve()
     path = Path(str(raw)).resolve()
     if path.suffix.lower() not in ARCHIVE_SUFFIXES or not path.is_relative_to(root):
         raise ValueError(
             f"archive must be a {'/'.join(sorted(ARCHIVE_SUFFIXES))} file inside the archive root; "
             f"the operator can widen it with {ARCHIVE_ROOT_ENV}"
         )
-    return str(raw)
+    return str(path)
 
 
 def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:

@@ -67,6 +67,29 @@ class ArchiveConfinementTests(unittest.TestCase):
         self.assertNotIn("error", response, json.dumps(response)[:300])
         self.assertTrue((self.root / "ok.sqlite").exists())
 
+    def test_omitted_default_file_symlink_out_of_root_is_refused(self):
+        default = self.root / "archive.sqlite"
+        external = self.outside / "external.sqlite"
+        try:
+            os.symlink(external, default)
+        except (OSError, NotImplementedError):
+            self.skipTest("symlinks unavailable")
+        with patch("katala_web_research.mcp_server.DEFAULT_ARCHIVE", default):
+            response = _call("kwr.query", terms="x")
+        self.assertIn("error", response)
+        self.assertIn("archive root", response["error"]["message"])
+        self.assertFalse(external.exists())
+
+    def test_omitted_default_ignores_operator_root_override(self):
+        default = self.root / "archive.sqlite"
+        with (
+            patch("katala_web_research.mcp_server.DEFAULT_ARCHIVE", default),
+            patch.dict("os.environ", {"KWR_MCP_ARCHIVE_ROOT": str(self.outside)}),
+        ):
+            response = _call("kwr.query", terms="x")
+        self.assertNotIn("error", response)
+        self.assertTrue(default.exists())
+
     def test_default_archive_is_used_when_argument_is_omitted(self):
         with tempfile.TemporaryDirectory() as cwd:
             old = os.getcwd()
