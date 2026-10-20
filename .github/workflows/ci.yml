@@ -34,6 +34,27 @@ jobs:
       - name: Run repository verifier
         run: bash scripts/verify.sh
 
+  rust-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CARGO_BUILD_JOBS: "2"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.96.0 --profile minimal --component rustfmt --component clippy
+      - name: Verify native evaluation preview
+        run: |
+          scripts/rust.sh fetch --locked
+          scripts/rust.sh fmt -- --check
+          scripts/rust.sh clippy --locked --offline --all-targets -- -D warnings
+          scripts/rust.sh test --locked --offline
+          scripts/rust.sh build --locked --offline --bin kwr-rs
+          scripts/verify-eval.sh
+
   lint:
     runs-on: ubuntu-latest
     steps:
