@@ -97,6 +97,16 @@ enum Command {
         #[arg(long)]
         json: bool,
     },
+    Eval {
+        #[arg(long, default_value_t = 80, allow_hyphen_values = true)]
+        min_score: i64,
+        #[arg(long, default_value_t = 4, allow_hyphen_values = true)]
+        max_subqueries: i64,
+        #[arg(long)]
+        out: Option<PathBuf>,
+        #[arg(long)]
+        json: bool,
+    },
     Sources {
         #[command(subcommand)]
         command: Sources,
@@ -300,7 +310,8 @@ fn fetch_feed_text(value: &str) -> Result<String> {
     }
     Ok(String::from_utf8_lossy(&std::fs::read(local_feed_path(value)?)?).into_owned())
 }
-fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
+fn run(cli: Cli, out: &mut impl Write) -> Result<i32> {
+    let mut status = 0;
     match cli.command {
         Command::Collect {
             query,
@@ -600,6 +611,38 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
                 }
             }
         }
+        Command::Eval {
+            min_score,
+            max_subqueries,
+            out: report_path,
+            json: as_json,
+        } => {
+            let summary = kwr::evaluation::run(min_score, max_subqueries, &load_registry()?)?;
+            if let Some(path) = report_path.as_ref() {
+                if let Some(parent) = path
+                    .parent()
+                    .filter(|parent| !parent.as_os_str().is_empty())
+                {
+                    std::fs::create_dir_all(parent)?;
+                }
+                std::fs::write(path, kwr::evaluation::report(&summary))?;
+            }
+            if as_json {
+                emit(&summary, out)?;
+            } else {
+                writeln!(
+                    out,
+                    "score: {}\nmin_score: {}\npassed: {}",
+                    summary.score, summary.min_score, summary.passed
+                )?;
+                if let Some(path) = report_path {
+                    writeln!(out, "report: {}", path.display())?;
+                }
+            }
+            if !summary.passed {
+                status = 1;
+            }
+        }
         Command::Sources { command } => {
             let overlay = std::env::var_os("KWR_SOURCE_REGISTRY_OVERLAY")
                 .filter(|s| !s.is_empty())
@@ -772,27 +815,31 @@ fn run(cli: Cli, out: &mut impl Write) -> Result<()> {
             out,
         )?,
     }
-    Ok(())
+    Ok(status)
 }
 fn main() {
     let cli = Cli::parse();
     let meta = matches!(&cli.command, Command::Search { provider, .. } if provider == "meta");
     let result = run(cli, &mut io::stdout().lock());
-    if let Err(error) = result {
-        if error
-            .downcast_ref::<io::Error>()
-            .is_some_and(|e| e.kind() == io::ErrorKind::BrokenPipe)
-        {
+    match result {
+        Ok(status) if status != 0 => std::process::exit(status),
+        Ok(_) => {}
+        Err(error) => {
+            if error
+                .downcast_ref::<io::Error>()
+                .is_some_and(|e| e.kind() == io::ErrorKind::BrokenPipe)
+            {
+                std::process::exit(1);
+            }
+            eprintln!("kwr: error: {error}");
+            if meta && let Some(error) = error.downcast_ref::<kwr::providers::ProviderError>() {
+                match error.kind {
+                    "KeyboardInterrupt" => std::process::exit(130),
+                    "SignalError" => std::process::exit(143),
+                    _ => {}
+                }
+            }
             std::process::exit(1);
         }
-        eprintln!("kwr: error: {error}");
-        if meta && let Some(error) = error.downcast_ref::<kwr::providers::ProviderError>() {
-            match error.kind {
-                "KeyboardInterrupt" => std::process::exit(130),
-                "SignalError" => std::process::exit(143),
-                _ => {}
-            }
-        }
-        std::process::exit(1);
     }
 }

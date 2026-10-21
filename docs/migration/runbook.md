@@ -51,7 +51,7 @@ python scripts/migration/json_provider_differential.py
 python scripts/migration/json_provider_edge_differential.py
 ```
 
-Supply a C compiler (Visual Studio Build Tools on Windows; platform SDK/cc on macOS/Linux) for SQLite. No Windows/Linux execution or certificate/proxy/signal validation is claimed. No installer or global CLI replacement is included. The current CI workflows are unchanged to avoid adding runners or costs; Rust gates are local until the review decides how to integrate them into the existing CI budget.
+Supply a C compiler (Visual Studio Build Tools on Windows; platform SDK/cc on macOS/Linux) for SQLite. No Windows/Linux execution or certificate/proxy/signal validation is claimed. No installer or global CLI replacement is included. The `rust-evaluation` CI job installs Rust 1.96.0 and checks formatting, clippy, the native test suite, and the offline evaluation differential gate on Ubuntu. A workflow definition alone does not establish a successful Linux run; check the exact PR head's CI results separately.
 
 Dependencies are pinned transitively in Cargo.lock. `dependency-licenses.json` lists registry package names, versions, and declared license expressions; permissive MIT/Apache alternatives are selected where multiple options exist (including the optional LGPL alternative). No paid runtime/API/model dependency was introduced. Release distribution must include the project's LICENSE and required dependency notices from the locked registry packages. Do not publish a cross-platform release until actual target gates, attribution packaging, and review pass. Current release build is a local preview only.
 
@@ -66,6 +66,7 @@ Dependencies are pinned transitively in Cargo.lock. `dependency-licenses.json` l
 - `search --provider searxng`, `brave` or `jina` implements normal JSON requests, config, pagination, result/rank/CLI fields with existing environment-only settings. Live use explicitly opts into HTTP and existing service cost posture; migration verification uses synthetic values only. Full edges and doctor preflight remain pending, detailed in [provider-contract.md](provider-contract.md).
 - `read --cache` for an existing page only; uncached reads, refreshes, and cache misses fail clearly
 - new `migrate --source PATH --destination PATH [--dry-run]` emits a JSON validation report
+- `eval [--min-score N] [--max-subqueries N] [--out PATH] [--json]` runs the bundled offline quality fixture. It is a native preview and never launches Python; `scripts/verify-eval.sh` compares JSON, text, Markdown bytes and exit status with the unchanged Python oracle. Live providers, real archives, and Windows/Linux runs are unverified.
 
 Example offline feed loop (synthetic destination only):
 

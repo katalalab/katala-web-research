@@ -1,0 +1,587 @@
+{
+  "cases": [
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "Agentic retrieval amplifies existing data quality issues.",
+          "source": "",
+          "title": "Agentic retrieval: a practical guide",
+          "url": "https://www.algolia.com/blog/ai/agentic-retrieval"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "A pipeline that decomposes complex queries into subqueries for agent workflows.",
+          "source": "",
+          "title": "Agentic Retrieval Overview - Azure AI Search",
+          "url": "https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-overview"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "Primary documentation source for agentic retrieval behavior.",
+          "source": "",
+          "title": "Agentic retrieval in Azure AI Search",
+          "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/search/agentic-retrieval-overview.md"
+        }
+      ],
+      "category": "platform_api_docs",
+      "discouraged_url_terms": [
+        "algolia.com/blog"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "primary"
+      ],
+      "min_top_quality": 75,
+      "name": "agentic_retrieval_prefers_official_and_primary",
+      "preferred_url_terms": [
+        "learn.microsoft.com",
+        "github.com/MicrosoftDocs"
+      ],
+      "query": "agentic retrieval source quality",
+      "relevance": [
+        [
+          "https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-overview",
+          3
+        ],
+        [
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/search/agentic-retrieval-overview.md",
+          2
+        ],
+        [
+          "https://www.algolia.com/blog/ai/agentic-retrieval",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A blog tutorial about citations.",
+          "source": "",
+          "title": "How to add citations to an AI app",
+          "url": "https://example.com/claude-citations-guide"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Citations provide source locations for generated responses.",
+          "source": "",
+          "title": "Citations - Anthropic",
+          "url": "https://docs.anthropic.com/en/docs/build-with-claude/citations"
+        }
+      ],
+      "category": "ai_vendor_docs",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official"
+      ],
+      "min_top_quality": 75,
+      "name": "citations_prefers_vendor_docs",
+      "preferred_url_terms": [
+        "docs.anthropic.com"
+      ],
+      "query": "Claude citations source documents",
+      "relevance": [
+        [
+          "https://docs.anthropic.com/en/docs/build-with-claude/citations",
+          3
+        ],
+        [
+          "https://example.com/claude-citations-guide",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": "2025-10-22",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Retrieval-augmented generation systems decompose requests into subqueries.",
+          "source": "",
+          "title": "Query decomposition for RAG",
+          "url": "https://arxiv.org/abs/2510.18633"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A high-level production guide.",
+          "source": "",
+          "title": "Advanced RAG production patterns",
+          "url": "https://example.com/advanced-rag-patterns"
+        },
+        {
+          "metadata": {},
+          "published_at": "2025-07-01",
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "A RAG pipeline that incorporates question decomposition and reranking.",
+          "source": "",
+          "title": "Question Decomposition for Retrieval-Augmented Generation",
+          "url": "https://aclanthology.org/2025.acl-srw.32/"
+        }
+      ],
+      "category": "scholarly_research",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "primary",
+        "critique"
+      ],
+      "min_top_quality": 75,
+      "name": "papers_surface_primary_research",
+      "preferred_url_terms": [
+        "arxiv.org",
+        "aclanthology.org"
+      ],
+      "query": "query decomposition retrieval augmented generation evaluation",
+      "relevance": [
+        [
+          "https://arxiv.org/abs/2510.18633",
+          3
+        ],
+        [
+          "https://aclanthology.org/2025.acl-srw.32/",
+          2
+        ],
+        [
+          "https://example.com/advanced-rag-patterns",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A single-engine blog result.",
+          "source": "",
+          "title": "Generic search notes",
+          "url": "https://example.com/rank-fusion"
+        },
+        {
+          "metadata": {
+            "rrf_score": 0.031,
+            "source_count": 2
+          },
+          "published_at": null,
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Official documentation for searching GitHub.",
+          "source": "",
+          "title": "Agent search rank fusion documentation",
+          "url": "https://docs.github.com/en/search-github"
+        }
+      ],
+      "category": "metasearch_fusion",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "primary"
+      ],
+      "min_top_quality": 75,
+      "name": "fusion_consensus_beats_single_engine_outlier",
+      "preferred_url_terms": [
+        "docs.github.com"
+      ],
+      "query": "agent search documentation rank fusion",
+      "relevance": [
+        [
+          "https://docs.github.com/en/search-github",
+          3
+        ],
+        [
+          "https://example.com/rank-fusion",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A commentary post about Python releases and security notes.",
+          "source": "",
+          "title": "Python release rumors",
+          "url": "https://example.com/python-release-rumors"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-05-01",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Official release notes and changed behavior for Python.",
+          "source": "",
+          "title": "What is New In Python",
+          "url": "https://docs.python.org/3/whatsnew/3.14.html"
+        }
+      ],
+      "category": "feed_monitoring",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "primary"
+      ],
+      "min_top_quality": 70,
+      "name": "feed_monitoring_prefers_official_release_notes",
+      "preferred_url_terms": [
+        "docs.python.org"
+      ],
+      "query": "Python release feed security notes",
+      "relevance": [
+        [
+          "https://docs.python.org/3/whatsnew/3.14.html",
+          3
+        ],
+        [
+          "https://example.com/python-release-rumors",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A secondary article about a Node.js vulnerability.",
+          "source": "",
+          "title": "Node OpenSSL vulnerability analysis",
+          "url": "https://example.com/node-openssl-analysis"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-04-10",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Primary security advisory for Node.js and OpenSSL.",
+          "source": "github",
+          "title": "Node.js security advisory",
+          "url": "https://github.com/nodejs/node/security/advisories/GHSA-node-openssl"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "Government vulnerability database entry.",
+          "source": "",
+          "title": "NVD CVE detail",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0001"
+        }
+      ],
+      "category": "security_advisory",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "primary",
+        "critique"
+      ],
+      "min_top_quality": 75,
+      "name": "security_prefers_primary_advisory",
+      "preferred_url_terms": [
+        "github.com/nodejs",
+        "nvd.nist.gov"
+      ],
+      "query": "Node.js OpenSSL vulnerability advisory",
+      "relevance": [
+        [
+          "https://github.com/nodejs/node/security/advisories/GHSA-node-openssl",
+          3
+        ],
+        [
+          "https://nvd.nist.gov/vuln/detail/CVE-2026-0001",
+          2
+        ],
+        [
+          "https://example.com/node-openssl-analysis",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "Marketing blog summary of endorsement rules.",
+          "source": "",
+          "title": "Influencer disclosure tips",
+          "url": "https://example.com/influencer-disclosure-tips"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Government business guidance for endorsements and disclosures.",
+          "source": "",
+          "title": "FTC Endorsement Guides",
+          "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides"
+        }
+      ],
+      "category": "legal_regulatory",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "critique"
+      ],
+      "min_top_quality": 75,
+      "name": "regulatory_prefers_government_source",
+      "preferred_url_terms": [
+        "ftc.gov"
+      ],
+      "query": "FTC endorsements disclosure business guidance",
+      "relevance": [
+        [
+          "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides",
+          3
+        ],
+        [
+          "https://example.com/influencer-disclosure-tips",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A general article about search adapters.",
+          "source": "",
+          "title": "Metasearch adapter blog",
+          "url": "https://example.com/metasearch-adapter"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Primary implementation of SearXNG engine adapters.",
+          "source": "github",
+          "title": "SearXNG engines source",
+          "url": "https://github.com/searxng/searxng/tree/master/searx/engines"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "Developer documentation for SearXNG engines.",
+          "source": "",
+          "title": "SearXNG engine docs",
+          "url": "https://docs.searxng.org/dev/engines/index.html"
+        }
+      ],
+      "category": "open_source_code",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "primary"
+      ],
+      "min_top_quality": 75,
+      "name": "open_source_prefers_primary_implementation",
+      "preferred_url_terms": [
+        "github.com/searxng",
+        "docs.searxng.org"
+      ],
+      "query": "SearXNG engine adapter implementation",
+      "relevance": [
+        [
+          "https://github.com/searxng/searxng/tree/master/searx/engines",
+          3
+        ],
+        [
+          "https://docs.searxng.org/dev/engines/index.html",
+          2
+        ],
+        [
+          "https://example.com/metasearch-adapter",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "An unofficial recap of release notes.",
+          "source": "",
+          "title": "Agents SDK release recap",
+          "url": "https://example.com/agents-sdk-release-recap"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-05-01",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Official OpenAI developer documentation for building agents.",
+          "source": "",
+          "title": "OpenAI Agents SDK docs",
+          "url": "https://developers.openai.com/tracks/building-agents"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-05-20",
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "Primary release history for the OpenAI Agents Python SDK.",
+          "source": "github",
+          "title": "OpenAI Agents Python releases",
+          "url": "https://github.com/openai/openai-agents-python/releases"
+        }
+      ],
+      "category": "product_release_freshness",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "primary"
+      ],
+      "min_top_quality": 75,
+      "name": "product_release_prefers_official_changelog",
+      "preferred_url_terms": [
+        "developers.openai.com",
+        "github.com/openai"
+      ],
+      "query": "OpenAI Agents SDK changelog release notes",
+      "relevance": [
+        [
+          "https://github.com/openai/openai-agents-python/releases",
+          3
+        ],
+        [
+          "https://developers.openai.com/tracks/building-agents",
+          2
+        ],
+        [
+          "https://example.com/agents-sdk-release-recap",
+          0
+        ]
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 1,
+          "score": 0.0,
+          "snippet": "A single-site commentary article about media bias.",
+          "source": "",
+          "title": "Political bias in the news",
+          "url": "https://example.com/political-bias-news"
+        },
+        {
+          "metadata": {},
+          "published_at": "2026-05-01",
+          "rank": 2,
+          "score": 0.0,
+          "snippet": "Compare news coverage by source mix and political bias.",
+          "source": "",
+          "title": "Ground News bias comparison",
+          "url": "https://ground.news/"
+        },
+        {
+          "metadata": {},
+          "published_at": null,
+          "rank": 3,
+          "score": 0.0,
+          "snippet": "Media bias ratings across news sources.",
+          "source": "",
+          "title": "AllSides media bias ratings",
+          "url": "https://www.allsides.com/media-bias/media-bias-ratings"
+        }
+      ],
+      "category": "bias_aware_news",
+      "discouraged_url_terms": [
+        "example.com"
+      ],
+      "expected_plan_intents": [
+        "baseline",
+        "official",
+        "critique"
+      ],
+      "min_top_quality": 75,
+      "name": "news_bias_prefers_bias_comparison_source",
+      "preferred_url_terms": [
+        "ground.news",
+        "allsides.com"
+      ],
+      "query": "news coverage political bias comparison",
+      "relevance": [
+        [
+          "https://ground.news/",
+          3
+        ],
+        [
+          "https://www.allsides.com/media-bias/media-bias-ratings",
+          2
+        ],
+        [
+          "https://example.com/political-bias-news",
+          0
+        ]
+      ]
+    }
+  ],
+  "year": 2026
+}

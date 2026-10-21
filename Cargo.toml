@@ -113,3 +113,7 @@ path = "rust/tests/support/store_run_probe.rs"
 [[test]]
 name = "report"
 path = "rust/tests/report.rs"
+
+[[test]]
+name = "evaluation"
+path = "rust/tests/evaluation.rs"

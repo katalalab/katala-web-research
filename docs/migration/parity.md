@@ -24,7 +24,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | brief / investigate | plan expansion, quality ranking, local/feed evidence, selected captures, provenance/checklist/report output | Pending |
 | doctor | provider configuration posture plus actual SQLite FTS5 probe; optional SearXNG preflight | Pending |
 | openalex expand | ID/DOI normalization; direction references/citing/both, bounded 50, cursor paging/cache reader | Pending |
-| eval | deterministic 80 threshold, source/plan/rank/domain metrics, Markdown report, failing exit 1 | Pending; baseline suite retained |
+| eval | deterministic 80 threshold, source/plan/rank/domain metrics, Markdown report, failing exit 1 | Native offline preview implemented with bundled repository-owned synthetic cases and Python differential output/report/status gates; live providers, real archives and Windows/Linux execution remain pending |
 | mcp | 2025-11-25, nine tools, initialize/list/call, JSON-RPC error codes, Content-Length UTF-8 byte framing CRLF | Pending; preserve legacy Content-Length framing and add official NDJSON compatibility explicitly; test notifications, partial/invalid frames, stdout cleanliness |
 | migration | Python user_version=0; implicit repo columns/context FTS upgrade on open | Implemented copy-only migration; source read-only, version/fingerprint checks, atomic transaction, validation/rollback |
 
