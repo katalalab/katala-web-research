@@ -651,7 +651,7 @@
     "license": "Apache-2.0 OR ISC OR MIT",
     "name": "rustls",
     "source": "registry+https://github.com/rust-lang/crates.io-index",
-    "version": "0.23.45"
+    "version": "0.23.46"
   },
   {
     "license": "Apache-2.0 OR ISC OR MIT",
