@@ -31,6 +31,13 @@ Defaults:
 - captured pages: 2
 - expanded queries: enabled
 
+Code using `Archive` directly owns the connection and must call `close()` in a
+`finally` block. If archive initialization fails, the constructor closes the
+connection before propagating the error. In the doctor probe, initial repo metadata
+read and archive initialization, a close failure during another error is recorded
+as a traceback note without replacing the original error or its cause; a close
+failure after success is propagated.
+
 ## Useful Overrides
 
 ```sh

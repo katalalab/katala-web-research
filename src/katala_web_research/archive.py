@@ -17,6 +17,7 @@ from .models import (
     SearchResult,
     utc_now_iso,
 )
+from .resources import close_after_error
 
 DEFAULT_ARCHIVE = Path(".katala-web-research/archive.sqlite")
 
@@ -26,8 +27,12 @@ class Archive:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.conn = sqlite3.connect(self.path)
-        self.conn.row_factory = sqlite3.Row
-        self._init_schema()
+        try:
+            self.conn.row_factory = sqlite3.Row
+            self._init_schema()
+        except BaseException as primary:
+            close_after_error(self.conn, primary)
+            raise
 
     def close(self) -> None:
         self.conn.close()

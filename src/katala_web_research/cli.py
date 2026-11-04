@@ -30,6 +30,7 @@ from .providers import (
 from .query_builder import build_search_query, categorize_url
 from .reader import read_url
 from .report import build_report
+from .resources import closing_preserving_error
 from .source_registry import source_registry
 from .workflow import enrich_search_results, search_with_plan
 
@@ -465,9 +466,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
 def cmd_repos_scan(args: argparse.Namespace) -> int:
     existing_metadata = {}
     if not args.no_incremental:
-        archive = Archive(args.archive)
-        existing_metadata = archive.repo_document_metadata()
-        archive.close()
+        with closing_preserving_error(Archive(args.archive)) as archive:
+            existing_metadata = archive.repo_document_metadata()
     stats: dict[str, int] = {"skipped_unchanged": 0}
     documents, warnings = scan_repos(
         args.root,
@@ -854,7 +854,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     if args.check_searxng:
         probe = searxng_preflight()
         print(f"searxng_preflight: {probe['status']} - results={probe['result_count']} status={probe['status_code']}")
-    with sqlite3.connect(":memory:") as conn:
+    with closing_preserving_error(sqlite3.connect(":memory:")) as conn:
         conn.execute("CREATE VIRTUAL TABLE probe USING fts5(value)")
     print("sqlite_fts5: ok")
     return 0
