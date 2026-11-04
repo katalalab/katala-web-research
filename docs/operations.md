@@ -88,6 +88,7 @@ Secret handling:
 - `OPENALEX_API_KEY` accepts an `op://` reference and is resolved through `op read` at call time; nothing is written to disk. The other keys are read straight from the environment, so run them under `op run --env-file=.env`.
 - OpenAlex only accepts its key as an `api_key=` query parameter, so the credential is unavoidably in the request URL. `redact_url()` strips it (and any basic-auth userinfo) from every error message before it can reach a log or a report.
 - `.env` is gitignored and `scripts/verify.sh` refuses a tracked `.env`, a raw `sk-`/`ghp_`/`AKIA`/private-key pattern inside it, and any tracked runtime artifact.
+- The verifier creates a unique temporary directory for each run and removes its own known outputs on exit. Set `TMPDIR` to an existing private workspace directory, not writable by untrusted users. The cleanup rejects an obvious replacement by a symlink, but path-based checks cannot prevent a concurrent directory swap; this is not a security boundary against someone who can modify that directory. Abrupt termination may leave the directory behind.
 
 License boundary: SearXNG is AGPL and is only ever reached over HTTP at `KWR_SEARXNG_URL`. No SearXNG source is vendored into this MIT tree, and `tests/test_provider_boundaries.py` fails if an `import searx` ever appears under `src/`.
 
