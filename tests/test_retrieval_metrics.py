@@ -38,6 +38,15 @@ class RankingMetricTests(unittest.TestCase):
         self.assertAlmostEqual(mrr_at_k(["unseen", "a"], LABELS, 5), 0.5)
         self.assertAlmostEqual(recall_at_k(["unseen"], LABELS, 5), 0.0)
 
+    def test_recall_does_not_award_multiple_hits_for_one_url(self):
+        self.assertEqual(recall_at_k(["a", "a", "b"], LABELS, 2), 0.5)
+        self.assertEqual(recall_at_k(["a", "a", "b"], LABELS, 3), 1.0)
+
+    def test_ndcg_gives_a_duplicate_zero_gain_without_shifting_positions(self):
+        ranked = ndcg_at_k(["a", "a", "b"], LABELS, 3)
+        self.assertAlmostEqual(ranked, ndcg_at_k(["a", "unseen", "b"], LABELS, 3))
+        self.assertLess(ranked, ndcg_at_k(["a", "b"], LABELS, 3))
+
 
 class LabelledBenchmarkTests(unittest.TestCase):
     def test_every_default_case_carries_relevance_labels_for_its_candidates(self):

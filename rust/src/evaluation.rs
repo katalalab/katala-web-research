@@ -6,7 +6,7 @@ use crate::{
 };
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashSet};
 
 const RELEVANT_GRADE: i64 = 1;
 
@@ -84,9 +84,12 @@ fn recall(urls: &[String], labels: &BTreeMap<String, i64>, k: usize) -> f64 {
     if relevant == 0 {
         return 0.0;
     }
+    let mut seen = HashSet::new();
     urls.iter()
         .take(k)
-        .filter(|url| labels.get(*url).copied().unwrap_or(0) >= RELEVANT_GRADE)
+        .filter(|url| {
+            seen.insert(url.as_str()) && labels.get(*url).copied().unwrap_or(0) >= RELEVANT_GRADE
+        })
         .count() as f64
         / relevant as f64
 }
@@ -109,11 +112,14 @@ fn ndcg(urls: &[String], labels: &BTreeMap<String, i64>, k: usize) -> f64 {
     if maximum == 0.0 {
         0.0
     } else {
-        dcg(urls
-            .iter()
-            .take(k)
-            .map(|url| labels.get(url).copied().unwrap_or(0)))
-            / maximum
+        let mut seen = HashSet::new();
+        dcg(urls.iter().take(k).map(|url| {
+            if seen.insert(url.as_str()) {
+                labels.get(url).copied().unwrap_or(0)
+            } else {
+                0
+            }
+        })) / maximum
     }
 }
 fn evaluate(
@@ -363,5 +369,24 @@ mod tests {
             ndcg(&["a".into(), "b".into(), "c".into()], &labels, 10),
             1.0
         );
+    }
+
+    #[test]
+    fn duplicate_urls_do_not_earn_recall_credit() {
+        let labels = BTreeMap::from([("a".into(), 3), ("b".into(), 2)]);
+        let ranked = ["a".into(), "a".into(), "b".into()];
+        assert_eq!(recall(&ranked, &labels, 2), 0.5);
+        assert_eq!(recall(&ranked, &labels, 3), 1.0);
+    }
+
+    #[test]
+    fn duplicate_urls_keep_their_rank_but_earn_no_gain() {
+        let labels = BTreeMap::from([("a".into(), 3), ("b".into(), 2)]);
+        let ranked = ndcg(&["a".into(), "a".into(), "b".into()], &labels, 3);
+        assert_eq!(
+            ranked,
+            ndcg(&["a".into(), "unseen".into(), "b".into()], &labels, 3)
+        );
+        assert!(ranked < ndcg(&["a".into(), "b".into()], &labels, 3));
     }
 }
