@@ -46,6 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   no results.
 
 ### Fixed
+- `recall@5` and `ndcg@10` (Python and Rust) credit a URL only at its first position in the ranked list.
+  A repeated URL keeps its slot but earns no gain, so duplicates can no longer push a metric above 1.0.
 - Removed unused `quote_plus` import from `providers.py` (ruff F401).
 - Corpus re-indexing no longer lets unchanged files consume the `max_files` budget, so newly added
   files are not silently skipped.

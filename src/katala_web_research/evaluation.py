@@ -399,7 +399,7 @@ def recall_at_k(ranked_urls: list[str], labels: dict[str, int], k: int) -> float
     relevant = {url for url, grade in labels.items() if grade >= RELEVANT_GRADE}
     if not relevant:
         return 0.0
-    return sum(1 for url in ranked_urls[:k] if url in relevant) / len(relevant)
+    return len(relevant.intersection(ranked_urls[:k])) / len(relevant)
 
 
 def mrr_at_k(ranked_urls: list[str], labels: dict[str, int], k: int) -> float:
@@ -413,7 +413,12 @@ def ndcg_at_k(ranked_urls: list[str], labels: dict[str, int], k: int) -> float:
     ideal = _dcg(sorted(labels.values(), reverse=True)[:k])
     if not ideal:
         return 0.0
-    return _dcg([labels.get(url, 0) for url in ranked_urls[:k]]) / ideal
+    seen: set[str] = set()
+    grades = []
+    for url in ranked_urls[:k]:
+        grades.append(0 if url in seen else labels.get(url, 0))
+        seen.add(url)
+    return _dcg(grades) / ideal
 
 
 def _dcg(grades: list[int]) -> float:
