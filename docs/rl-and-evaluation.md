@@ -106,6 +106,8 @@ Every case also carries graded relevance labels (`EvalCase.relevance`, url to gr
 - `ndcg@10` - graded, position-weighted quality, exponential gain
 - `baseline_ndcg@10` - the same nDCG over the order the providers returned
 
+A URL that appears more than once in a ranked list counts only at its first position; later copies keep their slot but contribute no gain.
+
 `kwr eval` fails when `ndcg@10` is not strictly above `baseline_ndcg@10`. The gate is the gap rather than a tuned threshold: a fixed number drifts into either a rubber stamp or a chore, while the gap goes red the moment ranking stops improving on provider order.
 
 Benchmark boundary:
