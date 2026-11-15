@@ -54,6 +54,7 @@ jobs:
           scripts/rust.sh test --locked --offline
           scripts/rust.sh build --locked --offline --bin kwr-rs
           scripts/verify-eval.sh
+          PYTHONPATH=src python3 scripts/migration/differential.py
 
   lint:
     runs-on: ubuntu-latest

@@ -50,10 +50,9 @@ class ReaderTests(unittest.TestCase):
                 read_with_jina("https://example.com/bad")
 
     def test_read_direct_sniffs_meta_charset_when_header_lacks_it(self):
-        body = (
-            "<html><head><meta charset=\"shift_jis\">"
-            "<title>テスト</title></head><body>本文</body></html>"
-        ).encode("shift_jis")
+        body = ('<html><head><meta charset="shift_jis"><title>テスト</title></head><body>本文</body></html>').encode(
+            "shift_jis"
+        )
         response = HttpResponse(
             url="https://example.jp/",
             status=200,
@@ -65,6 +64,25 @@ class ReaderTests(unittest.TestCase):
 
         self.assertIn("本文", snapshot.content)
         self.assertEqual(snapshot.title, "テスト")
+
+    def test_read_direct_preserves_windows_japanese_charset(self):
+        body = '<html><meta charset="cp932"><title>髙橋</title><body>本文</body></html>'.encode("cp932")
+        response = HttpResponse(url="https://example.jp/", status=200, headers={"content-type": "text/html"}, body=body)
+        with patch("katala_web_research.reader.fetch_url", return_value=response):
+            snapshot = read_direct("https://example.jp/")
+        self.assertEqual(snapshot.title, "髙橋")
+        self.assertIn("本文", snapshot.content)
+
+    def test_read_direct_ignores_transform_charsets(self):
+        for charset in ("unicode_escape", "raw_unicode_escape", "hex", "base64"):
+            with self.subTest(charset=charset):
+                body = (f'<html><meta charset="{charset}"><body>' + r"literal \u0061 text" + "</body></html>").encode()
+                response = HttpResponse(
+                    url="https://example.com/", status=200, headers={"content-type": "text/html"}, body=body
+                )
+                with patch("katala_web_research.reader.fetch_url", return_value=response):
+                    snapshot = read_direct("https://example.com/")
+                self.assertIn(r"literal \u0061 text", snapshot.content)
 
 
 if __name__ == "__main__":

@@ -84,7 +84,7 @@ impl Archive {
                 .iter()
                 .map(|w| format!("\"{w}\""))
                 .collect::<Vec<_>>()
-                .join(" ")
+                .join(" OR ")
         };
         let sql = match kind {
             "pages" => "SELECT p.url,p.title,snippet(pages_fts,1,'[',']','...',18) AS snippet,bm25(pages_fts) AS rank,p.fetched_at FROM pages_fts JOIN pages p ON p.id=pages_fts.rowid WHERE pages_fts MATCH ? ORDER BY rank LIMIT ?".to_string(),

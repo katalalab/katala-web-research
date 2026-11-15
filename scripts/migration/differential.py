@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline CLI parity against the retained Python reference; only synthetic archives."""
 import json
+import math
 import os
 import sqlite3
 import subprocess
@@ -42,11 +43,27 @@ class Differential(unittest.TestCase):
         p, r = self.call(cmd, False), self.call(cmd, True)
         self.assertEqual(p.returncode, r.returncode, (cmd, p.stderr, r.stderr))
         if as_json:
-            self.assertEqual(json.loads(p.stdout), json.loads(r.stdout), cmd)
+            self.assert_archive_equivalent(json.loads(p.stdout), json.loads(r.stdout), cmd)
         else:
             self.assertEqual(p.stdout, r.stdout, cmd)
         self.assertEqual(p.stderr, r.stderr, cmd)
         type(self).comparisons += 1
+    def assert_archive_equivalent(self, left, right, cmd, key=''):
+        # CPython and bundled SQLite can differ by a rounding bit in bm25's rank.
+        # Keep all fields and row order exact; only that backend float gets tolerance.
+        if isinstance(left, dict) and isinstance(right, dict):
+            self.assertEqual(left.keys(), right.keys(), cmd)
+            for field in left:
+                self.assert_archive_equivalent(left[field], right[field], cmd, field)
+        elif isinstance(left, list) and isinstance(right, list):
+            self.assertEqual(len(left), len(right), cmd)
+            for a, b in zip(left, right):
+                self.assert_archive_equivalent(a, b, cmd)
+        elif key in {'rank', 'archive_rank'} and isinstance(left, float) and isinstance(right, float):
+            self.assertTrue(math.isfinite(left) and math.isfinite(right), (cmd, left, right))
+            self.assertLessEqual(abs(left - right), 4 * max(math.ulp(left), math.ulp(right)), (cmd, left, right))
+        else:
+            self.assertEqual(left, right, cmd)
     def test_plan(self):
         for query in ['', ' \t ', 'agent research', '日本語\u3000query ©', 'agent 2026', 'atomic\x1cevidence']:
             for maximum in [-1,0,1,2,4,8]:
@@ -74,7 +91,7 @@ class Differential(unittest.TestCase):
         self.parity(['sources','list','--limit','1000','--json'])
     def test_archive_queries(self):
         for command in [['query'],['repos','query'],['feeds','query'],['issues','query']]:
-            for terms in ['evidence','rollback','日本語','atomic evidence','"evidence"','','OR NOT * :','missing']:
+            for terms in ['evidence','rollback','日本語','atomic evidence','atomic missing','contextterm missing','"evidence"','','OR NOT * :','missing']:
                 self.parity([*command,terms,'--archive',str(self.db),'--json'])
             self.parity([*command,'evidence','--archive',str(self.db)],False)
             for limit in [-1,0,1]:

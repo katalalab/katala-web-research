@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Security
+- Invalid MCP frame lengths or truncated bodies stop the stream without guessing a next boundary.
+  Fully consumed invalid JSON/non-object bodies are skipped while preserving the next frame.
+- HTML meta charset sniffing ignores Python transformation codecs such as `unicode_escape` and
+  `hex`, while retaining text encodings including Japanese cp932. HTTP header charset handling is unchanged.
 - The MCP `archive` argument no longer accepts an arbitrary path. It must name a `.sqlite`, `.sqlite3` or
   `.db` file inside the default archive directory (`.katala-web-research/`), or inside
   `KWR_MCP_ARCHIVE_ROOT` when the operator sets it. `..` and symlinks are resolved before the check. Before
@@ -34,8 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `brief.py` and `investigation.py`).
 
 ### Changed
-- Repo-archive multi-term queries now require **all** terms (FTS5 implicit AND) instead of any term
-  (OR), trading recall for precision.
+- Archive multi-term queries keep partial matches (FTS5 OR) in Python and Rust, preserving
+  natural-language recall. BM25 ranks the results; a full match is not guaranteed first for every
+  document length. Explicit repository/path filters remain constraints.
 - `source_quality` overlap and title bonus use token-set intersection instead of substring matching,
   fixing false positives such as "on" matching "optimization".
 - `_freshness_bonus` no longer rewards future-dated results; only the current year earns the full bonus.

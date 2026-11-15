@@ -9,7 +9,7 @@ Reference: public repository ID 1251159956, main e66e449cc210bd80ecb25a00391091e
 | version / parser | kwr 0.1.0; argparse error 2, runtime error 1, success 0; UTF-8 sorted indent-2 JSON | Native CLI foundation; parser/help wording may differ and must be recorded |
 | plan | collapsed whitespace, baseline/official/primary/critique/freshness, ordered dedup, existing nonpositive max returns first step | Native implemented; differential and committed golden fixtures |
 | sources list/match | bundled JSON, overlay KWR_SOURCE_REGISTRY_OVERLAY keyed by domain/type/name; exact normalized host; prefix path boundary; trust/name ordering | Native implemented; boundary/overlay differential tests |
-| query | pages FTS5, quoted whitespace tokens with quotes stripped, AND semantics, bm25/snippet, empty results | Native implemented; shared SQL schema and differential ranking |
+| query | pages FTS5, quoted whitespace tokens with quotes stripped, OR semantics, bm25/snippet, empty results | Native implemented; shared SQL schema and differential ranking |
 | repos query | FTS5 six columns, context weighting, inline repo:/path:, explicit filters win, escaped LIKE | Native query implemented; scanner remains pending |
 | feeds query | FTS5 summary snippets with source/published/fetched fields | Native query implemented; normal RSS/Atom/JSONFeed file/HTTP(S) refresh implemented; parser/transport edge parity pending |
 | feeds add | upsert source without resetting health or added_at, empty strings preserved in CLI payload | Native implemented; differential archive writes |
@@ -37,6 +37,11 @@ HTTP default timeout 20 seconds, optional positive KWR_HTTP_TIMEOUT_SECONDS; gh 
 All environment variable names and occurrences are enumerated, including registry overlay and provider localization/date/bool filters. HTTP(S)_PROXY/ALL_PROXY/NO_PROXY behavior is a platform dependency and requires synthetic tests before networking migration is accepted.
 
 ## Cross-platform design
+
+Archive FTS uses OR for natural-language recall in Python and Rust; repository/path filters remain constraints.
+The offline differential gate compares keys, row order and ordinary fields exactly. Only finite SQLite
+BM25 `rank` / `archive_rank` floats may differ by at most four ULP, accommodating CPython versus bundled
+SQLite rounding without changing production values. A larger rank difference or any score/order change fails.
 
 Pin an already-installed Rust toolchain and MSRV with Cargo.lock; use native Path/OsString for filesystem paths and UTF-8 for persisted text/output. Bundle SQLite with FTS5 to remove OS SQLite variation. TLS must verify certificates, allow standard corporate proxy trust without disabling verification, and have synthetic timeout/proxy tests. Bounded threads (four meta workers); default retry zero to preserve requests/cost, explicit provider retry only with fixtures. Handle Ctrl-C and broken pipes without corrupting transactions; MCP framing counts UTF-8 bytes and writes CRLF only in headers. Preserve timestamp format seconds plus +00:00. Windows/Linux are design targets, **unverified** until actual runs; this work uses only the authorized local Mac.
 

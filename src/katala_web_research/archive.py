@@ -741,7 +741,8 @@ def _fts_query(terms: str) -> str:
     tokens = [token.replace('"', "") for token in terms.split() if token.strip()]
     if not tokens:
         return '""'
-    return " ".join(f'"{token}"' for token in tokens)
+    # Keep partial natural-language matches; bm25 ranks the retained candidates.
+    return " OR ".join(f'"{token}"' for token in tokens)
 
 
 def _parse_repo_query_terms(terms: str) -> tuple[str, str, str]:
