@@ -346,12 +346,16 @@ def text_result(text: str) -> dict[str, Any]:
     return {"content": [{"type": "text", "text": text}], "isError": False}
 
 
+class InvalidMessageBody(ValueError):
+    """A complete JSON frame did not contain a request object."""
+
+
 def main() -> int:
     while True:
         try:
             message = read_framed_message(sys.stdin.buffer)
-        except (ValueError, UnicodeDecodeError):
-            # A single malformed frame must not kill the long-lived server.
+        except (json.JSONDecodeError, UnicodeDecodeError, InvalidMessageBody):
+            # Only a fully consumed body can fail here. Its next boundary is known.
             continue
         if message is None:
             return 0
@@ -372,10 +376,22 @@ def read_framed_message(stream) -> dict[str, Any] | None:
         if ":" in line:
             key, value = line.split(":", 1)
             headers[key.lower()] = value.strip()
-    length = int(headers.get("content-length", "0"))
-    if length <= 0:
+    raw_length = headers.get("content-length", "0")
+    if not raw_length.isascii() or not raw_length.isdecimal():
         return None
-    return json.loads(stream.read(length).decode("utf-8"))
+    try:
+        length = int(raw_length)
+    except ValueError:
+        return None
+    if length <= 0 or length > sys.maxsize:
+        return None
+    raw = stream.read(length)
+    if len(raw) != length:
+        return None
+    message = json.loads(raw.decode("utf-8"))
+    if not isinstance(message, dict):
+        raise InvalidMessageBody("MCP request body must be an object")
+    return message
 
 
 def write_framed_message(stream, message: dict[str, Any]) -> None:

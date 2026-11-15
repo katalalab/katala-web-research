@@ -90,7 +90,9 @@ class ArchiveTests(unittest.TestCase):
             self.assertEqual(written, 5)
             self.assertEqual(len(hits), 5)
 
-    def test_multi_term_query_requires_all_terms(self):
+    def test_multi_term_query_keeps_partial_matches_but_ranks_full_match_first(self):
+        # Natural-language queries use OR semantics to preserve recall; the
+        # similarly sized full-match fixture must rank above this partial match.
         with tempfile.TemporaryDirectory() as tmp:
             archive_path = Path(tmp) / "archive.sqlite"
             archive = Archive(archive_path)
@@ -121,7 +123,9 @@ class ArchiveTests(unittest.TestCase):
             finally:
                 archive.close()
 
-            self.assertEqual({hit.rel_path for hit in hits}, {"both.md"})
+            rel_paths = [hit.rel_path for hit in hits]
+            self.assertEqual(set(rel_paths), {"both.md", "one.md"})
+            self.assertEqual(rel_paths[0], "both.md")
 
     def test_repo_query_weights_title_above_body(self):
         with tempfile.TemporaryDirectory() as tmp:
