@@ -388,7 +388,10 @@ def read_framed_message(stream) -> dict[str, Any] | None:
     raw = stream.read(length)
     if len(raw) != length:
         return None
-    message = json.loads(raw.decode("utf-8"))
+    try:
+        message = json.loads(raw.decode("utf-8"))
+    except ValueError as error:
+        raise InvalidMessageBody("MCP request body is not decodable JSON") from error
     if not isinstance(message, dict):
         raise InvalidMessageBody("MCP request body must be an object")
     return message

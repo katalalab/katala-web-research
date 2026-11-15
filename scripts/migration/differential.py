@@ -60,6 +60,7 @@ class Differential(unittest.TestCase):
             for a, b in zip(left, right):
                 self.assert_archive_equivalent(a, b, cmd)
         elif key in {'rank', 'archive_rank'} and isinstance(left, float) and isinstance(right, float):
+            self.assertTrue(math.isfinite(left) and math.isfinite(right), (cmd, left, right))
             self.assertLessEqual(abs(left - right), 4 * max(math.ulp(left), math.ulp(right)), (cmd, left, right))
         else:
             self.assertEqual(left, right, cmd)

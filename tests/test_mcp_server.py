@@ -1,5 +1,6 @@
 import io
 import json
+import sys
 import tempfile
 import types
 import unittest
@@ -97,6 +98,25 @@ class McpServerTests(unittest.TestCase):
         ):
             self.assertEqual(main(), 0)
         self.assertEqual(stream_out.getvalue(), b"")
+
+    def test_main_recovers_after_a_complete_json_body_exceeds_integer_digit_limit(self):
+        previous = sys.get_int_max_str_digits()
+        try:
+            sys.set_int_max_str_digits(640)
+            bad = b'{"id":' + b"9" * 1000 + b',"method":"initialize"}'
+            good = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "initialize"}).encode()
+            stream_in = io.BytesIO(
+                b"Content-Length: %d\r\n\r\n%s" % (len(bad), bad) + b"Content-Length: %d\r\n\r\n%s" % (len(good), good)
+            )
+            stream_out = io.BytesIO()
+            with (
+                patch("katala_web_research.mcp_server.sys.stdin", types.SimpleNamespace(buffer=stream_in)),
+                patch("katala_web_research.mcp_server.sys.stdout", types.SimpleNamespace(buffer=stream_out)),
+            ):
+                self.assertEqual(main(), 0)
+            self.assertIn(b"serverInfo", stream_out.getvalue())
+        finally:
+            sys.set_int_max_str_digits(previous)
 
     def test_feeds_query_returns_archived_feed_items(self):
         with tempfile.TemporaryDirectory() as tmp:
