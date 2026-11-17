@@ -387,16 +387,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
     try:
         run_id = archive.store_run(args.query, args.provider, results)
         for result in results[: max(args.read_top, 0)]:
-            try:
-                page = read_url(result.url, reader=args.reader)
-            except Exception as exc:
-                page = PageSnapshot(
-                    url=result.url,
-                    title=result.title,
-                    content=f"Read failed: {exc}",
-                    source="error",
-                    fetched_at="",
-                )
+            page = _read_or_failure_page(result, reader=args.reader)
             pages.append(page)
             archive.upsert_page(page)
     finally:
@@ -725,18 +716,7 @@ def cmd_issues_report(args: argparse.Namespace) -> int:
 
 
 def cmd_brief(args: argparse.Namespace) -> int:
-    search_plan: list[SearchPlanStep] = []
-    web_results: list[SearchResult] = []
-    if not args.no_web:
-        with archive_env(args.archive):
-            web_results, search_plan = search_with_plan(
-                args.query,
-                provider=args.provider,
-                limit=args.web_limit,
-                expand_queries=args.expand_queries,
-                max_subqueries=args.max_subqueries,
-                candidate_multiplier=args.candidate_multiplier,
-            )
+    web_results, search_plan = _planned_web_search(args)
     archive = Archive(args.archive)
     try:
         repo_hits = archive.query_repos(args.query, limit=args.repo_limit)
@@ -776,18 +756,7 @@ def cmd_brief(args: argparse.Namespace) -> int:
 
 
 def cmd_investigate(args: argparse.Namespace) -> int:
-    search_plan: list[SearchPlanStep] = []
-    web_results: list[SearchResult] = []
-    if not args.no_web:
-        with archive_env(args.archive):
-            web_results, search_plan = search_with_plan(
-                args.query,
-                provider=args.provider,
-                limit=args.web_limit,
-                expand_queries=args.expand_queries,
-                max_subqueries=args.max_subqueries,
-                candidate_multiplier=args.candidate_multiplier,
-            )
+    web_results, search_plan = _planned_web_search(args)
     archive = Archive(args.archive)
     pages: list[PageSnapshot] = []
     try:
@@ -796,16 +765,7 @@ def cmd_investigate(args: argparse.Namespace) -> int:
         if web_results:
             archive.store_run(args.query, args.provider, web_results)
         for result in sort_web_candidates(web_results)[: max(args.read_top, 0)]:
-            try:
-                page = read_url(result.url, reader=args.reader)
-            except Exception as exc:
-                page = PageSnapshot(
-                    url=result.url,
-                    title=result.title,
-                    content=f"Read failed: {exc}",
-                    source="error",
-                    fetched_at="",
-                )
+            page = _read_or_failure_page(result, reader=args.reader)
             pages.append(page)
             archive.upsert_page(page)
     finally:
@@ -846,6 +806,35 @@ def cmd_investigate(args: argparse.Namespace) -> int:
         else:
             print(report)
     return 0
+
+
+def _planned_web_search(args: argparse.Namespace) -> tuple[list[SearchResult], list[SearchPlanStep]]:
+    """Shared by brief and investigate; --no-web skips the network entirely."""
+    if args.no_web:
+        return [], []
+    with archive_env(args.archive):
+        return search_with_plan(
+            args.query,
+            provider=args.provider,
+            limit=args.web_limit,
+            expand_queries=args.expand_queries,
+            max_subqueries=args.max_subqueries,
+            candidate_multiplier=args.candidate_multiplier,
+        )
+
+
+def _read_or_failure_page(result: SearchResult, *, reader: str) -> PageSnapshot:
+    """A page that cannot be read is archived as an error snapshot instead of aborting the run."""
+    try:
+        return read_url(result.url, reader=reader)
+    except Exception as exc:
+        return PageSnapshot(
+            url=result.url,
+            title=result.title,
+            content=f"Read failed: {exc}",
+            source="error",
+            fetched_at="",
+        )
 
 
 def cmd_doctor(args: argparse.Namespace) -> int:
