@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+from contextlib import closing
 from pathlib import Path
 from typing import Any
 
@@ -230,25 +231,16 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         )
         return text_result(build_eval_report(summary))
     if name == "kwr.query":
-        archive = Archive(_archive_arg(arguments))
-        try:
+        with closing(Archive(_archive_arg(arguments))) as archive:
             hits = archive.query(str(arguments["terms"]), limit=int(arguments.get("limit", 5)))
-        finally:
-            archive.close()
         return text_result(json.dumps([hit.to_dict() for hit in hits], ensure_ascii=False, indent=2))
     if name == "kwr.repos_query":
-        archive = Archive(_archive_arg(arguments))
-        try:
+        with closing(Archive(_archive_arg(arguments))) as archive:
             repo_hits = archive.query_repos(str(arguments["terms"]), limit=int(arguments.get("limit", 5)))
-        finally:
-            archive.close()
         return text_result(json.dumps([hit.to_dict() for hit in repo_hits], ensure_ascii=False, indent=2))
     if name == "kwr.feeds_query":
-        archive = Archive(_archive_arg(arguments))
-        try:
+        with closing(Archive(_archive_arg(arguments))) as archive:
             feed_hits = archive.query_feeds(str(arguments["terms"]), limit=int(arguments.get("limit", 5)))
-        finally:
-            archive.close()
         return text_result(json.dumps([hit.to_dict() for hit in feed_hits], ensure_ascii=False, indent=2))
     if name == "kwr.brief":
         query = str(arguments["query"])
@@ -265,12 +257,9 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
                 archive_path=archive_path,
             )
         feed_limit = int(arguments.get("feed_limit", 0))
-        archive = Archive(archive_path)
-        try:
+        with closing(Archive(archive_path)) as archive:
             repo_hits = archive.query_repos(query, limit=int(arguments.get("repo_limit", 5)))
             feed_hits = archive.query_feeds(query, limit=feed_limit) if feed_limit > 0 else []
-        finally:
-            archive.close()
         return text_result(
             build_brief(
                 query=query,
@@ -297,9 +286,8 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
                 archive_path=archive_path,
             )
         feed_limit = int(arguments.get("feed_limit", 0))
-        archive = Archive(archive_path)
         pages: list[PageSnapshot] = []
-        try:
+        with closing(Archive(archive_path)) as archive:
             repo_hits = archive.query_repos(query, limit=int(arguments.get("repo_limit", 6)))
             feed_hits = archive.query_feeds(query, limit=feed_limit) if feed_limit > 0 else []
             if web_results:
@@ -317,8 +305,6 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
                     )
                 pages.append(page)
                 archive.upsert_page(page)
-        finally:
-            archive.close()
         return text_result(
             build_investigation_report(
                 query=query,

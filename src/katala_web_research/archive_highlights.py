@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from contextlib import closing
 from pathlib import Path
 
 from .archive import Archive
@@ -21,8 +22,7 @@ def apply_archive_highlights(
     if highlight_top <= 0 or not results:
         return results
 
-    archive = Archive(archive_path)
-    try:
+    with closing(Archive(archive_path)) as archive:
         highlighted: list[SearchResult] = []
         for index, result in enumerate(results):
             if index >= highlight_top:
@@ -40,8 +40,6 @@ def apply_archive_highlights(
             metadata["highlight_source"] = page.source
             metadata["highlight_fetched_at"] = page.fetched_at
             highlighted.append(_copy_result(result, snippet=snippet, metadata=metadata))
-    finally:
-        archive.close()
 
     return rank_results(query, highlighted)
 

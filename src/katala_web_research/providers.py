@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from contextlib import closing
 from dataclasses import asdict, dataclass, replace
 from typing import Any, Protocol
 from urllib.parse import quote, urlencode
@@ -225,11 +226,8 @@ class FeedSearch:
     name = "feed"
 
     def search(self, query: str, *, limit: int = 10) -> list[SearchResult]:
-        archive = Archive(os.environ.get("KWR_ARCHIVE", str(DEFAULT_ARCHIVE)))
-        try:
+        with closing(Archive(os.environ.get("KWR_ARCHIVE", str(DEFAULT_ARCHIVE)))) as archive:
             hits = archive.query_feeds(query, limit=limit)
-        finally:
-            archive.close()
         results = [
             SearchResult(
                 title=hit.title,
@@ -620,11 +618,8 @@ def _route_around_weak_engines(provider_names: list[str]) -> list[str]:
     path = _health_ledger_path()
     if not path or not provider_names:
         return provider_names
-    archive = Archive(path)
-    try:
+    with closing(Archive(path)) as archive:
         weak = set(weak_engines(summarize_engine_runs(archive.engine_runs())))
-    finally:
-        archive.close()
     kept = [name for name in provider_names if name not in weak]
     # Never route around every engine: a fleet-wide outage would then read as "no results"
     # instead of "everything is failing", which is the harder bug to notice.
@@ -635,22 +630,16 @@ def _record_engine_runs(runs: list[_MetaEngineRun]) -> None:
     path = _health_ledger_path()
     if not path:
         return
-    archive = Archive(path)
-    try:
+    with closing(Archive(path)) as archive:
         archive.record_engine_runs([run.to_dict() for run in runs])
-    finally:
-        archive.close()
 
 
 def engine_health(*, per_provider: int = 50) -> list[EngineHealthStat]:
     path = _health_ledger_path()
     if not path:
         return []
-    archive = Archive(path)
-    try:
+    with closing(Archive(path)) as archive:
         return summarize_engine_runs(archive.engine_runs(per_provider=per_provider))
-    finally:
-        archive.close()
 
 
 def _annotate_engine_result(result: SearchResult, run: _MetaEngineRun) -> SearchResult:

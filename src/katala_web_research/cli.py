@@ -343,17 +343,14 @@ def cmd_read(args: argparse.Namespace) -> int:
             print(uncached_page.content)
         return 0
 
-    archive = Archive(args.archive)
     page: PageSnapshot | None = None
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         if not args.refresh:
             page = archive.page_by_url(args.url)
         cached = page is not None
         if page is None:
             page = read_url(args.url, reader=args.reader)
             archive.upsert_page(page)
-    finally:
-        archive.close()
     assert page is not None
     if args.json:
         print_json(page.to_dict() | {"cached": cached})
@@ -383,15 +380,12 @@ def cmd_collect(args: argparse.Namespace) -> int:
     with archive_env(args.archive):
         results = search(args.query, provider=args.provider, limit=args.limit)
     pages: list[PageSnapshot] = []
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         run_id = archive.store_run(args.query, args.provider, results)
         for result in results[: max(args.read_top, 0)]:
             page = _read_or_failure_page(result, reader=args.reader)
             pages.append(page)
             archive.upsert_page(page)
-    finally:
-        archive.close()
 
     report_path = None
     if args.report:
@@ -428,11 +422,8 @@ def cmd_collect(args: argparse.Namespace) -> int:
 
 
 def cmd_query(args: argparse.Namespace) -> int:
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         hits = archive.query(args.terms, limit=args.limit)
-    finally:
-        archive.close()
     if args.json:
         print_json([hit.to_dict() for hit in hits])
     else:
@@ -456,9 +447,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
 def cmd_repos_scan(args: argparse.Namespace) -> int:
     existing_metadata = {}
     if not args.no_incremental:
-        archive = Archive(args.archive)
-        existing_metadata = archive.repo_document_metadata()
-        archive.close()
+        with contextlib.closing(Archive(args.archive)) as archive:
+            existing_metadata = archive.repo_document_metadata()
     stats: dict[str, int] = {"skipped_unchanged": 0}
     documents, warnings = scan_repos(
         args.root,
@@ -468,11 +458,8 @@ def cmd_repos_scan(args: argparse.Namespace) -> int:
         existing_metadata=existing_metadata,
         stats=stats,
     )
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         indexed = archive.upsert_repo_documents(documents)
-    finally:
-        archive.close()
     payload = {
         "root": args.root,
         "archive": args.archive,
@@ -495,11 +482,8 @@ def cmd_repos_scan(args: argparse.Namespace) -> int:
 
 
 def cmd_repos_query(args: argparse.Namespace) -> int:
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         hits = archive.query_repos(args.terms, limit=args.limit, repo=args.repo, path=args.path)
-    finally:
-        archive.close()
     if args.json:
         print_json([hit.to_dict() for hit in hits])
     else:
@@ -513,12 +497,9 @@ def cmd_repos_query(args: argparse.Namespace) -> int:
 
 def cmd_feeds_add(args: argparse.Namespace) -> int:
     source = FeedSource(url=args.url, title=args.title, status="pending")
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         archive.upsert_feed_source(source)
         sources = archive.feed_sources()
-    finally:
-        archive.close()
     payload = {
         "archive": args.archive,
         "source": source.to_dict(),
@@ -534,9 +515,8 @@ def cmd_feeds_add(args: argparse.Namespace) -> int:
 
 
 def cmd_feeds_refresh(args: argparse.Namespace) -> int:
-    archive = Archive(args.archive)
     refreshed = []
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         if args.source:
             sources = [FeedSource(url=args.source, status="pending")]
             archive.upsert_feed_source(sources[0])
@@ -560,8 +540,6 @@ def cmd_feeds_refresh(args: argparse.Namespace) -> int:
                 )
                 archive.upsert_feed_source(failed)
                 refreshed.append(failed.to_dict() | {"indexed_items": 0})
-    finally:
-        archive.close()
     payload = {
         "archive": args.archive,
         "refreshed": refreshed,
@@ -580,11 +558,8 @@ def cmd_feeds_refresh(args: argparse.Namespace) -> int:
 
 
 def cmd_feeds_query(args: argparse.Namespace) -> int:
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         hits = archive.query_feeds(args.terms, limit=args.limit)
-    finally:
-        archive.close()
     if args.json:
         print_json([hit.to_dict() for hit in hits])
     else:
@@ -650,11 +625,8 @@ def cmd_issues_ingest(args: argparse.Namespace) -> int:
             limit=args.limit,
             include=args.include,
         )
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         indexed = archive.upsert_project_items(items)
-    finally:
-        archive.close()
     payload = {
         "archive": args.archive,
         "indexed_items": indexed,
@@ -671,11 +643,8 @@ def cmd_issues_ingest(args: argparse.Namespace) -> int:
 
 
 def cmd_issues_query(args: argparse.Namespace) -> int:
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         hits = archive.query_project_items(args.terms, limit=args.limit)
-    finally:
-        archive.close()
     if args.json:
         print_json([hit.to_dict() for hit in hits])
     else:
@@ -689,11 +658,8 @@ def cmd_issues_query(args: argparse.Namespace) -> int:
 
 
 def cmd_issues_report(args: argparse.Namespace) -> int:
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         items = archive.project_items(limit=args.limit)
-    finally:
-        archive.close()
     report = build_project_radar(items, archive_path=args.archive, owner=args.owner)
     out_path = None
     if args.out:
@@ -717,12 +683,9 @@ def cmd_issues_report(args: argparse.Namespace) -> int:
 
 def cmd_brief(args: argparse.Namespace) -> int:
     web_results, search_plan = _planned_web_search(args)
-    archive = Archive(args.archive)
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         repo_hits = archive.query_repos(args.query, limit=args.repo_limit)
         feed_hits = archive.query_feeds(args.query, limit=args.feed_limit) if args.feed_limit > 0 else []
-    finally:
-        archive.close()
     brief = build_brief(
         query=args.query,
         web_results=web_results,
@@ -757,9 +720,8 @@ def cmd_brief(args: argparse.Namespace) -> int:
 
 def cmd_investigate(args: argparse.Namespace) -> int:
     web_results, search_plan = _planned_web_search(args)
-    archive = Archive(args.archive)
     pages: list[PageSnapshot] = []
-    try:
+    with contextlib.closing(Archive(args.archive)) as archive:
         repo_hits = archive.query_repos(args.query, limit=args.repo_limit)
         feed_hits = archive.query_feeds(args.query, limit=args.feed_limit) if args.feed_limit > 0 else []
         if web_results:
@@ -768,8 +730,6 @@ def cmd_investigate(args: argparse.Namespace) -> int:
             page = _read_or_failure_page(result, reader=args.reader)
             pages.append(page)
             archive.upsert_page(page)
-    finally:
-        archive.close()
 
     report = build_investigation_report(
         query=args.query,
