@@ -57,8 +57,6 @@ ignore = [
 [tool.mypy]
 python_version = "3.11"
 ignore_missing_imports = true
-# Scoped to src/ — 21 pre-existing errors remain (attr-defined, var-annotated,
-# assignment) in brief.py, investigation.py, mcp_server.py, cli.py, corpus.py,
-# archive.py. Tracked for future cleanup; not blocking.
+# Scoped to src/; the CI lint job runs it and it currently reports no errors.
 files = ["src/katala_web_research"]
 warn_unused_ignores = false
