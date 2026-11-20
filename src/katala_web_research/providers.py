@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from contextlib import closing
 from dataclasses import asdict, dataclass, replace
 from typing import Any, Protocol
 from urllib.parse import quote, urlencode
@@ -225,11 +226,8 @@ class FeedSearch:
     name = "feed"
 
     def search(self, query: str, *, limit: int = 10) -> list[SearchResult]:
-        archive = Archive(os.environ.get("KWR_ARCHIVE", str(DEFAULT_ARCHIVE)))
-        try:
+        with closing(Archive(os.environ.get("KWR_ARCHIVE", str(DEFAULT_ARCHIVE)))) as archive:
             hits = archive.query_feeds(query, limit=limit)
-        finally:
-            archive.close()
         results = [
             SearchResult(
                 title=hit.title,
@@ -384,17 +382,7 @@ class OpenAlexSearch:
             for item in page_items:
                 if len(results) >= requested:
                     break
-                results.append(
-                    SearchResult(
-                        title=item.get("display_name") or item.get("title") or item.get("id") or "",
-                        url=_openalex_url(item),
-                        snippet=_openalex_snippet(item),
-                        source=self.name,
-                        published_at=item.get("publication_date") or _year_as_date(item.get("publication_year")),
-                        rank=len(results) + 1,
-                        metadata=_openalex_metadata(item),
-                    )
-                )
+                results.append(_openalex_result(item, rank=len(results) + 1))
             cursor = _openalex_next_cursor(payload)
             if not cursor:
                 break
@@ -475,17 +463,21 @@ def _openalex_filtered_works(filter_value: str, *, limit: int) -> list[SearchRes
     response = fetch_url(url, headers={"Accept": "application/json"})
     payload = _parse_json(response.text, url)
     return [
-        SearchResult(
-            title=item.get("display_name") or item.get("title") or item.get("id") or "",
-            url=_openalex_url(item),
-            snippet=_openalex_snippet(item),
-            source="openalex",
-            published_at=item.get("publication_date") or _year_as_date(item.get("publication_year")),
-            rank=idx,
-            metadata=_openalex_metadata(item),
-        )
+        _openalex_result(item, rank=idx)
         for idx, item in enumerate(payload.get("results", [])[:limit], start=1)
     ]
+
+
+def _openalex_result(item: dict, *, rank: int) -> SearchResult:
+    return SearchResult(
+        title=item.get("display_name") or item.get("title") or item.get("id") or "",
+        url=_openalex_url(item),
+        snippet=_openalex_snippet(item),
+        source=OpenAlexSearch.name,
+        published_at=item.get("publication_date") or _year_as_date(item.get("publication_year")),
+        rank=rank,
+        metadata=_openalex_metadata(item),
+    )
 
 
 def _add_openalex_credentials(params: dict[str, str | int]) -> None:
@@ -510,28 +502,19 @@ class MetaSearch:
         runs: list[_MetaEngineRun] = []
         per_engine_limit = max(2, min(limit, 8))
         with ThreadPoolExecutor(max_workers=min(len(provider_names), 4)) as executor:
-            futures = {
+            futures = [
                 executor.submit(
                     _run_meta_provider,
                     name,
                     _rewrite_query_for_provider(query, provider=name, profile=profile),
                     per_engine_limit,
-                ): name
+                )
                 for name in provider_names
-            }
+            ]
             for future in as_completed(futures):
-                try:
-                    results, run = future.result()
-                except Exception as exc:
-                    run = _MetaEngineRun(
-                        provider=futures[future],
-                        status="error",
-                        latency_ms=0,
-                        result_count=0,
-                        health_score=0.0,
-                        error_kind=exc.__class__.__name__,
-                    )
-                    results = []
+                # _run_meta_provider turns every provider exception into an "error" run,
+                # so result() does not raise here.
+                results, run = future.result()
                 runs.append(run)
                 if results:
                     result_lists.append(results)
@@ -635,11 +618,8 @@ def _route_around_weak_engines(provider_names: list[str]) -> list[str]:
     path = _health_ledger_path()
     if not path or not provider_names:
         return provider_names
-    archive = Archive(path)
-    try:
+    with closing(Archive(path)) as archive:
         weak = set(weak_engines(summarize_engine_runs(archive.engine_runs())))
-    finally:
-        archive.close()
     kept = [name for name in provider_names if name not in weak]
     # Never route around every engine: a fleet-wide outage would then read as "no results"
     # instead of "everything is failing", which is the harder bug to notice.
@@ -650,22 +630,16 @@ def _record_engine_runs(runs: list[_MetaEngineRun]) -> None:
     path = _health_ledger_path()
     if not path:
         return
-    archive = Archive(path)
-    try:
+    with closing(Archive(path)) as archive:
         archive.record_engine_runs([run.to_dict() for run in runs])
-    finally:
-        archive.close()
 
 
 def engine_health(*, per_provider: int = 50) -> list[EngineHealthStat]:
     path = _health_ledger_path()
     if not path:
         return []
-    archive = Archive(path)
-    try:
+    with closing(Archive(path)) as archive:
         return summarize_engine_runs(archive.engine_runs(per_provider=per_provider))
-    finally:
-        archive.close()
 
 
 def _annotate_engine_result(result: SearchResult, run: _MetaEngineRun) -> SearchResult:
@@ -928,17 +902,7 @@ def _brave_freshness(value: str) -> str:
 
 def _brave_date_range(value: str) -> bool:
     start, sep, end = value.partition("to")
-    return (
-        sep == "to"
-        and len(start) == 10
-        and len(end) == 10
-        and start[4] == "-"
-        and start[7] == "-"
-        and end[4] == "-"
-        and end[7] == "-"
-        and start.replace("-", "").isdigit()
-        and end.replace("-", "").isdigit()
-    )
+    return sep == "to" and _iso_date(start) and _iso_date(end)
 
 
 def _brave_safesearch(value: str) -> str:
