@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """CLI malformed/type/config cases over strict loopback endpoint mappings only."""
 import json
-import os
 import subprocess
 import sys
 import tempfile
