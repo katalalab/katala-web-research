@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from math import log2
 
 from .models import SearchResult
@@ -11,7 +11,7 @@ from .source_quality import classify_url
 
 # Fixtures anchor publish dates to the current year so freshness scoring stays
 # identical every year instead of decaying as hardcoded years age out.
-CURRENT_YEAR = datetime.now(timezone.utc).year
+CURRENT_YEAR = datetime.now(UTC).year
 
 # BEIR grades relevance rather than treating it as a boolean, so a mirror of an official
 # page and the official page itself are not scored the same. Anything at or above this is

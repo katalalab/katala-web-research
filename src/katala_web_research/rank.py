@@ -58,10 +58,7 @@ def _dedupe_key(url: str) -> str:
 def _passes_search_gates(result: SearchResult) -> bool:
     if not result.url or not result.title:
         return False
-    snippet = result.snippet.lower()
-    if "retracted=true" in snippet:
-        return False
-    return True
+    return "retracted=true" not in result.snippet.lower()
 
 
 def _select_with_katala_diversity(results: list[SearchResult], classifier) -> list[SearchResult]:

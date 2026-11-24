@@ -349,9 +349,7 @@ def iter_limited_files(base: Path, *, max_depth: int, max_dirs: int = 50, max_en
 def should_include(path: Path) -> bool:
     if path.name in DEFAULT_INCLUDE_NAMES:
         return True
-    if path.suffix.lower() in DEFAULT_INCLUDE_SUFFIXES and len(path.parts) <= 12:
-        return True
-    return False
+    return path.suffix.lower() in DEFAULT_INCLUDE_SUFFIXES and len(path.parts) <= 12
 
 
 def extract_title(content: str, *, fallback: str) -> str:
