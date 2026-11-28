@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Deterministic Meta fan-out transcripts; entirely synthetic provider/clock/ledger."""
-import copy
 import json
 import os
 from pathlib import Path

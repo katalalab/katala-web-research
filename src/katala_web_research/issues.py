@@ -156,10 +156,7 @@ def build_project_radar(
 def _label_names(labels: list[Any]) -> list[str]:
     names = []
     for label in labels:
-        if isinstance(label, dict):
-            name = str(label.get("name") or "").strip()
-        else:
-            name = str(label).strip()
+        name = str((label.get("name") or "") if isinstance(label, dict) else label).strip()
         if name:
             names.append(name)
     return names

@@ -18,7 +18,7 @@ import threading
 import time
 import unittest
 from pathlib import Path
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import urlsplit
 from unittest.mock import patch
 
 import http_differential as fixture
@@ -106,7 +106,7 @@ def expected_at_measured_inputs(transcript,run_rows,env,args,library=False):
 
 class MetaHandler(fixture.Handler):
     def do_GET(self):
-        parsed = urlsplit(self.path); params = parse_qs(parsed.query)
+        parsed = urlsplit(self.path)
         provider = {"/html/": "ddg", "/search/repositories": "github", "/search/code": "github_code", "/search": "searxng", "/res/v1/web/search": "brave", "/works": "openalex", "/": "jina"}.get(parsed.path)
         if provider is None: self.send_error(404); return
         TRACE.append((provider, self.path, {k.lower():v for k,v in self.headers.items()})); REQUESTED.set()

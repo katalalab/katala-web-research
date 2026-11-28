@@ -28,7 +28,7 @@ class SourceRegistryEntry:
     avoid_for: tuple[str, ...]
 
     @classmethod
-    def from_dict(cls, raw: dict) -> "SourceRegistryEntry":
+    def from_dict(cls, raw: dict) -> SourceRegistryEntry:
         return cls(
             name=str(raw["name"]),
             domain=str(raw["domain"]),
@@ -91,7 +91,7 @@ class SourceRegistry:
     def to_dict(self) -> dict:
         return {"sources": [source.to_dict() for source in self.sources]}
 
-    def merged(self, overlay: "SourceRegistry") -> "SourceRegistry":
+    def merged(self, overlay: SourceRegistry) -> SourceRegistry:
         merged: dict[tuple[str, str, str], SourceRegistryEntry] = {}
         for source in self.sources:
             merged[_source_key(source)] = source
